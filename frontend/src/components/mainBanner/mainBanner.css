@@ -1,17 +1,17 @@
 .mainBanner{
     position: absolute;
-    width: 100%;
+    width: 100vw;
     height: 37%;
     top: 120px;
     background: #CDFF5C;
     display: flex;
-    padding: 0 5rem;
     align-items: center;
+    justify-content: space-around;
 }
 
 .mammyMsg{
     background-color: #fff;
-    width: 24%;
+    width: 24vw;
     height: 75%;
     border-radius: 20px;
     box-sizing: border-box;
@@ -19,4 +19,14 @@
     font-weight: 700;
     font-size: 1.5rem;
     text-align: center;
+}
+
+.slideBanner{
+    width: 50vw;
+    height: 75%;
+    padding: 2rem;
+    background-color: #fff;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 2rem;
 }

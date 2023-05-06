@@ -1,0 +1,20 @@
+.slider {
+    color: black;
+    align-items: center;
+}
+
+.slider-img{
+    width: 8rem;
+    height: 8rem;
+    margin: 0 2rem;
+}
+
+.slide-item p{
+    font-weight: 700;
+    margin: 0 2rem;
+}
+
+.slick-track {
+    display: flex;
+    align-items: center;
+}
