@@ -1,11 +1,12 @@
 import React from 'react';
 import MainBanner from '../components/mainBanner/MainBanner';
+import MenuList from '../components/menuList/MenuList';
 
 const KidMain = () => {
     return (
         <div>
-            <h1>ggg</h1>
             <MainBanner/>
+            <MenuList/>
         </div>
     );
 };
