@@ -6,7 +6,7 @@ const Header = () => {
         <div className='header'>
             <p>JJAN순이의 경제여행</p>
             <p>000 아이님✨</p>
-            <button>로그아웃</button>
+            <p className='logout'>로그아웃</p>
         </div>
     );
 };

@@ -13,4 +13,9 @@
 .header p {
     margin: 0;
     padding: 0;
+    cursor: pointer;
+}
+
+.logout{
+    color: #868686;
 }
