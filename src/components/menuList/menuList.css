@@ -1,0 +1,31 @@
+.menuList{
+    position: absolute;
+    width: 100vw;
+    height: 38%;
+    top: 55%;
+    display: flex;
+    justify-content: space-around;
+}
+
+.menu-item {
+    padding: .3rem;
+    text-align: center;
+    cursor: pointer;
+}
+
+.menu-item:hover {
+    background: #eeeeee;
+    border-radius: 20px;
+    text-align: center;
+}
+
+.menu-item img{
+    margin: 1rem 0 0 0;
+    height: 70%;
+}
+
+.menu-item p{
+    font-weight: 700;
+    font-size: 1.6rem;
+    margin: .3rem;
+}

@@ -1,0 +1,21 @@
+.header{
+    height: 1.5rem;
+    padding:  .5rem 2rem;
+    margin: 0;
+    font-weight: 800;
+    background-color: #EEEEEE;
+    display: flex;
+    justify-content: space-between;
+    text-align: center;
+    align-items: center;
+}
+
+.header p {
+    margin: 0;
+    padding: 0;
+    cursor: pointer;
+}
+
+.logout{
+    color: #868686;
+}
