@@ -1,0 +1,98 @@
+body {
+  font-family: arial, helvetica;
+}
+
+h3 {
+  font-size: 5em;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+}
+
+#section1 {
+  background-image: url("http://localhost:3000/assets/images/fullpage/풀1_none.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+#section2 {
+  background-image: url("http://localhost:3000/assets/images/fullpage/풀2_none.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#section3 {
+  background-image: url("http://localhost:3000/assets/images/fullpage/풀3.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#section4 {
+  background-image: url("http://localhost:3000/assets/images/fullpage/풀4.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.section{
+  height: 100vh;
+}
+
+.fp-section {
+  text-align: center;
+}
+
+#fp-nav ul li a span{
+  background-color: aliceblue;
+  opacity: 30%;
+}
+
+#fp-nav ul li a span:hover{
+  background-color: aliceblue;
+  opacity: 20%;
+}
+
+#pig{
+  width: auto;
+  position: absolute;
+  bottom: 0em;
+  right: 40rem;
+  z-index: 10;
+}
+#hand{ 
+  float: none;
+  clear: both;
+  position: absolute;
+  margin-top: 35rem;
+  right: 38rem;
+  animation: bounce 2s infinite linear;
+
+}
+
+/* 
+  바운스의 높이 
+  0% 일 때, 0px 
+  50%일 때, -5px 
+  70%일 때, -50px
+  100%일 때, 0px 
+  */
+
+
+@keyframes bounce {
+  0% {
+    top: 30px;
+  }
+
+  50% {
+    top: 0px;
+  }
+
+  70% {
+    top: -10px;
+  }
+
+  100% {
+    top: 30px;
+  }
+}
+
