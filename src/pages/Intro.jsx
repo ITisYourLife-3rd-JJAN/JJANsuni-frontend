@@ -19,10 +19,10 @@ const Intro = () => (
 
       return (
         <div>
-          <div className="section" id="section1"><img id="pig" src={`${process.env.PUBLIC_URL}/assets/images/fullpage/realpig.png`} alt=""/><div id="hand"><img src={`${process.env.PUBLIC_URL}/assets/fullpage/hand.png`} alt=""/></div><LoginButton/></div>
+          <div className="section" id="section1"><img id="pig" src={`${process.env.PUBLIC_URL}/assets/images/fullpage/realpig.png`} alt=""/><div id="hand"><img src={`${process.env.PUBLIC_URL}/assets/images/fullpage/hand.png`} alt=""/></div><LoginButton/></div>
           <div className="section" id="section2"><div><img id="cardphone" src={`${process.env.PUBLIC_URL}/assets/images/fullpage/cardPhone.png`} alt=""/></div></div>
-          <div className="section" id="section3"></div>
-          <div className="section" id="section4"><div><img src={`${process.env.PUBLIC_URL}/assets/images/fullpage/plane.png`} alt=""></img></div><RegisterButton/></div>
+          <div className="section" id="section3"><div className="coins"><img id="jjan" src={`${process.env.PUBLIC_URL}/assets/images/fullpage/jjan코인.png`} alt=""></img></div></div>
+          <div className="section" id="section4"><RegisterButton/></div>
         </div>
       );
     }}
