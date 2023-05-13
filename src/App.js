@@ -13,9 +13,11 @@ function App() {
   return (
     <div>
       <BrowserRouter>
+      <Routes>
+      <Route path="/" element={<Intro/> }/>  
+      </Routes>
         <Header> </Header>
         <Routes>
-          <Route path="/" element={<Intro/> }/>  
           <Route path="/join" element={<Join/> }/>  
           <Route path="/login" element={<Login/> }/>  
           <Route path="/kid" element={<KidMain/> }/>  
