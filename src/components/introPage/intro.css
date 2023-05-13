@@ -2,6 +2,10 @@ body {
   font-family: arial, helvetica;
 }
 
+.fp-watermark{
+  visibility: hidden;
+}
+
 h3 {
   font-size: 5em;
   text-align: center;
