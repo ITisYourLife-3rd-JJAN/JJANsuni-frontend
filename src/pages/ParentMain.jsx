@@ -6,7 +6,7 @@ const ParentMain = () => {
     return (
         <div>
             <MainBanner bgColor='#FCFF5C' />
-            <MenuList />
+            <MenuList isParent={true} />
         </div>
     );
 };
