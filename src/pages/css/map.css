@@ -1,0 +1,11 @@
+.map-container {
+    position: relative;
+}
+
+.background-image {
+    position: absolute;
+    padding: 2rem 3rem 2rem 4rem; 
+    width: 85%;
+    object-fit: cover;
+    z-index: -1;
+}
