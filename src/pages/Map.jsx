@@ -1,5 +1,7 @@
 import React from 'react';
 import './css/map.css'
+import { Link } from 'react-router-dom';
+
 
 const Map = () => {
     const achieveStatus_full = 7; // 나중에 실제로 사용할 데이터 변수
@@ -12,32 +14,39 @@ const Map = () => {
                 alt=''
                 className='map-background-image'
             />
-
+            
             <div className={`map-box map-box-1 ${achieveStatus_full !== achieveStatus_full ? 'gray' : ''}`}>
-                <p className='achieve-status'> {achieveStatus_full}/7</p>
-                <img
-                src={`${process.env.PUBLIC_URL}/assets/images/map/island1.png`}
-                alt=''
-                className='map map-1-image'
-                />
+                <Link to={`/kid/map/1`}>
+                    <p className='achieve-status'> {achieveStatus_full}/7</p>
+                    <img
+                    src={`${process.env.PUBLIC_URL}/assets/images/map/island1.png`}
+                    alt=''
+                    className='map map-1-image'
+                    />
+                </Link>
             </div>
+           
 
             <div className={`map-box map-box-2 ${achieveStatus !== achieveStatus_full ? 'gray' : ''}`}>
-                <p className='achieve-status'>{achieveStatus}/7</p>
-                <img
-                src={`${process.env.PUBLIC_URL}/assets/images/map/island2.png`}
-                alt=''
-                className='map map-2-image'
-                />
+                <Link to={`/kid/map/2`}>
+                    <p className='achieve-status'>{achieveStatus}/7</p>
+                    <img
+                    src={`${process.env.PUBLIC_URL}/assets/images/map/island2.png`}
+                    alt=''
+                    className='map map-2-image'
+                    />
+                </Link>
             </div>
             
             <div className={`map-box map-box-3 ${achieveStatus !== achieveStatus_full ? 'gray' : ''}`}>
-                <p className='achieve-status'>{achieveStatus}/7</p>
-                <img
-                    src={`${process.env.PUBLIC_URL}/assets/images/map/island3.png`}
-                    alt=''
-                    className='map map-3-image'
-                />
+                <Link to={`/kid/map/3`}>
+                    <p className='achieve-status'>{achieveStatus}/7</p>
+                    <img
+                        src={`${process.env.PUBLIC_URL}/assets/images/map/island3.png`}
+                        alt=''
+                        className='map map-3-image'
+                    />
+                </Link>
              </div>
              
              <div className={`map-box map-box-4 ${achieveStatus !== achieveStatus_full ? 'gray' : ''}`}>
