@@ -11,14 +11,26 @@
 .mammyMsg{
     background-color: #fff;
     width: 24vw;
-    height: 75%;
+    height: 60%;
+    overflow: scroll;
     border-radius: 20px;
     box-sizing: border-box;
-    padding: 2rem;
+    padding: 1.5rem;
     font-weight: 700;
-    font-size: 1.5rem;
+    font-size: 1.2rem;
     text-align: center;
 }
+
+@media screen and (max-width: 900px) {
+    .mammyMsg {
+        transition: 1s;
+      font-size: .8rem;
+    }
+    .sendFighting{
+        width: 5rem;
+        font-size: .5rem;
+    }
+  }
 
 .slideBanner{
     width: 50vw;
@@ -30,12 +42,16 @@
     padding: 2rem;
 }
 
-.mainBanner span{
-    float: right;
+.mainBanner div{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
 }
 
-.sendFighting {
-    width: 8rem;
+.sendFighting{
+    max-width: 5rem;
+    width: 60%;
     background-color: #FCFF5C;
     border: none;
     border-radius: 15px;
@@ -43,9 +59,4 @@
     font-size: .7rem;
     margin: 0;
     cursor: pointer;
-}
-
-.changeChild{
-    cursor: pointer;
-    /* background-color: rgba(252,255,92,0.4); */
 }

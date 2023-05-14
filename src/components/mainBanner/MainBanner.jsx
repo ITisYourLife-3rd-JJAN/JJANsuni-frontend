@@ -13,17 +13,18 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
   return (
     <div className='mainBanner' style={{ backgroundColor: bgColor }}>
       <div className='mammyMsg'>
+        {isParent && (
+          <div>
+            <p className='sendFighting' onClick={handleClick}>
+                작성하기
+            </p>
+          </div>
+        )}
         <p className='changeChild' onClick={isParent ? handleClick : null} style={{...cursorStyle, backgroundColor}}>
           사랑하는 길연아 ~
         </p>
         <p>오늘도 힘내 화이팅 !!!💖</p>
-        {isParent && (
-          <span>
-            <p className='sendFighting' onClick={handleClick}>
-              응원메세지 작성하기
-            </p>
-          </span>
-        )}
+        
       </div>
       <div className='slideBanner'>
         <SimpleSlider />
