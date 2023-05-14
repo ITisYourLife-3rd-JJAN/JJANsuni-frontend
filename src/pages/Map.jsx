@@ -13,7 +13,7 @@ const Map = () => {
                 className='map-background-image'
             />
 
-            <div className={`map-box map-box-1 ${achieveStatus_full !== 7 ? 'gray' : ''}`}>
+            <div className={`map-box map-box-1 ${achieveStatus_full !== achieveStatus_full ? 'gray' : ''}`}>
                 <p className='achieve-status'> {achieveStatus_full}/7</p>
                 <img
                 src={`${process.env.PUBLIC_URL}/assets/images/map/island1.png`}
@@ -22,7 +22,7 @@ const Map = () => {
                 />
             </div>
 
-            <div className={`map-box map-box-2 ${achieveStatus !== 7 ? 'gray' : ''}`}>
+            <div className={`map-box map-box-2 ${achieveStatus !== achieveStatus_full ? 'gray' : ''}`}>
                 <p className='achieve-status'>{achieveStatus}/7</p>
                 <img
                 src={`${process.env.PUBLIC_URL}/assets/images/map/island2.png`}
@@ -31,7 +31,7 @@ const Map = () => {
                 />
             </div>
             
-            <div className={`map-box map-box-3 ${achieveStatus !== 7 ? 'gray' : ''}`}>
+            <div className={`map-box map-box-3 ${achieveStatus !== achieveStatus_full ? 'gray' : ''}`}>
                 <p className='achieve-status'>{achieveStatus}/7</p>
                 <img
                     src={`${process.env.PUBLIC_URL}/assets/images/map/island3.png`}
@@ -40,7 +40,7 @@ const Map = () => {
                 />
              </div>
              
-             <div className={`map-box map-box-4 ${achieveStatus !== 7 ? 'gray' : ''}`}>
+             <div className={`map-box map-box-4 ${achieveStatus !== achieveStatus_full ? 'gray' : ''}`}>
                 <p className='achieve-status'>{achieveStatus}/7</p>
                 <img
                     src={`${process.env.PUBLIC_URL}/assets/images/map/island4.png`}
@@ -49,7 +49,7 @@ const Map = () => {
                 />
              </div>
             
-             <div className={`map-box map-box-5 ${achieveStatus !== 7 ? 'gray' : ''}`}>
+             <div className={`map-box map-box-5 ${achieveStatus !== achieveStatus_full ? 'gray' : ''}`}>
                 <p className='achieve-status'>{achieveStatus}/7</p>
                 <img
                     src={`${process.env.PUBLIC_URL}/assets/images/map/island5.png`}
@@ -58,7 +58,7 @@ const Map = () => {
                 />
              </div>
              
-             <div className={`map-box map-box-6 ${achieveStatus !== 7 ? 'gray' : ''}`}>
+             <div className={`map-box map-box-6 ${achieveStatus !== achieveStatus_full ? 'gray' : ''}`}>
                 <p className='achieve-status'>{achieveStatus}/7</p>
                 <img
                     src={`${process.env.PUBLIC_URL}/assets/images/map/island6.png`}
