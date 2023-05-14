@@ -26,7 +26,7 @@ const Login = () => {
                             <input type="password" id="userpw" required></input>
                         </p>
                         <p>
-                        <button>로그인</button>
+                        <button>여행 가기</button>
                         </p>
                     </form>
                 </div>
