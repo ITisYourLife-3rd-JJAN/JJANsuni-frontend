@@ -1,0 +1,10 @@
+.cardTable{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+}
+
+th, td{
+    border-bottom: 0.01rem solid #ccc;
+    padding: 1rem;
+}
