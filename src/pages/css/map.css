@@ -1,11 +1,61 @@
 .map-container {
     position: relative;
+    display: flex;
+    width: 100vw;
+    height: 100vh;
 }
 
-.background-image {
+.map-background-image {
     position: absolute;
-    padding: 2rem 3rem 2rem 4rem; 
+    margin: 2rem;
     width: 85%;
-    object-fit: cover;
+    height: 85%;
+    object-fit: contain;
     z-index: -1;
+}
+
+.map-box{
+    width: 11%;
+    position: relative;
+    font-size: 2rem;
+    text-align: center;
+}
+
+.map{
+    width: 98%;
+}
+
+.map-box p{
+    margin: 0;
+    padding: 0;
+}
+
+.map-box-1{
+    top: 20vh;
+    left: 21%;
+}
+
+.map-box-2{
+    top: 45vh;
+    left: 19%
+}
+
+.map-box-3{
+    top: 20vh;
+    left: 24%;
+}
+
+.map-box-4{
+    top: 45vh;
+    left: 19%
+}
+
+.map-box-5{
+    top: 18vh;
+    left: 24%;
+}
+
+.map-box-6{
+    top: 48vh;
+    left: 14%
 }
