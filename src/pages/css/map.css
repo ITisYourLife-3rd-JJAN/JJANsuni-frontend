@@ -21,6 +21,10 @@
     text-align: center;
 }
 
+.gray{
+    filter: grayscale(100%);
+}
+
 .map{
     width: 98%;
 }
@@ -47,7 +51,7 @@
 
 .map-box-4{
     top: 45vh;
-    left: 19%
+    left: 17%
 }
 
 .map-box-5{

@@ -2,6 +2,9 @@ import React from 'react';
 import './css/map.css'
 
 const Map = () => {
+    const achieveStatus_full = 7; // 나중에 실제로 사용할 데이터 변수
+    const achieveStatus = 0; // 나중에 실제로 사용할 데이터 변수
+
     return (
         <div className='map-container'>  
             <img
@@ -9,26 +12,27 @@ const Map = () => {
                 alt=''
                 className='map-background-image'
             />
-            <div className='map-box map-box-1'>
-                <p>7/7</p>
+
+            <div className={`map-box map-box-1 ${achieveStatus_full !== 7 ? 'gray' : ''}`}>
+                <p className='achieve-status'> {achieveStatus_full}/7</p>
                 <img
-                    src={`${process.env.PUBLIC_URL}/assets/images/map/island1.png`}
-                    alt=''
-                    className='map map-1-image'
+                src={`${process.env.PUBLIC_URL}/assets/images/map/island1.png`}
+                alt=''
+                className='map map-1-image'
                 />
             </div>
 
-            <div className='map-box map-box-2'>
-                <p>1/7</p>
+            <div className={`map-box map-box-2 ${achieveStatus !== 7 ? 'gray' : ''}`}>
+                <p className='achieve-status'>{achieveStatus}/7</p>
                 <img
-                    src={`${process.env.PUBLIC_URL}/assets/images/map/island2.png`}
-                    alt=''
-                    className='map map-2-image'
+                src={`${process.env.PUBLIC_URL}/assets/images/map/island2.png`}
+                alt=''
+                className='map map-2-image'
                 />
-             </div>
+            </div>
             
-            <div className='map-box map-box-3'>
-                <p>0/7</p>
+            <div className={`map-box map-box-3 ${achieveStatus !== 7 ? 'gray' : ''}`}>
+                <p className='achieve-status'>{achieveStatus}/7</p>
                 <img
                     src={`${process.env.PUBLIC_URL}/assets/images/map/island3.png`}
                     alt=''
@@ -36,8 +40,8 @@ const Map = () => {
                 />
              </div>
              
-            <div className='map-box map-box-4'>
-                <p>0/7</p>
+             <div className={`map-box map-box-4 ${achieveStatus !== 7 ? 'gray' : ''}`}>
+                <p className='achieve-status'>{achieveStatus}/7</p>
                 <img
                     src={`${process.env.PUBLIC_URL}/assets/images/map/island4.png`}
                     alt=''
@@ -45,8 +49,8 @@ const Map = () => {
                 />
              </div>
             
-            <div className='map-box map-box-5'>
-                <p>0/7</p>
+             <div className={`map-box map-box-5 ${achieveStatus !== 7 ? 'gray' : ''}`}>
+                <p className='achieve-status'>{achieveStatus}/7</p>
                 <img
                     src={`${process.env.PUBLIC_URL}/assets/images/map/island5.png`}
                     alt=''
@@ -54,8 +58,8 @@ const Map = () => {
                 />
              </div>
              
-            <div className='map-box map-box-6'>
-                <p>0/7</p>
+             <div className={`map-box map-box-6 ${achieveStatus !== 7 ? 'gray' : ''}`}>
+                <p className='achieve-status'>{achieveStatus}/7</p>
                 <img
                     src={`${process.env.PUBLIC_URL}/assets/images/map/island6.png`}
                     alt=''
