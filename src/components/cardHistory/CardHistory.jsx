@@ -29,9 +29,9 @@ const CardHistory = () => {
                     <td>2023/03/24 18: 47</td>
                     <td>4,700</td>
                 </tr><tr>
-                    <td>냠냠만두 대치점</td>
-                    <td>2023/03/17 11: 55</td>
-                    <td>19,000</td>
+                    <td className='last'>냠냠만두 대치점</td>
+                    <td className='last'>2023/03/17 11: 55</td>
+                    <td className='last'>19,000</td>
                 </tr>
             </table>
         </div>

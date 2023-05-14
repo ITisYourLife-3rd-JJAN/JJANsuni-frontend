@@ -2,9 +2,21 @@
     width: 100%;
     text-align: center;
     border-collapse: collapse;
+    background-color: white;
+    border-radius: 2rem;
 }
 
 th, td{
     border-bottom: 0.01rem solid #ccc;
     padding: 1rem;
+}
+.last{
+    border: none;
+}
+
+.cardHistory{
+    padding: 1.5rem;
+    background-color: #FCFF5C;
+    border-radius: 2rem;
+    margin: 1.5rem;
 }
