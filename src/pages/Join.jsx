@@ -2,6 +2,8 @@ import React from 'react';
 import './join.css'
 
 const Join = () => {
+    
+ 
     return (
         <div className='join'>
             <div className='joinSub'>
@@ -15,11 +17,12 @@ const Join = () => {
                 </div>
                 
 
+                <div className="selectRoleBox">
+                    <button class="parentBtn">부모 회원입니다.</button>&nbsp;
+                    <button class="kidBtn">자녀 회원입니다.</button><br/><br/><br/><br/><br/>
+                </div>
+
                 <div className="joinInput">
-                    <div className="selectRoleBox">
-                        <button class="parentBtn">부모 회원입니다.</button>&nbsp;
-                        <button class="kidBtn">자녀 회원입니다.</button><br/><br/><br/><br/><br/>
-                    </div>
                     
                     <form action="#" method="post">
                         

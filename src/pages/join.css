@@ -62,20 +62,21 @@
 
 input {
     position : relative;
-    margin-top : 1px;
-    right: 10%;
+    margin-top : 10%;
+    right: 3vw;
     border: none;
     border-bottom: 2.5px solid #CFCFCF;
     width: 120%;
-    height: 30px;
-
+    height: 1vh;
 }
 
 label {
+    margin-top: 2vh;
     position : absolute;
-    left: 10%;
+    left: 2.5vw;
     color: #000000;
     font-size: 1.5rem;
+    font-weight: 700;
 }
 
 #nextBtn {
@@ -94,9 +95,11 @@ label {
     display: flex;
 }
 .parentBtn{
-    width: 22vw;
+    width: 10vw;
     height: 5vh;
-    margin-left: 0.5vw;
+    margin-left: 15vw;
+    margin-top: 4vw;
+    z-index:1;
     background-color: #FFFFFF;
     color: black;
     border-radius: 8px;
@@ -106,9 +109,11 @@ label {
     text-align: center;
 }
 .kidBtn{
-    width: 22vw;
+    width: 10vw;
     height: 5vh;
-    margin-left: 0.5vw;
+    margin-left: 1vw;
+    margin-top: 4vw;
+    z-index:1;
     background-color: #FFFFFF;
     color: black;
     border-radius: 8px;
@@ -121,9 +126,9 @@ label {
 #existBtn{
     position:absolute;
     width: 10vw;
-    height: 5vh;
-    right: 1vw;
-    top : 36vh;
+    height: 3vh;
+    right: 1.5vw;
+    top : 42vh;
     background-color: #FFFFFF;
     color: #2D86E0;
     border: #FFFFFF solid 3px;
