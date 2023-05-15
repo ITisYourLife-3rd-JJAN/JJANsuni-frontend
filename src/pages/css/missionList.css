@@ -1,0 +1,33 @@
+.maplist-container{
+    display: flex;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.maplist-background-image {
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+    z-index: -1;
+}
+
+.step-text{
+    position: absolute;
+    width: auto;
+    height: 1.2rem;
+    font-size: 3rem;
+    left: 9%;
+    top: 10%;
+}
+
+.map-cloud{
+    position: absolute;
+    width: 23rem;
+    height: auto;
+    left: 70%;
+    top: 7%;
+}

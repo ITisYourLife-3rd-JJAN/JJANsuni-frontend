@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const Map = () => {
     const achieveStatus_full = 7; // 나중에 실제로 사용할 데이터 변수
     const achieveStatus = 0; // 나중에 실제로 사용할 데이터 변수
+    var mapNum = 1; // 각각의 map-box에 맞게 값을 할당할 변수
 
     return (
         <div className='map-container'>  
@@ -16,7 +17,7 @@ const Map = () => {
             />
             
             <div className={`map-box map-box-1 ${achieveStatus_full !== achieveStatus_full ? 'gray' : ''}`}>
-                <Link to={`/kid/map/1`}>
+                <Link to={`/kid/map/${mapNum}`}>
                     <p className='achieve-status'> {achieveStatus_full}/7</p>
                     <img
                     src={`${process.env.PUBLIC_URL}/assets/images/map/island1.png`}
@@ -28,7 +29,7 @@ const Map = () => {
            
 
             <div className={`map-box map-box-2 ${achieveStatus !== achieveStatus_full ? 'gray' : ''}`}>
-                <Link to={`/kid/map/2`}>
+                <Link to={`/kid/map/${mapNum}`}>
                     <p className='achieve-status'>{achieveStatus}/7</p>
                     <img
                     src={`${process.env.PUBLIC_URL}/assets/images/map/island2.png`}
