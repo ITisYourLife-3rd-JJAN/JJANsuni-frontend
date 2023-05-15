@@ -4,7 +4,7 @@ import DebitBanner from '../components/debitBanner/DebitBanner';
 
 const ParentDebitHistory = () => {
     return (
-        <div>
+        <div style={{ display: 'flex', justifyContent: 'center'}}>
             <DebitBanner/>
             <DebitHistoryForm isParent={true}/>
         </div>
