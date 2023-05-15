@@ -115,15 +115,24 @@ h3 {
   position: absolute;
   left: 16em;
   top: 13em;
-  animation: rotate-axis 3s linear infinite;
 }
 
-#jjan{
+.jjan{
   width: 13em;
   transform: translateZ(15em);
   opacity: 85%;
   filter: drop-shadow(0.2em 0.5em 0.2em #4b452ba8);
+  animation: rotate-axis 3s linear infinite;
 }
+
+/* #jjan2{
+  position: absolute;
+  left: 40rem;
+  top: 22rem;
+  width: 11em;
+  animation: rotate-axis 2s linear infinite;
+
+} */
 
 @keyframes rotate-axis {
   from {
@@ -132,4 +141,26 @@ h3 {
   to {
       transform: rotateY(360deg);
   }
+}
+
+.jcoin{
+  position: absolute;
+  width: 13em;
+  left: 20rem;
+  transform: translateZ(15em);
+  opacity: 85%;
+  filter: drop-shadow(0.2em 0.5em 0.2em #4b452ba8);
+  animation: bounce-rotate 2s alternate infinite;
+}
+
+@keyframes bounce-rotate {
+  from {
+    transform: rotateY(0deg);
+    top: 15rem;
+    width: 10em;
+}
+to {
+    transform: rotateY(360deg);
+    top:13rem;
+}
 }
