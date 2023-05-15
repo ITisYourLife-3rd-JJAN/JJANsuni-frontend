@@ -9,6 +9,7 @@ import Login from './pages/Login';
 import Join from './pages/Join';
 import Map from './pages/Map';
 import MissionList from './pages/MissionList';
+import Mission from './pages/Mission';
 
 
 function App() {
@@ -24,6 +25,7 @@ function App() {
           <Route path="/parent" element={<ParentMain/> }/>  
           <Route path="/kid/map" element={<Map/>} />
           <Route path="/kid/map/:mapId" element={<MissionList/>} />
+          <Route path="/kid/mission/:missionId" element={<Mission/>} />
         </Routes>
       </BrowserRouter>
     </div>
