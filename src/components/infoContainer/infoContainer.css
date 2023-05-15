@@ -1,0 +1,19 @@
+.infoTab{
+    font-size: 1.5rem;
+    text-align: center;
+    background-color: white;
+    border-radius: 2rem;
+    padding: 1rem;
+    width: 33%;
+    flex: 1;
+}
+.infoTab > img{
+    width: 6rem;
+
+}
+
+.infoContainer{
+    padding: 1.5rem;
+    background-color: #FCFF5C;
+    display: flex;
+}
