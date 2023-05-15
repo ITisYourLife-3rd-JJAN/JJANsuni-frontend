@@ -60,7 +60,8 @@ h3 {
   width: auto;
   position: absolute;
   bottom: 0em;
-  right: 40rem;
+  /* right: 40rem; */
+  left: 40%;
   z-index: 10;
 }
 #hand{ 
@@ -68,7 +69,8 @@ h3 {
   clear: both;
   position: absolute;
   margin-top: 35rem;
-  right: 38rem;
+  /* right: 38rem; */
+  left: 43%;
   animation: bounce 2s infinite ease-in-out;
 
 }
