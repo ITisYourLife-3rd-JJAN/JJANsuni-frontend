@@ -5,7 +5,7 @@ import DirectDebitForm from '../components/directDebitForm/DirectDebitForm'
 const Debit = () => {
     return (
         <div style={{display: 'flex', justifyContent: 'center'}}>
-            <DebitBanner idx="2"/>
+            <DebitBanner idx="2" color="#F4C4D2"/>
             <DirectDebitForm/>
         </div>
     );
