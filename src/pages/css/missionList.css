@@ -80,3 +80,10 @@
     top: 60%;
 }
 
+.answer-img {
+    opacity: 0;
+}
+  
+.answer-img.show {
+opacity: 1;
+}
