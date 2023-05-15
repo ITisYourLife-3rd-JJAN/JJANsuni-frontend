@@ -10,20 +10,36 @@ import Join from './pages/Join';
 
 
 function App() {
-  return (
-    <div>
-      <BrowserRouter>
-        <Header> </Header>
-        <Routes>
-          <Route path="/" element={<Intro/> }/>  
-          <Route path="/join" element={<Join/> }/>  
-          <Route path="/login" element={<Login/> }/>  
-          <Route path="/kid" element={<KidMain/> }/>  
-          <Route path="/parent" element={<ParentMain/> }/>  
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
+  const pathName = window.location.pathname;
+
+  if (pathName === "/join" || pathName === "/login") {
+    return (
+      <div>
+        <BrowserRouter>
+          <Routes>
+              <Route path="/join" element={<Join/> }/>  
+              <Route path="/login" element={<Login/> }/>  
+          </Routes>
+        </BrowserRouter>
+      </div>
+    )
+  }
+  
+  else {
+    return (
+      <div>
+        <BrowserRouter>
+          <Header/>
+          
+          <Routes>
+            <Route path="/" element={<Intro/> }/>  
+            <Route path="/kid" element={<KidMain/> }/>  
+            <Route path="/parent" element={<ParentMain/> }/>  
+          </Routes>
+        </BrowserRouter>
+      </div>
+    );
+  }
 }
 
 export default App;

@@ -4,10 +4,10 @@ import './login.css'
 const Login = () => {
     return (
         <div className='login'>
-            <div className='loginSub'>
+            <div class = "loginSub">
 
-                <div className='joinSlogan'>
-                    <p>오늘도 여행을 떠나볼까요?</p>
+                <div className='loginSlogan'>
+                    오늘도 여행을 떠나볼까요?
                 </div>
 
                 <div className='loginImage'>
@@ -26,7 +26,7 @@ const Login = () => {
                             <input type="password" id="userpw" required></input>
                         </p>
                         <p>
-                        <button>여행 가기</button>
+                        <button id="btn2">로그인</button>
                         </p>
                     </form>
                 </div>

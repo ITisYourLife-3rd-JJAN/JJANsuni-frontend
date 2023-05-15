@@ -1,21 +1,21 @@
 
 .join{
     position: relative;
-    width: 1920px;
-    height: 1080px;
+    width: 100vw;
+    height: 100vh;
     
     background: #2D86E0;
 }
 
 .joinSub{
+    display: flex;
     box-sizing: border-box;
-
     position: absolute;
-    width: 1700px;
-    height: 900px;
-    left: calc(50% - 1700px/2);
-    top: calc(50% - 900px/2);
-    
+    width: 90vw;
+    height: 90vh;
+    margin-top : 5vh;
+    margin-left : 5vw;
+
     background: rgba(255, 255, 255, 0.5);
     border: 1px solid #2D86E0;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -25,27 +25,27 @@
 .joinSlogan{
     color: #fff;
     width: 40vw;
-    margin-top: 2rem;
-    margin-left: 5rem;
+    margin-top: 1vh;
+    margin-left: 5vw;
     font-weight: 700;
-    font-size: 5rem;
+    font-size: 4vw;
     text-align: center;
 }
 
 .joinImage{
     position: absolute;
-    width: 1000px;
-    height: 600px;
-    top: 27%;
-    right : 42%;
+    width: 90vw;
+    /* height: 90vh; */
+    margin-top: 22vh;
+    margin-left: 0.1vw;
 }
 
 .joinInput{
     position: absolute;
-    left: 1000px;
-    top: 50px;
-    width: 600px;
-    height: 800px;
+    right: 5vw;
+    top: 2.5vh;
+    width: 30vw;
+    height: 85vh;
     background: #FFFFFF;
     border: 1px solid #AACDFF;
     box-shadow: 7px 7px 39px rgba(0, 104, 255, 0.25);
@@ -64,10 +64,9 @@ input {
     position : relative;
     margin-top : 1px;
     right: 10%;
-    padding: 1px;
     border: none;
     border-bottom: 2.5px solid #CFCFCF;
-    width: 450px;
+    width: 120%;
     height: 30px;
 
 }
@@ -79,16 +78,57 @@ label {
     font-size: 1.5rem;
 }
 
-button {
-    width: 400px;
+#nextBtn {
+    width: 20vw;
     height: 75px;
     background-color: #2D86E0;
     color: white;
     border-radius: 5px;
     border: #2D86E0 solid 10px;
-    margin-top: 120px;
+    margin-top: 10vh;
     font-weight: 700;
     font-size: 2rem;
     text-align: center;
-    
+}
+.selectRoleBox{
+    display: flex;
+}
+.parentBtn{
+    width: 22vw;
+    height: 5vh;
+    margin-left: 0.5vw;
+    background-color: #FFFFFF;
+    color: black;
+    border-radius: 8px;
+    border: #2D86E0 solid 3px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+}
+.kidBtn{
+    width: 22vw;
+    height: 5vh;
+    margin-left: 0.5vw;
+    background-color: #FFFFFF;
+    color: black;
+    border-radius: 8px;
+    border: white solid 3px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+#existBtn{
+    position:absolute;
+    width: 10vw;
+    height: 5vh;
+    right: 1vw;
+    top : 36vh;
+    background-color: #FFFFFF;
+    color: #2D86E0;
+    border: #FFFFFF solid 3px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+
 }

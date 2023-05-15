@@ -16,7 +16,13 @@ const Join = () => {
                 
 
                 <div className="joinInput">
+                    <div className="selectRoleBox">
+                        <button class="parentBtn">부모 회원입니다.</button>&nbsp;
+                        <button class="kidBtn">자녀 회원입니다.</button><br/><br/><br/><br/><br/>
+                    </div>
+                    
                     <form action="#" method="post">
+                        
                         <p>
                             <label for="username">이름</label><br/><br/>
                             <input type="text" id="username" required></input>
@@ -35,12 +41,12 @@ const Join = () => {
                         </p>
 
                         <p>
-                        <button>다음</button>
+                        <button id="nextBtn">다음</button>
                         </p>
                     </form>
+                        <button id="existBtn">중복확인</button>
                 </div>
 
-              
             </div>
 
         </div>
