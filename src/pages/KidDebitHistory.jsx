@@ -4,9 +4,9 @@ import DebitBanner from '../components/debitBanner/DebitBanner';
 
 const KidDebitHistory = () => {
     return (
-        <div>
+        <div style={{ display: 'flex', justifyContent: 'center'}}>
             <DebitBanner/>
-            <DebitHistoryForm isParent={ false}/>
+            <DebitHistoryForm isParent={false}/>
         </div>
     );
 };
