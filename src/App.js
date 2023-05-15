@@ -23,7 +23,7 @@ function App() {
           <Route path="/kid" element={<KidMain/> }/>  
           <Route path="/parent" element={<ParentMain/> }/>  
           <Route path="/kid/map" element={<Map/>} />
-          <Route path="/kid/map/:num" element={<MissionList/>} />
+          <Route path="/kid/map/:mapId" element={<MissionList/>} />
         </Routes>
       </BrowserRouter>
     </div>
