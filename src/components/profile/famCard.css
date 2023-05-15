@@ -1,0 +1,48 @@
+.fam-profile-card-container{
+    position: absolute;
+    width: 55%;
+    height: 20%;
+    left: 22%;
+    top: 50%;
+    background: #E5FAFC;
+    border-radius: 37px;
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.fam-profile{
+    width: 15%;
+    height:fit-content;
+    aspect-ratio: 1/1;
+    border-radius: 50px;
+}
+
+.fam-info-box p{
+    text-align: left;
+}
+
+#fam-name{
+    font-size: 1.5rem;
+}
+
+.fam-edit-box { 
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5rem;
+    margin-left: 4rem;
+}
+
+.fam-edit-box p{
+    font-size: .8rem;
+    margin: 0;
+    color: #bababa;
+}
+
+.fam-edit-box p:hover{
+    text-decoration: underline;
+    cursor: pointer;
+}
