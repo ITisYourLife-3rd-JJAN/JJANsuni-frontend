@@ -1,4 +1,5 @@
 import React from 'react';
+import './quiz.css';
 
 const MapBackground = ({mapId, isMap}) => {
     return (

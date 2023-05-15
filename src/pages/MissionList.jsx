@@ -1,7 +1,7 @@
 import {React, useState, useEffect} from 'react';
 import './css/missionList.css'
 import { useParams, useNavigate } from 'react-router-dom';
-import MapBackground from '../components/MapBackground';
+import MapBackground from '../components/Mission/MapBackground';
 import './css/missionList.css';
 
 
