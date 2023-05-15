@@ -20,7 +20,7 @@ const DebitBanner = (props) => {
     const [selectedValue, setSelectedValue] = useState(menuoptions[props.idx].value);
 
     return (
-        <div className='debitBanner'>
+        <div className='debitBanner' style={{backgroundColor: props.color}}>
             <div className='doSelect'>
                 <Select              
                 styles={{               

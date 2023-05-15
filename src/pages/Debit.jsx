@@ -5,7 +5,7 @@ import DebitForm from '../components/debitForm/DebitForm';
 const Debit = () => {
     return (
         <div style={{display: 'flex', justifyContent: 'center'}}>
-            <DebitBanner idx="1"/>
+            <DebitBanner idx="1" color='#E5FAFC'/>
             <DebitForm/>
         </div>
     );
