@@ -9,6 +9,10 @@ const DebitForm = () => {
         { value: '2', label: '매 주' },
         { value: '3', label: '매 월' }
     ]
+
+    const everyoption = [
+        {value: '41', label: '' }
+    ]
     
     const weekoptions = [
         { value: '51', label: '월요일' },
@@ -40,26 +44,28 @@ const DebitForm = () => {
 
     if (selectedValue==2) {
         var k = weekoptions
-    } else if (selectedValue==3){
+    } else if (selectedValue==1){
+        k = everyoption
+    } else {
         k = dayoptions
     }
     
     return (
         <div className='directdebitForm'>
-            <div className='infobox'>
-                <div className='bigtext'>자동이체 현황</div>
+            <div className='ddinfobox'>
+                <div className='ddtitle'>자동이체 현황</div>
                 <div className='dditbox'>
-                    <div className='pricebox'>
-                        <input className='debitipt' type="number" />
-                        <div className='bigtext'>원을</div>
+                    <div className='dditiptbox'>
+                        <input className='dditipt' type="number" />
+                        <div className='ddittext'>원을</div>
                     </div>
-                    <div className='pricebox'>
-                        <input className='debitipt' type="text" />
-                        <div className='bigtext'>님에게</div>
+                    <div className='dditiptbox'>
+                        <input className='dditipt' type="text" />
+                        <div className='ddittext'>님에게</div>
                     </div>
                 </div>
                 <div className='dditbox'>
-                    <div className='pricebox'>
+                    <div className='dditiptbox'>
                         <Select
                         styles={{               
                             control: (baseStyles, state) => ({
@@ -72,14 +78,15 @@ const DebitForm = () => {
                                 }
                             }),
                             }}
-                        defaultValue={cycleoptions[0]} options={cycleoptions}
+                        defaultValue={cycleoptions[2]} options={cycleoptions}
                         onChange={(e) => {setSelectedValue(e.value)
                             console.log(selectedValue)
                             }}
                         />
                     </div>
-                    <div className='pricebox'>
+                    <div className='dditiptbox'>
                             <Select
+                            hideSelectedOptions={true}
                             styles={{               
                                 control: (baseStyles, state) => ({
                                     ...baseStyles,
@@ -91,12 +98,13 @@ const DebitForm = () => {
                                     }
                                 }),
                                 }}
-                            options={k}
+                            options={k} defaultValue={k[0]}
                             />
 
-                        <div className='bigtext'>마다 이체합니다.</div>
+                        <div className='ddittext'>마다 이체합니다.</div>
                     </div>
                 </div>
+                <div className='ddsubmitbtn'>등록하기</div>
             </div>
         </div>
     );
