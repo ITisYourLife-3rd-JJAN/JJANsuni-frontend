@@ -32,9 +32,14 @@
     top: 7%;
 }
 
-.map-box.absol1{
+.map-box.absol1, .answer-img1{
     position: absolute;
     left: 16%;
+    top: 32%;
+}
+.answer-img{
+    position: absolute;
+    left: 20%;
     top: 32%;
 }
 
@@ -73,3 +78,4 @@
     left: 65%;
     top: 60%;
 }
+
