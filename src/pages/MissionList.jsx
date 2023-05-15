@@ -19,7 +19,7 @@ const MissionList = () => {
     false + false => 아직 안푼 문제 (풀이 불가)
     */
     const [isAnswerAvailable, setIsAnswerAvailable] = useState(true);   // gray, none gray 
-    const [isSolved, setIsSolved] = useState(false);   // 문제가 풀렸다면, true (체크, 논체크)
+    const [isSolved, setIsSolved] = useState(true);   // 문제가 풀렸다면, true (체크, 논체크)
 
 
     return (
@@ -28,41 +28,42 @@ const MissionList = () => {
                 
             <div className='map-box absol1'>
                 {isSolved ?
-                    <img src={answer_img_x} alt='' className='answer-img show' />
+                    <img src={answer_img_o} alt='' className='answer-img show' />
                     :
-                    <img src={answer_img_x} alt='' className={'answer-img'}
-                    onClick={() => {
-                      if (isAnswerAvailable && !isSolved) {
-                        alert('문제풀러 가자')
-                      }
-                    }} />
+                    <img src={answer_img_o} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
+                        onClick={() => {
+                        if (isAnswerAvailable && !isSolved) {
+                            alert('문제풀러 가자')
+                        }
+                        }} />
                 }
                 <img src={island_img} alt='' className={`map map-image-1 ${isAnswerAvailable ? '' : 'gray'}`} />
             </div>
 
             <div className='map-box absol2'>
                 {isSolved ?
-                    <img src={answer_img_x} alt='' className='answer-img show' />
+                    <img src={answer_img_o} alt='' className='answer-img show' />
                     :
-                    <img src={answer_img_x} alt='' className={'answer-img'}
-                    onClick={() => {
-                      if (isAnswerAvailable && !isSolved) {
-                        alert('문제풀러 가자')
-                      }
-                    }} />
+                    <img src={answer_img_o} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
+                        onClick={() => {
+                        if (isAnswerAvailable && !isSolved) {
+                            alert('문제풀러 가자')
+                        }
+                        }} />
                 }
                 <img src={island_img} alt='' className={`map map-image-1 ${isAnswerAvailable ? '' : 'gray'}`} />
             </div>
+
             <div className='map-box absol3'>
                 {isSolved ?
                     <img src={answer_img_x} alt='' className='answer-img show' />
                     :
-                    <img src={answer_img_x} alt='' className={'answer-img'}
-                    onClick={() => {
-                      if (isAnswerAvailable && !isSolved) {
-                        alert('문제풀러 가자')
-                      }
-                    }} />
+                    <img src={answer_img_x} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
+                        onClick={() => {
+                        if (isAnswerAvailable && !isSolved) {
+                            alert('문제풀러 가자')
+                        }
+                        }} />
                 }
                 <img src={island_img} alt='' className={`map map-image-1 ${isAnswerAvailable ? '' : 'gray'}`} />
             </div>
@@ -71,12 +72,12 @@ const MissionList = () => {
                 {isSolved ?
                     <img src={answer_img_x} alt='' className='answer-img show' />
                     :
-                    <img src={answer_img_x} alt='' className={'answer-img'}
-                    onClick={() => {
-                      if (isAnswerAvailable && !isSolved) {
-                        alert('문제풀러 가자')
-                      }
-                    }} />
+                    <img src={answer_img_x} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
+                        onClick={() => {
+                        if (isAnswerAvailable && !isSolved) {
+                            alert('문제풀러 가자')
+                        }
+                        }} />
                 }
                 <img src={island_img} alt='' className={`map map-image-1 ${isAnswerAvailable ? '' : 'gray'}`} />
             </div>
@@ -85,41 +86,40 @@ const MissionList = () => {
                 {isSolved ?
                     <img src={answer_img_x} alt='' className='answer-img show' />
                     :
-                    <img src={answer_img_x} alt='' className={'answer-img'}
-                    onClick={() => {
-                      if (isAnswerAvailable && !isSolved) {
-                        alert('문제풀러 가자')
-                      }
-                    }} />
+                    <img src={answer_img_x} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
+                        onClick={() => {
+                        if (isAnswerAvailable && !isSolved) {
+                            alert('문제풀러 가자')
+                        }
+                        }} />
                 }
                 <img src={island_img} alt='' className={`map map-image-1 ${isAnswerAvailable ? '' : 'gray'}`} />
             </div>
 
             <div className='map-box absol6'>
                 {isSolved ?
-                    <img src={answer_img_x} alt='' className='answer-img show' />
+                    <img src={answer_img_o} alt='' className='answer-img show' />
                     :
-                    <img src={answer_img_x} alt='' className={'answer-img'}
-                    onClick={() => {
-                      if (isAnswerAvailable && !isSolved) {
-                        alert('문제풀러 가자')
-                      }
-                    }} />
+                    <img src={answer_img_o} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
+                        onClick={() => {
+                        if (isAnswerAvailable && !isSolved) {
+                            alert('문제풀러 가자')
+                        }
+                        }} />
                 }
                 <img src={island_img} alt='' className={`map map-image-1 ${isAnswerAvailable ? '' : 'gray'}`} />
             </div>
 
-
             <div className='map-box absol7'>
                 {isSolved ?
-                    <img src={answer_img_x} alt='' className='answer-img show' />
+                    <img src={answer_img_o} alt='' className='answer-img show' />
                     :
-                    <img src={answer_img_x} alt='' className={'answer-img'}
-                    onClick={() => {
-                      if (isAnswerAvailable && !isSolved) {
-                        alert('문제풀러 가자')
-                      }
-                    }} />
+                    <img src={answer_img_o} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
+                        onClick={() => {
+                        if (isAnswerAvailable && !isSolved) {
+                            alert('문제풀러 가자')
+                        }
+                        }} />
                 }
                 <img src={island_img} alt='' className={`map map-image-1 ${isAnswerAvailable ? '' : 'gray'}`} />
             </div>
