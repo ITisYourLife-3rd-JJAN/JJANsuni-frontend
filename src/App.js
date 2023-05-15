@@ -10,6 +10,7 @@ import Join from './pages/Join';
 import Map from './pages/Map';
 import MissionList from './pages/MissionList';
 import Mission from './pages/Mission';
+import KidProfile from './pages/KidProfile';
 
 
 function App() {
@@ -26,6 +27,7 @@ function App() {
           <Route path="/kid/map" element={<Map/>} />
           <Route path="/kid/map/:mapId" element={<MissionList/>} />
           <Route path="/kid/mission/:missionId" element={<Mission/>} />
+          <Route path="/kid/profile" element={<KidProfile/>} />
         </Routes>
       </BrowserRouter>
     </div>
