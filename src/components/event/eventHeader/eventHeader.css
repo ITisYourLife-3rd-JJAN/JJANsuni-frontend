@@ -1,0 +1,24 @@
+.eventHeader{
+    margin: 2rem 0;
+    background-color: #DD5475;
+    color: #fff;
+}
+
+.titleBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+}
+
+h1 {
+    font-size: 3.5rem;
+}
+
+h3{
+    font-size: 1.7rem;
+}
+
+.textBox{
+    text-align: center;
+}
