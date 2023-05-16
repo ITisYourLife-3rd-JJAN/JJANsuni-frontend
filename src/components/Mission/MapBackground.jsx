@@ -1,9 +1,10 @@
 import React from 'react';
+import './quiz.css';
 
-const MapBackground = ({mapId}) => {
+const MapBackground = ({mapId, isMap}) => {
     return (
         <div className='maplist-container'>
-            <p className='step-text'>STEP {mapId}</p>  
+            <p className='step-text'> {isMap ? "MAP" : "STEP"} {mapId}</p>  
             <img
                 src={`${process.env.PUBLIC_URL}/assets/images/map/maplist_background.png`}
                 alt=''
