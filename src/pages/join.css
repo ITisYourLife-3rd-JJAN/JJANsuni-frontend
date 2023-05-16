@@ -1,0 +1,235 @@
+
+.join{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    
+    background: #2D86E0;
+}
+
+.joinSub{
+    display: flex;
+    box-sizing: border-box;
+    position: absolute;
+    width: 90vw;
+    height: 90vh;
+    margin-top : 5vh;
+    margin-left : 5vw;
+
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #2D86E0;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+}
+
+.joinSlogan{
+    color: #fff;
+    width: 40vw;
+    margin-top: 1vh;
+    margin-left: 5vw;
+    font-weight: 700;
+    font-size: 4vw;
+    text-align: center;
+}
+
+.joinImage{
+    position: absolute;
+    width: 90vw;
+    /* height: 90vh; */
+    margin-top: 22vh;
+    margin-left: 0.1vw;
+}
+
+.whiteBackground{
+    position: absolute;
+    right: 5vw;
+    top: 2.5vh;
+    width: 30vw;
+    height: 85vh;
+    background: #FFFFFF;
+    border: 1px solid #AACDFF;
+    box-shadow: 7px 7px 39px rgba(0, 104, 255, 0.25);
+    border-radius: 20px;
+
+    /* margin: 0px; */
+    padding: 4rem;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+}
+
+input {
+    position : relative;
+    margin-top : 0.3rem;
+    padding-bottom: 0.2rem;
+    padding-left: 1rem;
+    border: none;
+    border-bottom: 2.5px solid #CFCFCF;
+    border-radius: 20px;
+    width: 90%;
+    height: 1.6rem;
+    text-align: lrem;
+}
+
+input:focus{
+    border-color:#0982f0;
+    outline: none;
+}
+
+
+.input-box{
+    margin: 1rem 0;
+    align-items: center;
+}
+
+label {
+    position : relative;
+    left: 0.5rem;
+    color: black;
+    font-size: 1.5rem;
+    font-weight: 700;
+}
+
+#joinBtn {
+    width: 20vw;
+    height: 75px;
+    background-color: #2D86E0;
+    color: white;
+    border-radius: 5px;
+    border: #2D86E0 solid 10px;
+    /* margin-top: 5vh; */
+    font-weight: 700;
+    font-size: 2rem;
+    text-align: center;
+}
+.selectRoleBox{
+    display: flex;
+    height: 4rem;
+}
+.parentBtn{
+    width: 15vw;
+    height: 5vh;
+
+    z-index:1;
+    background-color: #FFFFFF;
+    color: black;
+    border-radius: 8px;
+    border: #ffffff solid 3px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+}
+.kidBtn{
+    width: 15vw;
+    height: 5vh;
+    /* z-index:1; */
+    background-color: #FFFFFF;
+    color: black;
+    border-radius: 8px;
+    border: white solid 3px;
+    font-weight: 700;
+    font-size: 1.25rem;
+    text-align: center;
+}
+
+.kidBtn:hover, .parentBtn:hover{
+    border: #2D86E0 solid 3px;
+    cursor: pointer;
+}
+
+.kidBtn:focus, .parentBtn:focus{
+    border: #2D86E0 solid 3px;
+
+}
+
+#existBtn{
+    width: 7.5rem;
+    height: 1.7rem;
+    background-color:transparent;
+    color: #2D86E0;
+    border: 0;
+    font-weight: 1000;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 20px;;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+
+#existBtn:hover {
+    background-color: #94bde6;
+}
+
+.email-box{
+    display: flex;
+}
+
+.aa{
+    height: 32rem;
+    /* width : 25vw; */
+    overflow: scroll;
+    left : 1vw;
+    margin: 0 1rem;
+    padding: 0 1rem;
+}
+
+
+  .aa::-webkit-scrollbar {
+    width: 10px;
+  }
+  .aa::-webkit-scrollbar-thumb {
+    background-color: #2D86E0;
+    border-radius: 10px;
+    background-clip: padding-box;
+    border: 2px solid transparent;
+  }
+  .aa::-webkit-scrollbar-track {
+    background-color: 2D86E0;
+    border-radius: 10px;
+    box-shadow: inset 0px 0px 5px white;
+  }
+
+  .birth{
+    display: flex;
+    gap:10px;
+  }
+
+  .birth select{
+    border: none;  
+    border-bottom: 2.5px solid #CFCFCF;
+}
+
+#familyCode{
+    margin: 0.2rem 0 0 1rem;
+    font-size: 1.2rem;
+    padding: 0.5rem 1rem;
+    border: #0982f0 1px solid;
+    border-radius: 20px;
+    margin-top: 0.5rem;
+}
+
+#famCode-btn{
+    cursor: pointer;
+    color: #2D86E0;
+    padding: 0.2rem 0.7rem;
+    border-radius: 20px;
+
+}
+
+.input-box.code {
+    text-align: center;
+    margin-top: 2rem;
+}
+#famCode-btn:hover {
+    background-color: #94bde6;
+}
+
+
+.join-container{
+    display: flex;
+    flex-direction: column;
+    /* justify-content: center; */
+    align-items: center;
+}
