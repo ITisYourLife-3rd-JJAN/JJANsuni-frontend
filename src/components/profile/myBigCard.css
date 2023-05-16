@@ -1,9 +1,5 @@
 .my-profile-card-container{
-    position: absolute;
     width: 55%;
-    left: 22%;
-    top: 17.59%;
-    bottom: 58.36%;
     background: #CDFF5C;
     border-radius: 37px;
     box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
