@@ -1,9 +1,8 @@
-.mainBanner{
+.mainBanner {
     position: absolute;
     width: 100vw;
     height: 37%;
     top: 12%;
-    background: #CDFF5C;
     display: flex;
     align-items: center;
     justify-content: space-around;
@@ -13,13 +12,24 @@
     background-color: #fff;
     width: 24vw;
     height: 75%;
+    overflow: scroll;
     border-radius: 20px;
     box-sizing: border-box;
-    padding: 2rem;
-    font-weight: 700;
-    font-size: 1.5rem;
+    padding: 1.5rem;
+    font-size: 1.2rem;
     text-align: center;
 }
+
+@media screen and (max-width: 900px) {
+    .mammyMsg {
+        transition: 1s;
+      font-size: .8rem;
+    }
+    .sendFighting{
+        width: 5rem;
+        font-size: .5rem;
+    }
+  }
 
 .slideBanner{
     width: 50vw;
@@ -29,4 +39,23 @@
     border-radius: 20px;
     box-sizing: border-box;
     padding: 2rem;
+}
+
+.mainBanner div{
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    
+}
+
+.sendFighting{
+    max-width: 5rem;
+    width: 60%;
+    background-color: #FCFF5C;
+    border: none;
+    border-radius: 15px;
+    padding: .4rem;
+    font-size: .7rem;
+    margin: 0;
+    cursor: pointer;
 }
