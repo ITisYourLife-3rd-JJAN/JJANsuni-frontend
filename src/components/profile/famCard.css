@@ -1,8 +1,8 @@
 .fam-profile-card-container{
     position: absolute;
-    width: 55%;
-    height: 20%;
-    left: 22%;
+    width: 40%;
+    height: 15%;
+    left: 30%;
     top: 50%;
     background: #E5FAFC;
     border-radius: 37px;
@@ -30,15 +30,14 @@
 .fam-edit-box { 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
     align-items: center;
-    gap: 5rem;
     margin-left: 4rem;
+    height: 80%;
 }
 
 .fam-edit-box p{
     font-size: .8rem;
-    margin: 0;
+    margin: 0.5rem 0;
     color: #bababa;
 }
 
