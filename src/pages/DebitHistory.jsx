@@ -2,13 +2,13 @@ import React from 'react';
 import DebitHistoryForm from '../components/debitHistoryForm/DebitHistoryForm';
 import DebitBanner from '../components/debitBanner/DebitBanner';
 
-const ParentDebitHistory = () => {
+const DebitHistory = () => {
     return (
         <div style={{ display: 'flex', justifyContent: 'center'}}>
             <DebitBanner/>
-            <DebitHistoryForm isParent={true}/>
+            <DebitHistoryForm/>
         </div>
     );
 };
 
-export default ParentDebitHistory;
+export default DebitHistory;
