@@ -1,0 +1,65 @@
+.debitBanner{
+    position: absolute;
+    width: 100vw;
+    height: 18%;
+    top: 8%;
+    background: #FCFF5C;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.sellink{
+    color: inherit;
+    text-decoration: none;
+}
+
+.seldiv{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 210px;
+    padding-right: 1rem;
+}
+
+.doSelect{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    width: 18%;
+    height: 75%;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.kidBalance{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #fff;
+    width: 30%;
+    height: 75%;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
+
+.kidSelect{
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    background-color: #fff;
+    width: 18%;
+    height: 75%;
+    border-radius: 20px;
+    box-sizing: border-box;
+    padding: 1.5rem;
+    font-weight: 700;
+    font-size: 1.5rem;
+}
