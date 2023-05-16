@@ -1,0 +1,26 @@
+.debitTable{
+    width: 100%;
+    text-align: center;
+    border-collapse: collapse;
+    background-color: white;
+    border-radius: 2rem;
+}
+
+td{
+    border-bottom: 0.01rem solid #ccc;
+    padding: 1rem;
+}
+.last{
+    border: none;
+}
+
+.debitHistory{
+    position: absolute;
+    width: 90%;
+    height: 55%;
+    top: 30%;
+    background: #FCFF5C;
+    border-radius: 30px;
+    margin: 0 auto;
+    padding: 3rem;
+}
