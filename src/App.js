@@ -19,32 +19,45 @@ import Message from './pages/Message';
 
 
 function App() {
-  return (
-    <div>
-      <BrowserRouter>
-      <Routes>
-      <Route path="/" element={<Intro/> }/>  
-      </Routes>
-        <Header> </Header>
-        <Routes>
-          <Route path="/join" element={<Join/> }/>  
-          <Route path="/login" element={<Login/> }/>  
-          <Route path="/kid" element={<KidMain/> }/>  
-          <Route path="/parent" element={<ParentMain/> }/>  
-          <Route path="/kid/map" element={<Map/>} />
-          <Route path="/kid/map/:mapId" element={<MissionList/>} />
-          <Route path="/kid/mission/:missionId" element={<Mission/>} />
-          <Route path="/debit-history" element={<DebitHistory/> }/>  
-          <Route path="/card" element={<ParentCard/> }/> 
-          <Route path="/debit" element={<Debit/> }/>  
-          <Route path="/direct-debit" element={<DirectDebit/> }/>  
-          <Route path="/pay" element={<Pay/> }/>  
-          <Route path="/message" element={<Message/> }/>  
+  
+  const pathName = window.location.pathname;
 
-        </Routes>
-      </BrowserRouter>
-    </div>
-  );
+  if (pathName === "/join" || pathName === "/login") {
+    return (
+      <div>
+        <BrowserRouter>
+          <Routes>
+              <Route path="/" element={<Intro/> }/>  
+              <Route path="/join" element={<Join/> }/>  
+              <Route path="/login" element={<Login/> }/>  
+          </Routes>
+        </BrowserRouter>
+      </div>
+    )
+  } else {
+    return (
+      <div>
+        <BrowserRouter>
+          <Header/>       
+          <Routes>
+              <Route path="/kid" element={<KidMain/> }/>  
+              <Route path="/parent" element={<ParentMain/> }/>  
+              <Route path="/kid/map" element={<Map/>} />
+              <Route path="/kid/map/:mapId" element={<MissionList/>} />
+              <Route path="/kid/mission/:missionId" element={<Mission/>} />
+              <Route path="/debit-history" element={<DebitHistory/> }/>  
+              <Route path="/card" element={<ParentCard/> }/> 
+              <Route path="/debit" element={<Debit/> }/>  
+              <Route path="/direct-debit" element={<DirectDebit/> }/>  
+               <Route path="/pay" element={<Pay/> }/>  
+              <Route path="/message" element={<Message/> }/>  
+          </Routes>
+        </BrowserRouter>
+      </div>
+    );
+  }
+
+
 }
 
 export default App;
