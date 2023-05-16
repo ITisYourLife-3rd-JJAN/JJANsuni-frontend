@@ -5,7 +5,7 @@ import DebitBanner from '../components/debitBanner/DebitBanner';
 const DebitHistory = () => {
     return (
         <div style={{ display: 'flex', justifyContent: 'center'}}>
-            <DebitBanner/>
+            <DebitBanner idx='0'/>
             <DebitHistoryForm/>
         </div>
     );

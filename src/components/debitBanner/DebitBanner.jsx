@@ -7,10 +7,10 @@ import './debitBanner.css'
 const DebitBanner = (props) => {
 
     const menuoptions = [
-        { value: '이체 내역', label: <div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 내역</div> },
+        { value: '이체 내역', label: <Link to="/debit-history" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 내역</div></Link> },
         { value: '이체 하기', label: <Link to="/debit" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 하기</div></Link> },
         { value: '자동이체 현황', label: <Link to="/direct-debit" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/hearthand.png`} alt="" width={50}/>자동이체 현황</div></Link> },
-        { value: '카드 내역', label: <div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/card.png`} alt="" width={50}/>카드 내역</div> }
+        { value: '카드 내역', label: <Link to="/card" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/card.png`} alt="" width={50}/>카드 내역</div></Link> }
       ]
     const kidoptions = [
         { value: '정길연 아이', label: '정길연 아이' },
