@@ -1,6 +1,9 @@
 * {
   flex-grow: 0;
   font-family: "Jua";
+  text-align: center;
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: inherit; 
 }
 
 ul,li{

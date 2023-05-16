@@ -25,6 +25,11 @@
     filter: grayscale(100%);
 }
 
+.map-box.gray a {
+    pointer-events: none;
+    cursor: default;
+  }
+  
 .map{
     width: 98%;
 }
@@ -63,3 +68,5 @@
     top: 48vh;
     left: 14%
 }
+
+
