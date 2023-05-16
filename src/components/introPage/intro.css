@@ -1,0 +1,168 @@
+body {
+  font-family: arial, helvetica;
+}
+
+.fp-watermark{
+  visibility: hidden;
+}
+
+h3 {
+  font-size: 5em;
+  text-align: center;
+  color: #fff;
+  font-weight: 700;
+}
+
+#section1 {
+  background-image: url("http://localhost:3000/assets/images/fullpage/풀1_none.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  position: relative;
+}
+#section2 {
+  background-image: url("http://localhost:3000/assets/images/fullpage/풀2_none.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#section3 {
+  background-image: url("http://localhost:3000/assets/images/fullpage/풀3.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+#section4 {
+  background-image: url("http://localhost:3000/assets/images/fullpage/풀4.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+.section{
+  height: 100vh;
+}
+
+.fp-section {
+  text-align: center;
+}
+
+#fp-nav ul li a span{
+  background-color: aliceblue;
+  opacity: 30%;
+}
+
+#fp-nav ul li a span:hover{
+  background-color: aliceblue;
+  opacity: 20%;
+}
+
+#pig{
+  width: auto;
+  position: absolute;
+  bottom: 0em;
+  /* right: 40rem; */
+  left: 40%;
+  z-index: 10;
+}
+#hand{ 
+  float: none;
+  clear: both;
+  position: absolute;
+  margin-top: 35rem;
+  /* right: 38rem; */
+  left: 43%;
+  animation: bounce 2s infinite ease-in-out;
+
+}
+
+#cardphone{
+  width: 45rem;
+  position: absolute;
+  bottom: 0rem;
+  right: 0rem;
+  opacity: 100;
+  animation: phonemove 1s alternate infinite ease-out;
+
+}
+
+
+@keyframes phonemove{
+  from{ 
+    width: 38rem;
+    opacity: 30;}
+  to{ width: 45rem;}
+}
+
+
+@keyframes bounce {
+  0% {
+    top: 30px;
+  }
+
+  50% {
+    top: 0px;
+  }
+
+  70% {
+    top: -10px;
+  }
+
+  100% {
+    top: 30px;
+  }
+}
+
+
+.coins{
+  position: absolute;
+  left: 16em;
+  top: 13em;
+}
+
+.jjan{
+  width: 13em;
+  transform: translateZ(15em);
+  opacity: 85%;
+  filter: drop-shadow(0.2em 0.5em 0.2em #4b452ba8);
+  animation: rotate-axis 3s linear infinite;
+}
+
+/* #jjan2{
+  position: absolute;
+  left: 40rem;
+  top: 22rem;
+  width: 11em;
+  animation: rotate-axis 2s linear infinite;
+
+} */
+
+@keyframes rotate-axis {
+  from {
+      transform: rotateY(0deg);
+  }
+  to {
+      transform: rotateY(360deg);
+  }
+}
+
+.jcoin{
+  position: absolute;
+  width: 13em;
+  left: 20rem;
+  transform: translateZ(15em);
+  opacity: 85%;
+  filter: drop-shadow(0.2em 0.5em 0.2em #4b452ba8);
+  animation: bounce-rotate 2s alternate infinite;
+}
+
+@keyframes bounce-rotate {
+  from {
+    transform: rotateY(0deg);
+    top: 15rem;
+    width: 10em;
+}
+to {
+    transform: rotateY(360deg);
+    top:13rem;
+}
+}

@@ -1,6 +1,9 @@
 * {
   flex-grow: 0;
-  font-family: "darakbang";
+  font-family: "Jua";
+  text-align: center;
+  text-decoration: none; /* 링크의 밑줄 제거 */
+  color: inherit; 
 }
 
 ul,li{
@@ -11,4 +14,9 @@ ul,li{
 @font-face {
   font-family: "HannaAir";
   src: url(./../public/assets/fonts/BMHANNAAir.ttf);
+}
+
+@font-face {
+font-family: "Jua";
+src: url(./../public/assets/fonts/BMJUA_ttf.ttf);
 }

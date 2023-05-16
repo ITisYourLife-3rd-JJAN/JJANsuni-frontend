@@ -1,12 +1,11 @@
 import React from 'react';
-import Header from '../components/header/Header';
-import InfoContainer from '../components/infoContainer/InfoContainer';
 import CardHistory from '../components/cardHistory/CardHistory';
+import DebitBanner from '../components/debitBanner/DebitBanner';
 
 const ParentCard = () => {
     return (
-        <div>
-            <InfoContainer/>
+        <div style={{display: 'flex', justifyContent: 'center'}}>
+            <DebitBanner idx="3"/>
             <CardHistory/>
         </div>
     );
