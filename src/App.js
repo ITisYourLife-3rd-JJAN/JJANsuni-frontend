@@ -7,6 +7,7 @@ import ParentMain from './pages/ParentMain';
 import Intro from './pages/Intro';
 import Login from './pages/Login';
 import Join from './pages/Join';
+import Map from './pages/Map';
 
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
           <Route path="/login" element={<Login/> }/>  
           <Route path="/kid" element={<KidMain/> }/>  
           <Route path="/parent" element={<ParentMain/> }/>  
+          <Route path="/kid/map" element={<Map/>} />
         </Routes>
       </BrowserRouter>
     </div>
