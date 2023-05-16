@@ -60,7 +60,7 @@
 
 }
 
-input {
+.join-cotents input {
     position : relative;
     margin-top : 0.3rem;
     padding-bottom: 0.2rem;
@@ -73,7 +73,7 @@ input {
     text-align: lrem;
 }
 
-input:focus{
+.join-cotents input:focus{
     border-color:#0982f0;
     outline: none;
 }
@@ -134,28 +134,18 @@ label {
     text-align: center;
 }
 
-.kidBtn:hover, .parentBtn:hover{
-    border: #2D86E0 solid 3px;
-    cursor: pointer;
-}
-
-.kidBtn:focus, .parentBtn:focus{
-    border: #2D86E0 solid 3px;
-
-}
-
 #existBtn{
-    width: 7.5rem;
-    height: 1.7rem;
-    background-color:transparent;
+    position:absolute;
+    width: 10vw;
+    height: 3vh;
+    right: 1.5vw;
+    top : 42vh;
+    background-color: #FFFFFF;
     color: #2D86E0;
-    border: 0;
-    font-weight: 1000;
+    border: #FFFFFF solid 3px;
+    font-weight: 700;
+    font-size: 1.25rem;
     text-align: center;
-    font-size: 1rem;
-    border-radius: 20px;;
-    margin-top: 0.5rem;
-    cursor: pointer;
 }
 
 #existBtn:hover {
@@ -166,7 +156,7 @@ label {
     display: flex;
 }
 
-.aa{
+.join-cotents{
     height: 32rem;
     /* width : 25vw; */
     overflow: scroll;
@@ -175,21 +165,22 @@ label {
     padding: 0 1rem;
 }
 
+.join-cotents::-webkit-scrollbar {
+width: 10px;
+}
 
-  .aa::-webkit-scrollbar {
-    width: 10px;
-  }
-  .aa::-webkit-scrollbar-thumb {
-    background-color: #2D86E0;
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-  }
-  .aa::-webkit-scrollbar-track {
-    background-color: 2D86E0;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px white;
-  }
+.join-cotents::-webkit-scrollbar-thumb {
+background-color: #2D86E0;
+border-radius: 10px;
+background-clip: padding-box;
+border: 2px solid transparent;
+}
+
+.join-cotents::-webkit-scrollbar-track {
+background-color: 2D86E0;
+border-radius: 10px;
+box-shadow: inset 0px 0px 5px white;
+}
 
   .birth{
     display: flex;
@@ -227,9 +218,8 @@ label {
 }
 
 
-.join-container{
+.join-container {
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
 }

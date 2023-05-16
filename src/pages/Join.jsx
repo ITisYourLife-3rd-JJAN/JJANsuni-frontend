@@ -9,7 +9,6 @@ const Join = () => {
     return (
         <div className='join'>
             <div className='joinSub'>
-
                 <div className='joinSlogan'>
                     <p>세 살 버릇 여든까지!</p>
                 </div>

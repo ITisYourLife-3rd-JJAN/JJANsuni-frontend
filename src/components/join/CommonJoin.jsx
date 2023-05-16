@@ -4,7 +4,7 @@ const CommonJoin = ({isParent}) => {
 
     return (
         <div className='join-container'>
-        <div className='aa'>
+        <div className='join-cotents'>
             <div >
                 <div className='input-box'> 
                     <label for="username">이름 {isParent}</label>
