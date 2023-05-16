@@ -10,6 +10,7 @@ import Join from './pages/Join';
 import Map from './pages/Map';
 import MissionList from './pages/MissionList';
 import Mission from './pages/Mission';
+import KidProfile from './pages/KidProfile';
 import DebitHistory from './pages/DebitHistory';
 import ParentCard from './pages/ParentCard';
 import Debit from './pages/Debit';
@@ -26,8 +27,7 @@ function App() {
     return (
       <div>
         <BrowserRouter>
-          <Routes>
-              <Route path="/" element={<Intro/> }/>  
+          <Routes> 
               <Route path="/join" element={<Join/> }/>  
               <Route path="/login" element={<Login/> }/>  
           </Routes>
@@ -40,7 +40,9 @@ function App() {
         <BrowserRouter>
           <Header/>       
           <Routes>
+              <Route path="/" element={<Intro/> }/>  
               <Route path="/kid" element={<KidMain/> }/>  
+              <Route path="/kid/profile" element={<KidProfile/>} />
               <Route path="/parent" element={<ParentMain/> }/>  
               <Route path="/kid/map" element={<Map/>} />
               <Route path="/kid/map/:mapId" element={<MissionList/>} />
@@ -56,7 +58,6 @@ function App() {
       </div>
     );
   }
-
 
 }
 

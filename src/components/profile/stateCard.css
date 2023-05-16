@@ -1,0 +1,18 @@
+.state-container{
+    /* position: absolute; */
+    display: flex;
+    /* top: 40%;
+    left: 30%; */
+    width: 45%;
+    margin: 2rem 0;
+}
+
+.present-state{
+    width: 80%;
+    height: auto;
+    background-color: #FCFF5C;
+    border-radius: 37px;
+    margin: 0 0.5rem;
+    box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
+    font-size: 1.3rem;
+}

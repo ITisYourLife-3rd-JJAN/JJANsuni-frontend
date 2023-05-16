@@ -13,11 +13,15 @@
 
 .header p {
     margin: 0;
-    padding: 0;
+    padding: 0.2rem 1rem;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .logout{
     color: #868686;
-    margin-right: 4rem;
+}
+
+.header p:hover{
+    background-color: rgba(205,255,92,0.5);
 }
