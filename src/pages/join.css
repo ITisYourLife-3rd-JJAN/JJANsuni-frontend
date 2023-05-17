@@ -34,9 +34,9 @@
 
 .joinImage{
     position: absolute;
-    width: 90vw;
+    width: 75vw;
     /* height: 90vh; */
-    margin-top: 22vh;
+    margin-top: 14vh;
     margin-left: 0.1vw;
 }
 
@@ -167,8 +167,7 @@ label {
 }
 
 .aa{
-    height: 32rem;
-    /* width : 25vw; */
+    height: 55%;
     overflow: scroll;
     left : 1vw;
     margin: 0 1rem;
@@ -236,4 +235,8 @@ label {
 
 .joinpw{
     font-family:'Malgun gothic';
+}
+
+#joinBtn{
+    cursor: pointer;
 }
