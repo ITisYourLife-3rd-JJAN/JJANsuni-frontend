@@ -207,9 +207,9 @@ const CommonJoin = ({isParent}) => {
                     <p id="familyCode"> sample </p>   
                 </div>          
             : 
-            <div > 
-                <label for="familyCodeInput">가족코드 입력</label>
-                <input type="text" id="familyCodeInput" required></input>
+            <div className='input-box'> 
+                <label for="familyCodeInput" >가족코드 입력</label>
+                <input type="text" id="familyCodeInput" className='joinipt'  required></input>
             </div> 
             }
             
