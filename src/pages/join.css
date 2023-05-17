@@ -90,7 +90,7 @@
     border-radius: 20px;
     width: 90%;
     height: 2rem;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     caret-color: #2D86E0;
 }
 
@@ -274,4 +274,13 @@ label {
 .select-box.y{
     width: 6vw;
     padding: 0.1rem ;   
+}
+
+.gender-radio{
+    margin : 0.5rem 0.5rem;
+    padding-bottom: 0.2rem;
+    border: none;
+    width: 1rem;
+    height: 1rem;
+    font-size: 1.1rem;
 }
