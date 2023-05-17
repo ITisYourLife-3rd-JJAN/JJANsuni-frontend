@@ -16,13 +16,14 @@ const Login = () => {
 
                 <div className="loginInput">
                     <form action="#" method="post">
-                            
+                        <div>
                             <label for="email">이메일</label><br/><br/>
                             <input className='loginipt' type="email" id="email" required />
-                        
+                        </div>
+                        <div>
                             <label for="userpw">비밀번호</label><br/><br/>
                             <input className='loginipt loginpw' type="password" id="userpw" required />
-                        
+                        </div>
                       
                         <button id="btn2">로그인</button>
                         
