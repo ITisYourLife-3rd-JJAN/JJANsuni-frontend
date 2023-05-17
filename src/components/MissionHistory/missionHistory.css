@@ -1,0 +1,32 @@
+.mhistoryBox {
+  background-color: #FCFF5C;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 30px;
+  padding: 2rem;
+  margin: 2rem;
+}
+
+.minnerBox{
+  background-color: #fff;
+  border-radius: 30px;
+  width: 100%;
+  height: 100%;
+}
+
+.mhistoryTable{
+  display: flex;
+  margin: 3rem 10rem;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
+
+.mhistoryRow{
+  display: flex;
+  margin: 3rem 10rem;
+  justify-content: space-between;
+  align-items: center;
+  text-align: center;
+}
