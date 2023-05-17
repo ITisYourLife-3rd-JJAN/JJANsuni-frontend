@@ -13,6 +13,28 @@ const CommonJoin = ({isParent}) => {
     const role = isParent ? "T" : "F";
     const navigate = useNavigate();
     
+    const registerAxios = () => {
+        axios
+            .post("http://localhost:8080/api/v1/users/join", {
+                name : username,
+                email : email,
+                password : password,
+                phoneNum : phoneNum,
+                gender : gender,
+                birthday : birthday,
+                famCode : famCode,
+                isParent : role
+            })
+            .then((response) => {
+                console.log(response);
+                alert("회원가입에 성공했어요✨")
+                if(response.status === 200){
+                    return navigate("/login");
+                }
+            }).catch((err) => {
+                console.log(err.request.status)
+        });
+    }
 
     return (
         <div className='join-container'>
@@ -114,7 +136,7 @@ const CommonJoin = ({isParent}) => {
             }
             
         </div>
-        <button id="joinBtn" >가입하기</button>
+        <button id="joinBtn" onClick={registerAxios}>가입하기</button>
         </div>
     );
 };
