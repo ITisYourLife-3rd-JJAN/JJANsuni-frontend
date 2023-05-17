@@ -71,3 +71,24 @@
     text-align: center;
     
 }
+
+.loginipt{
+    position : relative;
+    margin-top : 0.3rem;
+    padding-bottom: 0.2rem;
+    padding-left: 1rem;
+    border: none;
+    border-bottom: 2.5px solid #CFCFCF;
+    border-radius: 20px;
+    width: 90%;
+    height: 1.6rem;
+    caret-color: #F4C4D2;
+}
+
+.loginipt:focus{
+    border-color:#F4C4D2;
+    outline: none;
+}
+.loginpw{
+    font-family:'Malgun gothic';
+}

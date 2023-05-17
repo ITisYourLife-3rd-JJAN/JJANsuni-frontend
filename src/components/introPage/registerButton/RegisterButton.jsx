@@ -1,6 +1,7 @@
 import React from "react";
 import './registerButton.css';
 import confetti from "https://esm.run/canvas-confetti@1";
+import { Link } from "react-router-dom";
 
 function RegisterButton(){
     function onClick(){
@@ -9,7 +10,7 @@ function RegisterButton(){
             spread: 60,
           });
     }
-    return <button id="register" onClick={onClick}>회원가입</button>
+    return <Link to="/join" className='sellink'><button id="register" onClick={onClick}>회원가입</button></Link>
 }
 
 export default RegisterButton;

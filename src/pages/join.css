@@ -60,7 +60,7 @@
 
 }
 
-input {
+.joinipt {
     position : relative;
     margin-top : 0.3rem;
     padding-bottom: 0.2rem;
@@ -70,10 +70,10 @@ input {
     border-radius: 20px;
     width: 90%;
     height: 1.6rem;
-    text-align: lrem;
+    caret-color: #0982f0;
 }
 
-input:focus{
+.joinipt:focus{
     border-color:#0982f0;
     outline: none;
 }
@@ -232,4 +232,8 @@ label {
     flex-direction: column;
     /* justify-content: center; */
     align-items: center;
+}
+
+.joinpw{
+    font-family:'Malgun gothic';
 }

@@ -1,10 +1,13 @@
 import React from 'react';
 import './mainBanner.css'
 import SimpleSlider from '../slider/Slider';
+import { useNavigate } from "react-router-dom";
 
 const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
+
+  const navigate = useNavigate();
   const handleClick = () => {
-    alert('응원메세지 보내기');
+    navigate("/message")
   };
 
   const cursorStyle = isParent ? { cursor: 'pointer' } : {};
