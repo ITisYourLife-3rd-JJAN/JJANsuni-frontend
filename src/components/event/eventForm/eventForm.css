@@ -1,0 +1,52 @@
+.eventForm{
+    background-color: #DD5475;
+    padding: 1.5rem 0rem;
+    margin: 2.3rem 2rem;
+    color: #FFF;
+
+}
+
+.formBox{
+    width: 100%;
+    border: 3px dashed #FFF;
+    border-left: none;
+    border-right: none;
+    padding: 1rem;
+    font-size: 1.8rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.selectLabel{
+    color: #FFF;
+
+}
+
+#subject-select, #activity-select, #routine-select, #where-select{
+    color: #000;
+    font-size: 1.8rem;
+    margin-left: 3%;
+}
+
+.question {
+    margin-bottom: 5%;
+}
+
+label{
+    margin-right: 3%;
+}
+
+.letsgo{
+    position: fixed;
+    right: 1.6%;
+    bottom: 2%;
+    width: 13%;
+}
+
+#howmuch{
+    width: 6.6rem;
+    height: 1.4rem;
+    color: #000;
+    font-size: 1.3rem;
+}
