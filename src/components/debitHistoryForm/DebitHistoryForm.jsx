@@ -3,7 +3,7 @@ import './debitHistoryForm.css';
 
 const DebitHistoryForm = ({isParent}) => {
 
-    const backgroundColor = isParent? '#FCFF5C':'#CDFF5C';
+    const backgroundColor = isParent? '#FCFF5C':'#FCFF5C';
     return (
         <div className='debitHistory' style={{backgroundColor:backgroundColor}}>
             <table className='debitTable'>

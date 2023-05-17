@@ -21,25 +21,13 @@ import Message from './pages/Message';
 
 function App() {
   
-  const pathName = window.location.pathname;
-
-  if (pathName === "/join" || pathName === "/login") {
-    return (
-      <div>
-        <BrowserRouter>
-          <Routes> 
-              <Route path="/join" element={<Join/> }/>  
-              <Route path="/login" element={<Login/> }/>  
-          </Routes>
-        </BrowserRouter>
-      </div>
-    )
-  } else {
     return (
       <div>
         <BrowserRouter>
           <Header/>       
           <Routes>
+              <Route path="/join" element={<Join/> }/>  
+              <Route path="/login" element={<Login/> }/>  
               <Route path="/" element={<Intro/> }/>  
               <Route path="/kid" element={<KidMain/> }/>  
               <Route path="/kid/profile" element={<KidProfile/>} />
@@ -57,7 +45,7 @@ function App() {
         </BrowserRouter>
       </div>
     );
-  }
+
 
 }
 

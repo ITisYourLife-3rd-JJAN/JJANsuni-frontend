@@ -19,11 +19,11 @@ const Login = () => {
                     <form action="#" method="post">
                         <p>
                             <label for="email">이메일</label><br/><br/>
-                            <input type="email" id="email" required></input>
+                            <input className='loginipt' type="email" id="email" required></input>
                         </p>
                         <p>
                             <label for="userpw">비밀번호</label><br/><br/>
-                            <input type="password" id="userpw" required></input>
+                            <input className='loginipt loginpw' type="password" id="userpw" required></input>
                         </p>
                         <p>
                         <button id="btn2">로그인</button>
