@@ -14,26 +14,26 @@ h3 {
 }
 
 #section1 {
-  background-image: url("http://localhost:3000/assets/images/fullpage/풀1_none.png");
+  background-image: url("http://localhost:3000/assets/images/fullpage/full1_none.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   position: relative;
 }
 #section2 {
-  background-image: url("http://localhost:3000/assets/images/fullpage/풀2_none.png");
+  background-image: url("http://localhost:3000/assets/images/fullpage/full2_none.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 #section3 {
-  background-image: url("http://localhost:3000/assets/images/fullpage/풀3.png");
+  background-image: url("http://localhost:3000/assets/images/fullpage/full3.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
 #section4 {
-  background-image: url("http://localhost:3000/assets/images/fullpage/풀4.png");
+  background-image: url("http://localhost:3000/assets/images/fullpage/full4.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
