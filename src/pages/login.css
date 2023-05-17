@@ -1,0 +1,94 @@
+
+.login{
+    position: relative;
+    width: 100vw;
+    height: 100vh;
+    background: #F4C4D2;
+}
+
+.loginSub{
+    display: flex;
+    box-sizing: border-box;
+    position: absolute;
+    width: 90vw;
+    height: 90vh;
+    margin-top : 5vh;
+    margin-left : 5vw;
+    
+    background: rgba(255, 255, 255, 0.5);
+    border: 1px solid #F4C4D2;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+    border-radius: 30px;
+}
+
+.loginSlogan{
+    color: #fff;
+    width: 50vw;
+    margin-top: 6rem;
+    margin-left: 1vw;
+    font-weight: 700;
+    font-size: 4rem;
+    text-align: center;
+}
+
+.loginImage{
+    position: absolute;
+    width: 40vw;
+    height: 30vh;
+    margin-top: 30vh;
+    margin-left : 2.5vw;
+}
+
+.loginInput{
+    position: absolute;
+    right: 5vw;
+    top: 2.5vh;
+    width: 30vw;
+    height: 85vh;
+    background: #FFFFFF;
+    border: 1px solid #F4C4D2;
+    box-shadow: 7px 7px 39px #F4C4D2(0, 104, 255, 0.25);
+    border-radius: 20px;
+    padding: 10vh;
+    font-weight: 700;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+
+}
+
+#btn2 {
+    width: 20vw;
+    height: 7.5vh;
+    background-color: #F4C4D2;
+    color: white;
+    border-radius: 5px;
+    border: #F4C4D2 solid 10px;
+    margin-top: 20vh;
+    font-weight: 700;
+    font-size: 1.75vw;
+    text-align: center;
+    
+}
+
+.loginipt{
+    position : relative;
+    margin-top : 0.3rem;
+    padding-bottom: 0.2rem;
+    padding-left: 1rem;
+    border: none;
+    border-bottom: 2.5px solid #CFCFCF;
+    border-radius: 20px;
+    width: 90%;
+    height: 1.6rem;
+    caret-color: #F4C4D2;
+}
+
+.loginipt:focus{
+    border-color:#F4C4D2;
+    outline: none;
+}
+.loginpw{
+    font-family:'Malgun gothic';
+}

@@ -1,8 +1,9 @@
 .header{
+    position: fixed;
+    width: 100%;
     height: 1.5rem;
-    padding:  .5rem 2rem;
-    margin: 0;
     font-weight: 800;
+    padding: 0.5rem 2rem;
     background-color: #EEEEEE;
     display: flex;
     justify-content: space-between;
@@ -12,10 +13,15 @@
 
 .header p {
     margin: 0;
-    padding: 0;
+    padding: 0.2rem 1rem;
     cursor: pointer;
+    border-radius: 10px;
 }
 
 .logout{
     color: #868686;
+}
+
+.header p:hover{
+    background-color: rgba(205,255,92,0.5);
 }

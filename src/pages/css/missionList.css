@@ -1,0 +1,93 @@
+.maplist-container{
+    display: flex;
+    width: 100vw;
+    height: 95vh;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.maplist-background-image {
+    position: absolute;
+    width: 85%;
+    height: 85%;
+    object-fit: contain;
+    z-index: -1;
+}
+
+.step-text{
+    position: absolute;
+    width: auto;
+    height: 1.2rem;
+    font-size: 3rem;
+    left: 9%;
+    top: 10%;
+}
+
+.map-cloud{
+    position: absolute;
+    width: 23rem;
+    height: auto;
+    left: 70%;
+    top: 7%;
+}
+
+.map-box.absol1, .answer-img1{
+    position: absolute;
+    left: 16%;
+    top: 32%;
+}
+.answer-img{
+    position: absolute;
+    left: 20%;
+    top: 32%;
+    width: 60%;
+}
+
+.map-box.absol2{
+    position: absolute;
+    left: 35%;
+    top: 32%;
+}
+
+.map-box.absol3{
+    position: absolute;
+    left: 54%;
+    top: 32%;
+}
+
+.map-box.absol4{
+    position: absolute;
+    left: 73%;
+    top: 32%;
+}
+
+.map-box.absol5{
+    position: absolute;
+    left: 25%;
+    top: 60%;
+}
+
+.map-box.absol6{
+    position: absolute;
+    left: 45%;
+    top: 60%;
+}
+
+.map-box.absol7{
+    position: absolute;
+    left: 65%;
+    top: 60%;
+}
+
+.answer-img {
+    opacity: 0;
+}
+  
+.answer-img.show {
+opacity: 1;
+}
+
+.pointer {
+    cursor: pointer;
+  }

@@ -1,0 +1,75 @@
+.msgmain {
+    background-color: #F4C4D2;
+    height: 100vh;
+    /* padding-top: 2.5rem; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.msgbox{
+    width: 70%;
+    height: 70%;
+    background-color: #fff;
+    border-radius: 30px;
+}
+
+.msgbtn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 10%;
+    cursor: pointer;
+}
+
+.msgbtnin{
+    border: 3px solid #DD5475;
+    background-color: #E586A0;
+    border-radius: 30px;display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30%;
+    height: 100%;
+    color: #fff;
+    font-weight: 600;
+    font-size: 24px;
+}
+
+.msgtitle{
+    /* margin: 5rem; */
+    font-size: 30px;
+    font-weight: 600;
+}
+.msgkid{
+    margin: 5rem;
+    font-size: 30px;
+    font-weight: 600;
+}
+.msgipt{
+    margin-bottom: 5rem;
+    width: 80%;
+    border: none;
+    border-bottom: 3px solid #000;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.msgiptbox{
+    font-size: 26px;
+    margin-left: 5rem;
+    margin-bottom: 5rem;
+    font-weight: 700;
+    display: flex;
+}
+
+.msgtitlebox{
+    display: flex;
+    justify-content: space-between;
+    margin: 5rem;
+}
+
+.quitbtn{
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}

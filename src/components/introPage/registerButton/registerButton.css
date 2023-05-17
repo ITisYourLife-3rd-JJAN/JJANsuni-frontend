@@ -1,0 +1,32 @@
+#register {
+    border: none;
+    display: inline-block;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    color: #fff;
+    border: 0.3rem solid #2D86E0;
+    font-size: 3rem;
+    font-weight: 400;
+    padding: 0.5em 1.25em;
+    border-radius: 0.5em;
+    z-index: 999;
+    position: absolute;
+    bottom: 8rem;
+    right: 14rem;
+    color: #2D86E0;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    background-color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+  }
+
+  
+  #register:hover {
+    letter-spacing: 0.2em;
+    transform: scale(1.2);
+    background: linear-gradient(to bottom right,#2D86E0,#E5FAFC);
+    color: #FFF;
+    cursor: pointer;
+}
