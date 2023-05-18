@@ -9,21 +9,21 @@ const Join = () => {
     return (
         <div className='join'>
             <div className='joinSub'>
-
-                <div className='joinSlogan'>
-                    <p>세 살 버릇 여든까지!</p>
-                </div>
-
-                <div className='joinImage'>
-                    <img ClassName="joinParent " src="img/parentJoin.png"></img>
+                <div className = "join-container">
+                    <div className='loginSlogan'>
+                        <p>세 살 버릇 여든까지!</p>
+                    </div>
+                    <div className='loginImage'>
+                        <img className="trip" src="img/parentJoin.png" alt='' />
+                    </div>
                 </div>
          
-                <div className="whiteBackground">
-                    <div className="selectRoleBox">
-                        <button class="parentBtn" onClick={() => setIsParent(true) }>부모 회원입니다</button>&nbsp;
-                        <button class="kidBtn" onClick={() => setIsParent(false)}>자녀 회원입니다</button><br/><br/><br/><br/><br/>
-                    </div>
-                        <CommonJoin isParent={isParent} />
+                <div className="joinInput">
+                <div className="selectRoleBox">
+                    <button className={`parentBtn ${isParent ? 'selected' : ''}`} onClick={() => setIsParent(true)}>부모 회원입니다</button>&nbsp;
+                    <button className={`kidBtn ${!isParent ? 'selected' : ''}`} onClick={() => setIsParent(false)}>자녀 회원입니다</button><br/><br/><br/><br/><br/>
+                </div>
+                    <CommonJoin isParent={isParent} />
                 </div>
             </div>
         </div>

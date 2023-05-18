@@ -1,42 +1,40 @@
 
 .join{
-    position: relative;
     width: 100vw;
     height: 100vh;
-    
-    background: #2D86E0;
+    background:#2D86E0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .joinSub{
     display: flex;
     box-sizing: border-box;
-    position: absolute;
-    width: 90vw;
-    height: 90vh;
-    margin-top : 5vh;
-    margin-left : 5vw;
-
+    width: 80%;
+    height: 85vh;
     background: rgba(255, 255, 255, 0.5);
     border: 1px solid #2D86E0;
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     border-radius: 30px;
 }
 
-.joinSlogan{
-    color: #fff;
-    width: 40vw;
-    margin-top: 1vh;
-    margin-left: 5vw;
-    font-weight: 700;
-    font-size: 4vw;
-    text-align: center;
+.join-container{
+    width: 50vw;
+    margin: 1rem 0;
+    padding: 0 1rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1;
+    overflow: hidden;
 }
 
 .joinImage{
     position: absolute;
-    width: 90vw;
+    width: 75vw;
     /* height: 90vh; */
-    margin-top: 22vh;
+    margin-top: 14vh;
     margin-left: 0.1vw;
 }
 
@@ -60,24 +58,46 @@
 
 }
 
+.joinInput{
+    position: absolute;
+    right: 12vw;
+    top: 11vh;
+    width: 30vw;
+    height: 80%;
+    background: #FFFFFF;
+    border: 1px solid #2D86E0;
+    box-shadow: 7px 7px 39px #2D86E0(0, 104, 255, 0.25);
+    border-radius: 20px;
+    padding: 7vh;
+    font-weight: 500;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    z-index: 10;
+    align-items: center;
+}
+
+
 .joinipt {
     position : relative;
     margin-top : 0.3rem;
+    margin-bottom: 1rem;
     padding-bottom: 0.2rem;
     padding-left: 1rem;
     border: none;
     border-bottom: 2.5px solid #CFCFCF;
     border-radius: 20px;
     width: 90%;
-    height: 1.6rem;
-    caret-color: #0982f0;
+    height: 2rem;
+    font-size: 1.1rem;
+    caret-color: #2D86E0;
 }
 
-.joinipt:focus{
+.joinipt:focus, .select-box:focus{
     border-color:#0982f0;
     outline: none;
 }
-
 
 .input-box{
     margin: 1rem 0;
@@ -88,8 +108,7 @@ label {
     position : relative;
     left: 0.5rem;
     color: black;
-    font-size: 1.5rem;
-    font-weight: 700;
+    font-size: 1.3rem;
 }
 
 #joinBtn {
@@ -109,37 +128,34 @@ label {
     height: 4rem;
 }
 .parentBtn{
-    width: 15vw;
+    width: 12vw;
     height: 5vh;
-
-    z-index:1;
     background-color: #FFFFFF;
     color: black;
-    border-radius: 8px;
+    border-radius: 20px;
     border: #ffffff solid 3px;
     font-weight: 700;
     font-size: 1.25rem;
     text-align: center;
 }
 .kidBtn{
-    width: 15vw;
+    width: 12vw;
     height: 5vh;
-    /* z-index:1; */
     background-color: #FFFFFF;
     color: black;
-    border-radius: 8px;
+    border-radius: 20px;
     border: white solid 3px;
     font-weight: 700;
     font-size: 1.25rem;
     text-align: center;
 }
 
-.kidBtn:hover, .parentBtn:hover{
+.selected{
     border: #2D86E0 solid 3px;
     cursor: pointer;
 }
 
-.kidBtn:focus, .parentBtn:focus{
+.selected:focus{
     border: #2D86E0 solid 3px;
 
 }
@@ -150,7 +166,7 @@ label {
     background-color:transparent;
     color: #2D86E0;
     border: 0;
-    font-weight: 1000;
+    /* font-weight: 1000; */
     text-align: center;
     font-size: 1rem;
     border-radius: 20px;;
@@ -166,26 +182,22 @@ label {
     display: flex;
 }
 
-.aa{
-    height: 32rem;
-    /* width : 25vw; */
+.join-box{
+    height: 100%;
     overflow: scroll;
-    left : 1vw;
-    margin: 0 1rem;
-    padding: 0 1rem;
 }
 
 
-  .aa::-webkit-scrollbar {
+  .join-box::-webkit-scrollbar {
     width: 10px;
   }
-  .aa::-webkit-scrollbar-thumb {
+  .join-box::-webkit-scrollbar-thumb {
     background-color: #2D86E0;
     border-radius: 10px;
     background-clip: padding-box;
     border: 2px solid transparent;
   }
-  .aa::-webkit-scrollbar-track {
+  .join-box::-webkit-scrollbar-track {
     background-color: 2D86E0;
     border-radius: 10px;
     box-shadow: inset 0px 0px 5px white;
@@ -230,10 +242,45 @@ label {
 .join-container{
     display: flex;
     flex-direction: column;
-    /* justify-content: center; */
     align-items: center;
 }
 
 .joinpw{
     font-family:'Malgun gothic';
+}
+
+#joinBtn{
+    cursor: pointer;
+}
+
+.join-wrap{
+    height: 90%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.select-box{
+    margin: 0.5rem 0;
+    width: 4vw;
+    height: 2.2rem;
+    font-size: 1rem;
+    border-radius: 20px;
+    caret-color: #2D86E0;
+    padding: 0.1rem 0.2rem;  
+}
+
+.select-box.y{
+    width: 6vw;
+    padding: 0.1rem ;   
+}
+
+.gender-radio{
+    margin : 0.5rem 0.5rem;
+    padding-bottom: 0.2rem;
+    border: none;
+    width: 1rem;
+    height: 1rem;
+    font-size: 1.1rem;
 }
