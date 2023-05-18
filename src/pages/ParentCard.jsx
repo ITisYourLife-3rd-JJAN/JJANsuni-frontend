@@ -1,6 +1,6 @@
 import React from 'react';
-import CardHistory from '../../components/cardHistory/CardHistory';
-import DebitBanner from '../../components/debitBanner/DebitBanner';
+import CardHistory from '../components/cardHistory/CardHistory';
+import DebitBanner from '../components/debitBanner/DebitBanner';
 
 const ParentCard = () => {
     return (

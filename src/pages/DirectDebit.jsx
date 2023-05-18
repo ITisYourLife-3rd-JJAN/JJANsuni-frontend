@@ -1,6 +1,6 @@
 import React from 'react';
-import DebitBanner from '../../components/debitBanner/DebitBanner';
-import DirectDebitForm from '../../components/directDebitForm/DirectDebitForm'
+import DebitBanner from '../components/debitBanner/DebitBanner';
+import DirectDebitForm from '../components/directDebitForm/DirectDebitForm'
 
 const Debit = () => {
     return (

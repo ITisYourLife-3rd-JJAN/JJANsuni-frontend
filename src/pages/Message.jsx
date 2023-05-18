@@ -1,5 +1,5 @@
 import React from 'react';
-import './message.css'
+import '../pages/css/message.css'
 import { useNavigate } from 'react-router';
 
 
