@@ -5,7 +5,7 @@ import './css/solvedMission.css'
 
 const SolvedMission = () => {
     const { missionId } = useParams();
-    const status = true;
+    const status = false;
 
     return (
         <div>
