@@ -10,6 +10,7 @@ import Join from './pages/Join';
 import Map from './pages/Map';
 import MissionList from './pages/MissionList';
 import Mission from './pages/Mission';
+import SolvedMission from './pages/SolvedMission';
 import KidProfile from './pages/KidProfile';
 import DebitHistory from './pages/DebitHistory';
 import ParentCard from './pages/ParentCard';
@@ -35,6 +36,7 @@ function App() {
               <Route path="/kid/map" element={<Map/>} />
               <Route path="/kid/map/:mapId" element={<MissionList/>} />
               <Route path="/kid/mission/:missionId" element={<Mission/>} />
+              <Route path="/kid/solution/:missionId" element={<SolvedMission/>} />
               <Route path="/debit-history" element={<DebitHistory/> }/>  
               <Route path="/card" element={<ParentCard/> }/> 
               <Route path="/debit" element={<Debit/> }/>  

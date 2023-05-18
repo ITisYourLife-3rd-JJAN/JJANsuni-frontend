@@ -1,7 +1,10 @@
 import React from 'react';
+import { useNavigate } from 'react-router-dom';
 import './quiz.css'
 
 const Quiz = ({missionId}) => {
+    const navigate = useNavigate();
+
     return (
         <div className='quiz-container'>
             <div className='quiz-title'>
@@ -10,7 +13,7 @@ const Quiz = ({missionId}) => {
             <div className='quiz-selectBox'>
                 <div className='answer-container'>
                     <div className='answer-box'>
-                        <p>O</p>
+                        <p onClick={() => navigate(`/kid/solution/${missionId}`)}>O</p>
                     </div>
                 </div>
                 <div className='answer-container'>
