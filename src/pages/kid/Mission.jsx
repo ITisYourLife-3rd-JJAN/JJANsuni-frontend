@@ -1,7 +1,7 @@
 import React from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
-import MapBackground from '../components/Mission/MapBackground';
-import Quiz from '../components/Mission/Quiz';
+import MapBackground from '../../components/Mission/MapBackground';
+import Quiz from '../../components/Mission/Quiz';
 
 const Mission = () => {
     const { missionId } = useParams();

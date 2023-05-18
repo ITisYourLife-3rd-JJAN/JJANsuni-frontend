@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import PayHistory from '../components/payHistory/PayHistory';
-import PayBanner from '../components/payBanner/PayBanner';
+import PayHistory from '../../components/payHistory/PayHistory';
+import PayBanner from '../../components/payBanner/PayBanner';
 
 const Pay = () => {
     const [isCreated, setIsCreated] = useState(false);
