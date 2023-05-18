@@ -26,7 +26,7 @@ const MenuList = ({ isParent }) => {
                 </div>
             </Link>
             {isParent ? (
-                <Link to="/">
+                <Link to="/parent/mission-history">
                 <div className='menu-item'> 
                     <img src={`${process.env.PUBLIC_URL}/assets/images/game.png`} alt='' />
                     <p>미션 현황</p>

@@ -18,6 +18,7 @@ import Debit from './pages/Debit';
 import DirectDebit from './pages/DirectDebit';
 import Pay from './pages/Pay';
 import Message from './pages/Message';
+import ParentMission from './pages/ParentMission';
 
 
 function App() {
@@ -41,8 +42,9 @@ function App() {
               <Route path="/card" element={<ParentCard/> }/> 
               <Route path="/debit" element={<Debit/> }/>  
               <Route path="/direct-debit" element={<DirectDebit/> }/>  
-               <Route path="/pay" element={<Pay/> }/>  
+              <Route path="/pay" element={<Pay/> }/>  
               <Route path="/message" element={<Message/> }/>  
+              <Route path="/parent/mission-history" element={<ParentMission/> }/>  
           </Routes>
         </BrowserRouter>
       </div>
