@@ -62,6 +62,10 @@
 
 
 .sol-left-box{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
     margin: 5rem 0 0 0;
     width: 40%;
 }
@@ -81,8 +85,12 @@
     border: 2px solid #000000;
     box-shadow: 0px 8px 8px rgba(0, 0, 0, 0.25);
     border-radius: 70px;
+    cursor: pointer;
 }
 
+.incorrect{
+    background: #DD5475;
+}
 .thumb-img{
     width: 80%;
     height: auto;
