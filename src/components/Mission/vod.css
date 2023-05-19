@@ -57,6 +57,6 @@
 
 .next-btn.btn-disabled {
     background-color: gray;
-    cursor: none;
+    cursor: default;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 }

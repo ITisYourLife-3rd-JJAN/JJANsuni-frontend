@@ -10,7 +10,7 @@ const Mission = () => {
 
     return (
         <div>
-            {isQuiz ? <Quiz missionId={missionId} /> : <Vod />}
+            {isQuiz ? <Quiz missionId={missionId} /> : <Vod missionId={missionId} />}
             <MapBackground mapId={missionId} isMap={false} />
         </div>
     );

@@ -1,9 +1,11 @@
 import { React, useState } from 'react';
 import './vod.css'
 import confetti from "https://esm.run/canvas-confetti@1";
+import { useNavigate } from "react-router-dom";
 
-const Vod = () => {
+const Vod = ({missionId}) => {
     const [watched, setWatched] = useState(false);
+    const navigate = useNavigate();
 
     const handleVideoEnded = () => {
         setWatched(true);
@@ -14,6 +16,7 @@ const Vod = () => {
             particleCount: 150,
             spread: 60,
           });
+        navigate(`/kid/map/${missionId}`);
     };
 
     return (
