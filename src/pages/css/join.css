@@ -90,7 +90,7 @@
     border-radius: 20px;
     width: 90%;
     height: 2rem;
-    font-size: 1.3rem;
+    font-size: 1.1rem;
     caret-color: #2D86E0;
 }
 
@@ -132,7 +132,7 @@ label {
     height: 5vh;
     background-color: #FFFFFF;
     color: black;
-    border-radius: 8px;
+    border-radius: 20px;
     border: #ffffff solid 3px;
     font-weight: 700;
     font-size: 1.25rem;
@@ -143,7 +143,7 @@ label {
     height: 5vh;
     background-color: #FFFFFF;
     color: black;
-    border-radius: 8px;
+    border-radius: 20px;
     border: white solid 3px;
     font-weight: 700;
     font-size: 1.25rem;
@@ -166,7 +166,7 @@ label {
     background-color:transparent;
     color: #2D86E0;
     border: 0;
-    font-weight: 1000;
+    /* font-weight: 1000; */
     text-align: center;
     font-size: 1rem;
     border-radius: 20px;;
@@ -274,4 +274,13 @@ label {
 .select-box.y{
     width: 6vw;
     padding: 0.1rem ;   
+}
+
+.gender-radio{
+    margin : 0.5rem 0.5rem;
+    padding-bottom: 0.2rem;
+    border: none;
+    width: 1rem;
+    height: 1rem;
+    font-size: 1.1rem;
 }

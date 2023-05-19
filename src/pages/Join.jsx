@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './join.css'
+import '../pages/css/join.css'
 import CommonJoin from '../components/join/CommonJoin';
 
 const Join = () => {

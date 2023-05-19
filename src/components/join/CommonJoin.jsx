@@ -84,14 +84,39 @@ const CommonJoin = ({isParent}) => {
                         required></input>
                 </div>
 
-                <div className='input-box'> 
-                    <label for="gender">성별</label>
-                    <input type="text" id="gender" 
-                        value={gender} className='joinipt' 
-                        onChange={(e) => {
-                            setGender(e.target.value); }} 
-                        required></input>
-                </div>
+                <div className='input-box'>
+                <label htmlFor="gender">성별</label>
+                    <div>
+                        <label>
+                            <input
+                                type="radio"
+                                id="gender"
+                                value="F"
+                                checked={gender === "F"}
+                                className="gender-radio"
+                                onChange={(e) => {
+                                    setGender(e.target.value);
+                                }}
+                                required
+                            />
+                            여자
+                        </label>
+                        <label>
+                            <input
+                                type="radio"
+                                id="gender"
+                                value="M"
+                                checked={gender === "M"}
+                                className="gender-radio"
+                                onChange={(e) => {
+                                    setGender(e.target.value);
+                                }}
+                                required
+                            />
+                            남자
+                        </label>
+                        </div>
+                        </div>
 
                 <div> 
                     <label for="birthday">생년월일</label>
@@ -207,9 +232,9 @@ const CommonJoin = ({isParent}) => {
                     <p id="familyCode"> sample </p>   
                 </div>          
             : 
-            <div > 
-                <label for="familyCodeInput">가족코드 입력</label>
-                <input type="text" id="familyCodeInput" required></input>
+            <div className='input-box'> 
+                <label for="familyCodeInput" >가족코드 입력</label>
+                <input type="text" id="familyCodeInput" className='joinipt'  required></input>
             </div> 
             }
             
