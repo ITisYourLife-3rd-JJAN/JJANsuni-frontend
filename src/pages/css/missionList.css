@@ -84,9 +84,9 @@
 }
   
 .answer-img.show {
-opacity: 1;
+    opacity: 1;
 }
 
 .pointer {
     cursor: pointer;
-  }
+}
