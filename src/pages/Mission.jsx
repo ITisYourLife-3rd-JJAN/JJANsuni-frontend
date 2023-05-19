@@ -1,14 +1,17 @@
-import React from 'react';
+import { React, useState } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import MapBackground from '../components/Mission/MapBackground';
 import Quiz from '../components/Mission/Quiz';
+import Vod from '../components/Mission/Vod';
 
 const Mission = () => {
     const { missionId } = useParams();
+    const [isQuiz, setIsQuiz] = useState(false);
+
     return (
         <div>
-            <Quiz missionId={missionId}/>
-            <MapBackground mapId={missionId} isMap={false}/>
+            {isQuiz ? <Quiz missionId={missionId} /> : <Vod missionId={missionId} />}
+            <MapBackground mapId={missionId} isMap={false} />
         </div>
     );
 };
