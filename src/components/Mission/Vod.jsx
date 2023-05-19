@@ -1,5 +1,6 @@
 import { React, useState } from 'react';
 import './vod.css'
+import confetti from "https://esm.run/canvas-confetti@1";
 
 const Vod = () => {
     const [watched, setWatched] = useState(false);
@@ -9,7 +10,10 @@ const Vod = () => {
     };
 
     const handleNextButtonClick = () => {
-        // 다음 버튼 클릭 시 동작
+        confetti({
+            particleCount: 150,
+            spread: 60,
+          });
     };
 
     return (
