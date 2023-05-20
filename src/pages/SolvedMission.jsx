@@ -12,6 +12,7 @@ const SolvedMission = () => {
     
     const isO = location.state.isO;
     const answer = location.state.answer;
+    const explain = location.state.explain;
 
     const [isCorrect, setIsCorrect] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
@@ -36,8 +37,8 @@ const SolvedMission = () => {
         .then((response) => {
             console.log(response);
         })
-        .catch((err) => {
-            console.log(err);
+        .catch((error) => {
+            console.log(error.response.data);
         })
         .finally(() => {
             setIsLoading(false);
@@ -83,14 +84,13 @@ const SolvedMission = () => {
                             </div>
                         }
                             <div className='solution-text-box'>
-                                <p>지역금융안정망에 대한 틀린 설명입니다.재원규모와 재원조성 방식, 자금지원 방식,IMF와의 협력, 지원조건 등에 따라 다양한 형태가 있습니다.</p>
-                            </div>
-                            
-                            <button className="next-btn" onClick={handleNextButtonClick}>
-                                완료
-                            </button>
-                        </div>
+                                <p>{explain}</p>
+                            </div>                   
+                        </div>      
                         <MapBackground mapId={missionId}/>
+                        <button className="next-btn quiz" onClick={handleNextButtonClick}>
+                            완료
+                        </button>
                     </div>
                 </div>
             }

@@ -50,6 +50,21 @@
     background-color: aquamarine;
 }
 
+
+.next-btn.quiz {
+    position: absolute;
+    top: 60%;
+    font-size: 1rem;
+    padding: 1rem 1.5rem;
+    border-radius: 20px;
+    border: 2px solid #000;
+    width: 8%;
+    margin-right: 16%;
+    /* margin: 12rem 0 0 3rem; */
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    background-color: aquamarine;
+}
+
 .next-btn:hover{
     box-shadow: none;
     cursor: pointer;
