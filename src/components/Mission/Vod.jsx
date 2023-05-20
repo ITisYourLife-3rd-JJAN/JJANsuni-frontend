@@ -3,7 +3,7 @@ import './vod.css'
 import confetti from "https://esm.run/canvas-confetti@1";
 import { useNavigate } from "react-router-dom";
 
-const Vod = ({missionId}) => {
+const Vod = ({missionId, mapNum, missionNum, title, vodUrl}) => {
     const [watched, setWatched] = useState(false);
     const navigate = useNavigate();
 
@@ -22,11 +22,11 @@ const Vod = ({missionId}) => {
     return (
         <div className='quiz-container'>
             <div className='vod-title'>
-                <p>Q. 지역금융안전망(RFAs)는 지리적으로 먼 국가들이 외환보유액 등을 통해 재원을 조성하여 금융, 외환위기에 대응하는 체제이다.</p>
+                <p>{title}</p>
             </div>
             <div className='vod-box'>
                 <div className='video-container'>
-                    <video className='vod' src={`${process.env.PUBLIC_URL}/assets/testVideo1.mp4`} onEnded={handleVideoEnded} controls />
+                    <video className='vod' src={vodUrl} onEnded={handleVideoEnded} controls />
                 </div>
                 <button className={watched ? "next-btn" : "next-btn btn-disabled"} onClick={handleNextButtonClick} disabled={!watched}>
                     완료

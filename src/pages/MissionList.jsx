@@ -3,7 +3,6 @@ import './css/missionList.css'
 import { useParams, useNavigate } from 'react-router-dom';
 import MapBackground from '../components/Mission/MapBackground';
 import './css/missionList.css';
-import axios from 'axios';
 
 
 const MissionList = () => {
@@ -16,19 +15,6 @@ const MissionList = () => {
 
     const navigate = useNavigate();
 
-    // const mapNum, missionNum, missionType
-    const getQuiz = () => {
-        axios
-        .get(`http://localhost:8080/api/v1/admin/mission/1`)
-        .then((response) => {
-            const missionType = response.data.data.missionType;
-        })
-        .catch((error) => {
-            console.log(error.response.data);
-        });
-    }
-
-
     /*
     true + false => 현재 풀이 가능
     true + true => 풀이 완료 
@@ -37,7 +23,7 @@ const MissionList = () => {
     const [isAnswerAvailable, setIsAnswerAvailable] = useState(true);   // gray, none gray 
     const [isSolved, setIsSolved] = useState(false);   // 문제가 풀렸다면, true (체크, 논체크)
 
-    const missionNum = 1
+    const missionNum = 3
 
     return (
         <div>
