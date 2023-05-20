@@ -16,11 +16,11 @@ const Mission = () => {
     const [answer, setAnswer] = useState("");
 
     const [isLoading, setIsLoading] = useState(true);
-
-    const getQuiz = () => {
-        axios
-        .get(`http://localhost:8080/api/v1/admin/mission/${missionId}`)
-        .then((response) => {
+    
+    useEffect(() => {
+        const getQuiz = async () => {
+          try {
+            const response = await axios.get(`http://localhost:8080/api/v1/admin/mission/${missionId}`);
             const data = response.data.data;
             data.missionType === "Q" ? setIsQuiz(true) : setIsQuiz(false);
             console.log(data);
@@ -30,22 +30,19 @@ const Mission = () => {
             setExplain(data.explain);
             setVodUrl(data.vodUrl);
             setAnswer(data.answer);
-
-        }).catch((err) => {
-            console.log(err);
-        })
-        .finally(() => {
             setIsLoading(false);
-        });
-    }
-
-    useEffect(() => {
-        getQuiz();
-      }, []);
+          } catch (error) {
+            console.log(error);
+            setIsLoading(false);
+          }
+        };
     
-    if (isLoading) {
-    return <div>Loading...</div>;
-    }
+        getQuiz();
+      }, [missionId]);
+    
+      if (isLoading) {
+        return <div>Loading...</div>;
+      }
     
     return (
         <div>

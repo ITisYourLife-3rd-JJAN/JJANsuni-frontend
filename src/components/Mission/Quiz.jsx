@@ -6,7 +6,7 @@ const Quiz = ({missionId, mapNum, missionNum, title, explain, answer }) => {
     const navigate = useNavigate();
 
     const handleAnswerClick = (isO) => {
-        navigate(`/kid/solution/${missionId}`, { state: { isO, explain, mapNum, missionNum, answer } });
+        navigate(`/kid/solution/${missionId}`, { state: { isO, explain, mapNum, missionNum, answer , title} });
     };
 
     return (
