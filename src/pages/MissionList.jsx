@@ -3,6 +3,7 @@ import './css/missionList.css'
 import { useParams, useNavigate } from 'react-router-dom';
 import MapBackground from '../components/Mission/MapBackground';
 import './css/missionList.css';
+import axios from 'axios';
 
 
 const MissionList = () => {
@@ -14,6 +15,20 @@ const MissionList = () => {
     const island_img = `${process.env.PUBLIC_URL}/assets/images/map/island${mapId}.png`;
 
     const navigate = useNavigate();
+
+    // const mapNum, missionNum, missionType
+    const getQuiz = () => {
+        axios
+        .get(`http://localhost:8080/api/v1/admin/mission/1`)
+        .then((response) => {
+            const missionType = response.data.data.missionType;
+
+        }).catch((err) => {
+            console.log(err)
+        });
+    }
+
+
     /*
     true + false => 현재 풀이 가능
     true + true => 풀이 완료 
