@@ -13,6 +13,9 @@ const Mission = () => {
     const [explain, setExplain] = useState("");
     const [title, setTitle] = useState("");
     const [vodUrl, setVodUrl] = useState("");
+    const [answer, setAnswer] = useState("");
+
+    const [isLoading, setIsLoading] = useState(true);
 
     const getQuiz = () => {
         axios
@@ -26,19 +29,27 @@ const Mission = () => {
             setTitle(data.title);
             setExplain(data.explain);
             setVodUrl(data.vodUrl);
+            setAnswer(data.answer);
 
         }).catch((err) => {
-            console.log(err)
+            console.log(err);
+        })
+        .finally(() => {
+            setIsLoading(false);
         });
     }
 
     useEffect(() => {
         getQuiz();
-    }, [])
+      }, []);
+    
+    if (isLoading) {
+    return <div>Loading...</div>;
+    }
     
     return (
         <div>
-            {isQuiz ? <Quiz missionId={missionId} mapNum={mapNum} missionNum={missionNum} title={title} explain={explain} /> : <Vod missionId={missionId} mapNum={mapNum} missionNum={missionNum} title={title} vodUrl={vodUrl} />}
+            {isQuiz ? <Quiz missionId={missionId} mapNum={mapNum} missionNum={missionNum} title={title} explain={explain} answer={answer} /> : <Vod missionId={missionId} mapNum={mapNum} missionNum={missionNum} title={title} vodUrl={vodUrl}/>}
             <MapBackground mapId={missionId} isMap={false} />
         </div>
     );

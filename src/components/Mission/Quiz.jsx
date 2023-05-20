@@ -1,24 +1,28 @@
-import React from 'react';
+import { React } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './quiz.css'
 
-const Quiz = ({missionId}) => {
+const Quiz = ({missionId, mapNum, missionNum, title, explain, answer }) => {
     const navigate = useNavigate();
+
+    const handleAnswerClick = (isO) => {
+        navigate(`/kid/solution/${missionId}`, { state: { isO, explain, mapNum, missionNum, answer } });
+    };
 
     return (
         <div className='quiz-container'>
             <div className='quiz-title'>
-                <p>Q. 지역금융안전망(RFAs)는 지리적으로 먼 국가들이 외환보유액 등을 통해 재원을 조성하여 금융, 외환위기에 대응하는 체제이다.</p>
+                <p>Q. {title}</p>
             </div>
             <div className='quiz-selectBox'>
                 <div className='answer-container'>
                     <div className='answer-box'>
-                        <p onClick={() => navigate(`/kid/solution/${missionId}`)}>O</p>
+                        <p onClick={() => handleAnswerClick(true)}>O</p>
                     </div>
                 </div>
                 <div className='answer-container'>
                     <div className='answer-box'>
-                        <p>X</p>
+                        <p onClick={() => handleAnswerClick(false)}>X</p>
                     </div>
                 </div>
             </div>
