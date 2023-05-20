@@ -2,6 +2,7 @@ import { React, useState, useEffect } from 'react';
 import MapBackground from '../components/Mission/MapBackground';
 import { useParams, useLocation } from 'react-router-dom';
 import './css/solvedMission.css'
+import axios from 'axios';
 
 const SolvedMission = () => {
     const { missionId } = useParams();
@@ -13,17 +14,32 @@ const SolvedMission = () => {
     const missionNum = location.state.missionNum;
     const answer = location.state.answer;
 
-    const [isCorrect, setIsCorrect] = useState("");
+    const [isCorrect, setIsCorrect] = useState(1);
+
     useEffect(() => {
+        saveMissionStatus();
+
         if (isO === true && answer === "O") {
-          setIsCorrect(true);
+          setIsCorrect(1);
         } else {
-          setIsCorrect(false);
-        }
-    }, [isO]);
+          setIsCorrect(0);
+        }   
+    }, [isO, answer]);
 
-
-
+    const saveMissionStatus = () => {
+        axios
+        .post("http://localhost:8080/api/v1/missions", {
+            solvedMissionId : missionId,
+            solvedUserId : 1,
+            status : isCorrect
+        })
+        .then((response) => {
+           console.log(response);
+           
+        }).catch((err) => {
+            console.log(err);
+        });
+    }
 
     return (
         <div>
