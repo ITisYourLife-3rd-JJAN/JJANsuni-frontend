@@ -19,22 +19,24 @@ const Mission = () => {
     
     useEffect(() => {
         const getQuiz = async () => {
-          try {
-            const response = await axios.get(`http://localhost:8080/api/v1/admin/mission/${missionId}`);
-            const data = response.data.data;
-            data.missionType === "Q" ? setIsQuiz(true) : setIsQuiz(false);
-            console.log(data);
-            setMapNum(data.mapNum);
-            setMissionNum(data.missionNum);
-            setTitle(data.title);
-            setExplain(data.explain);
-            setVodUrl(data.vodUrl);
-            setAnswer(data.answer);
-            setIsLoading(false);
-          } catch (error) {
-            console.log(error);
-            setIsLoading(false);
-          }
+            await axios
+                .get(`http://localhost:8080/api/v1/admin/mission/${missionId}`)
+                .then((response) => {
+                    const data = response.data.data;
+                    data.missionType === "Q" ? setIsQuiz(true) : setIsQuiz(false);
+                    console.log(data);
+                    setMapNum(data.mapNum);
+                    setMissionNum(data.missionNum);
+                    setTitle(data.title);
+                    setExplain(data.explain);
+                    setVodUrl(data.vodUrl);
+                    setAnswer(data.answer);
+                    setIsLoading(false);
+                })
+                .catch((error) => {
+                    console.log(error.response.data);
+                    setIsLoading(false);
+                })
         };
     
         getQuiz();

@@ -31,9 +31,10 @@ const CommonJoin = ({isParent}) => {
                 if(response.status === 200){
                     return navigate("/login");
                 }
-            }).catch((err) => {
-                console.log(err.request.status)
-        });
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            })
     }
 
     return (

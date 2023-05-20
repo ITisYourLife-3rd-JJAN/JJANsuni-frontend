@@ -22,9 +22,9 @@ const MissionList = () => {
         .get(`http://localhost:8080/api/v1/admin/mission/1`)
         .then((response) => {
             const missionType = response.data.data.missionType;
-
-        }).catch((err) => {
-            console.log(err)
+        })
+        .catch((error) => {
+            console.log(error.response.data);
         });
     }
 
