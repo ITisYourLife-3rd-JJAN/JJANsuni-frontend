@@ -9,9 +9,9 @@ const SolvedMission = () => {
 
     const location = useLocation();
     const isO = location.state.isO;
-    const explain = location.state.explain;
-    const mapNum = location.state.mapNum;
-    const missionNum = location.state.missionNum;
+    // const explain = location.state.explain;
+    // const mapNum = location.state.mapNum;
+    // const missionNum = location.state.missionNum;
     const answer = location.state.answer;
 
     const [isCorrect, setIsCorrect] = useState(1);
@@ -26,6 +26,7 @@ const SolvedMission = () => {
         }   
     }, [isO, answer]);
 
+    
     const saveMissionStatus = () => {
         axios
         .post("http://localhost:8080/api/v1/missions", {

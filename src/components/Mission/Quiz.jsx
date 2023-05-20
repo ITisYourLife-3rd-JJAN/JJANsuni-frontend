@@ -16,13 +16,13 @@ const Quiz = ({missionId, mapNum, missionNum, title, explain, answer }) => {
             </div>
             <div className='quiz-selectBox'>
                 <div className='answer-container'>
-                    <div className='answer-box'>
-                        <p onClick={() => handleAnswerClick(true)}>O</p>
+                    <div className='answer-box'  onClick={() => handleAnswerClick(true)}>
+                        <p>O</p>
                     </div>
                 </div>
                 <div className='answer-container'>
-                    <div className='answer-box'>
-                        <p onClick={() => handleAnswerClick(false)}>X</p>
+                    <div className='answer-box' onClick={() => handleAnswerClick(false)}>
+                        <p>X</p>
                     </div>
                 </div>
             </div>
