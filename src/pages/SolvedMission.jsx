@@ -1,15 +1,33 @@
-import React from 'react';
+import { React, useState, useEffect } from 'react';
 import MapBackground from '../components/Mission/MapBackground';
-import { useParams } from 'react-router-dom';
+import { useParams, useLocation } from 'react-router-dom';
 import './css/solvedMission.css'
 
 const SolvedMission = () => {
     const { missionId } = useParams();
-    const status = false;
+
+    const location = useLocation();
+    const isO = location.state.isO;
+    const explain = location.state.explain;
+    const mapNum = location.state.mapNum;
+    const missionNum = location.state.missionNum;
+    const answer = location.state.answer;
+
+    const [isCorrect, setIsCorrect] = useState("");
+    useEffect(() => {
+        if (isO === true && answer === "O") {
+          setIsCorrect(true);
+        } else {
+          setIsCorrect(false);
+        }
+    }, [isO]);
+
+
+
 
     return (
         <div>
-        {status ?
+        {isCorrect ?
             <div>
                 <div className='maplist-container'>
                     <div className='answer-notice-box'>
