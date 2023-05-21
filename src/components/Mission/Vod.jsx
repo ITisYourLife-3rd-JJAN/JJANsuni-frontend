@@ -1,7 +1,8 @@
-import { React, useState } from 'react';
+import { React, useState, useEffect } from 'react';
 import './vod.css'
 import confetti from "https://esm.run/canvas-confetti@1";
 import { useNavigate } from "react-router-dom";
+import axios from 'axios';
 
 const Vod = ({missionId, mapNum, missionNum, title, vodUrl}) => {
     const [watched, setWatched] = useState(false);
@@ -18,6 +19,23 @@ const Vod = ({missionId, mapNum, missionNum, title, vodUrl}) => {
           });
         navigate(`/kid/map/${missionId}`);
     };
+
+    useEffect(() => {
+        const saveMissionStatus = () => {
+            axios
+            .post("http://localhost:8080/api/v1/missions", {
+                solvedMissionId: missionId,
+                solvedUserId: 1,
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            })
+        }
+        saveMissionStatus();
+    }, [])
 
     return (
         <div className='quiz-container'>
