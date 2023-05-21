@@ -14,6 +14,7 @@ const MissionList = () => {
     const island_img = `${process.env.PUBLIC_URL}/assets/images/map/island${mapId}.png`;
 
     const navigate = useNavigate();
+
     /*
     true + false => 현재 풀이 가능
     true + true => 풀이 완료 
@@ -22,7 +23,7 @@ const MissionList = () => {
     const [isAnswerAvailable, setIsAnswerAvailable] = useState(true);   // gray, none gray 
     const [isSolved, setIsSolved] = useState(false);   // 문제가 풀렸다면, true (체크, 논체크)
 
-    const missionNum = 1
+    const missionNum = 3
 
     return (
         <div>
