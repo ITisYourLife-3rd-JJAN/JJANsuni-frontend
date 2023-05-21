@@ -1,12 +1,14 @@
 import React from 'react';
 import './payHistory.css';
+import QRCode from './QRcode';
 
 const CardHistory = ({isCreated}) => {
     return (
         <div className='payHistory'>
             {isCreated &&
             <div className='qrdiv'>
-                <img style={{width: '90%'}} src={`${process.env.PUBLIC_URL}/assets/images/qr.webp`} alt="" />
+                <QRCode/>
+                {/* <img style={{width: '90%'}} src={`${process.env.PUBLIC_URL}/assets/images/qr.webp`} alt="" /> */}
             </div>}
             <table className='payTable'>
                 <tr>
