@@ -15,7 +15,7 @@ const PayBanner = ({ isCreated, qrDiv }) => {
                 <div>찌글이 원</div>
             </div>
             <div onClick={qrDiv} className='paybannerdiv'>
-                {isCreated ? '짠페이 생성하기' : '짠페이 생성하기'}
+                {isCreated ? '짠페이 생성완료' : '짠페이 생성하기'}
             </div>
         </div>
     );
