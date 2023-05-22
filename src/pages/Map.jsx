@@ -6,7 +6,6 @@ import axios from 'axios';
 const Map = () => {
     const achieveStatus_full = 7; // 나중에 실제로 사용할 데이터 변수
     const achieveStatus = 0; // 나중에 실제로 사용할 데이터 변수
-    var mapNum = 1; // 각각의 map-box에 맞게 값을 할당할 변수
 
     const [status, setStatus] = useState();
     const [preMap, setPreMap] = useState(0);
@@ -16,7 +15,7 @@ const Map = () => {
     useEffect(() => {
         const getUserAchieve = async () => {
             await axios
-                .get("http://localhost:8080/api/v1/users/1")
+                .get("http://localhost:8080/api/v1/users/2")
                 .then((response) => {
                     console.log(response.data.data)
                     setStatus(response.data.data.achieve)
