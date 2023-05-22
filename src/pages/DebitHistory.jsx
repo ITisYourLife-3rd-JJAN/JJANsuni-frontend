@@ -1,5 +1,5 @@
 import React from 'react';
-import DebitHistoryForm from '../components/debitHistoryForm/DebitHistoryForm';
+import DebitHistoryForm from '../components/debitHistory/DebitHistoryForm';
 import DebitBanner from '../components/debitBanner/DebitBanner';
 
 const DebitHistory = () => {
