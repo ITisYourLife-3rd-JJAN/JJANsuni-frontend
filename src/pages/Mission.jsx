@@ -23,6 +23,7 @@ const Mission = () => {
                     console.log(response)
                     const data = response.data.data;
                     data.missionType === "Q" ? setIsQuiz(true) : setIsQuiz(false);
+
                     setTitle(data.title);
                     setExplain(data.explain);
                     setVodUrl(data.vodUrl);
@@ -44,7 +45,10 @@ const Mission = () => {
     
     return (
         <div>
-            {isQuiz ? <Quiz missionId={missionId} mapNum={mapId}  missionNum={missionId} title={title} explain={explain} answer={answer} /> : <Vod missionId={missionId} mapNum={mapId} missionNum={missionId} title={title} vodUrl={vodUrl}/>}
+            {isQuiz ? 
+                <Quiz missionId={missionId} mapNum={mapId}  missionNum={missionId} title={title} explain={explain} answer={answer} /> 
+                : <Vod missionId={missionId} mapNum={mapId} missionNum={missionId} title={title} vodUrl={vodUrl}/>
+            }
             <MapBackground mapId={missionId} isMap={false} />
         </div>
     );

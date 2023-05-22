@@ -1,12 +1,14 @@
-import { React, useState, useEffect } from 'react';
+import { React, useState } from 'react';
 import './vod.css'
 import confetti from "https://esm.run/canvas-confetti@1";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 
-const Vod = ({missionId, mapNum, missionNum, title, vodUrl}) => {
+const Vod = ({ missionNum, title, vodUrl}) => {
     const [watched, setWatched] = useState(false);
+
     const navigate = useNavigate();
+    const { mapId, missionId } = useParams();
 
     const handleVideoEnded = () => {
         setWatched(true);
@@ -17,8 +19,9 @@ const Vod = ({missionId, mapNum, missionNum, title, vodUrl}) => {
             particleCount: 150,
             spread: 60,
           });
+
         saveMissionStatus();
-        navigate(`/kid/map/${missionId}`);
+        navigate(`/kid/map/${mapId}`);
     };
 
 
