@@ -10,30 +10,33 @@ const SolvedMission = () => {
     const navigate = useNavigate();
     const location = useLocation();
 
-    const isO = location.state.isO;
     const answer = location.state.answer;
     const explain = location.state.explain;
     const mapNum = location.state.mapNum;
 
-    const [isCorrect, setIsCorrect] = useState(true);
-    const [isLoading, setIsLoading] = useState(true);
-
-    useEffect(() => {
-        if ((isO === true && answer === "O") || (isO === false && answer === "X")) {
-          setIsCorrect(true);
-        } else {
-          setIsCorrect(false);
-        }
-    }, [missionId, isO, answer]);
+    const [isCorrect, setIsCorrect] = useState(0);
+    const [isLoading, setIsLoading] = useState();
     
 
     useEffect(() => {
-        const saveMissionStatus = () => {
-            axios
+        const isO = location.state.isO;
+        const answer = location.state.answer;
+        let isCorrect = 0;
+        
+        if ((isO === true && answer === "O") || (isO === false && answer === "X")) {
+            isCorrect = 1;
+        } 
+        setIsCorrect(isCorrect);
+        saveMissionStatus(isCorrect);
+    }, []);
+
+
+    const saveMissionStatus = (status) => {
+        axios
             .post("http://localhost:8080/api/v1/missions", {
                 solvedMissionId: missionId,
                 solvedUserId: 2,
-                status: (isCorrect ? 1 : 0)
+                status: status
             })
             .then((response) => {
                 console.log(response);
@@ -44,10 +47,7 @@ const SolvedMission = () => {
             .finally(() => {
                 setIsLoading(false);
             });
-        }
-        saveMissionStatus();
-    }, []);
-
+    }
     if (isLoading) {
         return <div>Loading...</div>;
     }
@@ -57,7 +57,7 @@ const SolvedMission = () => {
             particleCount: 150,
             spread: 60,
           });
-        navigate(`/kid/map/${mapNum}`);
+        return navigate(`/kid/map/${mapNum}`);
     };
 
     return (
