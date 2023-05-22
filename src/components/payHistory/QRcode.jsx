@@ -3,11 +3,12 @@ import axios from 'axios';
 
 const QRCode = ({ userId }) => {
   const [qrCodeImage, setQRCodeImage] = useState('');
+  var userId = 1; //나중에 세션으로 userId 갖고와서 넣어줘야함
 
   useEffect(() => {
     const fetchQRCodeImage = async () => {
       try {
-        const response = await axios.get(`http://localhost:8080/api/v1/debits/qr/1`, {
+        const response = await axios.get(`http://localhost:8080/api/v1/debits/qr/${userId}`, {
           responseType: 'arraybuffer',
         });
         const qrCodeImageBlob = new Blob([response.data], { type: 'image/png' });
