@@ -3,7 +3,7 @@ import './css/missionList.css'
 import { useParams, useNavigate } from 'react-router-dom';
 import MapBackground from '../components/Mission/MapBackground';
 import './css/missionList.css';
-
+import axios from 'axios';
 
 const MissionList = () => {
     const { mapId } = useParams();
@@ -15,6 +15,24 @@ const MissionList = () => {
 
     const navigate = useNavigate();
 
+    useEffect(() => {
+        const getUserMission = async() => {
+            await axios
+                .post("http://localhost:8080/api/v1/missions/map-status", {
+                    solvedUserId : 2,
+                    mapNum : mapId
+                })
+                .then((response) => {
+                    console.log(response.data.data)
+                })
+                .catch((error) => {
+                    console.log(error.response.data);
+                })
+        };
+        getUserMission();
+    }, []);
+
+ 
     /*
     true + false => 현재 풀이 가능
     true + true => 풀이 완료 
@@ -22,8 +40,6 @@ const MissionList = () => {
     */
     const [isAnswerAvailable, setIsAnswerAvailable] = useState(true);   // gray, none gray 
     const [isSolved, setIsSolved] = useState(false);   // 문제가 풀렸다면, true (체크, 논체크)
-
-    const missionNum = 3
 
     return (
         <div>
@@ -36,7 +52,7 @@ const MissionList = () => {
                     <img src={answer_img_o} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
                         onClick={() => {
                         if (isAnswerAvailable && !isSolved) {
-                            navigate(`/kid/mission/${missionNum}`)
+                            navigate(`/kid/map/${mapId}/mission/1`)
                         }
                         }} />
                 }
@@ -50,7 +66,7 @@ const MissionList = () => {
                     <img src={answer_img_o} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
                         onClick={() => {
                         if (isAnswerAvailable && !isSolved) {
-                            alert('문제풀러 가자')
+                            navigate(`/kid/map/${mapId}/mission/2`)
                         }
                         }} />
                 }
@@ -64,7 +80,7 @@ const MissionList = () => {
                     <img src={answer_img_x} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
                         onClick={() => {
                         if (isAnswerAvailable && !isSolved) {
-                            alert('문제풀러 가자')
+                            navigate(`/kid/map/${mapId}/mission/3`)
                         }
                         }} />
                 }
@@ -78,7 +94,7 @@ const MissionList = () => {
                     <img src={answer_img_x} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
                         onClick={() => {
                         if (isAnswerAvailable && !isSolved) {
-                            alert('문제풀러 가자')
+                            navigate(`/kid/map/${mapId}/mission/4`)
                         }
                         }} />
                 }
@@ -92,7 +108,7 @@ const MissionList = () => {
                     <img src={answer_img_x} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
                         onClick={() => {
                         if (isAnswerAvailable && !isSolved) {
-                            alert('문제풀러 가자')
+                            navigate(`/kid/map/${mapId}/mission/5`)
                         }
                         }} />
                 }
@@ -106,7 +122,7 @@ const MissionList = () => {
                     <img src={answer_img_o} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
                         onClick={() => {
                         if (isAnswerAvailable && !isSolved) {
-                            alert('문제풀러 가자')
+                            navigate(`/kid/map/${mapId}/mission/6`)
                         }
                         }} />
                 }
@@ -120,7 +136,7 @@ const MissionList = () => {
                     <img src={answer_img_o} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
                         onClick={() => {
                         if (isAnswerAvailable && !isSolved) {
-                            alert('문제풀러 가자')
+                            navigate(`/kid/map/${mapId}/mission/7`)
                         }
                         }} />
                 }

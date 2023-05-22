@@ -9,10 +9,11 @@ const SolvedMission = () => {
     const { missionId } = useParams();
     const navigate = useNavigate();
     const location = useLocation();
-    
+
     const isO = location.state.isO;
     const answer = location.state.answer;
     const explain = location.state.explain;
+    const mapNum = location.state.mapNum;
 
     const [isCorrect, setIsCorrect] = useState(true);
     const [isLoading, setIsLoading] = useState(true);
@@ -27,25 +28,24 @@ const SolvedMission = () => {
     
 
     useEffect(() => {
-    const saveMissionStatus = () => {
-        axios
-        .post("http://localhost:8080/api/v1/missions", {
-            solvedMissionId: missionId,
-            solvedUserId: 1,
-            status: (isCorrect ? 1 : 0)
-        })
-        .then((response) => {
-            console.log(response);
-        })
-        .catch((error) => {
-            console.log(error.response.data);
-        })
-        .finally(() => {
-            setIsLoading(false);
-        });
-    }
-
-    saveMissionStatus();
+        const saveMissionStatus = () => {
+            axios
+            .post("http://localhost:8080/api/v1/missions", {
+                solvedMissionId: missionId,
+                solvedUserId: 2,
+                status: (isCorrect ? 1 : 0)
+            })
+            .then((response) => {
+                console.log(response);
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            })
+            .finally(() => {
+                setIsLoading(false);
+            });
+        }
+        saveMissionStatus();
     }, []);
 
     if (isLoading) {
@@ -57,7 +57,7 @@ const SolvedMission = () => {
             particleCount: 150,
             spread: 60,
           });
-        navigate(`/kid/map/${missionId}`);
+        navigate(`/kid/map/${mapNum}`);
     };
 
     return (
