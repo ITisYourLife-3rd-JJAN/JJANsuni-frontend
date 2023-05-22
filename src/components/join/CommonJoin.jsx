@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
@@ -10,33 +10,45 @@ const CommonJoin = ({isParent}) => {
     const [gender, setGender] = useState("");
     const [birthday, setBirthday] = useState("");
     const [famCode, setFamCode] = useState("");
-    //const [generateFamCode, setGenerateFamCode] = useState("");
+    // const [userpwCheck, setUserpwCheck] = useState("");
     const role = isParent ? "T" : "F";
     const navigate = useNavigate();
-    
+
+    const [passwordCheck, setPasswordCheck] = useState('');
+    const [passwordMatch, setPasswordMatch] = useState(true);
+  
+    // 비밀번호 확인 로직 추가
+    useEffect(() => {
+      setPasswordMatch(password === passwordCheck);
+    }, [passwordCheck]);
+
     const registerAxios = () => {
-        axios
-            .post("http://localhost:8080/api/v1/users/join", {
-                name : username,
-                email : email,
-                password : password,
-                phoneNum : phoneNum,
-                gender : gender,
-                birthday : birthday,
-                famCode : famCode,
-                isParent : role
+        if (passwordMatch) {
+          axios
+            .post('http://localhost:8080/api/v1/users/join', {
+              name: username,
+              email: email,
+              password: password,
+              phoneNum: phoneNum,
+              gender: gender,
+              birthday: birthday,
+              famCode: famCode,
+              isParent: role
             })
             .then((response) => {
-                console.log(response);
-                alert("회원가입에 성공했어요✨")
-                if(response.status === 200){
-                    return navigate("/login");
-                } 
+              console.log(response);
+              alert('회원가입에 성공했어요✨');
+              if (response.status === 200) {
+                return navigate('/login');
+              }
             })
             .catch((error) => {
-                console.log(error);
-            })
-    }
+              console.log(error);
+            });
+        } else {
+          alert('비밀번호가 일치하지 않습니다.');
+        }
+      };
 
     const emailExistAxios = () => {
         axios
@@ -108,11 +120,19 @@ const CommonJoin = ({isParent}) => {
                         required></input>
                 </div>
 
-                <div className='input-box'> 
-                    <label for="userpwCheck">비밀번호 확인</label>
-                    <input type="password" id="userpwCheck" className='joinipt joinpw' required></input>
+                <div className='input-box'>
+                    <label htmlFor='userpwCheck'>비밀번호 확인</label>
+                    <input
+                    type='password'
+                    id='userpwCheck'
+                    className='joinipt joinpw'
+                    value={passwordCheck}
+                    onChange={(e) => setPasswordCheck(e.target.value)}
+                    required
+                    />
                 </div>
-
+                {!passwordMatch && <p id='passwordCheck-Text'>비밀번호가 일치하지 않습니다.</p>}
+           
                 <div className='input-box'> 
                     <label for="phoneNumber">전화번호</label>
                     <input type="tel" id="phoneNumber" 
