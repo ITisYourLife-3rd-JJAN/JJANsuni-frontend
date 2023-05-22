@@ -1,7 +1,33 @@
-import React from 'react';
 import '../pages/css/login.css'
+import {React, useState} from 'react';
+import { useNavigate } from 'react-router-dom';
+import axios from "axios";
 
 const Login = () => {
+
+    const [email, setEmail] = useState("");
+    const [password, setPassword] = useState("");
+    const navigate = useNavigate();
+
+    const loginAxios = () => {
+        axios
+        .post("http://localhost:8080/api/v1/users/login", {
+            email : email,
+            password : password
+        })
+        .then((response) => {
+            console.log(response);
+            const isParent = response.data.isParent;
+                alert("로그인에 성공했어요✨")
+                    if(response.status === 200 && isParent ==="T"){
+                    return navigate("/parent");
+                } return navigate("/kid");
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            })
+    }
+    
     return (
         <div className='login'>
             <div className = "loginSub">
@@ -18,14 +44,18 @@ const Login = () => {
                     <form action="#" method="post">
                         <div>
                             <label for="email">이메일</label><br/><br/>
-                            <input className='loginipt' type="email" id="email" required />
+                            <input className='loginipt' type="email" id="email" value={email} 
+                                onChange={(e) => {
+                                    setEmail(e.target.value); }} required />
                         </div>
                         <div>
                             <label for="userpw">비밀번호</label><br/><br/>
-                            <input className='loginipt loginpw' type="password" id="userpw" required />
+                            <input className='loginipt loginpw' type="password" id="userpw" value={password}
+                        onChange={(e) => {
+                            setPassword(e.target.value); }} required />
                         </div>
                       
-                        <button id="btn2">로그인</button>
+                        <button id="btn2"  onClick={loginAxios}>로그인</button>
                         
                     </form>
                 </div>
