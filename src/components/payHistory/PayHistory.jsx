@@ -8,7 +8,6 @@ const CardHistory = ({isCreated}) => {
             {isCreated &&
             <div className='qrdiv'>
                 <QRCode/>
-                {/* <img style={{width: '90%'}} src={`${process.env.PUBLIC_URL}/assets/images/qr.webp`} alt="" /> */}
             </div>}
             <table className='payTable'>
                 <tr>
