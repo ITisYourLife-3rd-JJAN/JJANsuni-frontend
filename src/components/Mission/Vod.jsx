@@ -17,25 +17,26 @@ const Vod = ({missionId, mapNum, missionNum, title, vodUrl}) => {
             particleCount: 150,
             spread: 60,
           });
+        saveMissionStatus();
         navigate(`/kid/map/${missionId}`);
     };
 
-    useEffect(() => {
-        const saveMissionStatus = () => {
-            axios
-            .post("http://localhost:8080/api/v1/missions", {
-                solvedMissionId: missionId,
-                solvedUserId: 1,
-            })
-            .then((response) => {
-                console.log(response);
-            })
-            .catch((error) => {
-                console.log(error.response.data);
-            })
-        }
-        saveMissionStatus();
-    }, [])
+
+    const saveMissionStatus = () => {
+        axios
+        .post("http://localhost:8080/api/v1/missions", {
+            solvedMissionId: missionId,
+            solvedUserId: 1,
+        })
+        .then((response) => {
+            console.log(response);
+        })
+        .catch((error) => {
+            console.log(error.response.data);
+        })
+    }
+   
+    
 
     return (
         <div className='quiz-container'>
