@@ -220,6 +220,7 @@ label {
     border: #0982f0 1px solid;
     border-radius: 20px;
     margin-top: 0.5rem;
+    height: 1.2rem;
 }
 
 #famCode-btn{
@@ -227,7 +228,6 @@ label {
     color: #2D86E0;
     padding: 0.2rem 0.7rem;
     border-radius: 20px;
-
 }
 
 .input-box.code {

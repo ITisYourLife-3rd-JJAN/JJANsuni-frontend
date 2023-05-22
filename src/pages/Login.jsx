@@ -1,6 +1,6 @@
 import '../pages/css/login.css'
 import {React, useState} from 'react';
-import { useNavigate } from 'react-router-dom';
+import {useNavigate} from 'react-router-dom';
 import axios from "axios";
 
 const Login = () => {
@@ -10,22 +10,28 @@ const Login = () => {
     const navigate = useNavigate();
 
     const loginAxios = () => {
+        // console.log("========", email);
+        // console.log("========", password);
         axios
-        .post("http://localhost:8080/api/v1/users/login", {
-            email : email,
-            password : password
-        })
-        .then((response) => {
-            console.log(response);
-            const isParent = response.data.isParent;
+            .post("http://localhost:8080/api/v1/users/login",{
+                email : email,
+                password : password
+            })
+            .then((response) => {
+                console.log(response);
+                const isParent = response.data.data.isParent;
+                console.log(response.data)
                 alert("로그인에 성공했어요✨")
-                    if(response.status === 200 && isParent ==="T"){
+                if(response.status === 200 && isParent ==="T"){
                     return navigate("/parent");
                 } return navigate("/kid");
             })
             .catch((error) => {
                 console.log(error.response.data);
             })
+            .finally((res) => {
+                console.log(res)
+            } )
     }
     
     return (
@@ -41,23 +47,25 @@ const Login = () => {
                 </div>
 
                 <div className="loginInput">
-                    <form action="#" method="post">
+                    
                         <div>
                             <label for="email">이메일</label><br/><br/>
-                            <input className='loginipt' type="email" id="email" value={email} 
+                            <input className='loginipt' type="email" id="email" 
+                                value={email} 
                                 onChange={(e) => {
                                     setEmail(e.target.value); }} required />
                         </div>
                         <div>
                             <label for="userpw">비밀번호</label><br/><br/>
-                            <input className='loginipt loginpw' type="password" id="userpw" value={password}
-                        onChange={(e) => {
-                            setPassword(e.target.value); }} required />
+                            <input className='loginipt loginpw' type="password" id="userpw" 
+                                value={password}
+                                onChange={(e) => {
+                                    setPassword(e.target.value); }} required />
                         </div>
                       
                         <button id="btn2"  onClick={loginAxios}>로그인</button>
                         
-                    </form>
+         
                 </div>
 
               

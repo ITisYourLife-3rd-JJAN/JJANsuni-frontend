@@ -8,8 +8,9 @@ const CommonJoin = ({isParent}) => {
     const [password, setPassword] = useState("");
     const [phoneNum, setPhoneNum] = useState("");
     const [gender, setGender] = useState("");
-    const [birthday, setBirthday] = useState("20001208");
-    const [famCode, setFamCode] = useState("귀여운도깨비");
+    const [birthday, setBirthday] = useState("");
+    const [famCode, setFamCode] = useState("");
+    //const [generateFamCode, setGenerateFamCode] = useState("");
     const role = isParent ? "T" : "F";
     const navigate = useNavigate();
     
@@ -30,6 +31,42 @@ const CommonJoin = ({isParent}) => {
                 alert("회원가입에 성공했어요✨")
                 if(response.status === 200){
                     return navigate("/login");
+                } 
+            })
+            .catch((error) => {
+                console.log(error);
+            })
+    }
+
+    const emailExistAxios = () => {
+        axios
+            .post("http://localhost:8080/api/v1/users/email-check", {
+                email : email
+            })
+            .then((response) => {
+                console.log(response);
+                console.log(response.data);
+                if(response.status === 200){
+                    alert("사용 가능한 email이에요✨")
+                }
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+                alert("이미 존재하는 email이에요😥")
+            })
+    }
+    
+    const generateFamilyCodeAxios = () => {
+        axios
+            .get("http://localhost:8080/api/v1/users/family-code"
+
+            )
+            .then((response) => {
+                console.log(response);
+                //console.log(response.data);
+                if(response.status === 200){
+                    setFamCode(response.data.item.famCode);
+                    alert("가족코드가 생성되었어요.✨")
                 }
             })
             .catch((error) => {
@@ -58,7 +95,7 @@ const CommonJoin = ({isParent}) => {
                                 onChange={(e) => {
                                     setEmail(e.target.value); }} 
                                 required />
-                        <button id="existBtn">중복확인</button>
+                        <button id="existBtn" onClick={emailExistAxios}>중복확인</button>
                     </div>
                 </div>
         
@@ -229,13 +266,13 @@ const CommonJoin = ({isParent}) => {
             </div>
             {isParent ?
                <div className='input-box code'> 
-                    <label for="familyCode" id='famCode-btn'>가족코드 생성하기</label>
-                    <p id="familyCode"> sample </p>   
+                    <label for="familyCode" id='famCode-btn' onClick={generateFamilyCodeAxios}>가족코드 생성하기</label>
+                    <p id="familyCode"> {famCode} </p>   
                 </div>          
             : 
             <div className='input-box'> 
                 <label for="familyCodeInput" >가족코드 입력</label>
-                <input type="text" id="familyCodeInput" className='joinipt'  required></input>
+                <input type="text" id="familyCodeInput" className='joinipt' required></input>
             </div> 
             }
             
