@@ -111,18 +111,28 @@ label {
     font-size: 1.3rem;
 }
 
-#joinBtn {
-    width: 20vw;
+.joinBtn {
+    width: 22vw;
     height: 75px;
     background-color: #2D86E0;
     color: white;
-    border-radius: 5px;
-    border: #2D86E0 solid 10px;
-    /* margin-top: 5vh; */
-    font-weight: 700;
+    border-radius: 15px;
+    font-weight: 500;
     font-size: 2rem;
     text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: none;
 }
+
+.joinBtn.btn-disabled {
+    background-color: gray;
+    cursor: default;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    border: #000000 solid 5px;
+}
+
+
 .selectRoleBox{
     display: flex;
     height: 4rem;
@@ -249,9 +259,6 @@ label {
     font-family:'Malgun gothic';
 }
 
-#joinBtn{
-    cursor: pointer;
-}
 
 .join-wrap{
     height: 90%;
