@@ -7,7 +7,7 @@ const DebitForm = () => {
     const [price, setPrice] = useState("");
     const [dealMsg, setDealMsg] = useState("");
     const navigate = useNavigate();
-    const balance = 1000;
+    const balance = 2000;
     
     const handleGoBack = () => {
         navigate(-1);
@@ -15,15 +15,21 @@ const DebitForm = () => {
 
     const registerDebit = () => {
         if (price <= 0 || price > 1000000) {
-            alert('이체할 금액을 확인해주세요.(1~100만원까지 가능)');
+            alert('이체할 금액을 확인해주세요.(1~100만원까지 가능)🤨');
+            setPrice("");
+            return;
+          }
+          if (price > balance) {
+            alert('잔액이 부족합니다🥺');
             setPrice("");
             return;
           }
         if (dealMsg.length > 10){
-            alert('이체 메세지는 10자를 넘길 수 없습니다.');
+            alert('이체 메세지는 10자를 넘길 수 없습니다.😥');
             setDealMsg("");
             return;
         }
+
         axios
             .post('http://localhost:8080/api/v1/debits',{
                 sendUserId: 1,
@@ -34,9 +40,8 @@ const DebitForm = () => {
             .then((response)=>{
                 console.log(response);
                 alert('이체가 완료됐어요💵');
-                // if(response.status === 201){
-                //     return navigate ("송금자 마이페이지");
-                // }
+                setPrice("");
+                setDealMsg("");
             })
             .catch((error) => {
                 console.log(error)
@@ -61,17 +66,19 @@ const DebitForm = () => {
                 </div>
                 <div className='pricebox'>
                     <div className='bigtext'>얼마를 보낼까요?</div>
-                    <input className='debitipt' type="number" value={price}
+                    <input style={{textAlign:"center"}} placeholder='100만원까지가능' className='debitipt' type="number" value={price}
                     onChange={(e) => {
                         setPrice(e.target.value);
                     }} required/>
                     <div className='bigtext' style={{marginRight: "4rem"}}>원</div>
                     <div className='bigtext' style={{color:"#AAA"}}>
-                    {price > balance ? (
-                        <span style={{ color: "red" }}>잔액이 부족합니다</span>
-                    ) : price >= 1000000 ? (
+                    {price > 1000000 ? (
                         <span style={{ color: "red" }}>100만원 넘는 금액은 송금할 수 없습니다</span>
-                    ) : (
+                    ) : price > balance ? (
+                        <span style={{ color: "red" }}>잔액이 부족합니다</span>
+                    ) : price < 0 ? (
+                        <span style={{ color: "red" }}>금액을 확인해주세요</span>
+                      ) : (
                         <>
                         {price >= 10000
                             ? parseInt(price / 10000).toLocaleString() + "만 "
@@ -83,7 +90,7 @@ const DebitForm = () => {
                 </div>
                 <div className='dbtmsgbox'>
                     <div>"</div>
-                    <input placeholder='이체 메세지(최대 10자)' className='dbtmsg' type="text" value ={dealMsg}
+                    <input style={{textAlign:"center"}} placeholder='이체 메세지(최대 10자)' className='dbtmsg' type="text" value ={dealMsg}
                     onChange={(e) => {
                         setDealMsg(e.target.value);
                     }}/>
