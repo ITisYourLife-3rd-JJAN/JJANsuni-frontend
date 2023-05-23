@@ -2,7 +2,7 @@ import React from 'react';
 import './myBigCard.css';
 
 const MyBigCard = ({isParent}) => {
-    console.log(isParent, "=======")
+
     const containerStyle = {
         backgroundColor: isParent ? '#FCFF5C' : '#CDFF5C'
     };
@@ -31,6 +31,13 @@ const MyBigCard = ({isParent}) => {
             <div className='my-edit-box'>
                 <p>탈퇴하기</p>
                 <p>회원정보수정</p>
+                {!isParent ? (
+                    <></>
+                ) : (
+                    <>
+                        <p>짠페이 충전하기</p>
+                    </>
+                )}
             </div>
         </div>
     );
