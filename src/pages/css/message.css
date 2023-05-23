@@ -32,19 +32,33 @@
     width: 30%;
     height: 100%;
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 24px;
+    cursor: pointer;
+}
+.msgbtnin:hover{
+    cursor: pointer;
+}
+
+.msgbtnin.btn-disabled {
+    background-color: gray;
+    cursor: default;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    border: 3px solid #000000;
 }
 
 .msgtitle{
-    font-size: 30px;
-    font-weight: 600;
+    font-size: 3rem;
+    font-weight: 550;
 }
+
 .msgkid{
-    margin: 5rem;
+    margin: 1rem 0 2rem 6rem;
     font-size: 30px;
-    font-weight: 600;
+    font-weight: 400;
+    padding: 0.3rem;
 }
+
 .msgipt{
     margin-bottom: 5rem;
     width: 80%;
