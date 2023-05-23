@@ -1,29 +1,68 @@
-import React, { useState } from 'react';
-import './eventForm.css';
-
-
+import React, { useState } from "react";
+import axios from "axios";
+import "./eventForm.css";
 
 const EventForm = () => {
+  const [selectedActivity, setSelectedActivity] = useState("");
+  const [selectedSubject, setSelectedSubject] = useState("");
+  const [selectedRoutine, setSelectedRoutine] = useState("");
+  const [selectedWhere, setSelectedWhere] = useState("");
+  const [selectedAmount, setSelectedAmount] = useState("");
+  const [apiResponse, setApiResponse] = useState("");
+  const [loading, setLoading] = useState(false);
+  const [prompt, setPrompt] = useState("");
 
-    const [selectedActivity, setSelectedActivity] = useState('');
-    const [selectedSubject, setSelectedSubject] = useState('');
-    const [selectedRoutine, setSelectedRoutine] = useState('');
-    const [selectedWhere, setSelectedWhere] = useState('');
 
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
 
-    const handleSubmit = (event) => {
-        event.preventDefault();
+    const saving = document.querySelector(
+      'input[name="saving"]:checked'
+    ).value;
+    const patience = document.querySelector(
+      'input[name="patience"]:checked'
+    ).value;
+    const sociability = document.querySelector(
+      'input[name="sociability"]:checked'
+    ).value;
 
-        // const message = `선택한 값들:\n
-        //             ${event.target.saving.value}\n
-        //             ${event.target.patience.value}\n
-        //             ${event.target.sociability.value}\n
-        //             ${selectedSubject}\n
-        //             ${selectedActivity}`;
-        alert("제출완료");
-        // form 데이터를 서버에 전송하거나 다른 처리를 수행합니다.
+    const requestPrompt = `번호를 매겨서 알려줘
+      ${saving}
+      ${patience}
+      ${sociability}
+      학교에서 ${selectedSubject}시간을 좋아해
+      ${selectedActivity} 하는 것을 좋아해
+      ${selectedRoutine} ${selectedWhere} ${selectedAmount}원 소비하는데
+      어떤 방식으로 투자나 저축을 하면 좋을까?`;
+      alert(requestPrompt);
+
+    try {
+      const response = await axios.post(
+        "https://api.openai.com/v1/engines/text-davinci-003/completions",
+        {
+          prompt: requestPrompt,
+          temperature: 0.5,
+          max_tokens: 3000,
+        },
+        {
+          headers: {
+            Authorization: `Bearer ${process.env.REACT_APP_OPENAI_API_KEY}`,
+            "Content-Type": "application/json",
+          },
+        }
+      );
+      setApiResponse(response.data.choices[0].text);
+    } catch (e) {
+      console.error(e);
+      setApiResponse("Something is going wrong. Please try again.");
+    } finally {
+      setLoading(false);
     }
+  };
+    
     return (
+        <>
         <div className='eventForm'>
             <div className='formBox'>            
             <form>
@@ -62,7 +101,7 @@ const EventForm = () => {
                     <select
                         id="subject-select"
                         value={selectedSubject}
-                        onChange={(event) => setSelectedSubject(event.target.value)}
+                        onChange={(e) => setSelectedSubject(e.target.value)}
                         >
                         <option value="국어">국어</option>
                         <option value="영어">영어</option>
@@ -80,12 +119,12 @@ const EventForm = () => {
                     id="activity-select"
                     name="activity"
                     value={selectedActivity}
-                    onChange={(event) => setSelectedActivity(event.target.value)}
+                    onChange={(e) => setSelectedActivity(e.target.value)}
                     >
                     <option value="독서">독서</option>
                     <option value="게임">게임</option>
-                    <option value="산">산</option>
-                    <option value="계곡">계곡</option>
+                    <option value="산">등산</option>
+                    <option value="계곡">물놀이</option>
                     </select>
                 </div>
                 <div className="question">
@@ -93,7 +132,7 @@ const EventForm = () => {
                     <select
                     id="routine-select"
                     value={selectedRoutine}
-                    onChange={(event) => setSelectedRoutine(event.target.value)}
+                    onChange={(e) => setSelectedRoutine(e.target.value)}
                     >
                     <option value="나는 매일">일</option>
                     <option value="나는 매주">주</option>
@@ -103,14 +142,15 @@ const EventForm = () => {
                     <select
                     id="where-select"
                     value={selectedWhere}
-                    onChange={(event) => setSelectedWhere(event.target.value)}
+                    onChange={(e) => setSelectedWhere(e.target.value)}
                     >
                     <option value=" 게임에">게임</option>
                     <option value=" 교통비에">교통비</option>
                     <option value=" 덕질에">덕질</option>
                     </select>
                     &nbsp;에<br/>
-                    <input type="number" id="howmuch" placeholder="숫자만 입력하세요"/>원
+                    <input type="number" id="howmuch" placeholder="숫자만 입력하세요"value={selectedAmount}
+                    onChange={(e) => setSelectedAmount(e.target.value)}/>원
                     쓰는데 나는 무슨 성향이야??
                 </div>
             </form>
@@ -119,8 +159,21 @@ const EventForm = () => {
             <div className="submitBtn" onClick={handleSubmit}>
         <img src={`${process.env.PUBLIC_URL}/assets/images/event/letsgo.png`} alt='' className="letsgo"  style={{zIndex:100}}/>
         <img src={`${process.env.PUBLIC_URL}/assets/images/event/piggy.png`} alt='' className="letsgo"/></div>
-        </div>
-    );
+        {/* API 응답 */}
+      {loading ? (
+        <div>Loading...</div>
+      ) : (
+        apiResponse && (
+          <div>
+            <pre>
+              <strong>API response:</strong>
+              {apiResponse}
+            </pre>
+          </div>
+        )
+      )}
+    </div>
+    </>
+  );
 };
-
 export default EventForm;
