@@ -11,6 +11,7 @@ const DebitBanner = (props) => {
     const [childData, setChildData] = useState([]);
     const [kidOptions, setKidOptions] = useState([]);
 
+
     const menuoptions = [
         { value: '이체 내역', label: <Link to="/debit-history" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 내역</div></Link> },
         { value: '이체 하기', label: <Link to="/debit" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 하기</div></Link> },
@@ -30,13 +31,16 @@ const DebitBanner = (props) => {
                     setChildData(filterData.map(child => ({
                         ...child,
                     })))
-                    console.log(data)
-                    console.log(filterData.name)
+                    // console.log(data)
+                    // console.log(filterData.name)
                     const updateKidOptions = filterData.map(child => ({
                         value: child.userId,
                         label: child.name
                     }))
+
                     setKidOptions(updateKidOptions)
+                    console.log(updateKidOptions)
+                    console.log(childData)
                 })
         }
         getChildAxios()
@@ -94,12 +98,13 @@ const DebitBanner = (props) => {
                           primary25: '#E5FAFC',
                           primary: '#F4C4D2',
                         },
-                      })} />
+                      })} 
+                    />
                 </div>
             </div>
         );
     }
-    
+
 };
 
 export default DebitBanner;

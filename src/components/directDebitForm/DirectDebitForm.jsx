@@ -125,8 +125,9 @@ const DebitForm = () => {
                         />
                     </div>
                     <div className='dditiptbox'>
+                    {debitCycle !== 1 && (
                             <Select
-                            hideSelectedOptions={true}
+                            // hideSelectedOptions={true}
                             styles={{               
                                 control: (baseStyles, state) => ({
                                     ...baseStyles,
@@ -144,6 +145,7 @@ const DebitForm = () => {
                                 console.log(e.value)
                             }}
                             />
+                    )}
 
                         <div className='ddittext'>마다 이체합니다.</div>
                     </div>
