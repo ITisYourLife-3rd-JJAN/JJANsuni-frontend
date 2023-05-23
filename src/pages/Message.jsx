@@ -1,7 +1,7 @@
-import React from 'react';
+import { React, useEffect } from 'react';
 import '../pages/css/message.css'
 import { useNavigate } from 'react-router';
-
+import axios from 'axios';
 
 const Message = () => {
     const navigate = useNavigate();
@@ -9,6 +9,24 @@ const Message = () => {
     const handleGoBack = () => {
         navigate(-1);
     };
+
+    useEffect(() => {
+        const getChildrens = () => {
+            axios
+                .get(`http://localhost:8080/api/v1/users/family-List/1`)
+                .then((response) => {
+                    console.log(response.data.data)
+                    const children = response.data.data.filter((child) => child.isParent === "F");
+                    console.log(children);
+                    
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        };
+    
+        getChildrens();
+      }, []);
 
     return (
         <div className='msgmain'>
