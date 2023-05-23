@@ -26,9 +26,9 @@
 .my-edit-box { 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    gap: 5rem;
+    gap: 2rem;
     margin-left: 4rem;
 }
 
@@ -36,9 +36,10 @@
     font-size: .8rem;
     margin: 0;
     color: #bababa;
+    cursor: pointer;
 }
 
 .my-edit-box p:hover{
-    text-decoration: underline;
     cursor: pointer;
+    text-decoration: underline;
 }
