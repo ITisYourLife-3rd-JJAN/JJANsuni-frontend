@@ -49,3 +49,37 @@
     outline:none;
 }
 
+.sendbtn{
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    height: 10%;
+}
+
+.sendbtnin{
+    border: 3px solid #2D86E0;
+    background-color: #FCFF5C;
+    border-radius: 30px;display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 20%;
+    height: 100%;
+    color: #000;
+    font-weight: 600;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.dbtmsg{
+    width: 50%;
+    border: none;
+    border-bottom: 3px solid #000;
+    font-size: 26px;
+    font-weight: 700;
+}
+
+.dbtmsgbox{
+    font-size: 26px;
+    font-weight: 700;
+    display: flex;
+}
