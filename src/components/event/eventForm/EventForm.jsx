@@ -10,7 +10,6 @@ const EventForm = () => {
   const [selectedAmount, setSelectedAmount] = useState("");
   const [apiResponse, setApiResponse] = useState("");
   const [loading, setLoading] = useState(false);
-  const [prompt, setPrompt] = useState("");
 
 
   const handleSubmit = async (e) => {
@@ -35,9 +34,9 @@ const EventForm = () => {
       ${selectedActivity} 하는 것을 좋아해
       ${selectedRoutine} ${selectedWhere} ${selectedAmount}원 소비하는데
       어떤 방식으로 투자나 저축을 하면 좋을까?`;
-      alert(requestPrompt);
 
     try {
+        setLoading(true);
       const response = await axios.post(
         "https://api.openai.com/v1/engines/text-davinci-003/completions",
         {
@@ -56,9 +55,8 @@ const EventForm = () => {
     } catch (e) {
       console.error(e);
       setApiResponse("Something is going wrong. Please try again.");
-    } finally {
-      setLoading(false);
     }
+    setLoading(false);
   };
     
     return (
@@ -166,7 +164,7 @@ const EventForm = () => {
         apiResponse && (
           <div>
             <pre>
-              <strong>API response:</strong>
+              <strong>ChatGPT의 답변</strong><br/>
               {apiResponse}
             </pre>
           </div>
