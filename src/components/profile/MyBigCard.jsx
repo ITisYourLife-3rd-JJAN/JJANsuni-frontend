@@ -1,4 +1,4 @@
-import React from 'react';
+import {React, useState} from 'react';
 import './myBigCard.css';
 
 const MyBigCard = ({isParent}) => {
@@ -7,10 +7,23 @@ const MyBigCard = ({isParent}) => {
         backgroundColor: isParent ? '#FCFF5C' : '#CDFF5C'
     };
 
+    const [isGirl, setIsGirl] = useState(true);
+    let imgSrc = '';
+
+    if (isParent === true && isGirl === true) {
+        imgSrc = `${process.env.PUBLIC_URL}/assets/images/mammy.png`;
+    } else if (isParent !== true && isGirl === true) {
+        imgSrc = `${process.env.PUBLIC_URL}/assets/images/girl.png`;
+    } else if (isParent === true && isGirl !== true) {
+        imgSrc = `${process.env.PUBLIC_URL}/assets/images/daddy.png`;
+    } else {
+        imgSrc = `${process.env.PUBLIC_URL}/assets/images/boy.png`;
+    }
+
     return (
         <div className='my-profile-card-container' style={containerStyle}>
             <img
-                src={`${process.env.PUBLIC_URL}/assets/images/suni.png`}
+                src={`${imgSrc}`}
                 alt=''
                 className='me-profile' />
             <div className='my-info-box'>
