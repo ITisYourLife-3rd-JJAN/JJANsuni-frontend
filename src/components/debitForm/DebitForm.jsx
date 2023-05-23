@@ -7,7 +7,8 @@ const DebitForm = () => {
     const [price, setPrice] = useState("");
     const [dealMsg, setDealMsg] = useState("");
     const navigate = useNavigate();
-
+    const balance = 1000;
+    
     const handleGoBack = () => {
         navigate(-1);
     };
@@ -66,9 +67,19 @@ const DebitForm = () => {
                     }} required/>
                     <div className='bigtext' style={{marginRight: "4rem"}}>원</div>
                     <div className='bigtext' style={{color:"#AAA"}}>
-                        {price >= 10000 ? (parseInt(price / 10000).toLocaleString() + '만 ') : ''}
+                    {price > balance ? (
+                        <span style={{ color: "red" }}>잔액이 부족합니다</span>
+                    ) : price >= 1000000 ? (
+                        <span style={{ color: "red" }}>100만원 넘는 금액은 송금할 수 없습니다</span>
+                    ) : (
+                        <>
+                        {price >= 10000
+                            ? parseInt(price / 10000).toLocaleString() + "만 "
+                            : ""}
                         {(price % 10000).toLocaleString()}원
-  </div>
+                        </>
+                    )}
+                    </div>
                 </div>
                 <div className='dbtmsgbox'>
                     <div>"</div>
