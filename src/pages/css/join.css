@@ -288,3 +288,22 @@ label {
 #passwordCheck-Text{
     color : red;
 }
+
+.famCode-box{
+    display: flex;
+}
+#famCodeExist-btn{
+    width: 7.5rem;
+    height: 1.7rem;
+    background-color: transparent;
+    color: #2D86E0;
+    border: 0;
+    text-align: center;
+    font-size: 1rem;
+    border-radius: 20px;
+    margin-top: 0.5rem;
+    cursor: pointer;
+}
+#famCodeExist-btn:hover {
+    background-color: #94bde6;
+}
