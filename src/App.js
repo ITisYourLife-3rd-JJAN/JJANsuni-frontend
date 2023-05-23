@@ -36,7 +36,7 @@ function App() {
               <Route path="/parent" element={<ParentMain/> }/>  
               <Route path="/kid/map" element={<Map/>} />
               <Route path="/kid/map/:mapId" element={<MissionList/>} />
-              <Route path="/kid/mission/:missionId" element={<Mission/>} />
+              <Route path="/kid/map/:mapId/mission/:missionId" element={<Mission/>} />
               <Route path="/kid/solution/:missionId" element={<SolvedMission/>} />
               <Route path="/debit-history" element={<DebitHistory/> }/>  
               <Route path="/card" element={<ParentCard/> }/> 

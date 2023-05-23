@@ -3,132 +3,88 @@ import './css/missionList.css'
 import { useParams, useNavigate } from 'react-router-dom';
 import MapBackground from '../components/Mission/MapBackground';
 import './css/missionList.css';
+import axios from 'axios';
 
 
 const MissionList = () => {
     const { mapId } = useParams();
-    const variable_o = 'o';
-    const variable_x = 'x';
-    const answer_img_o= `${process.env.PUBLIC_URL}/assets/images/map/${variable_o}_answer.png`;
-    const answer_img_x= `${process.env.PUBLIC_URL}/assets/images/map/${variable_x}_answer.png`;
+
+    const answer_img_o = `${process.env.PUBLIC_URL}/assets/images/map/o_answer.png`;
+    const answer_img_x = `${process.env.PUBLIC_URL}/assets/images/map/x_answer.png`;
     const island_img = `${process.env.PUBLIC_URL}/assets/images/map/island${mapId}.png`;
+  
+    const [missionData, setMissionData] = useState([]);
+    const [isAnswerAvailable, setIsAnswerAvailable] = useState(true); 
+    const [isSolved, setIsSolved] = useState(false); 
 
     const navigate = useNavigate();
+    
+    useEffect(() => {
+        const getUserMission = async () => {
+          try {
+            const response = await axios.post("http://localhost:8080/api/v1/missions/map-status", {
+              solvedUserId: 2,
+              mapNum: mapId
+            });
+            setMissionData(response.data.data);
+          } catch (error) {
+            console.log(error.response.data);
+          }
+        };
+        getUserMission();
+      }, []);
+      
+      useEffect(() => {
+        const isMissionNumExist = missionData.some(mission => mission.missionNum !== undefined);
+        setIsSolved(isMissionNumExist);
+      }, [missionData]);
 
-    /*
-    true + false => 현재 풀이 가능
-    true + true => 풀이 완료 
-    false + false => 아직 안푼 문제 (풀이 불가)
-    */
-    const [isAnswerAvailable, setIsAnswerAvailable] = useState(true);   // gray, none gray 
-    const [isSolved, setIsSolved] = useState(false);   // 문제가 풀렸다면, true (체크, 논체크)
-
-    const missionNum = 3
 
     return (
         <div>
             <MapBackground mapId={mapId} isMap={true}/>
-                
-            <div className='map-box absol1'>
-                {isSolved ?
-                    <img src={answer_img_o} alt='' className='answer-img show' />
-                    :
-                    <img src={answer_img_o} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
+
+            {Array.from({ length: 7 }, (_, index) => (
+                <div key={index + 1} className={`map-box absol${index + 1}`}>
+                    {index < missionData.length ? (
+                    <>
+                        {missionData[index].status === 1 ? (
+                            <img src={answer_img_o} alt='' className='answer-img show' />
+                            ) : (
+                            <img
+                                src={answer_img_x}
+                                alt=''
+                                className='answer-img show'
+                                onClick={() => {
+                                    if (isAnswerAvailable && !isSolved) {
+                                        navigate(`/kid/map/${mapId}/mission/${index + 1}`);
+                                    }
+                                }}/>
+                        )}
+                        <img
+                            src={island_img}
+                            alt=''
+                            className={`map map-image-${index + 1} ${isAnswerAvailable ? '' : 'gray'}`} />
+                    </>
+                    ) : index === missionData.length ? (
+                    <img
+                        src={island_img}
+                        alt=''
+                        className='map map-image-1 pointer'
                         onClick={() => {
-                        if (isAnswerAvailable && !isSolved) {
-                            navigate(`/kid/mission/${missionNum}`)
-                        }
+                        navigate(`/kid/map/${mapId}/mission/${index + 1}`);
                         }} />
-                }
-                <img src={island_img} alt='' className={`map map-image-1 ${isAnswerAvailable ? '' : 'gray'}`} />
-            </div>
-
-            <div className='map-box absol2'>
-                {isSolved ?
-                    <img src={answer_img_o} alt='' className='answer-img show' />
-                    :
-                    <img src={answer_img_o} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
-                        onClick={() => {
-                        if (isAnswerAvailable && !isSolved) {
-                            alert('문제풀러 가자')
-                        }
-                        }} />
-                }
-                <img src={island_img} alt='' className={`map map-image-1 ${isAnswerAvailable ? '' : 'gray'}`} />
-            </div>
-
-            <div className='map-box absol3'>
-                {isSolved ?
-                    <img src={answer_img_x} alt='' className='answer-img show' />
-                    :
-                    <img src={answer_img_x} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
-                        onClick={() => {
-                        if (isAnswerAvailable && !isSolved) {
-                            alert('문제풀러 가자')
-                        }
-                        }} />
-                }
-                <img src={island_img} alt='' className={`map map-image-1 ${isAnswerAvailable ? '' : 'gray'}`} />
-            </div>
-
-            <div className='map-box absol4'>
-                {isSolved ?
-                    <img src={answer_img_x} alt='' className='answer-img show' />
-                    :
-                    <img src={answer_img_x} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
-                        onClick={() => {
-                        if (isAnswerAvailable && !isSolved) {
-                            alert('문제풀러 가자')
-                        }
-                        }} />
-                }
-                <img src={island_img} alt='' className={`map map-image-1 ${isAnswerAvailable ? '' : 'gray'}`} />
-            </div>
-
-            <div className='map-box absol5'>
-                {isSolved ?
-                    <img src={answer_img_x} alt='' className='answer-img show' />
-                    :
-                    <img src={answer_img_x} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
-                        onClick={() => {
-                        if (isAnswerAvailable && !isSolved) {
-                            alert('문제풀러 가자')
-                        }
-                        }} />
-                }
-                <img src={island_img} alt='' className={`map map-image-1 ${isAnswerAvailable ? '' : 'gray'}`} />
-            </div>
-
-            <div className='map-box absol6'>
-                {isSolved ?
-                    <img src={answer_img_o} alt='' className='answer-img show' />
-                    :
-                    <img src={answer_img_o} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
-                        onClick={() => {
-                        if (isAnswerAvailable && !isSolved) {
-                            alert('문제풀러 가자')
-                        }
-                        }} />
-                }
-                <img src={island_img} alt='' className={`map map-image-1 ${isAnswerAvailable ? '' : 'gray'}`} />
-            </div>
-
-            <div className='map-box absol7'>
-                {isSolved ?
-                    <img src={answer_img_o} alt='' className='answer-img show' />
-                    :
-                    <img src={answer_img_o} alt='' className={isAnswerAvailable ? 'answer-img pointer' : 'answer-img'}
-                        onClick={() => {
-                        if (isAnswerAvailable && !isSolved) {
-                            alert('문제풀러 가자')
-                        }
-                        }} />
-                }
-                <img src={island_img} alt='' className={`map map-image-1 ${isAnswerAvailable ? '' : 'gray'}`} />
-            </div>
-
-
+                    ) : (
+                    <img
+                        src={island_img}
+                        alt=''
+                        className='map map-image-1 gray'
+                    />
+                    )}
+                </div>
+            ))}
         </div>
+            
     );
 };
 
