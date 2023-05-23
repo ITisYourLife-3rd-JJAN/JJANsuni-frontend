@@ -53,10 +53,18 @@
 }
 
 .msgkid{
+    width: 15rem;
     margin: 1rem 0 2rem 6rem;
-    font-size: 30px;
+    font-size: 1.5rem;
     font-weight: 400;
     padding: 0.3rem;
+    padding: 0.4rem 0rem 0.4rem 1rem;
+    border-radius: 15px;
+    outline: none;
+}
+
+.msgkid:focus{
+    border: 1px solid #DD5475;
 }
 
 .msgipt{
@@ -64,8 +72,13 @@
     width: 80%;
     border: none;
     border-bottom: 3px solid #000;
-    font-size: 26px;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 0 1rem;
+}
+
+.msgipt:focus{
+    outline: none;
 }
 
 .msgiptbox{
