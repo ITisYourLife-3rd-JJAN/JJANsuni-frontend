@@ -1,7 +1,7 @@
 import React from 'react';
 import './profileBackground.css';
 
-const ProfileBackground = () => {
+const ProfileBackground = ({isParent}) => {
     return (
         <div className='profile-back-container'>
             <img

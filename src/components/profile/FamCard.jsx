@@ -1,7 +1,7 @@
 import React from 'react';
 import './famCard.css';
 
-const FamCard = () => {
+const FamCard = ({isParent}) => {
     return (
         <li className='fam-profile-card-container'>
             <img
@@ -13,8 +13,19 @@ const FamCard = () => {
                 <p> 계좌번호 : 882-655-1432779 </p>
             </div>
             <div className='fam-edit-box'>
-                <p> 송금하기 </p>
-                <p> 이체내역 </p>
+                {!isParent ? (
+                    <>
+                        <p> 송금하기 </p>
+                        <p> 이체내역 </p> 
+                    </>
+                ) : (
+                    <>
+                        <p> 송금하기 </p>
+                        <p> 자동이체 </p> 
+                        <p> 응원메세지 </p> 
+                    </>
+                )}
+
             </div>
         </li>
         
