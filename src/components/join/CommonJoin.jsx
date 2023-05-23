@@ -1,4 +1,4 @@
-import {React, useState} from 'react';
+import {React, useState, useEffect} from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from "axios";
 
@@ -8,32 +8,82 @@ const CommonJoin = ({isParent}) => {
     const [password, setPassword] = useState("");
     const [phoneNum, setPhoneNum] = useState("");
     const [gender, setGender] = useState("");
-    const [birthday, setBirthday] = useState("20001208");
-    const [famCode, setFamCode] = useState("귀여운도깨비");
+    const [birthday, setBirthday] = useState("");
+    const [famCode, setFamCode] = useState("");
+    // const [userpwCheck, setUserpwCheck] = useState("");
     const role = isParent ? "T" : "F";
     const navigate = useNavigate();
-    
+
+    const [passwordCheck, setPasswordCheck] = useState('');
+    const [passwordMatch, setPasswordMatch] = useState(true);
+  
+    // 비밀번호 확인 로직 추가
+    useEffect(() => {
+      setPasswordMatch(password === passwordCheck);
+    }, [passwordCheck]);
+
     const registerAxios = () => {
+        if (passwordMatch) {
+          axios
+            .post('http://localhost:8080/api/v1/users/join', {
+              name: username,
+              email: email,
+              password: password,
+              phoneNum: phoneNum,
+              gender: gender,
+              birthday: birthday,
+              famCode: famCode,
+              isParent: role
+            })
+            .then((response) => {
+              console.log(response);
+              alert('회원가입에 성공했어요✨');
+              if (response.status === 200) {
+                return navigate('/login');
+              }
+            })
+            .catch((error) => {
+              console.log(error);
+            });
+        } else {
+          alert('비밀번호가 일치하지 않습니다.');
+        }
+      };
+
+    const emailExistAxios = () => {
         axios
-            .post("http://localhost:8080/api/v1/users/join", {
-                name : username,
-                email : email,
-                password : password,
-                phoneNum : phoneNum,
-                gender : gender,
-                birthday : birthday,
-                famCode : famCode,
-                isParent : role
+            .post("http://localhost:8080/api/v1/users/email-check", {
+                email : email
             })
             .then((response) => {
                 console.log(response);
-                alert("회원가입에 성공했어요✨")
+                console.log(response.data);
                 if(response.status === 200){
-                    return navigate("/login");
+                    alert("사용 가능한 email이에요✨")
                 }
-            }).catch((err) => {
-                console.log(err.request.status)
-        });
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+                alert("이미 존재하는 email이에요😥")
+            })
+    }
+    
+    const generateFamilyCodeAxios = () => {
+        axios
+            .get("http://localhost:8080/api/v1/users/family-code"
+
+            )
+            .then((response) => {
+                console.log(response);
+                //console.log(response.data);
+                if(response.status === 200){
+                    setFamCode(response.data.item.famCode);
+                    alert("가족코드가 생성되었어요.✨")
+                }
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            })
     }
 
     return (
@@ -57,7 +107,7 @@ const CommonJoin = ({isParent}) => {
                                 onChange={(e) => {
                                     setEmail(e.target.value); }} 
                                 required />
-                        <button id="existBtn">중복확인</button>
+                        <button id="existBtn" onClick={emailExistAxios}>중복확인</button>
                     </div>
                 </div>
         
@@ -70,11 +120,19 @@ const CommonJoin = ({isParent}) => {
                         required></input>
                 </div>
 
-                <div className='input-box'> 
-                    <label for="userpwCheck">비밀번호 확인</label>
-                    <input type="password" id="userpwCheck" className='joinipt joinpw' required></input>
+                <div className='input-box'>
+                    <label htmlFor='userpwCheck'>비밀번호 확인</label>
+                    <input
+                    type='password'
+                    id='userpwCheck'
+                    className='joinipt joinpw'
+                    value={passwordCheck}
+                    onChange={(e) => setPasswordCheck(e.target.value)}
+                    required
+                    />
                 </div>
-
+                {!passwordMatch && <p id='passwordCheck-Text'>비밀번호가 일치하지 않습니다.</p>}
+           
                 <div className='input-box'> 
                     <label for="phoneNumber">전화번호</label>
                     <input type="tel" id="phoneNumber" 
@@ -228,13 +286,13 @@ const CommonJoin = ({isParent}) => {
             </div>
             {isParent ?
                <div className='input-box code'> 
-                    <label for="familyCode" id='famCode-btn'>가족코드 생성하기</label>
-                    <p id="familyCode"> sample </p>   
+                    <label for="familyCode" id='famCode-btn' onClick={generateFamilyCodeAxios}>가족코드 생성하기</label>
+                    <p id="familyCode"> {famCode} </p>   
                 </div>          
             : 
             <div className='input-box'> 
                 <label for="familyCodeInput" >가족코드 입력</label>
-                <input type="text" id="familyCodeInput" className='joinipt'  required></input>
+                <input type="text" id="familyCodeInput" className='joinipt' required></input>
             </div> 
             }
             

@@ -9,10 +9,11 @@
 td{
     border-bottom: 0.01rem solid #ccc;
     padding: 1rem;
+    font-size: 1.5rem;
 }
-.last{
-    border: none;
-}
+tr:last-child td {
+    border-bottom: none;
+  }
 
 .debitHistory{
     position: absolute;
