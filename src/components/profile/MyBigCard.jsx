@@ -1,5 +1,7 @@
 import {React, useState} from 'react';
 import './myBigCard.css';
+import axios from 'axios';
+
 
 const MyBigCard = ({isParent}) => {
 
@@ -20,6 +22,21 @@ const MyBigCard = ({isParent}) => {
         imgSrc = `${process.env.PUBLIC_URL}/assets/images/boy.png`;
     }
 
+    const chargePay = () =>{
+        axios
+            .patch('http://localhost:8080/api/v1/debits/charge',{
+                userId: 1,
+                price: 5000,
+            })
+            .then((response)=>{
+                console.log(response);
+                alert("잔액 충전 완료됐습니다.😊")
+            })
+            .catch((error) => {
+                console.log(error)
+            });
+
+    }
     return (
         <div className='my-profile-card-container' style={containerStyle}>
             <img
@@ -48,7 +65,7 @@ const MyBigCard = ({isParent}) => {
                     <></>
                 ) : (
                     <>
-                        <p>짠페이 충전하기</p>
+                        <p onClick={chargePay}>짠페이 충전하기</p>
                     </>
                 )}
             </div>
