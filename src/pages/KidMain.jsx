@@ -5,7 +5,7 @@ import MenuList from '../components/menuList/MenuList';
 const KidMain = () => {
     return (
         <div>
-            <MainBanner/>
+            <MainBanner isParent={false}/>
             <MenuList/>
         </div>
     );

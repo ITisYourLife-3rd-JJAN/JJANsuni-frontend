@@ -61,11 +61,12 @@ const Message = () => {
             .then((response) => {
                 console.log(response.data);
                 alert(response.data.message)
+                navigate("/parent")
             })
             .catch((error) => {
                 console.log(error);
-                alert("11")
             })
+        
     };
     
     return (
@@ -81,13 +82,13 @@ const Message = () => {
                     {children.map((child) => (
                         <option key={child.userId} value={child.userId}>{child.name}</option>
                     ))}
-                    </select>
+                </select>
                 </div>
                 <div className='msgiptbox'>
                     <div>"</div>
                     <input placeholder='이곳에 작성하는 메세지가 자녀에게 표시됩니다.' 
-                    className='msgipt' type="text"
-                    onChange={handleMessageChange} />
+                        className='msgipt' type="text"
+                        onChange={handleMessageChange} />
                     <div>"</div>
                 </div>
                 <div className='msgbtn'>
