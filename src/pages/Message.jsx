@@ -2,6 +2,7 @@ import { React, useEffect, useState } from 'react';
 import '../pages/css/message.css'
 import { useNavigate } from 'react-router';
 import axios from 'axios';
+import Select from 'react-select'
 
 const Message = () => {
     const navigate = useNavigate();
@@ -10,11 +11,11 @@ const Message = () => {
         navigate(-1);
     };
 
-    const [selectedChild, setSelectedChild] = useState(""); 
+    const [selectedChild, setSelectedChild] = useState("");
     const [children, setChildren] = useState([]); 
     const [messageText, setMessageText] = useState(""); 
+    
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
-
 
     useEffect(() => {
         const getChildrens = () => {
@@ -34,10 +35,10 @@ const Message = () => {
         getChildrens();
     }, []);
 
-    const handleChildSelect = (event) => {
-        setSelectedChild(event.target.value);
-        checkButtonDisabled(event.target.value, messageText); 
-    };
+    const handleChildSelect = (selectedOption) => {
+        setSelectedChild(selectedOption.value);
+        checkButtonDisabled(selectedOption.value, messageText);
+      };
     
     const handleMessageChange = (event) => {
         setMessageText(event.target.value);
@@ -77,12 +78,42 @@ const Message = () => {
                     <img onClick={handleGoBack} className='quitbtn' src={`${process.env.PUBLIC_URL}/assets/images/quit.png`} alt=""/>
                 </div>
                 <div>
-                <select className="msgkid" value={selectedChild} onChange={handleChildSelect}>
-                    <option value="">아이를 선택하세요</option>
-                    {children.map((child) => (
-                        <option key={child.userId} value={child.userId}>{child.name}</option>
-                    ))}
-                </select>
+                <Select
+                    className="msgkid"
+                    onChange={handleChildSelect}
+                    options={children.map((child) => ({
+                        value: child.userId,
+                        label: child.name
+                    }))}
+                    placeholder="아이를 선택하세요"
+                    theme={(theme) => ({
+                        ...theme,
+                        colors: {
+                          ...theme.colors,
+                          primary25: '#E5FAFC',
+                          primary: '#F4C4D2',
+                        },
+                      })} 
+                    styles={{
+                        control: (provided, state) => ({
+                          ...provided,
+                          borderColor: state.isFocused ? "#DD5475" : "#DD5475",
+                          borderRadius: "10px", // border-radius 설정
+                          boxShadow: "none",
+                          "&:hover": {
+                            borderColor: "#DD5475"
+                          }
+                        }),
+                        menu: (provided) => ({
+                          ...provided,
+                          marginTop: 0
+                        }),
+                        option: (provided) => ({
+                          ...provided,
+                          color: "black"
+                        })
+                      }}
+                    />
                 </div>
                 <div className='msgiptbox'>
                     <div>"</div>
