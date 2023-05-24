@@ -12,9 +12,9 @@ export default () => {
     <Background>
       <LoadingText>잠시만 기다려 주세요🙏🏻</LoadingText> 
       <img 
-        src={process.env.PUBLIC_URL + '/asset/loading.gif'} 
+        src={process.env.PUBLIC_URL + '/assets/loading.gif'} 
         alt="Loading..." 
-        width="16%" 
+        width="20%" 
         style={{ backgroundColor: 'none' }} />
     </Background>
   );
