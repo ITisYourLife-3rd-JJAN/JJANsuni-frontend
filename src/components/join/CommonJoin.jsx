@@ -10,7 +10,6 @@ const CommonJoin = ({isParent}) => {
     const [gender, setGender] = useState("");
     const [birthday, setBirthday] = useState("");
     const [famCode, setFamCode] = useState("");
-    // const [userpwCheck, setUserpwCheck] = useState("");
     const role = isParent ? "T" : "F";
     const navigate = useNavigate();
 
@@ -46,7 +45,7 @@ const CommonJoin = ({isParent}) => {
               console.log(error);
             });
         } else {
-          alert('비밀번호가 일치하지 않습니다.');
+          alert('비밀번호가 일치하지 않습니다.😟');
         }
       };
 
@@ -59,7 +58,7 @@ const CommonJoin = ({isParent}) => {
                 console.log(response);
                 console.log(response.data);
                 if(response.status === 200){
-                    alert("사용 가능한 email이에요✨")
+                    alert("사용 가능한 email이에요🤚")
                 }
             })
             .catch((error) => {
@@ -70,21 +69,35 @@ const CommonJoin = ({isParent}) => {
     
     const generateFamilyCodeAxios = () => {
         axios
-            .get("http://localhost:8080/api/v1/users/family-code"
-
-            )
+            .get("http://localhost:8080/api/v1/users/family-code")
             .then((response) => {
                 console.log(response);
                 //console.log(response.data);
                 if(response.status === 200){
                     setFamCode(response.data.item.famCode);
-                    alert("가족코드가 생성되었어요.✨")
+                    alert("가족코드가 생성되었어요.👨‍👨‍👧‍👦")
                 }
             })
             .catch((error) => {
                 console.log(error.response.data);
             })
     }
+
+    const familyCodeCheckAxios = () => {
+        axios
+            .get(`http://localhost:8080/api/v1/users/check/${famCode}`)
+            .then((response) => {
+                console.log(response);
+                if(response.status === 200){
+                    alert("가족코드가 확인되었어요.👨‍👧")
+                }
+            })
+            .catch((error) => {
+                console.log(error.response);
+                alert("가족코드를 다시 확인해주세요.😿")
+            })
+    }
+
 
     return (
         <div className='join-wrap'>
@@ -292,7 +305,12 @@ const CommonJoin = ({isParent}) => {
             : 
             <div className='input-box'> 
                 <label for="familyCodeInput" >가족코드 입력</label>
-                <input type="text" id="familyCodeInput" className='joinipt' required></input>
+                <div class='famCode-box'>
+                <input type="text" id="familyCodeInput" className='joinipt' value={famCode} 
+                                onChange={(e) => {
+                                    setFamCode(e.target.value); }}  required></input>
+                 <button id="famCodeExist-btn" onClick={familyCodeCheckAxios}>확인</button>
+                </div>
             </div> 
             }
             
