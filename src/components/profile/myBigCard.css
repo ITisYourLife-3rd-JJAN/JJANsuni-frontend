@@ -26,9 +26,9 @@
 .my-edit-box { 
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    gap: 5rem;
+    gap: 2rem;
     margin-left: 4rem;
 }
 
@@ -36,9 +36,59 @@
     font-size: .8rem;
     margin: 0;
     color: #bababa;
+    cursor: pointer;
 }
 
 .my-edit-box p:hover{
-    text-decoration: underline;
     cursor: pointer;
+    text-decoration: underline;
 }
+
+.modal {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    width: 17%;
+    height: 17%;
+    padding: 1rem;
+    border-radius: 2rem;
+    border:20px solid;
+    border-style: 20px solid;
+    border-color: #F4C4D2;
+    z-index: 9999;
+    }
+
+    .quitbtn{
+        cursor: pointer;
+        width: 10%;
+        height: 10%;
+        margin-left: 60%;
+    }
+
+    .chargebtn{
+        border: 3px solid #DD5475;
+        background-color: #E586A0;
+        border-radius: 30px;display: flex;
+        align-items: center;
+        justify-content: center;
+        width: 30%;
+        height: 100%;
+        color: #fff;
+        font-weight: 300;
+        font-size: 1.6rem;
+        cursor: pointer;
+        position: relative;
+        left: 35%;
+        margin: 0;
+    }
+
+    .iptBalance{
+        margin-left: 5%;
+        border : none;
+        border-bottom: 1px solid;
+        margin-bottom: 3%;
+        width: 12rem;
+        font-size: 1rem;
+    }
