@@ -3,8 +3,8 @@ import Select from 'react-select'
 import './directDebitForm.css'
 import axios from 'axios';
 
-const DebitForm = () => {
-    
+const DebitForm = ({kidUserId, kidUserName}) => {
+    console.log(kidUserId, kidUserName)
     const cycleoptions = [
         { value: 1, label: '매 일' },
         { value: 2, label: '매 주' },
@@ -42,7 +42,7 @@ const DebitForm = () => {
     
     const [autoSendUserId, setAutoSendUserId] = useState(1);
     const [autoReceivedUserId, setAutoReceivedUserId] = useState();
-    const [price, setPrice] = useState();
+    const [price, setPrice] = useState("");
     const [debitMsg, setDebitMsg] = useState("");
     const [debitDate, setDebitDate] = useState();
     const [debitCycle, setDebitCycle] = useState();
@@ -54,14 +54,32 @@ const DebitForm = () => {
     } else {
         k = dayoptions
     }
+    
+    const balance = 2000;
 
     const directAxios = () => {
+        if (price <= 0 || price > 1000000) {
+            alert('이체할 금액을 확인해주세요.(1~100만원까지 가능)🤨');
+            setPrice("");
+            return;
+          }
+          if (price > balance) {
+            alert('잔액이 부족합니다🥺');
+            setPrice("");
+            return;
+          }
+        if (debitMsg.length > 10){
+            alert('이체 메세지는 10자를 넘길 수 없습니다.😥');
+            setDebitMsg("");
+            return;
+        }
+
         console.log(autoSendUserId)
         console.log(autoReceivedUserId)
         axios
             .post("http://localhost:8080/api/v1/directs", {
                 autoSendUserId : 1,
-                autoReceivedUserId : 2,
+                autoReceivedUserId : kidUserId,
                 price : price,
                 debitMsg : debitMsg,
                 debitDate : debitDate,
@@ -69,8 +87,10 @@ const DebitForm = () => {
             })
             .then((response) => {
                 console.log(response)
-                if(response.status === 201) {
-                    alert("굿굿")
+                if(response.status === 200) {
+                    alert('이체가 완료됐어요💵');
+                    setPrice("");
+                    setDebitMsg("");
                 }
             })
             .catch((error) => {
@@ -91,15 +111,25 @@ const DebitForm = () => {
                             }}
                         />
                         <div className='ddittext'>원을</div>
+                        <div className='bigtext' style={{color:"#AAA", marginLeft: "1rem"}}>
+                        {price > 1000000 ? (
+                            <span style={{ color: "#DD5475" }}>100만원 넘는 금액은 송금할 수 없습니다</span>
+                            ) : price > balance ? (
+                                <span style={{ color: "#DD5475" }}>잔액이 부족합니다</span>
+                                ) : price < 0 ? (
+                                    <span style={{ color: "#DD5475" }}>금액을 확인해주세요</span>
+                                    ) : (
+                                        <>
+                            {price >= 10000
+                                ? parseInt(price / 10000).toLocaleString() + "만 "
+                                : ""}
+                            {(price % 10000).toLocaleString()}원
+                            </>
+                        )}
+                        </div>
                     </div>
                     <div className='dditiptbox'>
-                        <input className='dditipt' type="number"
-                            value={autoReceivedUserId}
-                            onChange={(e) => {
-                                setAutoReceivedUserId(e.target.value)
-                                console.log(e.target.value)
-                            }}
-                        />
+                        <div className='kidname'>{kidUserName}</div>
                         <div className='ddittext'>님에게</div>
                     </div>
                 </div>
@@ -151,10 +181,14 @@ const DebitForm = () => {
                     </div>
 
                 </div>
-                <input placeholder='이곳에 작성하는 메세지가 자녀에게 표시됩니다.'
-                className='debitmsg' type="text"
-                value={debitMsg}
-                onChange={(e) => setDebitMsg(e.target.value)}/>
+                <div className='dbmsgbox'>
+                    <div>"</div>
+                    <input placeholder='이체 메세지(최대 10자)'
+                    className='debitmsg' type="text"
+                    value={debitMsg}
+                    onChange={(e) => setDebitMsg(e.target.value)}/>
+                    <div>"</div>
+                </div>
                 <div className='ddsubmitbtn' onClick={directAxios}>등록하기</div>
             </div>
         </div>

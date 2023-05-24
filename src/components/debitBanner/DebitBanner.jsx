@@ -5,12 +5,11 @@ import './debitBanner.css'
 import axios from 'axios';
 
 
-const DebitBanner = (props) => {
+const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
 
     const userId = 1;
     const [childData, setChildData] = useState([]);
     const [kidOptions, setKidOptions] = useState([]);
-
 
     const menuoptions = [
         { value: '이체 내역', label: <Link to="/debit-history" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 내역</div></Link> },
@@ -19,12 +18,12 @@ const DebitBanner = (props) => {
         { value: '카드 내역', label: <Link to="/card" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/card.png`} alt="" width={50}/>카드 내역</div></Link> }
       ]
 
-    const [selectedValue, setSelectedValue] = useState(menuoptions[props.idx].value);
+    const [selectedValue, setSelectedValue] = useState(menuoptions[idx].value);
 
     useEffect(() => {
         const getChildAxios = async () => {
         await axios
-                .get(`http://localhost:8080/api/v1/users/family-List/${userId}`)
+                .get(`http://localhost:8080/api/v1/users/family-list/${userId}`)
                 .then((response) => {
                     const data = response.data.data;
                     const filterData = data.filter(child => child.isParent === "F")
@@ -39,8 +38,8 @@ const DebitBanner = (props) => {
                     }))
 
                     setKidOptions(updateKidOptions)
-                    console.log(updateKidOptions)
-                    console.log(childData)
+                    // console.log(updateKidOptions)
+                    // console.log(childData)
                 })
         }
         getChildAxios()
@@ -50,7 +49,7 @@ const DebitBanner = (props) => {
     if (kidOptions.length !== 0) {
         
         return (
-            <div className='debitBanner' style={{backgroundColor: props.color}}>
+            <div className='debitBanner' style={{backgroundColor: color}}>
                 <div className='doSelect'>
                     <Select              
                     styles={{               
@@ -99,6 +98,10 @@ const DebitBanner = (props) => {
                           primary: '#F4C4D2',
                         },
                       })} 
+                    onChange={(e) => {
+                        setKidUserId(e.value)
+                        setKidUserName(e.label)
+                    }}
                     />
                 </div>
             </div>

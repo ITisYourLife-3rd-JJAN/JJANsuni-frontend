@@ -64,9 +64,20 @@
 }
 
 .debitmsg {
-    width: 80%;
+    width: 60%;
     border: none;
     border-bottom: 2px solid #CCC;
     font-size: 24px;
     font-weight: 600;
+}
+
+.dbmsgbox{
+    display: flex;
+}
+
+.kidname {
+    font-size: 24px;
+    margin-right: 2rem;
+    background: #FCFF5C;
+    border-radius: 30px;
 }

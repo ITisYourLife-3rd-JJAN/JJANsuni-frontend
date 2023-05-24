@@ -73,11 +73,11 @@ const DebitForm = () => {
                     <div className='bigtext' style={{marginRight: "4rem"}}>원</div>
                     <div className='bigtext' style={{color:"#AAA"}}>
                     {price > 1000000 ? (
-                        <span style={{ color: "red" }}>100만원 넘는 금액은 송금할 수 없습니다</span>
+                        <span style={{ color: "#DD5475" }}>100만원 넘는 금액은 송금할 수 없습니다</span>
                     ) : price > balance ? (
-                        <span style={{ color: "red" }}>잔액이 부족합니다</span>
+                        <span style={{ color: "#DD5475" }}>잔액이 부족합니다</span>
                     ) : price < 0 ? (
-                        <span style={{ color: "red" }}>금액을 확인해주세요</span>
+                        <span style={{ color: "#DD5475" }}>금액을 확인해주세요</span>
                       ) : (
                         <>
                         {price >= 10000

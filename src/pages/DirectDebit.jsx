@@ -3,15 +3,14 @@ import DebitBanner from '../components/debitBanner/DebitBanner';
 import DirectDebitForm from '../components/directDebitForm/DirectDebitForm'
 
 const Debit = () => {
-    const [kidValue, setKidValue] = useState();
-    const [kidLabel, setKidLabel] = useState();
+    const [kidUserId, setKidUserId] = useState();
+    const [kidUserName, setKidUserName] = useState();
+    console.log(kidUserId, kidUserName)
 
     return (
         <div style={{display: 'flex', justifyContent: 'center'}}>
-            <DebitBanner idx="2" color="#F4C4D2"
-            // kidValue={kidValue} kidLabel={kidLabel} onClick={(kidValue, kidLabel) => props.onChange(kidValue, kidLabel)}
-            />
-            <DirectDebitForm kidValue={kidValue} kidLabel={kidLabel}/>
+            <DebitBanner idx="2" color="#F4C4D2" setKidUserId={setKidUserId} setKidUserName={setKidUserName}/>
+            <DirectDebitForm kidUserId={kidUserId} kidUserName={kidUserName}/>
         </div>
     );
 };
