@@ -99,7 +99,7 @@ const MyBigCard = ({ isParent }) => {
         className="modal"
         ariaHideApp={false}
       >
-        <h2>충전하기 <img onClick={closeModal} className='quitbtn' src={`${process.env.PUBLIC_URL}/assets/images/quit.png`} alt=""/> </h2>
+        <h2>충전하기 <img onClick={closeModal} className='quitbtn card' src={`${process.env.PUBLIC_URL}/assets/images/quit.png`} alt=""/> </h2>
         
         <form onSubmit={handlePaymentSubmit}>
           <label>
