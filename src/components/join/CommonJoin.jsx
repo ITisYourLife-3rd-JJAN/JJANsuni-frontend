@@ -12,22 +12,24 @@ const CommonJoin = ({isParent}) => {
     const [famCode, setFamCode] = useState("");
     const role = isParent ? "T" : "F";
     const navigate = useNavigate();
-    const [passwordCheck, setPasswordCheck] = useState('');
+    const [passwordCheck, setPasswordCheck] = useState("");
     const [passwordMatch, setPasswordMatch] = useState(true);
     const [emailExistCheck, setEmailExistCheck] = useState(false);
     const [famcodeCheck, setFamcodeCheck] = useState(false);
     const [emailMessage, setEmailMessage] = useState("");
     const [passwordMessage, setPasswordMessage] = useState("");
     const [phoneNumMessage, setPhoneNumMessage] = useState("");
-    const [isPassword, setIsPassword] = useState(false);
-    const [isEmail, setIsEmail] = useState(false);
-    const [isPhone, setIsPhone] = useState(false);
+    const [isPassword, setIsPassword] = useState();
+    const [isEmail, setIsEmail] = useState();
+    const [isPhone, setIsPhone] = useState();
+    const [tooOld, setTooOld] = useState(false);
+    const [tooYoung, setTooYoung] = useState(false);
 
     const onChangeEmail = (email) => {
         const emailRegExp =
         /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
         if (!emailRegExp.test(email)) {
-            setEmailMessage("올바른 이메일 양식이 아니에요.");
+            setEmailMessage("이메일 양식으로 입력해주세요.");
             setIsEmail(false);
         } else {
             setEmailMessage("올바른 이메일 양식이에요.");
@@ -52,7 +54,7 @@ const CommonJoin = ({isParent}) => {
         
         const onChangePhone = (phoneNum) => {
             setPhoneNum(phoneNum);
-            const phoneRegExp = /^01([0|1|6|7|8|9])-?([0-9]{3,4})-?([0-9]{4})$/;
+            const phoneRegExp = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/;
             if (!phoneRegExp.test(phoneNum)) {
                 setPhoneNumMessage("올바른 전화번호 양식이 아니에요");
                 setIsPhone(false);
@@ -66,44 +68,13 @@ const CommonJoin = ({isParent}) => {
           setPasswordMatch(password === passwordCheck);
         }, [passwordCheck]);
 
-        const registerAxios = () => {
-            if (passwordMatch) {
-                axios
-                .post('http://localhost:8080/api/v1/users/join', {
-              name: username,
-              email: email,
-              password: password,
-              phoneNum: phoneNum,
-              gender: gender,
-              birthday: birthday,
-              famCode: famCode,
-              isParent: role
-            })
-            .then((response) => {
-              console.log(response);
-              alert('회원가입에 성공했어요✨');
-              if (response.data.status === "201") {
-                return navigate('/login');
-              }
-            })
-            .catch((error) => {
-              console.log(error);
-            });
-        } else {
-          alert('비밀번호 확인을 동일하게 작성해주세요😟');
-          //if(emailExistCheck){alert('이메일 중복확인을 진행해주세요')};
-          //else if(famcodeCheck){alert('가족코드 확인을 진행해주세요')};
-        }
-      };
-
-    const emailExistAxios = () => {
-        axios
+        
+        const emailExistAxios = () => {
+            axios
             .post("http://localhost:8080/api/v1/users/email-check", {
                 email : email
             })
             .then((response) => {
-                console.log(response);
-                console.log(response.data);
                 if(response.status === 200){
                     alert("사용 가능한 email이에요🤚")
                     setEmailExistCheck(true)
@@ -113,28 +84,27 @@ const CommonJoin = ({isParent}) => {
                 console.log(error.response.data);
                 alert("이미 존재하는 email이에요😥")
             })
-    }
-    
-    const generateFamilyCodeAxios = () => {
-        axios
+        }
+        
+        const generateFamilyCodeAxios = () => {
+            axios
             .get("http://localhost:8080/api/v1/users/family-code")
             .then((response) => {
-                console.log(response);
                 if(response.status === 200){
                     setFamCode(response.data.item.famCode);
                     alert("가족코드가 생성되었어요.👨‍👨‍👧‍👦")
+                    setFamcodeCheck(true);
                 }
             })
             .catch((error) => {
                 console.log(error.response.data);
             })
-    }
-
-    const familyCodeCheckAxios = () => {
-        axios
+        }
+        
+        const familyCodeCheckAxios = () => {
+            axios
             .get(`http://localhost:8080/api/v1/users/check/${famCode}`)
             .then((response) => {
-                console.log(response);
                 if(response.status === 200){
                     alert("가족코드가 확인되었어요.👨‍👧")
                     setFamcodeCheck(true);
@@ -144,28 +114,70 @@ const CommonJoin = ({isParent}) => {
                 console.log(error.response);
                 alert("가족코드를 다시 확인해주세요.😿")
             })
-    }
+        }
 
-    const calculateAge = () => {
- 
-        const currentDate = new Date();
+        const calculateAge = () => {
+            
+            const currentDate = new Date();
+            const selectedYear = parseInt(birthday.slice(0, 4));
+            const selectedMonth = parseInt(birthday.slice(4, 6)); 
+            const selectedDay = parseInt(birthday.slice(6, 8));
+            const birthdayDate = new Date(selectedYear, selectedMonth, selectedDay);
+            
+            // 현재 나이 계산
+            const age = currentDate.getFullYear() - birthdayDate.getFullYear();
 
-        const selectedYear = parseInt(birthday.slice(0, 4));
-        const selectedMonth = parseInt(birthday.slice(4, 6)); 
-        const selectedDay = parseInt(birthday.slice(6, 8));
-    
-        const birthdayDate = new Date(selectedYear, selectedMonth, selectedDay);
-    
-        // 현재 나이 계산
-        const age = currentDate.getFullYear() - birthdayDate.getFullYear();
-    
-        if (age < 19) {
-          alert('만 19세 미만은 접근할 수 없습니다.');
-        } 
-      };
-
-
-    return (
+            if (role==="F" && age >= 19) {
+                setTooOld(true);
+            }else if(role==="T" && age<19){
+                setTooYoung(true);
+            }else {
+                setTooOld(false);
+                setTooYoung(false);
+            }
+            };
+        
+        const registerAxios = () => {
+            console.log(tooOld+"axios")
+            console.log(tooYoung+"axios")
+            if ((!tooOld)&&(!tooYoung)&&passwordMatch&&isEmail&&isPassword&&isPhone) {
+                axios
+                .post('http://localhost:8080/api/v1/users/join', {
+                    name: username,
+                    email: email,
+                    password: password,
+                    phoneNum: phoneNum,
+                    gender: gender,
+                    birthday: birthday,
+                    famCode: famCode,
+                    isParent: role
+                })
+                .then((response) => { 
+                    alert('회원가입에 성공했어요✨');
+                if (response.data.status === "201") {
+                        return navigate('/login');
+                    }
+                })
+                .catch((error) => {
+                    console.log(error);
+                });
+            }else if(tooOld){
+                alert('만 19세 미만인 사용자만 자녀로 등록할 수 있어요');
+            }else if(tooYoung){
+                alert('만 19세 이상인 사용자만 부모로 등록할 수 있어요');
+            }else if(!isEmail) {
+                alert('email 형식으로 맞추어 주세요😟');
+            }else if(!isPassword) {
+                alert('비밀번호를 더 복잡하게 설정해주세요.😟');
+            }else if(!passwordMatch) {
+                alert('비밀번호 확인란을 동일하게 작성해주세요😟');
+            }else if(!isPhone) {
+                alert('휴대폰번호 형식을 맞추어주세요.😟');
+                //setPhoneNum("")
+            }
+        };
+        
+        return (
         <div className='join-wrap'>
         <div className='join-box'>
             <div>
@@ -185,10 +197,10 @@ const CommonJoin = ({isParent}) => {
                                 onChange={(e) => {
                                     onChangeEmail(e.target.value);
                                     setEmail(e.target.value); }} 
-                                required />
+                                    required />
                         <button id="existBtn" onClick={emailExistAxios}>중복확인</button>
                     </div>
-                    <p className="message">{emailMessage}</p>
+                    <p className={`message ${!isEmail && "wrong"}`}>{emailMessage}</p> 
                 </div>
         
                 <div className='input-box'> 
@@ -200,7 +212,7 @@ const CommonJoin = ({isParent}) => {
                             setPassword(e.target.value); }} 
                         required/>
                 </div>
-                <p className="message">{passwordMessage}</p>
+                <p className={`message ${!isPassword && "wrong"}`}>{passwordMessage}</p>
                 <div className='input-box'>
                     <label htmlFor='userpwCheck'>비밀번호 확인</label>
                     <input
@@ -223,7 +235,7 @@ const CommonJoin = ({isParent}) => {
                             onChangePhone(e.target.value);
                             setPhoneNum(e.target.value); }} 
                         required></input>
-                    <p className="message">{phoneNumMessage}</p>
+                    <p className={`message ${!isPhone && "wrong"}`}>{phoneNumMessage}</p>
                 </div>
 
                 <div className='input-box'>
@@ -386,8 +398,7 @@ const CommonJoin = ({isParent}) => {
             }
             
         </div>
-        <button className="joinBtn" disabled={!(famcodeCheck&&emailExistCheck)} onClick={registerAxios}>가입하기</button>
-        <button onClick={calculateAge}>sdsdsds</button>
+        <button className="joinBtn" disabled={!(emailExistCheck&&famcodeCheck)} onClick = { () => {calculateAge(); registerAxios(); }}>가입하기</button>
         </div>
     );
 };

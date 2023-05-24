@@ -314,3 +314,7 @@ label {
 #famCodeExist-btn:hover {
     background-color: #94bde6;
 }
+
+.wrong {
+    color : red;
+}
