@@ -8,7 +8,6 @@
     transform: translate(-50%, 0%);
     align-items: center;
     justify-content: center;
-    z-index: 100;
     flex-direction: column;
     text-align: center;
 }
