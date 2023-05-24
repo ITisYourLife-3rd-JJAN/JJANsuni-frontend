@@ -13,6 +13,17 @@
     background-color: #fff;
     border-radius: 30px;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    overflow: auto;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+  
+.msgbox::-webkit-scrollbar{     /*특정 부분 스크롤바 없애기*/
+display:none;
 }
 
 .msgbtn{
@@ -29,7 +40,7 @@
     border-radius: 30px;display: flex;
     align-items: center;
     justify-content: center;
-    width: 30%;
+    width: 20%;
     height: 100%;
     color: #fff;
     font-weight: 500;
@@ -54,7 +65,7 @@
 
 .msgkid{
     width: 15rem;
-    margin: 1rem 0 2rem 6rem;
+    margin: 1rem 0 2rem 3rem;
     font-size: 1.5rem;
     font-weight: 400;
     padding: 0.3rem;
@@ -83,8 +94,8 @@
 
 .msgiptbox{
     font-size: 26px;
-    margin-left: 5rem;
-    margin-bottom: 2rem;
+    margin-left: 3rem;
+    margin-bottom: 4rem;
     font-weight: 700;
     display: flex;
 }
@@ -92,7 +103,7 @@
 .msgtitlebox{
     display: flex;
     justify-content: space-between;
-    margin: 5rem;
+    margin: 3rem;
 }
 
 .quitbtn{

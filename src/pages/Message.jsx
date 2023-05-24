@@ -12,14 +12,14 @@ const Message = () => {
 
     const [selectedChild, setSelectedChild] = useState(""); 
     const [children, setChildren] = useState([]); 
-    const [messageText, setMessageText] = useState(""); // State for message text
-    const [isButtonDisabled, setIsButtonDisabled] = useState(true); // State for button disabled state
+    const [messageText, setMessageText] = useState(""); 
+    const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
 
     useEffect(() => {
         const getChildrens = () => {
             axios
-                .get(`http://localhost:8080/api/v1/users/family-List/1`)
+                .get(`http://localhost:8080/api/v1/users/family-list/1`)
                 .then((response) => {
                     const filteredChildren = response.data.data.filter(
                         (child) => child.isParent === "F"
@@ -36,33 +36,34 @@ const Message = () => {
 
     const handleChildSelect = (event) => {
         setSelectedChild(event.target.value);
-        checkButtonDisabled(event.target.value, messageText); // Call checkButtonDisabled when child is selected
+        checkButtonDisabled(event.target.value, messageText); 
     };
     
     const handleMessageChange = (event) => {
         setMessageText(event.target.value);
-        checkButtonDisabled(selectedChild, event.target.value); // Call checkButtonDisabled when message text is changed
+        checkButtonDisabled(selectedChild, event.target.value); 
     };
     
     const checkButtonDisabled = (selectedChild, messageText) => {
         if (selectedChild !== "" && messageText !== "") {
-            setIsButtonDisabled(false); // Enable button if child is selected and message text is not empty
+            setIsButtonDisabled(false); 
         } else {
-            setIsButtonDisabled(true); // Disable button otherwise
+            setIsButtonDisabled(true);
         }
     };
     
     const handleSendMessage = () => {
         axios
-            .post("http://localhost:8080/api/v1/users/email-check", {
-                userId : 2
+            .patch("http://localhost:8080/api/v1/users/cheer-up", {
+                userId: selectedChild,
+                cheerUpMsg : messageText
             })
             .then((response) => {
-                console.log(response);
-                alert("22")
+                console.log(response.data);
+                alert(response.data.message)
             })
             .catch((error) => {
-                console.log(error.response.data);
+                console.log(error);
                 alert("11")
             })
     };
@@ -75,17 +76,12 @@ const Message = () => {
                     <img onClick={handleGoBack} className='quitbtn' src={`${process.env.PUBLIC_URL}/assets/images/quit.png`} alt=""/>
                 </div>
                 <div>
-                <select
-                    className="msgkid" value={selectedChild}
-                    onChange={handleChildSelect}>
+                <select className="msgkid" value={selectedChild} onChange={handleChildSelect}>
                     <option value="">아이를 선택하세요</option>
-                    
                     {children.map((child) => (
-                    <option key={child.userId} value={child.name}>
-                        {child.name}
-                    </option>
+                        <option key={child.userId} value={child.userId}>{child.name}</option>
                     ))}
-                </select>
+                    </select>
                 </div>
                 <div className='msgiptbox'>
                     <div>"</div>
