@@ -1,22 +1,20 @@
-import { React, useState } from 'react';
+import React from 'react';
 import ProfileBackground from '../components/profile/ProfileBackground';
 import MyBigCard from '../components/profile/MyBigCard';
 import FamCardList from '../components/profile/FamCardList';
-import StateCard from '../components/profile/StateCard';
-import './css/profile.css';
 
-const KidProfile = () => {
-
+const ParentProfile = () => {
     return (
         <div className='profile-cards-container'>
             <div className='cards-box'> 
-                <MyBigCard isParent={false}/>
-                <StateCard/>
-                <FamCardList isParent={false}/>
+                <MyBigCard isParent={true}/>
+                <br/><br/><br/>
+                <FamCardList isParent={true}/>
             </div>
             <ProfileBackground/>
+
         </div>
     );
 };
 
-export default KidProfile;
+export default ParentProfile;

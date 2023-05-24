@@ -19,6 +19,7 @@ import DirectDebit from './pages/DirectDebit';
 import Pay from './pages/Pay';
 import Message from './pages/Message';
 import ParentMission from './pages/ParentMission';
+import ParentProfile from './pages/ParentProfile';
 
 
 function App() {
@@ -34,6 +35,7 @@ function App() {
               <Route path="/kid" element={<KidMain/> }/>  
               <Route path="/kid/profile" element={<KidProfile/>} />
               <Route path="/parent" element={<ParentMain/> }/>  
+              <Route path="/parent/profile" element={<ParentProfile/>} />
               <Route path="/kid/map" element={<Map/>} />
               <Route path="/kid/map/:mapId" element={<MissionList/>} />
               <Route path="/kid/map/:mapId/mission/:missionId" element={<Mission/>} />
