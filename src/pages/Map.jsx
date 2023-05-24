@@ -2,10 +2,12 @@ import { React, useState, useEffect } from 'react';
 import './css/map.css'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import Loading from '../lib/Loading';
 
 const Map = () => {
     const achieveStatus_full = 7; // 나중에 실제로 사용할 데이터 변수
     const achieveStatus = 0; // 나중에 실제로 사용할 데이터 변수
+    const [isLoading, setIsLoading] = useState(true);
 
     const [status, setStatus] = useState();
     const [preMap, setPreMap] = useState(0);
@@ -41,6 +43,7 @@ const Map = () => {
                         setPreMap(6);
                         break;
                     }
+                    setIsLoading(false); 
                 })
                 .catch((error) => {
                     console.log(error.response.data);
@@ -50,8 +53,10 @@ const Map = () => {
         getUserAchieve();
 
     }, [status]);
-
    
+    if (isLoading) {
+        return <Loading/>;
+    }
 
     for (let i = 1; i <= 6; i++) {
         let achieveStatus;
@@ -69,13 +74,13 @@ const Map = () => {
 
         const mapBox = (
             <div className={mapBoxClassName} key={`map-box-${i}`}>
-            <Link to={`/kid/map/${i}`}>
-                <p className='achieve-status'>{achieveStatus}</p>
-                <img
-                src={`${process.env.PUBLIC_URL}/assets/images/map/island${i}.png`}
-                alt=''
-                className={`map map-${i}-image`} />
-            </Link>
+                <Link to={`/kid/map/${i}`}>
+                    <p className='achieve-status'>{achieveStatus}</p>
+                    <img
+                    src={`${process.env.PUBLIC_URL}/assets/images/map/island${i}.png`}
+                    alt=''
+                    className={`map map-${i}-image`} />
+                </Link>
             </div>
         );
 

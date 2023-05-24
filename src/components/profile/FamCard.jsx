@@ -1,5 +1,6 @@
 import {React, useState} from 'react';
 import './famCard.css';
+import { Link } from 'react-router-dom';
 
 const FamCard = ({isParent}) => {
     const [isGirl, setIsGirl] = useState(false);
@@ -32,7 +33,7 @@ const FamCard = ({isParent}) => {
             <>
                 <p>송금하기</p>
                 <p>자동이체</p>
-                <p>응원메세지</p>
+                <Link to="/message"> <p>응원메세지</p></Link>
             </>
             )}
         </div>
