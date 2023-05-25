@@ -4,7 +4,7 @@
     /* padding-top: 2.5rem; */
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
 }
 
 .msgbox{
@@ -16,6 +16,7 @@
     padding: 2rem;
     overflow: auto;
     -ms-overflow-style: none;
+    margin : 6rem;
 }
 
 ::-webkit-scrollbar {

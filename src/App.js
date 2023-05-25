@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Header from './components/header/Header';
 import KidMain from './pages/KidMain';
 import ParentMain from './pages/ParentMain';
 import Intro from './pages/Intro';
@@ -20,15 +19,16 @@ import Pay from './pages/Pay';
 import Message from './pages/Message';
 import ParentMission from './pages/ParentMission';
 import ParentProfile from './pages/ParentProfile';
-import Roulette from './components/event/Roulette';
 
+import Roulette from './components/event/Roulette';
+import EventGPT from './pages/EventGPT';
+import EventResult from './pages/EventResult';
 
 function App() {
   
     return (
       <div>
         <BrowserRouter>
-          <Header/>       
           <Routes>
               <Route path="/join" element={<Join/> }/>  
               <Route path="/login" element={<Login/> }/>  
@@ -48,6 +48,8 @@ function App() {
               <Route path="/pay" element={<Pay/> }/>  
               <Route path="/message" element={<Message/> }/>  
               <Route path="/parent/mission-history" element={<ParentMission/> }/>  
+              <Route path="/event" element={<EventGPT/>}/>
+              <Route path="/event-result" element={<EventResult/>}/>
               <Route path="/event-rouletee" element={<Roulette/>} />
           </Routes>
         </BrowserRouter>

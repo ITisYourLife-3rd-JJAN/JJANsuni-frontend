@@ -3,6 +3,7 @@ import '../pages/css/message.css'
 import { useNavigate } from 'react-router';
 import axios from 'axios';
 import Select from 'react-select'
+import Header from '../components/header/Header';
 
 const Message = () => {
     const navigate = useNavigate();
@@ -72,6 +73,7 @@ const Message = () => {
     
     return (
         <div className='msgmain'>
+            <Header/>
             <div className='msgbox'>
                 <div className='msgtitlebox'>
                     <div className='msgtitle'>우리 아이에게 힘이 되는 응원을 보내주세요❣️</div>

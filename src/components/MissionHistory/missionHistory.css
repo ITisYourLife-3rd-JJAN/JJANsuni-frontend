@@ -5,7 +5,7 @@
   align-items: center;
   border-radius: 30px;
   position: absolute;
-  width: 95%;
+  width: 90%;
   height: 65%;
   top: 30%;
   flex-direction: column;
@@ -15,27 +15,40 @@
 .minnerBox{
   background-color: #fff;
   border-radius: 30px;
-  width: 80%;
+  width: 90%;
   height: 80%;
-  padding-left: 7.5rem;
-  padding-right: 7.5rem;
   margin-top: 2rem;
 }
 
+.minnerBox2{
+  background-color: #fff;
+  border-radius: 30px;
+  width: 90%;
+  height: 80%;
+  font-size: 30px;
+}
 .itmbox{
-  height: 14%;
+  height: 14.2%;
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: center;
+  border-bottom: #969696 1px solid;
   align-items: center;
+}
+
+.itmbox:last-child {
+  border-radius: 0 0 30px 30px;
+  border: none;
 }
 
 .mhistoryTable{
   display: flex;
-  margin-top: 2rem;
+  margin-top: 1rem;
   justify-content: space-between;
   align-items: center;
   text-align: center;
+  border-bottom: #969696 1px solid;
+  padding: 1rem;
 }
 
 .mhistoryRow{
@@ -47,7 +60,11 @@
 }
 
 .mcol{
-  width: 10%;
+  width: 15%;
+}
+
+.tle {
+  width: 30%;
 }
 
 .disabled {
@@ -76,4 +93,20 @@
   background-color: #969696;
   width: 115%;
   margin-top: 1.5rem;
+}
+
+.correctbg {
+  background-color: rgba(205, 255, 92, 0.2);
+}
+
+.wrongbg {
+  background-color: rgba(221, 84, 117, 0.2);
+}
+
+.fst {
+  margin-left: 2rem;
+}
+
+.lst {
+  margin-right: 2rem;
 }

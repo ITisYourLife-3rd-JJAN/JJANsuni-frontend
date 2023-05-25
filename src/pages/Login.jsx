@@ -7,6 +7,7 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    
     const navigate = useNavigate();
 
     const loginAxios = () => {
@@ -18,9 +19,14 @@ const Login = () => {
                 password : password
             })
             .then((response) => {
-                console.log(response);
-                const isParent = response.data.data.isParent;
-                console.log(response.data)
+                    const userId = response.data.data.userId;
+                    const username = response.data.data.name;
+                    const isParent = response.data.data.isParent;
+                    const gender = response.data.data.gender;
+                    sessionStorage.setItem('userId', userId);
+                    sessionStorage.setItem('username', username);
+                    sessionStorage.setItem('isParent', isParent);
+                    sessionStorage.setItem('gender', gender);
                 alert("로그인에 성공했어요✨")
                 if(response.status === 200 && isParent ==="T"){
                     return navigate("/parent");

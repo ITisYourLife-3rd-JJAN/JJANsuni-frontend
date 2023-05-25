@@ -34,7 +34,7 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
                     // console.log(filterData.name)
                     const updateKidOptions = filterData.map(child => ({
                         value: child.userId,
-                        label: child.name
+                        label: child.name+" 아이"
                     }))
 
                     setKidOptions(updateKidOptions)
