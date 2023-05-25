@@ -17,11 +17,16 @@
   border-radius: 30px;
   width: 90%;
   height: 80%;
-  /* margin-left: 1rem; */
-  /* margin-right: 1rem; */
   margin-top: 2rem;
 }
 
+.minnerBox2{
+  background-color: #fff;
+  border-radius: 30px;
+  width: 90%;
+  height: 80%;
+  font-size: 30px;
+}
 .itmbox{
   height: 14.2%;
   display: flex;
