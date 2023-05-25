@@ -136,6 +136,9 @@ const CommonJoin = ({isParent}) => {
                 setTooYoung(false);
             }
             };
+            useEffect(() => {
+                calculateAge();
+              }, [birthday]);
         
         const registerAxios = () => {
             console.log(tooOld+"axios")
@@ -398,7 +401,7 @@ const CommonJoin = ({isParent}) => {
             }
             
         </div>
-        <button className="joinBtn" disabled={!(emailExistCheck&&famcodeCheck)} onClick = { () => {calculateAge(); registerAxios(); }}>가입하기</button>
+        <button className="joinBtn" disabled={!(emailExistCheck&&famcodeCheck)} onClick = {registerAxios}>가입하기</button>
         </div>
     );
 };
