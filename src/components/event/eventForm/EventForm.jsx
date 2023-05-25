@@ -57,7 +57,7 @@ const sociability = sociabilityInput.value;
       ${selectedRoutine} ${selectedWhere} ${selectedAmount}원 소비하는데
       어떤 방식으로 투자나 저축을 하면 좋을까? 참고로 난 이전 사람과 다른 사람이야`;
 
-      alert(requestPrompt);
+      // alert(requestPrompt);
       navigate('/event-result', { state: { requestPrompt } });
     };
   
