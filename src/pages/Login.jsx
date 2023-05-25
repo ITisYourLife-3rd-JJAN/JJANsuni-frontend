@@ -26,8 +26,10 @@ const Login = () => {
                 if(response.status === 200 && isParent ==="T"){
                     const userId = response.data.data.userId;
                     const username = response.data.data.name;
+                    const isParent = response.data.data.isParent;
                     sessionStorage.setItem('userId', userId);
                     sessionStorage.setItem('username', username);
+                    sessionStorage.setItem('isParent', isParent);
                     return navigate("/parent");
                 } return navigate("/kid");
             })
