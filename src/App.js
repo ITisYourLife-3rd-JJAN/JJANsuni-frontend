@@ -24,6 +24,7 @@ import ParentProfile from './pages/ParentProfile';
 import EventGPT from './pages/EventGPT';
 import EventResult from './pages/EventResult';
 import Roulette from './pages/Roulette';
+import EventList from './pages/event/EventList';
 
 function App() {
   
@@ -51,7 +52,8 @@ function App() {
               <Route path="/parent/mission-history" element={<ParentMission/> }/>  
               <Route path="/event" element={<EventGPT/>}/>
               <Route path="/event-result" element={<EventResult/>}/>
-              <Route path="/event-roulette" element={<Roulette/>} />
+              <Route path='/events' element={<EventList/>}/>
+              <Route path="/events/2" element={<Roulette/>} />
           </Routes>
         </BrowserRouter>
       </div>
