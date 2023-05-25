@@ -29,10 +29,10 @@ const CommonJoin = ({isParent}) => {
         const emailRegExp =
         /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
         if (!emailRegExp.test(email)) {
-            setEmailMessage("이메일 양식으로 입력해주세요.");
+            setEmailMessage("이메일 형식으로 입력해주세요.");
             setIsEmail(false);
         } else {
-            setEmailMessage("올바른 이메일 양식이에요.");
+            setEmailMessage("올바른 양식이에요.");
             setIsEmail(true);
         }
     };
@@ -56,10 +56,10 @@ const CommonJoin = ({isParent}) => {
             setPhoneNum(phoneNum);
             const phoneRegExp = /^01([0|1|6|7|8|9])?([0-9]{3,4})?([0-9]{4})$/;
             if (!phoneRegExp.test(phoneNum)) {
-                setPhoneNumMessage("올바른 전화번호 양식이 아니에요");
+                setPhoneNumMessage("전화번호 양식을 확인해주세요");
                 setIsPhone(false);
             } else {
-                setPhoneNumMessage("올바른 전화번호 양식이에요");
+                setPhoneNumMessage("올바른 양식이에요");
                 setIsPhone(true);
             }
         };
@@ -76,13 +76,13 @@ const CommonJoin = ({isParent}) => {
             })
             .then((response) => {
                 if(response.status === 200){
-                    alert("사용 가능한 email이에요🤚")
+                    alert("사용 가능한 이메일이에요👌")
                     setEmailExistCheck(true)
                 }
             })
             .catch((error) => {
                 console.log(error.response.data);
-                alert("이미 존재하는 email이에요😥")
+                alert("이미 존재하는 이메일이에요😥")
             })
         }
         
@@ -123,8 +123,6 @@ const CommonJoin = ({isParent}) => {
             const selectedMonth = parseInt(birthday.slice(4, 6)); 
             const selectedDay = parseInt(birthday.slice(6, 8));
             const birthdayDate = new Date(selectedYear, selectedMonth, selectedDay);
-            
-            // 현재 나이 계산
             const age = currentDate.getFullYear() - birthdayDate.getFullYear();
 
             if (role==="F" && age >= 19) {
@@ -165,17 +163,17 @@ const CommonJoin = ({isParent}) => {
                     console.log(error);
                 });
             }else if(tooOld){
-                alert('만 19세 미만인 사용자만 자녀로 등록할 수 있어요');
+                alert('만 19세 미만인 사용자만 자녀로 등록할 수 있어요👶');
             }else if(tooYoung){
-                alert('만 19세 이상인 사용자만 부모로 등록할 수 있어요');
+                alert('만 19세 이상인 사용자만 부모로 등록할 수 있어요🙍‍♂️');
             }else if(!isEmail) {
-                alert('email 형식으로 맞추어 주세요😟');
+                alert('이메일 양식으로 수정해 주세요⛏️');
             }else if(!isPassword) {
-                alert('비밀번호를 더 복잡하게 설정해주세요.😟');
+                alert('비밀번호를 더 복잡하게 설정해주세요.🔒');
             }else if(!passwordMatch) {
-                alert('비밀번호 확인란을 동일하게 작성해주세요😟');
+                alert('비밀번호 확인란을 동일하게 작성해주세요🔑');
             }else if(!isPhone) {
-                alert('휴대폰번호 형식을 맞추어주세요.😟');
+                alert('01012345678 양식으로 수정해주세요.👀');
                 //setPhoneNum("")
             }
         };
