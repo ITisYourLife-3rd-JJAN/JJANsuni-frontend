@@ -4,6 +4,7 @@ import MapBackground from '../components/Mission/MapBackground';
 import Quiz from '../components/Mission/Quiz';
 import Vod from '../components/Mission/Vod';
 import axios from 'axios';
+import Header from '../components/header/Header';
 
 const Mission = () => {
     const { mapId, missionId } = useParams();
@@ -45,6 +46,7 @@ const Mission = () => {
     
     return (
         <div>
+            <Header/>
             {isQuiz ? 
                 <Quiz missionId={missionId} mapNum={mapId}  missionNum={missionId} title={title} explain={explain} answer={answer} /> 
                 : <Vod missionId={missionId} mapNum={mapId} missionNum={missionId} title={title} vodUrl={vodUrl}/>

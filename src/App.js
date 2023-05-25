@@ -1,7 +1,6 @@
 import React from 'react'
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
-import Header from './components/header/Header';
 import KidMain from './pages/KidMain';
 import ParentMain from './pages/ParentMain';
 import Intro from './pages/Intro';
@@ -27,7 +26,6 @@ function App() {
     return (
       <div>
         <BrowserRouter>
-          <Header/>       
           <Routes>
               <Route path="/join" element={<Join/> }/>  
               <Route path="/login" element={<Login/> }/>  
