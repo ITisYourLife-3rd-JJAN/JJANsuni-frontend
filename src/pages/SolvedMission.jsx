@@ -4,6 +4,7 @@ import { useParams, useLocation, useNavigate } from 'react-router-dom';
 import './css/solvedMission.css'
 import axios from 'axios';
 import confetti from "https://esm.run/canvas-confetti@1";
+import Header from '../components/header/Header';
 
 const SolvedMission = () => {
     const { missionId } = useParams();
@@ -62,6 +63,7 @@ const SolvedMission = () => {
 
     return (
         <div>
+            <Header/>
             {isLoading ?  setIsLoading(true) :
                 <div>
                     <div className='maplist-container'>

@@ -4,6 +4,7 @@ import { useParams, useNavigate } from 'react-router-dom';
 import MapBackground from '../components/Mission/MapBackground';
 import './css/missionList.css';
 import axios from 'axios';
+import Header from '../components/header/Header';
 
 
 const MissionList = () => {
@@ -42,6 +43,7 @@ const MissionList = () => {
 
     return (
         <div>
+            <Header/>
             <MapBackground mapId={mapId} isMap={true}/>
 
             {Array.from({ length: 7 }, (_, index) => (

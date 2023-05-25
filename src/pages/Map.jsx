@@ -3,6 +3,7 @@ import './css/map.css'
 import { Link } from 'react-router-dom';
 import axios from 'axios';
 import Loading from '../lib/Loading';
+import Header from '../components/header/Header';
 
 const Map = () => {
     const achieveStatus_full = 7; // 나중에 실제로 사용할 데이터 변수
@@ -88,7 +89,8 @@ const Map = () => {
     }
 
     return (
-        <div className='map-container'>  
+        <div className='map-container'>
+            <Header/>  
             <img
                 src={`${process.env.PUBLIC_URL}/assets/images/map/map_background.png`}
                 alt=''

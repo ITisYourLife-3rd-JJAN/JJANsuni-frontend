@@ -24,7 +24,7 @@ const CommonJoin = ({isParent}) => {
     const [isPhone, setIsPhone] = useState();
     const [tooOld, setTooOld] = useState(false);
     const [tooYoung, setTooYoung] = useState(false);
-
+  
     const onChangeEmail = (email) => {
         const emailRegExp =
         /^[A-Za-z0-9_]+[A-Za-z0-9]*[@]{1}[A-Za-z0-9]+[A-Za-z0-9]*[.]{1}[A-Za-z]{1,3}$/;
@@ -36,7 +36,7 @@ const CommonJoin = ({isParent}) => {
             setIsEmail(true);
         }
     };
-    
+
     const onChangePassword = (password) => {
         setPassword(password);
         const passwordRegExp =
@@ -49,7 +49,7 @@ const CommonJoin = ({isParent}) => {
             } else {
                 setPasswordMessage("안전한 비밀번호에요.");
                 setIsPassword(true);
-            }
+              }
         };
         
         const onChangePhone = (phoneNum) => {
@@ -58,23 +58,25 @@ const CommonJoin = ({isParent}) => {
             if (!phoneRegExp.test(phoneNum)) {
                 setPhoneNumMessage("전화번호 양식을 확인해주세요");
                 setIsPhone(false);
-            } else {
+        } else {
                 setPhoneNumMessage("올바른 양식이에요");
                 setIsPhone(true);
-            }
-        };
-        
+        }
+      };
+
         useEffect(() => {
           setPasswordMatch(password === passwordCheck);
         }, [passwordCheck]);
 
         
-        const emailExistAxios = () => {
-            axios
+    const emailExistAxios = () => {
+        axios
             .post("http://localhost:8080/api/v1/users/email-check", {
                 email : email
             })
             .then((response) => {
+                console.log(response);
+                console.log(response.data);
                 if(response.status === 200){
                     alert("사용 가능한 이메일이에요👌")
                     setEmailExistCheck(true)
@@ -84,12 +86,14 @@ const CommonJoin = ({isParent}) => {
                 console.log(error.response.data);
                 alert("이미 존재하는 이메일이에요😥")
             })
-        }
-        
-        const generateFamilyCodeAxios = () => {
-            axios
+    }
+    
+    const generateFamilyCodeAxios = () => {
+        axios
             .get("http://localhost:8080/api/v1/users/family-code")
             .then((response) => {
+                console.log(response);
+                //console.log(response.data);
                 if(response.status === 200){
                     setFamCode(response.data.item.famCode);
                     alert("가족코드가 생성되었어요.👨‍👨‍👧‍👦")
@@ -99,12 +103,13 @@ const CommonJoin = ({isParent}) => {
             .catch((error) => {
                 console.log(error.response.data);
             })
-        }
-        
-        const familyCodeCheckAxios = () => {
-            axios
+    }
+
+    const familyCodeCheckAxios = () => {
+        axios
             .get(`http://localhost:8080/api/v1/users/check/${famCode}`)
             .then((response) => {
+                console.log(response);
                 if(response.status === 200){
                     alert("가족코드가 확인되었어요.👨‍👧")
                     setFamcodeCheck(true);
@@ -114,7 +119,7 @@ const CommonJoin = ({isParent}) => {
                 console.log(error.response);
                 alert("가족코드를 다시 확인해주세요.😿")
             })
-        }
+    }
 
         const calculateAge = () => {
             
@@ -134,6 +139,7 @@ const CommonJoin = ({isParent}) => {
                 setTooYoung(false);
             }
             };
+            
             useEffect(() => {
                 calculateAge();
               }, [birthday]);
@@ -177,8 +183,8 @@ const CommonJoin = ({isParent}) => {
                 //setPhoneNum("")
             }
         };
-        
-        return (
+
+    return (
         <div className='join-wrap'>
         <div className='join-box'>
             <div>
@@ -190,6 +196,7 @@ const CommonJoin = ({isParent}) => {
                             setUsername(e.target.value); }} 
                         required />
                 </div>
+
                 <div className='input-box'> 
                     <label for="email">이메일</label>
                     <div className='email-box'>
@@ -198,7 +205,7 @@ const CommonJoin = ({isParent}) => {
                                 onChange={(e) => {
                                     onChangeEmail(e.target.value);
                                     setEmail(e.target.value); }} 
-                                    required />
+                                required />
                         <button id="existBtn" onClick={emailExistAxios}>중복확인</button>
                     </div>
                     <p className={`message ${!isEmail && "wrong"}`}>{emailMessage}</p> 
@@ -226,13 +233,13 @@ const CommonJoin = ({isParent}) => {
                     />
                 </div>
                 {!passwordMatch && <p id='passwordCheck-Text'>비밀번호가 일치하지 않습니다.</p>}
-
+           
 
                 <div className='input-box'> 
                     <label for="phoneNumber">전화번호</label>
                     <input type="tel" id="phoneNumber" 
                         value={phoneNum} className='joinipt' 
-                        onChange={(e) => {    
+                        onChange={(e) => {
                             onChangePhone(e.target.value);
                             setPhoneNum(e.target.value); }} 
                         required></input>
