@@ -19,7 +19,8 @@ import Pay from './pages/Pay';
 import Message from './pages/Message';
 import ParentMission from './pages/ParentMission';
 import ParentProfile from './pages/ParentProfile';
-
+import EventGPT from './pages/EventGPT';
+import EventResult from './pages/EventResult';
 
 function App() {
   
@@ -44,7 +45,9 @@ function App() {
               <Route path="/direct-debit" element={<DirectDebit/> }/>  
               <Route path="/pay" element={<Pay/> }/>  
               <Route path="/message" element={<Message/> }/>  
-              <Route path="/parent/mission-history" element={<ParentMission/> }/>  
+              <Route path="/parent/mission-history" element={<ParentMission/> }/>
+              <Route path="/event" element={<EventGPT/>}/>
+              <Route path="/event-result" element={<EventResult/>}/>
           </Routes>
         </BrowserRouter>
       </div>
