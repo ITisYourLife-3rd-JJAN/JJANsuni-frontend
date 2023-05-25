@@ -1,0 +1,97 @@
+
+.eggContainer{
+    position: relative;
+    padding: 2rem;
+    background-color: #DD5475;
+    border-radius: 30px;
+    width: 90%;
+    height: 50%;
+    top: 30%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    margin : 2.3rem auto;
+}
+
+.apiResponseBox{
+    width: 50%;
+    height: 100%;
+    background-color: #fff;
+    border-radius: 30px;
+    display: flex;
+    flex-direction: column;
+    margin-right: 2rem;
+    margin-left: 2rem;
+    padding: 2rem 2rem;
+    font-size: 1.3rem;
+}
+
+.eggCharge{
+    width: 50%;
+}
+
+.eggImg{
+    width: 100%;
+    cursor: pointer;
+    margin: auto 50%;
+}
+
+.eggBreakBox{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+    height: 100%;
+    text-align: center;
+    background-color: white;
+    border-radius: 30px;
+}
+
+.generateBtn {
+    border: none;
+    display: inline-block;
+    padding: 1.5em 2.5em;
+    border-radius: 15px;
+    font-size: 2rem;
+    background-color: #DD5475;
+    color: #ffffff;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 1);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    margin-top: 4%;
+    width: 100%;
+    cursor: pointer;
+}
+.generateBtn:hover{
+    letter-spacing: 0.2em;
+    transform: scale(0.8);
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+
+.eggSubmit {
+    border: none;
+    display: inline-block;
+    padding: 0.6rem 2rem;
+    border-radius: 15px;
+    font-size: 3rem;
+    color: #DD5475;
+    background-color: #ffffff;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 1);
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.25s;
+    margin-top: 4%;
+    width: 40%;
+    height: fit-content;
+    border: 2px solid #DD5475;
+    margin-bottom: 10%;
+}
+
+.comGPT{
+    position: relative;
+    height: 40%;
+    width: 40%;
+    margin-left: 65%;
+}
