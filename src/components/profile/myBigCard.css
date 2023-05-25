@@ -60,7 +60,7 @@
     z-index: 9999;
     }
 
-    .quitbtn{
+    .quitbtn.card{
         cursor: pointer;
         width: 10%;
         height: 10%;

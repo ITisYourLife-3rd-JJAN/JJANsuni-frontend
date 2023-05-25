@@ -12,6 +12,18 @@
     height: 70%;
     background-color: #fff;
     border-radius: 30px;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    padding: 2rem;
+    overflow: auto;
+    -ms-overflow-style: none;
+}
+
+::-webkit-scrollbar {
+    display: none;
+}
+  
+.msgbox::-webkit-scrollbar{     /*특정 부분 스크롤바 없애기*/
+display:none;
 }
 
 .msgbtn{
@@ -28,36 +40,62 @@
     border-radius: 30px;display: flex;
     align-items: center;
     justify-content: center;
-    width: 30%;
+    width: 20%;
     height: 100%;
     color: #fff;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 24px;
+    cursor: pointer;
+}
+.msgbtnin:hover{
+    cursor: pointer;
+}
+
+.msgbtnin.btn-disabled {
+    background-color: gray;
+    cursor: default;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    border: 3px solid #000000;
 }
 
 .msgtitle{
-    /* margin: 5rem; */
-    font-size: 30px;
-    font-weight: 600;
+    font-size: 3rem;
+    font-weight: 550;
 }
+
 .msgkid{
-    margin: 5rem;
-    font-size: 30px;
-    font-weight: 600;
+    width: 15rem;
+    margin: 1rem 0 2rem 3rem;
+    font-size: 1.5rem;
+    font-weight: 400;
+    padding: 0.3rem;
+    padding: 0.4rem 0rem 0.4rem 1rem;
+    border-radius: 15px;
+    outline: none;
 }
+
+.msgkid:focus{
+    border: 1px solid #DD5475;
+}
+
 .msgipt{
     margin-bottom: 5rem;
     width: 80%;
     border: none;
     border-bottom: 3px solid #000;
-    font-size: 26px;
-    font-weight: 700;
+    font-size: 1.5rem;
+    font-weight: 500;
+    padding: 0 1rem;
+}
+
+.msgipt:focus{
+    outline: none;
 }
 
 .msgiptbox{
     font-size: 26px;
-    margin-left: 5rem;
-    margin-bottom: 5rem;
+    margin-left: 3rem;
+    margin-bottom: 4rem;
     font-weight: 700;
     display: flex;
 }
@@ -65,7 +103,7 @@
 .msgtitlebox{
     display: flex;
     justify-content: space-between;
-    margin: 5rem;
+    margin: 3rem;
 }
 
 .quitbtn{

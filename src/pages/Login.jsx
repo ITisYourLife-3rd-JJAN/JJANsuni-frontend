@@ -7,6 +7,7 @@ const Login = () => {
 
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    
     const navigate = useNavigate();
 
     const loginAxios = () => {
@@ -23,6 +24,10 @@ const Login = () => {
                 console.log(response.data)
                 alert("로그인에 성공했어요✨")
                 if(response.status === 200 && isParent ==="T"){
+                    const userId = response.data.data.userId;
+                    const username = response.data.data.name;
+                    sessionStorage.setItem('userId', userId);
+                    sessionStorage.setItem('username', username);
                     return navigate("/parent");
                 } return navigate("/kid");
             })
