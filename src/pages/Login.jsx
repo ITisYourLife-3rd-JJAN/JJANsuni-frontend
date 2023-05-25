@@ -19,11 +19,6 @@ const Login = () => {
                 password : password
             })
             .then((response) => {
-                console.log(response);
-                const isParent = response.data.data.isParent;
-                console.log(response.data)
-                alert("로그인에 성공했어요✨")
-                if(response.status === 200 && isParent ==="T"){
                     const userId = response.data.data.userId;
                     const username = response.data.data.name;
                     const isParent = response.data.data.isParent;
@@ -32,6 +27,8 @@ const Login = () => {
                     sessionStorage.setItem('username', username);
                     sessionStorage.setItem('isParent', isParent);
                     sessionStorage.setItem('gender', gender);
+                alert("로그인에 성공했어요✨")
+                if(response.status === 200 && isParent ==="T"){
                     return navigate("/parent");
                 } return navigate("/kid");
             })

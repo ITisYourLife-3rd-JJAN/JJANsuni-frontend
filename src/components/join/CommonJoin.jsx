@@ -139,6 +139,7 @@ const CommonJoin = ({isParent}) => {
                 setTooYoung(false);
             }
             };
+            
             useEffect(() => {
                 calculateAge();
               }, [birthday]);
