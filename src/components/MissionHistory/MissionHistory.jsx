@@ -102,11 +102,11 @@ const MissionHistory = ({kidUserId, kidUserName}) => {
 
   if (errorMessage) {
     return (
-        <tbody>
-        <tr>
-        <td style={{textAlign: 'center'}}>{errorMessage}</td>
-          </tr>
-        </tbody>
+      <div className='mhistoryBox'>
+        <div className='minnerBox2'>
+          <div style={{textAlign: 'center'}}>{errorMessage}</div>
+        </div>
+      </div>
     );
   }
 
