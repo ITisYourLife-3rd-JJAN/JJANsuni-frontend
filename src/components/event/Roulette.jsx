@@ -1,11 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './roulette.css'
+import './roulette.css';
+import { useNavigate } from 'react-router';
 
 const Roulette = () => {
   const [isRotating, setIsRotating] = useState(false);
   const [resultValue, setResultValue] = useState(null);
   const imageRef = useRef(null);
   const rotationIntervalRef = useRef(null);
+
+  const navigate = useNavigate();
 
   const handleButtonClick = () => {
     if (isRotating) {
@@ -28,6 +31,8 @@ const Roulette = () => {
       const degrees = parseInt(rotation[1]);
       const index = Math.floor((degrees % 360) / 45);
       setResultValue(getResultValue(index));
+      alert(`결과: ${getResultValue(index)}`);
+      navigate("/kid");
     }
   };
 
@@ -49,8 +54,7 @@ const Roulette = () => {
   return (
     <div>
       <img className='roll-img' ref={imageRef} src={`${process.env.PUBLIC_URL}/assets/images/roll.png`} alt="" />
-      <button onClick={handleButtonClick}>{isRotating ? '멈추기' : '회전하기'}</button>
-      {resultValue && <p>결과: {resultValue}</p>}
+      <button className='roll-btn' onClick={handleButtonClick}>{isRotating ? '멈추기' : '회전하기'}</button>
     </div>
   );
 };

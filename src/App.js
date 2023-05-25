@@ -48,7 +48,7 @@ function App() {
               <Route path="/pay" element={<Pay/> }/>  
               <Route path="/message" element={<Message/> }/>  
               <Route path="/parent/mission-history" element={<ParentMission/> }/>  
-              <Route path="/event" element={<Roulette/>} />
+              <Route path="/event-rouletee" element={<Roulette/>} />
           </Routes>
         </BrowserRouter>
       </div>
