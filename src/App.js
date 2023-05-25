@@ -20,6 +20,7 @@ import Pay from './pages/Pay';
 import Message from './pages/Message';
 import ParentMission from './pages/ParentMission';
 import ParentProfile from './pages/ParentProfile';
+import Roulette from './components/event/Roulette';
 
 
 function App() {
@@ -47,6 +48,7 @@ function App() {
               <Route path="/pay" element={<Pay/> }/>  
               <Route path="/message" element={<Message/> }/>  
               <Route path="/parent/mission-history" element={<ParentMission/> }/>  
+              <Route path="/event" element={<Roulette/>} />
           </Routes>
         </BrowserRouter>
       </div>
