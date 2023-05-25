@@ -1,8 +1,8 @@
 import React, { useState, useRef, useEffect } from 'react';
-import './roulette.css';
+import './rouletteGame.css';
 import { useNavigate } from 'react-router';
 
-const Roulette = () => {
+const RouletteGame = () => {
   const [isRotating, setIsRotating] = useState(false);
   const [resultValue, setResultValue] = useState(null);
   const imageRef = useRef(null);
@@ -59,4 +59,4 @@ const Roulette = () => {
   );
 };
 
-export default Roulette;
+export default RouletteGame;

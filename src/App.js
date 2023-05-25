@@ -20,9 +20,10 @@ import Message from './pages/Message';
 import ParentMission from './pages/ParentMission';
 import ParentProfile from './pages/ParentProfile';
 
-import Roulette from './components/event/Roulette';
+
 import EventGPT from './pages/EventGPT';
 import EventResult from './pages/EventResult';
+import Roulette from './pages/Roulette';
 
 function App() {
   
@@ -50,12 +51,11 @@ function App() {
               <Route path="/parent/mission-history" element={<ParentMission/> }/>  
               <Route path="/event" element={<EventGPT/>}/>
               <Route path="/event-result" element={<EventResult/>}/>
-              <Route path="/event-rouletee" element={<Roulette/>} />
+              <Route path="/event-roulette" element={<Roulette/>} />
           </Routes>
         </BrowserRouter>
       </div>
     );
-
 
 }
 
