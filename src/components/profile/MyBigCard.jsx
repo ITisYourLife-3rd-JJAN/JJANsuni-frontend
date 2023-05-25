@@ -94,7 +94,7 @@ const MyBigCard = ({ isParent }) => {
       })
       .catch((error) => {
         console.log(error);
-        alert('회원정보 변경에 실패했습니다.😥');
+        alert('전화번호 양식을 확인해주세요.😥');
       });
   };
   
