@@ -10,7 +10,7 @@ const EggBreak = () => {
 
 
   const textArray = [
-    "1","10","3","7","50","700","1400","3600","600","1000","10000"
+    "1","2","3","4","5","11","10","3","2","7","8","9","18","19","100","231","452","91","40","37","1200","50","700","1400","3600","600","1000","10000"
   ];
 
   const hit = () => {
@@ -19,7 +19,7 @@ const EggBreak = () => {
       if (count > 1) {
         setCount(count - 1);
       } else {
-        const randomNum = Math.floor(Math.random() * 11);
+        const randomNum = Math.floor(Math.random() * 28);
         setGiftNum(randomNum);
         setLock(false);
         setShowButton(true);
