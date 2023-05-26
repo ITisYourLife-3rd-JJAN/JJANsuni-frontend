@@ -88,7 +88,7 @@ const SolvedMission = () => {
                             </div>
                         }
                             <div className='solution-text-box'>
-                                <p dangerouslySetInnerHTML={{ __html: explain }}></p>
+                                <p className='solution-text' dangerouslySetInnerHTML={{ __html: explain }}></p>
                             </div>                      
                         </div>      
                         <MapBackground mapId={missionId}/>
