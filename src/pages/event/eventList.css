@@ -5,9 +5,14 @@
     padding: 5rem;
 }
 
-.eventHeader{
+.eventList-Header{
     display: flex;
     justify-content: center;
+    align-items: center;
+    height: 11rem;
+    padding: 1.5rem 0;
+    background-color: #DD5475;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 }
 
 .event-card{
@@ -27,4 +32,15 @@
 
 .event-img:hover{
     border-radius: 0px;
+}
+
+.event-title{
+    font-size: 3.5rem;
+    padding: 1.2rem;
+    margin: 0 2rem;
+}
+
+.event-des{
+    font-size: 2rem;
+    margin: 0 10rem;
 }
