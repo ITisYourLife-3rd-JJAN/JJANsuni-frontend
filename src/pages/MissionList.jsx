@@ -5,6 +5,7 @@ import MapBackground from '../components/Mission/MapBackground';
 import './css/missionList.css';
 import axios from 'axios';
 import Header from '../components/header/Header';
+import Loading from '../lib/Loading';
 
 
 const MissionList = () => {
@@ -17,6 +18,9 @@ const MissionList = () => {
     const [missionData, setMissionData] = useState([]);
     const [isAnswerAvailable, setIsAnswerAvailable] = useState(true); 
     const [isSolved, setIsSolved] = useState(false); 
+    const [isLoading, setIsLoading] = useState(true);
+
+    const userId = sessionStorage.getItem("userId");
 
     const navigate = useNavigate();
     
@@ -24,10 +28,11 @@ const MissionList = () => {
         const getUserMission = async () => {
           try {
             const response = await axios.post("http://localhost:8080/api/v1/missions/map-status", {
-              solvedUserId: 2,
+              solvedUserId: userId,
               mapNum: mapId
             });
             setMissionData(response.data.data);
+            setIsLoading(false)
           } catch (error) {
             console.log(error.response.data);
           }
@@ -40,7 +45,8 @@ const MissionList = () => {
         setIsSolved(isMissionNumExist);
       }, [missionData]);
 
-
+      if(isLoading) return <Loading/>;
+      
     return (
         <div>
             <Header/>

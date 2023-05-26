@@ -14,11 +14,12 @@ const Map = () => {
     const [preMap, setPreMap] = useState(0);
 
     const mapBoxes = [];
+    const userId = sessionStorage.getItem("userId");
     
     useEffect(() => {
         const getUserAchieve = async () => {
             await axios
-                .get("http://localhost:8080/api/v1/users/2")
+                .get(`http://localhost:8080/api/v1/users/${userId}`)
                 .then((response) => {
                     console.log(response.data.data)
                     setStatus(response.data.data.achieve)
@@ -89,15 +90,17 @@ const Map = () => {
     }
 
     return (
-        <div className='map-container'>
-            <Header/>  
-            <img
-                src={`${process.env.PUBLIC_URL}/assets/images/map/map_background.png`}
-                alt=''
-                className='map-background-image'/>
-            {mapBoxes}
-            
-        </div>
+        <>
+            <Header/> 
+            <div className='map-container'>
+                <img
+                    src={`${process.env.PUBLIC_URL}/assets/images/map/map_background.png`}
+                    alt=''
+                    className='map-background-image'/>
+                {mapBoxes}
+                
+            </div> 
+        </>
     );
 };
 

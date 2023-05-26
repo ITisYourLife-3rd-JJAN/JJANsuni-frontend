@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 import Select from 'react-select'
 import Header from '../components/header/Header';
+import Loading from '../lib/Loading';
 
 const Message = () => {
     const navigate = useNavigate();
@@ -15,6 +16,7 @@ const Message = () => {
     const [selectedChild, setSelectedChild] = useState("");
     const [children, setChildren] = useState([]); 
     const [messageText, setMessageText] = useState(""); 
+    const [isLoading, setIsLoading] = useState(true);
     
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
@@ -27,12 +29,12 @@ const Message = () => {
                         (child) => child.isParent === "F"
                       );
                       setChildren(filteredChildren); 
+                      setIsLoading(false);
                     })
                 .catch((error) => {
                     console.log(error);
                 })
         };
-    
         getChildrens();
     }, []);
 
@@ -62,14 +64,15 @@ const Message = () => {
             })
             .then((response) => {
                 console.log(response.data);
-                alert(response.data.message)
+                alert(response.data.message);
                 navigate("/parent")
             })
             .catch((error) => {
                 console.log(error);
             })
-        
     };
+
+    if(isLoading) return <Loading/>;
     
     return (
         <div className='msgmain'>

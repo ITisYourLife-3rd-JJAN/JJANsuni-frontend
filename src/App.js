@@ -19,8 +19,13 @@ import Pay from './pages/Pay';
 import Message from './pages/Message';
 import ParentMission from './pages/ParentMission';
 import ParentProfile from './pages/ParentProfile';
-import EventGPT from './pages/EventGPT';
-import EventResult from './pages/EventResult';
+
+
+import EventGPT from './pages/event/EventGPT';
+
+import Roulette from './pages/event/Roulette';
+import EventList from './pages/event/EventList';
+import EventResult from './pages/event/EventResult';
 
 function App() {
   
@@ -45,14 +50,15 @@ function App() {
               <Route path="/direct-debit" element={<DirectDebit/> }/>  
               <Route path="/pay" element={<Pay/> }/>  
               <Route path="/message" element={<Message/> }/>  
-              <Route path="/parent/mission-history" element={<ParentMission/> }/>
+              <Route path="/parent/mission-history" element={<ParentMission/> }/>  
               <Route path="/event" element={<EventGPT/>}/>
               <Route path="/event-result" element={<EventResult/>}/>
+              <Route path='/events' element={<EventList/>}/>
+              <Route path="/events/2" element={<Roulette/>} />
           </Routes>
         </BrowserRouter>
       </div>
     );
-
 
 }
 

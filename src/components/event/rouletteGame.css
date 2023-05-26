@@ -1,0 +1,55 @@
+.event-wrap{
+	width: 100%;
+	height: 100%;
+}
+
+.roll-arrow{
+	position: absolute;
+	top: 6%;
+	left: 21.6%;
+	width: 50px;
+	z-index: 100;
+}
+
+.roll-img{
+	position: absolute;
+	top: 13%;
+	left: 1.5%;
+	width: 44%;
+	z-index: 100;
+}
+
+.roll-btn{
+	position: absolute;
+	left: 50%;
+	top: 35%;
+	width: 10rem;
+	background-color: #D6D7EF;
+	border: 3px solid #8387ed;
+	padding: 0.4rem 0.2rem;
+	color: #000;
+    font-weight: 500;
+	border-radius: 30px;display: flex;
+	text-align: center;
+	align-items: center;
+	font-size: 1.4rem;
+	justify-content: center;
+	box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+	cursor: pointer;
+}
+
+.roll-btn:hover{
+	cursor: pointer;
+}
+
+.roll-btn:focus{
+	cursor: pointer;
+	box-shadow: none;
+}
+
+.pig-img{
+	position: absolute;
+    width: 30%;
+    top: 50%;
+    right: 0;
+}
