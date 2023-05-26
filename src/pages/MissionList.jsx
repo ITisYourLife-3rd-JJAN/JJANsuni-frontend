@@ -18,13 +18,15 @@ const MissionList = () => {
     const [isAnswerAvailable, setIsAnswerAvailable] = useState(true); 
     const [isSolved, setIsSolved] = useState(false); 
 
+    const userId = sessionStorage.getItem("userId");
+
     const navigate = useNavigate();
     
     useEffect(() => {
         const getUserMission = async () => {
           try {
             const response = await axios.post("http://localhost:8080/api/v1/missions/map-status", {
-              solvedUserId: 2,
+              solvedUserId: userId,
               mapNum: mapId
             });
             setMissionData(response.data.data);

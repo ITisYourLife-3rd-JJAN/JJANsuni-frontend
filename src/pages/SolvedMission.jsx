@@ -18,6 +18,7 @@ const SolvedMission = () => {
     const [isCorrect, setIsCorrect] = useState(0);
     const [isLoading, setIsLoading] = useState();
     
+    const userId = sessionStorage.getItem("userId")
 
     useEffect(() => {
         const isO = location.state.isO;
@@ -36,7 +37,7 @@ const SolvedMission = () => {
         axios
             .post("http://localhost:8080/api/v1/missions", {
                 solvedMissionId: missionId,
-                solvedUserId: 2,
+                solvedUserId: userId,
                 status: status
             })
             .then((response) => {

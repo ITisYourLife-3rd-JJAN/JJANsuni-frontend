@@ -14,11 +14,12 @@ const Map = () => {
     const [preMap, setPreMap] = useState(0);
 
     const mapBoxes = [];
+    const userId = sessionStorage.getItem("userId");
     
     useEffect(() => {
         const getUserAchieve = async () => {
             await axios
-                .get("http://localhost:8080/api/v1/users/2")
+                .get(`http://localhost:8080/api/v1/users/${userId}`)
                 .then((response) => {
                     console.log(response.data.data)
                     setStatus(response.data.data.achieve)
