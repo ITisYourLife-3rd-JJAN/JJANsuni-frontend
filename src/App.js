@@ -23,7 +23,7 @@ import ParentProfile from './pages/ParentProfile';
 
 import EventGPT from './pages/event/EventGPT';
 
-import Roulette from './pages/Roulette';
+import Roulette from './pages/event/Roulette';
 import EventList from './pages/event/EventList';
 import EventResult from './pages/event/EventResult';
 
