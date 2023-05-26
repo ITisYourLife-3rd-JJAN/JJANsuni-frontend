@@ -1,12 +1,22 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Link } from 'react-router-dom';
 import Header from '../../components/header/Header';
 import './eventList.css'
 import EventListHeader from './EventListHeader';
+import Loading from '../../lib/Loading';
 
 const EventList = () => {
     const isParent = sessionStorage.getItem("isParent");
-    
+    const [isLoading, setIsLoading] = useState(true);
+
+    useEffect(() => {
+        setTimeout(() => {
+            setIsLoading(false);
+        }, 300);
+    }, []);
+
+    if(isLoading) return <Loading/>;
+
     return (
         <div>
             <Header/>

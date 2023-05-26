@@ -5,6 +5,7 @@ import './css/solvedMission.css'
 import axios from 'axios';
 import confetti from "https://esm.run/canvas-confetti@1";
 import Header from '../components/header/Header';
+import Loading from '../lib/Loading';
 
 const SolvedMission = () => {
     const { missionId } = useParams();
@@ -51,7 +52,7 @@ const SolvedMission = () => {
             });
     }
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <Loading/>;
     }
 
     const handleNextButtonClick = () => {
