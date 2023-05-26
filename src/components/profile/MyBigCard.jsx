@@ -10,6 +10,11 @@ const MyBigCard = ({ isParent }) => {
 
   const [isGirl, setIsGirl] = useState(true);
   let imgSrc = '';
+  useEffect(() => {
+    if (sessionStorage.getItem('gender') === 'M') {
+      setIsGirl(false);
+    }
+  }, []);
 
   if (isParent === true && isGirl === true) {
     imgSrc = `${process.env.PUBLIC_URL}/assets/images/mammy.png`;
@@ -29,22 +34,47 @@ const MyBigCard = ({ isParent }) => {
   const [successEditMessage, setSuccessEditMessage] = useState('');
   const userId = sessionStorage.getItem("userId");
   const [userBalance, setUserBalance] = useState("");
+  const [userEmail, setUserEmail] = useState("");
+  const [userAccount, setUserAccount] = useState("");
 
-  useEffect(() => {
-    const getUser = () => {
+  const getBalance = () => {
+    axios
+        .get(`http://localhost:8080/api/v1/users/${userId}`)
+        .then((response) => {
+            console.log(response.data.data)
+            setUserBalance(response.data.data.balance)
+        })
+        .catch((error) => {
+            console.log(error.response.data);
+        })
+    };
+    const getEmail = () => {
+      axios
+          .get(`http://localhost:8080/api/v1/users/${userId}`)
+          .then((response) => {
+              console.log(response.data.data)
+              setUserEmail(response.data.data.email)
+          })
+          .catch((error) => {
+              console.log(error.response.data);
+          })
+      };
+      const getAccount = () => {
         axios
             .get(`http://localhost:8080/api/v1/users/${userId}`)
             .then((response) => {
                 console.log(response.data.data)
-                setUserBalance(response.data.data.balance)
+                setUserAccount(response.data.data.account)
             })
             .catch((error) => {
                 console.log(error.response.data);
             })
         };
 
-    getUser();
-
+  useEffect(() => {
+    getBalance();
+    getEmail();
+    getAccount();
   }, []);
 
   const handleChargePay = () => {
@@ -71,20 +101,10 @@ const MyBigCard = ({ isParent }) => {
   };
 
   const handlePaymentSubmit = (e) => {
-    const getUser = () => {
-      axios
-        .get(`http://localhost:8080/api/v1/users/${userId}`)
-        .then((response) => {
-          console.log(response.data.data);
-          setUserBalance(response.data.data.balance);
-        })
-        .catch((error) => {
-          console.log(error.response.data);
-        });
-    };
+    getBalance();
     e.preventDefault(); 
 
-    if (!price || price <= 0 || price > 100000) {
+    if (!price || price <= 0 || price > 1000000) {
         alert('이체할 금액을 확인해주세요.(1~100만원까지 가능)🤨');
         setPrice("");
         return;
@@ -99,7 +119,7 @@ const MyBigCard = ({ isParent }) => {
         console.log(response);
         setPrice("");
         setSuccessMessage('잔액 충전 완료됐습니다.😊');
-        getUser();
+        getBalance();
       })
       .catch((error) => {
         console.log(error);
@@ -109,7 +129,6 @@ const MyBigCard = ({ isParent }) => {
   const handleProfileSubmit = (event) => {
     event.preventDefault();
   
-    // 프로필 업데이트 유효성 검사 수행
     if (!phoneNum || phoneNum.trim() === '') {
       alert('전화번호를 입력해주세요.🤨');
       return;
@@ -138,7 +157,7 @@ const MyBigCard = ({ isParent }) => {
     <div className="my-profile-card-container" style={containerStyle}>
       <img src={`${imgSrc}`} alt="" className="me-profile" />
       <div className="my-info-box">
-        <p id="my-name">정길연</p>
+        <p id="my-name">{sessionStorage.getItem('username')}</p>
         {!isParent ? (
           <>
             <p id="my-favorite">좋아하는 것: 게임 강아지</p>
@@ -149,8 +168,8 @@ const MyBigCard = ({ isParent }) => {
             <p id="my-balance">잔액: {userBalance}원</p>
           </>
         )}
-        <p id="my-account">계좌번호: 882-602-04182779</p>
-        <p>strongfox@gmail.com</p>
+        <p id="my-account">계좌번호: {userAccount}</p>
+        <p>{userEmail}</p>
       </div>
       <div className="my-edit-box">
         <p>탈퇴하기</p>
