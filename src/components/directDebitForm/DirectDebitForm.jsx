@@ -12,7 +12,7 @@ const DebitForm = ({kidUserId, kidUserName}) => {
     ]
 
     const everyoption = [
-        {value: 41, label: '' }
+        {value: 1, label: '' }
     ]
     
     const weekoptions = [
@@ -44,8 +44,8 @@ const DebitForm = ({kidUserId, kidUserName}) => {
     const [autoReceivedUserId, setAutoReceivedUserId] = useState();
     const [price, setPrice] = useState("");
     const [debitMsg, setDebitMsg] = useState("");
-    const [debitDate, setDebitDate] = useState();
-    const [debitCycle, setDebitCycle] = useState();
+    const [debitDate, setDebitDate] = useState(1);
+    const [debitCycle, setDebitCycle] = useState(3);
     
     if (debitCycle==2) {
         var k = weekoptions
@@ -55,16 +55,10 @@ const DebitForm = ({kidUserId, kidUserName}) => {
         k = dayoptions
     }
     
-    const balance = 2000;
 
     const directAxios = () => {
         if (price <= 0 || price > 1000000) {
             alert('이체할 금액을 확인해주세요.(1~100만원까지 가능)🤨');
-            setPrice("");
-            return;
-          }
-          if (price > balance) {
-            alert('잔액이 부족합니다🥺');
             setPrice("");
             return;
           }
@@ -88,7 +82,7 @@ const DebitForm = ({kidUserId, kidUserName}) => {
             .then((response) => {
                 console.log(response)
                 if(response.status === 200) {
-                    alert('이체가 완료됐어요💵');
+                    alert('자동이체가 등록됐어요💵');
                     setPrice("");
                     setDebitMsg("");
                 }
@@ -114,9 +108,7 @@ const DebitForm = ({kidUserId, kidUserName}) => {
                         <div className='bigtext' style={{color:"#AAA", marginLeft: "1rem"}}>
                         {price > 1000000 ? (
                             <span style={{ color: "#DD5475" }}>100만원 넘는 금액은 송금할 수 없습니다</span>
-                            ) : price > balance ? (
-                                <span style={{ color: "#DD5475" }}>잔액이 부족합니다</span>
-                                ) : price < 0 ? (
+                            ) : price < 0 ? (
                                     <span style={{ color: "#DD5475" }}>금액을 확인해주세요</span>
                                     ) : (
                                         <>

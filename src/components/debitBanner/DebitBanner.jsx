@@ -7,9 +7,11 @@ import axios from 'axios';
 
 const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
 
-    const userId = 1;
+    const userId = sessionStorage.getItem("userId");
     const [childData, setChildData] = useState([]);
-    const [kidOptions, setKidOptions] = useState([]);
+    const [kidOptions, setKidOptions] = useState([{ value: '아이 선택하기', label: '아이 선택하기' }]);
+    const [kidBalance, setKidBalance] = useState([0]);
+    const [nowKidBalance, setNowKidBalance] = useState(kidBalance[0])
 
     const menuoptions = [
         { value: '이체 내역', label: <Link to="/debit-history" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 내역</div></Link> },
@@ -36,14 +38,19 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
                         value: child.userId,
                         label: child.name+" 아이"
                     }))
+                    const updateBalance = filterData.map(child => (
+                        child.balance
+                    ))
+                    setKidBalance([...kidBalance, ...updateBalance])
 
-                    setKidOptions(updateKidOptions)
+                    setKidOptions([...kidOptions,
+                        ...updateKidOptions])
                     // console.log(updateKidOptions)
                     // console.log(childData)
                 })
         }
         getChildAxios()
-    }, [userId])
+    }, [])
 
 
     if (kidOptions.length !== 0) {
@@ -73,8 +80,8 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
                     />
                 </div>
                 <div className='kidBalance'>
-                    <div>아이 현재 잔액:</div>
-                    <div>찌글이 원</div>
+                    <div className='usespace'>아이 현재 잔액: </div>
+                    <div> {nowKidBalance} 원</div>
                 </div>
                 <div className='kidSelect'>
                     <Select
@@ -101,6 +108,7 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
                     onChange={(e) => {
                         setKidUserId(e.value)
                         setKidUserName(e.label)
+                        setNowKidBalance(kidBalance[kidOptions.indexOf(e)])
                     }}
                     />
                 </div>

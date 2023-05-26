@@ -6,9 +6,11 @@ import axios from 'axios';
 
 const DebitBanner = ({setKidUserId, setKidUserName}) => {
 
-    const userId = 1;
+    const userId = sessionStorage.getItem("userId");
     const [childData, setChildData] = useState([]);
-    const [kidOptions, setKidOptions] = useState([]);
+    const [kidOptions, setKidOptions] = useState([{ value: '아이 선택하기', label: '아이 선택하기' }]);
+    const [kidBalance, setKidBalance] = useState([0]);
+    const [nowKidBalance, setNowKidBalance] = useState(kidBalance[0])
 
     const kidoptions = [
         { value: '정길연 아이', label: '정길연 아이' },
@@ -31,6 +33,10 @@ const DebitBanner = ({setKidUserId, setKidUserName}) => {
                         value: child.userId,
                         label: child.name+" 아이"
                     }))
+                    const updateBalance = filterData.map(child => (
+                        child.balance
+                    ))
+                    setKidBalance(updateBalance)
 
                     setKidOptions(updateKidOptions)
                     // console.log(updateKidOptions)
@@ -49,7 +55,7 @@ const DebitBanner = ({setKidUserId, setKidUserName}) => {
             </div>
             <div className='kidBalance'>
                 <div>아이 현재 잔액:</div>
-                <div>찌글이 원</div>
+                <div>{nowKidBalance} 원</div>
             </div>
             <div className='kidSelect'>
                 <Select
@@ -75,7 +81,8 @@ const DebitBanner = ({setKidUserId, setKidUserName}) => {
                   onChange={(e) => {
                     setKidUserId(e.value)
                     setKidUserName(e.label)
-                  }}
+                    setNowKidBalance(kidBalance[kidOptions.indexOf(e)])
+                }}
                 />
             </div>
         </div>
