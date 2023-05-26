@@ -6,6 +6,7 @@ import EventListHeader from './EventListHeader';
 
 const EventList = () => {
     const isParent = sessionStorage.getItem("isParent");
+    
     return (
         <div>
             <Header/>
@@ -30,8 +31,39 @@ const EventList = () => {
                         />
                         <p>[특⭐️주간]모두가 당첨되는 룰렛</p>
                     </div>
-                </Link>             
+                </Link> 
+                <Link to = "/events/2" > 
+                    <div className='event-card '>
+                        <img 
+                            src={`${process.env.PUBLIC_URL}/assets/images/event/end-img1.png`} 
+                            alt=""
+                            className='event-img' 
+                        />
+                        <p style={{color: "#969696"}}>종료된 이벤트입니다🙌🏻</p>
+                    </div>   
+                </Link>    
+                <Link to = "/events/2" >      
+                <div className='event-card '>
+                    <img 
+                        src={`${process.env.PUBLIC_URL}/assets/images/event/end-img2.png`} 
+                        alt=""
+                        className='event-img' 
+                    />
+                    <p style={{color: "#969696"}}>종료된 이벤트입니다🙌🏻</p>
+                </div>   
+                </Link>     
+                <Link to = "/events/2" >    
+                <div className='event-card '>
+                    <img 
+                        src={`${process.env.PUBLIC_URL}/assets/images/event/end-img3.png`} 
+                        alt=""
+                        className='event-img' 
+                    />
+                    <p style={{color: "#969696"}}>종료된 이벤트입니다🙌🏻</p>
+                </div>  
+                </Link>                
             </div>
+
         </div>
     );
 };

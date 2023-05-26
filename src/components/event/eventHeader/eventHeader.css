@@ -1,6 +1,6 @@
 .eventHeader{
     height: 11rem;
-    padding: 1.5rem 0;
+    padding: 2rem 0;
     background-color: #DD5475;
     color: #fff;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
@@ -33,9 +33,6 @@ h3{
     font-size: 1.7rem;
 }
 
-/* .textBox{
-    text-align: center;
-} */
 
 .event-title{
     font-size: 3.5rem;

@@ -1,8 +1,10 @@
 .event-container{
-    width: 100%;
+    margin-top: 5rem;
+    width: 96%;
     height: 100%;
     display: flex;
-    padding: 5rem;
+    /* padding: 5rem; */
+    overflow: scroll;
 }
 
 .eventList-Header{
@@ -10,7 +12,7 @@
     justify-content: center;
     align-items: center;
     height: 11rem;
-    padding: 1.5rem 0;
+    padding: 2rem 0;
     background-color: #DD5475;
     box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 }
@@ -23,6 +25,8 @@
     width: 20rem;
     height: 15rem;
     cursor: pointer;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+    margin: 2rem;
 }
 
 .event-img{

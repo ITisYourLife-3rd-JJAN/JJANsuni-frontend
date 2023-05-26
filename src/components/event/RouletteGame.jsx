@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import './rouletteGame.css';
 import { useNavigate } from 'react-router';
+import axios from 'axios';
 
 const RouletteGame = () => {
   const [isRotating, setIsRotating] = useState(false);
@@ -9,6 +10,22 @@ const RouletteGame = () => {
   const rotationIntervalRef = useRef(null);
 
   const navigate = useNavigate();
+
+  const updateBalance = (index) => {
+    axios
+        .patch('http://localhost:8080/api/v1/users/debit', {
+          userId : sessionStorage.getItem("userId"),
+          price : getResultValue(index)
+        })
+        .then((response) => {
+          alert(`${getResultValue(index)}원이 당첨되었습니다💜`);
+          if(sessionStorage.getItem("isParent") === "T") navigate("/parent");
+          else navigate("/kid");
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+    }
 
   const handleButtonClick = () => {
     if (isRotating) {
@@ -31,8 +48,7 @@ const RouletteGame = () => {
       const degrees = parseInt(rotation[1]);
       const index = Math.floor((degrees % 360) / 45);
       setResultValue(getResultValue(index));
-      alert(`결과: ${getResultValue(index)}`);
-      navigate("/kid");
+      updateBalance(index);
     }
   };
 

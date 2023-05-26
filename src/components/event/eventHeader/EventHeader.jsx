@@ -19,7 +19,7 @@ const EventHeader = ({isGpt}) => {
                     <div className='titleBox roll'>
                         <div className='textBox'>
                             <p className='event-title' >금주의 이벤트 ! - 돌려돌려 짠돌판 🎉</p>
-                            <p className='eventdes'>본 이벤트는 하루에 1번만 참여 가능합니다</p>
+                            <p className='event-des'>본 이벤트는 하루에 1번만 참여 가능합니다</p>
                         </div>
                     </div>
                 
