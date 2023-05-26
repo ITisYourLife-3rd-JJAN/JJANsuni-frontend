@@ -1,14 +1,28 @@
 .eventHeader{
-    padding: 2.3rem 0;
+    height: 11rem;
+    padding: 2rem 0;
     background-color: #DD5475;
     color: #fff;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
 }
 
-.titleBox{
+.eventHeaderRight{
+    height: 11rem;
+    padding: 1.5rem 0;
+    background-color: #DD5475;
+    color: #fff;
+    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
+}
+
+.titleBox.gpt{
     display: flex;
     align-items: center;
     justify-content: center;
     text-align: center;
+}
+
+.titleBox.roll{
+    text-align: end;
 }
 
 h1 {
@@ -19,6 +33,15 @@ h3{
     font-size: 1.7rem;
 }
 
-.textBox{
-    text-align: center;
+
+.event-title{
+    font-size: 3.5rem;
+    padding: 1.2rem;
+    margin: 0 2rem;
 }
+
+.event-des{
+    font-size: 2rem;
+    margin: 0 10rem;
+}
+
