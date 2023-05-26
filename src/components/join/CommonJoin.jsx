@@ -128,8 +128,11 @@ const CommonJoin = ({isParent}) => {
             const selectedMonth = parseInt(birthday.slice(4, 6)); 
             const selectedDay = parseInt(birthday.slice(6, 8));
             const birthdayDate = new Date(selectedYear, selectedMonth, selectedDay);
-            const age = currentDate.getFullYear() - birthdayDate.getFullYear();
-
+            let age = currentDate.getFullYear() - birthdayDate.getFullYear();
+            const monthDiff = currentDate.getMonth() - birthdayDate.getMonth();
+            if (monthDiff < 0 || (monthDiff === 0 && currentDate.getDate() < birthdayDate.getDate())) {
+              age--;
+            }
             if (role==="F" && age >= 19) {
                 setTooOld(true);
             }else if(role==="T" && age<19){
@@ -138,12 +141,13 @@ const CommonJoin = ({isParent}) => {
                 setTooOld(false);
                 setTooYoung(false);
             }
+            console.log(age);
             };
             
             useEffect(() => {
                 calculateAge();
               }, [birthday]);
-        
+              
         const registerAxios = () => {
             console.log(tooOld+"axios")
             console.log(tooYoung+"axios")
@@ -329,7 +333,7 @@ const CommonJoin = ({isParent}) => {
                             <option value="1982">1982년</option>
                             <option value="1981">1981년</option>
                             <option value="1980">1980년</option>
-                        </select>            
+                        </select>           
                         <select className='select-box' onChange={(e) => {
                             const month = e.target.value.padStart(2, '0');
                             setBirthday(birthday.slice(0, 4) + month + birthday.slice(6)); }}>
