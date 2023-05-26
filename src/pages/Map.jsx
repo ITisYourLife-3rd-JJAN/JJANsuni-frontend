@@ -89,15 +89,17 @@ const Map = () => {
     }
 
     return (
-        <div className='map-container'>
-            <Header/>  
-            <img
-                src={`${process.env.PUBLIC_URL}/assets/images/map/map_background.png`}
-                alt=''
-                className='map-background-image'/>
-            {mapBoxes}
-            
-        </div>
+        <>
+            <Header/> 
+            <div className='map-container'>
+                <img
+                    src={`${process.env.PUBLIC_URL}/assets/images/map/map_background.png`}
+                    alt=''
+                    className='map-background-image'/>
+                {mapBoxes}
+                
+            </div> 
+        </>
     );
 };
 
