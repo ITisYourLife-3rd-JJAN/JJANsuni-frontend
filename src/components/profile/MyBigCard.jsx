@@ -27,6 +27,25 @@ const MyBigCard = ({ isParent }) => {
   const [phoneNum, setPhoneNum] = useState();
   const [isUserInfoModalOpen, setIsUserInfoModalOpen] = useState(false);
   const [successEditMessage, setSuccessEditMessage] = useState('');
+  const userId = sessionStorage.getItem("userId");
+  const [userBalance, setUserBalance] = useState("");
+
+  useEffect(() => {
+    const getUser = () => {
+        axios
+            .get(`http://localhost:8080/api/v1/users/${userId}`)
+            .then((response) => {
+                console.log(response.data.data)
+                setUserBalance(response.data.data.balance)
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            })
+        };
+
+    getUser();
+
+  }, []);
 
   const handleChargePay = () => {
     setIsModalOpen(true);
@@ -52,6 +71,17 @@ const MyBigCard = ({ isParent }) => {
   };
 
   const handlePaymentSubmit = (e) => {
+    const getUser = () => {
+      axios
+        .get(`http://localhost:8080/api/v1/users/${userId}`)
+        .then((response) => {
+          console.log(response.data.data);
+          setUserBalance(response.data.data.balance);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
+    };
     e.preventDefault(); 
 
     if (!price || price <= 0 || price > 100000) {
@@ -62,13 +92,14 @@ const MyBigCard = ({ isParent }) => {
 
     axios
       .patch('http://localhost:8080/api/v1/debits/charge', {
-        userId: 1,
+        userId: userId,
         price: price,
       })
       .then((response) => {
         console.log(response);
         setPrice("");
         setSuccessMessage('잔액 충전 완료됐습니다.😊');
+        getUser();
       })
       .catch((error) => {
         console.log(error);
@@ -115,7 +146,7 @@ const MyBigCard = ({ isParent }) => {
           </>
         ) : (
           <>
-            <p id="my-balance">잔액: 10000원</p>
+            <p id="my-balance">잔액: {userBalance}원</p>
           </>
         )}
         <p id="my-account">계좌번호: 882-602-04182779</p>
