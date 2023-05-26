@@ -2,7 +2,8 @@ import React from 'react';
 import './eventList.css'
 
 const EventListHeader = ({isParent}) => {
-    const backgroundColor = isParent ? "#FCFF5C" : "#CDFF5C";
+    console.log(isParent, "===")
+    var backgroundColor = isParent == "T" ? "#FCFF5C" : "#CDFF5C";
 
     return (
         <div className='eventList-Header' style={{ backgroundColor: backgroundColor, color : "#000"}}>

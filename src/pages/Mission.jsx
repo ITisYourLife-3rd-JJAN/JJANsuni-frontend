@@ -5,6 +5,7 @@ import Quiz from '../components/Mission/Quiz';
 import Vod from '../components/Mission/Vod';
 import axios from 'axios';
 import Header from '../components/header/Header';
+import Loading from '../lib/Loading';
 
 const Mission = () => {
     const { mapId, missionId } = useParams();
@@ -38,12 +39,10 @@ const Mission = () => {
         };
     
         getQuiz();
-      }, []);
+    }, []);
     
-      if (isLoading) {
-        return <div>Loading...</div>;
-      }
-    
+    if (isLoading) return <Loading/>;
+
     return (
         <div>
             <Header/>

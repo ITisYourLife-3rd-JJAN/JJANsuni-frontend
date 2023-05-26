@@ -5,6 +5,7 @@ import './css/solvedMission.css'
 import axios from 'axios';
 import confetti from "https://esm.run/canvas-confetti@1";
 import Header from '../components/header/Header';
+import Loading from '../lib/Loading';
 
 const SolvedMission = () => {
     const { missionId } = useParams();
@@ -12,12 +13,13 @@ const SolvedMission = () => {
     const location = useLocation();
 
     const answer = location.state.answer;
-    const explain = location.state.explain;
+    const explain = location.state.explain.replace(/\n/g, '<br>');
     const mapNum = location.state.mapNum;
 
     const [isCorrect, setIsCorrect] = useState(0);
     const [isLoading, setIsLoading] = useState();
     
+    const userId = sessionStorage.getItem("userId")
 
     useEffect(() => {
         const isO = location.state.isO;
@@ -36,7 +38,7 @@ const SolvedMission = () => {
         axios
             .post("http://localhost:8080/api/v1/missions", {
                 solvedMissionId: missionId,
-                solvedUserId: 2,
+                solvedUserId: userId,
                 status: status
             })
             .then((response) => {
@@ -50,7 +52,7 @@ const SolvedMission = () => {
             });
     }
     if (isLoading) {
-        return <div>Loading...</div>;
+        return <Loading/>;
     }
 
     const handleNextButtonClick = () => {
@@ -86,8 +88,8 @@ const SolvedMission = () => {
                             </div>
                         }
                             <div className='solution-text-box'>
-                                <p>{explain}</p>
-                            </div>                   
+                                <p className='solution-text' dangerouslySetInnerHTML={{ __html: explain }}></p>
+                            </div>                      
                         </div>      
                         <MapBackground mapId={missionId}/>
                         <button className="next-btn quiz" onClick={handleNextButtonClick}>
