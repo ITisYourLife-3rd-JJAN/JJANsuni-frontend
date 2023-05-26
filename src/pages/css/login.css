@@ -31,7 +31,8 @@
 }
 
 .loginSlogan{
-    text-align: left;
+    text-align: center;
+    margin : 5rem;
     color: #fff;
     font-weight: 500;
     font-size: 4rem;
@@ -51,7 +52,7 @@
 .loginInput{
     position: absolute;
     right: 12vw;
-    top: 11vh;
+    top: 6rem;
     width: 30vw;
     height: 80%;
     background: #FFFFFF;
@@ -68,14 +69,14 @@
     align-items: center;
 }
 
-#btn2 {
+#loginBtn {
     width: 20vw;
     height: 7.5vh;
     background-color: #F4C4D2;
     color: white;
     border-radius: 5px;
     border: #F4C4D2 solid 10px;
-    margin-top: 20vh;
+    margin-top: 10rem;
     font-weight: 700;
     font-size: 1.75vw;
     text-align: center;

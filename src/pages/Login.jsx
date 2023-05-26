@@ -1,6 +1,6 @@
 import '../pages/css/login.css'
 import {React, useState} from 'react';
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import axios from "axios";
 
 const Login = () => {
@@ -69,8 +69,8 @@ const Login = () => {
                                     setPassword(e.target.value); }} required />
                         </div>
                       
-                        <button id="btn2"  onClick={loginAxios}>로그인</button>
-                        
+                        <button id="loginBtn"  onClick={loginAxios}>로그인</button>
+                        <Link to = {"/join"}><p id="RegisterText">아직 회원이 아니신가요?</p></Link>
          
                 </div>
 
