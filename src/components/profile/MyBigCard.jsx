@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './myBigCard.css';
 import axios from 'axios';
 import Modal from 'react-modal';
+import Loading from '../../lib/Loading';
 
 const MyBigCard = ({ isParent }) => {
   const containerStyle = {
@@ -36,46 +37,31 @@ const MyBigCard = ({ isParent }) => {
   const [userBalance, setUserBalance] = useState("");
   const [userEmail, setUserEmail] = useState("");
   const [userAccount, setUserAccount] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  const getBalance = () => {
+  const getUser = () => {
+    setIsLoading(true)
     axios
         .get(`http://localhost:8080/api/v1/users/${userId}`)
         .then((response) => {
             console.log(response.data.data)
             setUserBalance(response.data.data.balance)
+            setUserEmail(response.data.data.email)
+            setUserAccount(response.data.data.account)
+            setIsLoading(false)
         })
         .catch((error) => {
             console.log(error.response.data);
         })
     };
-    const getEmail = () => {
-      axios
-          .get(`http://localhost:8080/api/v1/users/${userId}`)
-          .then((response) => {
-              console.log(response.data.data)
-              setUserEmail(response.data.data.email)
-          })
-          .catch((error) => {
-              console.log(error.response.data);
-          })
-      };
-      const getAccount = () => {
-        axios
-            .get(`http://localhost:8080/api/v1/users/${userId}`)
-            .then((response) => {
-                console.log(response.data.data)
-                setUserAccount(response.data.data.account)
-            })
-            .catch((error) => {
-                console.log(error.response.data);
-            })
-        };
 
-  useEffect(() => {
-    getBalance();
-    getEmail();
-    getAccount();
-  }, []);
+    useEffect(() => {
+      getUser();
+    }, []);
+  
+  if (isLoading) {
+    return <Loading/>;
+  }
 
   const handleChargePay = () => {
     setIsModalOpen(true);
@@ -101,7 +87,7 @@ const MyBigCard = ({ isParent }) => {
   };
 
   const handlePaymentSubmit = (e) => {
-    getBalance();
+    getUser();
     e.preventDefault(); 
 
     if (!price || price <= 0 || price > 1000000) {
@@ -119,7 +105,7 @@ const MyBigCard = ({ isParent }) => {
         console.log(response);
         setPrice("");
         setSuccessMessage('잔액 충전 완료됐습니다.😊');
-        getBalance();
+        getUser();
       })
       .catch((error) => {
         console.log(error);
