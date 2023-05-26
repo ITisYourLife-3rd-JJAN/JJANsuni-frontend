@@ -12,7 +12,7 @@ const SolvedMission = () => {
     const location = useLocation();
 
     const answer = location.state.answer;
-    const explain = location.state.explain;
+    const explain = location.state.explain.replace(/\n/g, '<br>');
     const mapNum = location.state.mapNum;
 
     const [isCorrect, setIsCorrect] = useState(0);
@@ -87,8 +87,8 @@ const SolvedMission = () => {
                             </div>
                         }
                             <div className='solution-text-box'>
-                                <p>{explain}</p>
-                            </div>                   
+                                <p dangerouslySetInnerHTML={{ __html: explain }}></p>
+                            </div>                      
                         </div>      
                         <MapBackground mapId={missionId}/>
                         <button className="next-btn quiz" onClick={handleNextButtonClick}>
