@@ -40,11 +40,11 @@ const MenuList = ({ isParent }) => {
                 </div>
                 </Link>
             )}
-            <Link to="/">
-            <div className='menu-item'>
-                <img src={`${process.env.PUBLIC_URL}/assets/images/light.png`} alt='' />
-                <p>이벤트</p>
-            </div>
+            <Link to="/events">
+                <div className='menu-item'>
+                    <img src={`${process.env.PUBLIC_URL}/assets/images/light.png`} alt='' />
+                    <p>이벤트</p>
+                </div>
             </Link>
         </div>
     );

@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
-import EggBreak from "../components/event/eventResult/EggBreak";
-import './css/eventResult.css';
+import EggBreak from "./../../components/event/eventResult/EggBreak"
+import './eventResult.css';
 
 const EventResult = () => {
   const location = useLocation();
@@ -74,7 +74,7 @@ const EventResult = () => {
         </div>
         <div className="eggContainer">
           <div className="eggBreakBox">
-            <EggBreak />
+            <EggBreak/>
           </div>
           {isButtonClicked && (
             <div className="apiResponseBox">
