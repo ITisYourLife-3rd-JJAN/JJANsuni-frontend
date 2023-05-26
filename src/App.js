@@ -21,10 +21,11 @@ import ParentMission from './pages/ParentMission';
 import ParentProfile from './pages/ParentProfile';
 
 
-import EventGPT from './pages/EventGPT';
-import EventResult from './pages/EventResult';
+import EventGPT from './pages/event/EventGPT';
+
 import Roulette from './pages/Roulette';
 import EventList from './pages/event/EventList';
+import EventResult from './pages/event/EventResult';
 
 function App() {
   
