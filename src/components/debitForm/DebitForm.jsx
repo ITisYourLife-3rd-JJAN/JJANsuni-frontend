@@ -2,6 +2,7 @@ import {React, useState,useEffect} from 'react';
 import './debitForm.css'
 import { useNavigate } from 'react-router';
 import axios from 'axios';
+import Loading from '../../lib/Loading';
 
 const DebitForm = ({kidUserId, kidUserName}) => {
     const [price, setPrice] = useState("");
@@ -11,26 +12,26 @@ const DebitForm = ({kidUserId, kidUserName}) => {
     const [userBalance, setUserBalance] = useState("");
     const [kidAccount, setKidAccount] = useState();
     const [kidBalance, setKidBalance] = useState();
+    const [isLoading, setIsLoading] = useState(true);
     
     const handleGoBack = () => {
         navigate(-1);
     };
+    const getUser = () => {
+        axios
+            .get(`http://localhost:8080/api/v1/users/${userId}`)
+            .then((response) => {
+                console.log(response.data.data)
+                setUserBalance(response.data.data.balance)
+                setIsLoading(false); 
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            })
+        };
 
     useEffect(() => {
-        const getUser = () => {
-            axios
-                .get(`http://localhost:8080/api/v1/users/${userId}`)
-                .then((response) => {
-                    console.log(response.data.data)
-                    setUserBalance(response.data.data.balance)
-                })
-                .catch((error) => {
-                    console.log(error.response.data);
-                })
-            };
-
         getUser();
-    
       }, []);
 
       useEffect(()=>{
@@ -52,17 +53,7 @@ const DebitForm = ({kidUserId, kidUserName}) => {
 
 
     const registerDebit = () => {
-        const getUser = () => {
-            axios
-              .get(`http://localhost:8080/api/v1/users/${userId}`)
-              .then((response) => {
-                console.log(response.data.data);
-                setUserBalance(response.data.data.balance);
-              })
-              .catch((error) => {
-                console.log(error.response.data);
-              });
-          };
+        getUser();
         if (price <= 0 || price > 1000000) {
             alert('이체할 금액을 확인해주세요.(1~100만원까지 가능)🤨');
             setPrice("");
@@ -99,6 +90,9 @@ const DebitForm = ({kidUserId, kidUserName}) => {
 
     };
 
+    if (isLoading) {
+        return <Loading/>;
+    }
     return (
         <div className='debitForm'>
             <div className='infobox'>
