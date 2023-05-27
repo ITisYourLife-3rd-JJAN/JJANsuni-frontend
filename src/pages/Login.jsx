@@ -44,6 +44,12 @@ const Login = () => {
         return <Loading/>;
     }
 
+      const handleOnKeyPress = e => {
+        if (e.key === 'Enter') {
+            loginAxios();
+        }
+      };
+
     return (
         <div className='login'>
             <div className = "loginSub">
@@ -69,8 +75,10 @@ const Login = () => {
                             <label for="userpw">비밀번호</label><br/><br/>
                             <input className='loginipt loginpw' type="password" id="userpw" 
                                 value={password}
+                                onKeyPress={handleOnKeyPress}
                                 onChange={(e) => {
-                                    setPassword(e.target.value); }} required />
+                                    setPassword(e.target.value); }} 
+                                />
                         </div>
                       
                         <button id="loginBtn"  onClick={loginAxios}>로그인</button>
