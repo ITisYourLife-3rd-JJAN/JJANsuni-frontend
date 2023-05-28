@@ -3,12 +3,14 @@
     display: flex;
     width: 100vw;
     height: 100vh;
-    padding: 2rem 0 0 0;
+    padding: 1rem 0 0 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .map-background-image {
     position: absolute;
-    margin: 2rem 2rem 2rem 3.5rem;
     width: 85%;
     height: 85%;
     object-fit: contain;
@@ -20,6 +22,7 @@
     position: relative;
     font-size: 2rem;
     text-align: center;
+    height: 15rem;
 }
 
 .gray{
@@ -41,33 +44,33 @@
 }
 
 .map-box-1{
-    top: 20vh;
-    left: 21%;
+    top: -10%;
+    left: 10%;
 }
 
 .map-box-2{
-    top: 45vh;
-    left: 19%
+    top: 13vh;
+    left: 10%
 }
 
 .map-box-3{
-    top: 15vh;
-    left: 24%;
+    top: -19%;
+    left: 12%;
 }
 
 .map-box-4{
-    top: 47vh;
-    left: 17%
+    top: 10vh;
+    left: 5%
 }
 
 .map-box-5{
-    top: 18vh;
-    left: 22%;
+    top: -10%;
+    left: 12%;
 }
 
 .map-box-6{
-    top: 48vh;
-    left: 14%
+    top: 19vh;
+    left: 2%
 }
 
 
