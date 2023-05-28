@@ -30,20 +30,4 @@ tr:last-child td {
 .debitScroll{
     height: 100%;
     overflow: scroll;
-
 }
-
-.debitScroll::-webkit-scrollbar {
-    width: 10px;
-  }
-  .debitScroll::-webkit-scrollbar-thumb {
-    background-color: #2D86E0;
-    border-radius: 10px;
-    background-clip: padding-box;
-    border: 2px solid transparent;
-  }
-  .debitScroll::-webkit-scrollbar-track {
-    background-color: 2D86E0;
-    border-radius: 10px;
-    box-shadow: inset 0px 0px 5px white;
-  }
