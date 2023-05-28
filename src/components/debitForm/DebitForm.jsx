@@ -69,6 +69,10 @@ const DebitForm = ({kidUserId, kidUserName}) => {
             setDealMsg("");
             return;
         }
+        if(kidUserId == null){
+            alert("이체 대상을 선택해주세요😲");
+            return;
+        }
 
         axios
             .post('http://localhost:8080/api/v1/debits',{
