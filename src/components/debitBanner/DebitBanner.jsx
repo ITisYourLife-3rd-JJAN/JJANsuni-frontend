@@ -8,8 +8,12 @@ import axios from 'axios';
 const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
 
     const userId = sessionStorage.getItem("userId");
+    const parent = sessionStorage.getItem("isParent");
+
     const [childData, setChildData] = useState([]);
+    const [kidInfo, setKidInfo] = useState();
     const [kidOptions, setKidOptions] = useState([{ value: '아이 선택하기', label: '아이 선택하기' }]);
+    const [familyOptions, setFamilyOptions] = useState([{ value: '가족 선택하기', label: '가족 선택하기' }])
     const [kidBalance, setKidBalance] = useState([0]);
     const [nowKidBalance, setNowKidBalance] = useState(kidBalance[0])
 
@@ -18,40 +22,82 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
         { value: '이체 하기', label: <Link to="/debit" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 하기</div></Link> },
         { value: '자동이체 현황', label: <Link to="/direct-debit" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/hearthand.png`} alt="" width={50}/>자동이체 현황</div></Link> },
         { value: '카드 내역', label: <Link to="/card" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/card.png`} alt="" width={50}/>카드 내역</div></Link> }
-      ]
+    ]
 
     const [selectedValue, setSelectedValue] = useState(menuoptions[idx].value);
-
+    
     useEffect(() => {
-        const getChildAxios = async () => {
-        await axios
+            if(parent === "F") {
+            const getUserAxios = async () => {
+                await axios
+                .get(`http://localhost:8080/api/v1/users/${userId}`)
+                .then((response) => {
+                    const data = response.data.data;
+                    console.log(data.balance);
+                    setKidInfo(data.balance)
+                })
+            }
+            getUserAxios()
+
+            const getFamilyAxios = async () => {
+                await axios
                 .get(`http://localhost:8080/api/v1/users/family-list/${userId}`)
                 .then((response) => {
                     const data = response.data.data;
-                    const filterData = data.filter(child => child.isParent === "F")
-                    setChildData(filterData.map(child => ({
-                        ...child,
-                    })))
-                    // console.log(data)
-                    // console.log(filterData.name)
-                    const updateKidOptions = filterData.map(child => ({
-                        value: child.userId,
-                        label: child.name+" 아이"
+                    const updateFamilyOptions = data.map(family => ({
+                        value: family.userId,
+                        label: family.name
                     }))
-                    const updateBalance = filterData.map(child => (
-                        child.balance
-                    ))
-                    setKidBalance([...kidBalance, ...updateBalance])
-
-                    setKidOptions([...kidOptions,
-                        ...updateKidOptions])
-                    // console.log(updateKidOptions)
-                    // console.log(childData)
+                    setFamilyOptions(updateFamilyOptions)
                 })
+            }
+            getFamilyAxios()
         }
-        getChildAxios()
+        }, [])
+
+    useEffect(() => {
+        if(parent === "T"){
+            const getChildAxios = async () => {
+            await axios
+                    .get(`http://localhost:8080/api/v1/users/family-list/${userId}`)
+                    .then((response) => {
+                        const data = response.data.data;
+                        const filterData = data.filter(child => child.isParent === "F")
+                        setChildData(filterData.map(child => ({
+                            ...child,
+                        })))
+                        // console.log(data)
+                        // console.log(filterData.name)
+                        const updateKidOptions = filterData.map(child => ({
+                            value: child.userId,
+                            label: child.name+" 아이"
+                        }))
+                        const updateBalance = filterData.map(child => (
+                            child.balance
+                        ))
+                        setKidBalance([...kidBalance, ...updateBalance])
+    
+                        setKidOptions([...kidOptions,
+                            ...updateKidOptions])
+                        // console.log(updateKidOptions)
+                        // console.log(childData)
+                    })
+            }
+            getChildAxios()
+        }
     }, [])
 
+    let nowBalance = <div className='kidBalance'>
+                        <div className='usespace'>아이 현재 잔액: </div>
+                        <div> {nowKidBalance} 원</div>
+                    </div>
+    if (parent === "F") nowBalance = <div className='kidBalance'>
+                                        <div className='usespace'>내 잔액: </div>
+                                        <div> {kidInfo} 원</div>
+                                    </div>
+
+    let options = kidOptions;
+    if (parent === "F") options = familyOptions
 
     if (kidOptions.length !== 0) {
         
@@ -79,10 +125,7 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
                     })}    
                     />
                 </div>
-                <div className='kidBalance'>
-                    <div className='usespace'>아이 현재 잔액: </div>
-                    <div> {nowKidBalance} 원</div>
-                </div>
+                {nowBalance}
                 <div className='kidSelect'>
                     <Select
                     styles={{                    
@@ -95,20 +138,20 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
                             }
                         }),
                         }}
-                    options={kidOptions}
-                    defaultValue={kidOptions[0]}
+                    options={options}
+                    defaultValue={options[0]}
                     theme={(theme) => ({
                         ...theme,
                         colors: {
-                          ...theme.colors,
-                          primary25: '#E5FAFC',
-                          primary: '#F4C4D2',
+                            ...theme.colors,
+                            primary25: '#E5FAFC',
+                            primary: '#F4C4D2',
                         },
-                      })} 
+                    })} 
                     onChange={(e) => {
                         setKidUserId(e.value)
                         setKidUserName(e.label)
-                        setNowKidBalance(kidBalance[kidOptions.indexOf(e)])
+                        setNowKidBalance(kidBalance[options.indexOf(e)])
                     }}
                     />
                 </div>
