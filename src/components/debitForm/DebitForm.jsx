@@ -12,7 +12,6 @@ const DebitForm = ({kidUserId, kidUserName}) => {
     const [userBalance, setUserBalance] = useState("");
     const [kidAccount, setKidAccount] = useState();
     const [kidBalance, setKidBalance] = useState();
-    const [isLoading, setIsLoading] = useState(true);
     
     const handleGoBack = () => {
         navigate(-1);
@@ -52,8 +51,45 @@ const DebitForm = ({kidUserId, kidUserName}) => {
       },[kidUserId,kidUserName])
 
 
-    const registerDebit = () => {
+    useEffect(() => {
+        const getUser = () => {
+            axios
+                .get(`http://localhost:8080/api/v1/users/${userId}`)
+                .then((response) => {
+                    console.log(response.data.data)
+                    setUserBalance(response.data.data.balance)
+                })
+                .catch((error) => {
+                    console.log(error.response.data);
+                })
+            };
+
         getUser();
+    
+      }, []);
+
+      useEffect(()=>{
+        const getKid= () => {
+            axios
+            .get(`http://localhost:8080/api/v1/users/${kidUserId}`)
+            .then((response) => {
+                console.log(response.data.data)
+                setKidBalance(response.data.data.balance)
+                setKidAccount(response.data.data.account)
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            })
+        };
+
+        getKid();
+      },[kidUserId,kidUserName])
+
+
+    const registerDebit = () => {
+
+        getUser();
+      
         if (price <= 0 || price > 1000000) {
             alert('이체할 금액을 확인해주세요.(1~100만원까지 가능)🤨');
             setPrice("");

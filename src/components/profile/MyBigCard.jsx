@@ -88,7 +88,9 @@ const MyBigCard = ({ isParent }) => {
   };
 
   const handlePaymentSubmit = (e) => {
+
     getUser();
+
     e.preventDefault(); 
 
     if (!price || price <= 0 || price > 1000000) {
