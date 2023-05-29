@@ -12,7 +12,9 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
   const [cheerUpMsg, setCheerUpMsg] = useState("");
   const [name, setName] = useState("");
   const [children, setChildren] = useState([]); 
-  const [selectedChild, setSelectedChild] = useState("");
+  const [selectedChildName, setSelectedChildName] = useState("");
+  const [selectedChildId, setSelectedChildId] = useState();
+
   const [isLoading, setIsLoading] = useState(true);
     
   const userId = sessionStorage.getItem("userId");
@@ -71,7 +73,8 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
   }, [isParent, userId]);
 
   const handleChildSelect = (selectedOption) => {
-    setSelectedChild(selectedOption.label);
+    setSelectedChildName(selectedOption.label);
+    setSelectedChildId(selectedOption.value);
     getMsg(selectedOption.value); 
   };
 
@@ -142,10 +145,10 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
               <p className='sendFighting' onClick={handleClick}>
                   작성하기
               </p>
-              {selectedChild &&  
+              {selectedChildName &&  
                 <div>
                   <p className='changeChild' onClick={isParent ? handleClick : null} style={{...cursorStyle, backgroundColor}}>
-                    사랑하는 {getEnding(selectedChild)} ~
+                    사랑하는 {getEnding(selectedChildName)} ~
                   </p>
                   <p>{cheerUpMsg}</p>
                 </div>
@@ -164,7 +167,7 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
         
       </div>
       <div className='slideBanner'>
-        <SimpleSlider />
+        <SimpleSlider selectedChildName={selectedChildName} selectedChildId={selectedChildId} />
       </div>
     </div>
   );
