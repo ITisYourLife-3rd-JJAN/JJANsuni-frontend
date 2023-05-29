@@ -66,18 +66,29 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
           });
       }
     };
-
     fetchData();
 
   }, [isParent, userId]);
 
   const handleChildSelect = (selectedOption) => {
     setSelectedChild(selectedOption.label);
+    getMsg(selectedOption.value); 
   };
+
+  const getMsg = (userId) => {
+    axios
+        .get(`http://localhost:8080/api/v1/users/${userId}`)
+        .then((response) => {
+          setCheerUpMsg(response.data.data.cheerUpMsg);
+        })
+        .catch((error) => {
+          console.log(error);
+        })
+  }
 
   if (isLoading) {
     return <Loading/>
-}
+  }
 
   return (
     <div className='mainBanner' style={{ backgroundColor: bgColor }}>
