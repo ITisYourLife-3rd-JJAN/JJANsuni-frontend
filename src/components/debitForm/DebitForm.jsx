@@ -3,6 +3,7 @@ import './debitForm.css'
 import { useNavigate } from 'react-router';
 import axios from 'axios';
 import Loading from '../../lib/Loading';
+import { markThousand } from '../../lib/markThousand';
 
 const DebitForm = ({kidUserId, kidUserName}) => {
     const [price, setPrice] = useState("");
@@ -12,6 +13,7 @@ const DebitForm = ({kidUserId, kidUserName}) => {
     const [userBalance, setUserBalance] = useState("");
     const [kidAccount, setKidAccount] = useState();
     const [kidBalance, setKidBalance] = useState();
+    const [isLoading, setIsLoading] = useState(true);
     
     const handleGoBack = () => {
         navigate(-1);
@@ -57,7 +59,7 @@ const DebitForm = ({kidUserId, kidUserName}) => {
                 .get(`http://localhost:8080/api/v1/users/${userId}`)
                 .then((response) => {
                     console.log(response.data.data)
-                    setUserBalance(response.data.data.balance)
+                    setUserBalance(markThousand(response.data.data.balance))
                 })
                 .catch((error) => {
                     console.log(error.response.data);

@@ -31,7 +31,7 @@ const Debit = () => {
     return (
         <div style={{display: 'flex', justifyContent: 'center'}}>
             <Header/>
-            <DebitBanner idx="1" color="#F4C4D2" setKidUserId={setKidUserId} setKidUserName={setKidUserName}/>
+            <DebitBanner idx="2" color="#F4C4D2" setKidUserId={setKidUserId} setKidUserName={setKidUserName}/>
             <DirectDebitForm kidUserId={kidUserId} kidUserName={kidUserName}/>
         </div>
     );

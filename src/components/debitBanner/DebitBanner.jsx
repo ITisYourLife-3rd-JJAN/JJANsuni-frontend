@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import Select from 'react-select'
 import './debitBanner.css'
 import axios from 'axios';
-
+import { markThousand } from '../../lib/markThousand';
 
 const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
 
@@ -19,14 +19,13 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
 
     const parentMenuOptions = [
         { value: '이체 하기', label: <Link to="/debit" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 하기</div></Link> },
-        { value: '자동이체 현황', label: <Link to="/direct-debit" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/hearthand.png`} alt="" width={50}/>자동이체 현황</div></Link> },
         { value: '이체 내역', label: <Link to="/debit-history" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 내역</div></Link> },
+        { value: '자동이체 현황', label: <Link to="/direct-debit" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/hearthand.png`} alt="" width={50}/>자동이체 현황</div></Link> },
         { value: '카드 내역', label: <Link to="/card" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/card.png`} alt="" width={50}/>카드 내역</div></Link> }
     ]
     const kidMenuOptions = [
         { value: '이체 하기', label: <Link to="/debit" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 하기</div></Link> },
         { value: '이체 내역', label: <Link to="/debit-history" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 내역</div></Link> },
-        { value: '카드 내역', label: <Link to="/card" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/card.png`} alt="" width={50}/>카드 내역</div></Link> }
     ]
 
 
@@ -41,7 +40,7 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
                 .then((response) => {
                     const data = response.data.data;
                     console.log(data.balance);
-                    setKidInfo(data.balance)
+                    setKidInfo(markThousand(data.balance))
                 })
             }
             getUserAxios()
