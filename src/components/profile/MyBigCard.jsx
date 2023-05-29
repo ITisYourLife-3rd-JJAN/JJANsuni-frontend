@@ -161,7 +161,8 @@ const MyBigCard = ({ isParent }) => {
           </>
         )}
         <p id="my-account">계좌번호: {userAccount}</p>
-        <p>가족코드: {famCode}</p>
+        {isParent && <p>가족코드: {famCode}</p>}
+        {!isParent && <p>잔액: {userBalance}원</p>}
       </div>
       <div className="my-edit-box">
         <p>탈퇴하기</p>
