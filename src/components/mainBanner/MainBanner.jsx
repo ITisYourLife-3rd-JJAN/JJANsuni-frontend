@@ -111,17 +111,17 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
                 colors: {
                   ...theme.colors,
                   primary25: '#E5FAFC',
-                  primary: '#CDFF5C',
+                  primary: 'rgba(252,255,92)',
                 },
               })} 
             styles={{
                 control: (provided, state) => ({
                   ...provided,
-                  borderColor: state.isFocused ? "#CDFF5C" : "#CDFF5C",
+                  borderColor: state.isFocused ? 'rgba(252,255,92)' : 'rgba(252,255,92)',
                   borderRadius: "10px", 
                   boxShadow: "none",
                   "&:hover": {
-                    borderColor: "#CDFF5C"
+                    borderColor: 'rgba(252,255,92)'
                   }
                 }),
                 menu: (provided) => ({
