@@ -3,14 +3,18 @@
     align-items: center;
 }
 
+.slide-item{
+    display: flex;
+}
+
 .slider-img{
     width: 8rem;
     height: 8rem;
-    margin: 0 2rem;
 }
 
 .slide-item p{
     margin: 0 2rem;
+    font-size: 2rem;
 }
 
 .slick-track {

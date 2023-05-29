@@ -80,20 +80,28 @@ export default class SimpleSlider extends Component {
         <div className="slider-container">
             <Slider {...settings}>
                 <div className='slide-item'>
-                    <img className='slider-img' src={`${process.env.PUBLIC_URL}/assets/images/stackmoney.png`} alt="" />
-                    <p> {getEnding1(name)} 현재 완료한 미션 개수 : {achieve}개 🐳</p>
+                    <div style={{display: "flex"}}> 
+                        <img className='slider-img' src={`${process.env.PUBLIC_URL}/assets/images/stackmoney.png`} alt="" />
+                        <p> {getEnding1(name)} 현재 완료한 미션 개수 : {achieve}개 🐳</p>
+                    </div>
                 </div>
                 <div className='slide-item'>
-                    <img className='slider-img' src={`${process.env.PUBLIC_URL}/assets/images/horse.png`} alt="" />
-                    <p> {getEnding2(name)} 현재 잔액 : {balance}원 🐳</p>
+                    <div style={{display: "flex"}}> 
+                        <img className='slider-img' src={`${process.env.PUBLIC_URL}/assets/images/horse.png`} alt="" />
+                        <p> {getEnding2(name)} 현재 잔액 : {balance}원 🐳</p>
+                    </div>
                 </div>
                 <div className='slide-item'>
-                    <img className='slider-img' src={`${process.env.PUBLIC_URL}/assets/images/stackmoney.png`} alt="" />
-                    <p> {getEnding2(name)} 현재 미션 레벨 : {checkLevel(achieve)} 🐳</p>
+                    <div style={{display: "flex"}}> 
+                        <img className='slider-img' src={`${process.env.PUBLIC_URL}/assets/images/stackmoney.png`} alt="" />
+                        <p> {getEnding2(name)} 현재 미션 레벨 : {checkLevel(achieve)} 🐳</p>
+                    </div>
                 </div>
                 <div className='slide-item'>
-                    <img className='slider-img' src={`${process.env.PUBLIC_URL}/assets/images/stackmoney.png`} alt="" />
-                    <p> {getEnding1(name)} 경제 여행을 떠난지 {isCreated}일 🦋</p>
+                    <div style={{display: "flex"}}> 
+                        <img className='slider-img' src={`${process.env.PUBLIC_URL}/assets/images/stackmoney.png`} alt="" />
+                        <p> {getEnding1(name)} 경제 여행을 떠난지 {isCreated}일 🦋</p>
+                    </div>
                 </div>
             </Slider>
         </div>
