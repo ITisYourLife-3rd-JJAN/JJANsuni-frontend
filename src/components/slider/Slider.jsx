@@ -20,8 +20,8 @@ export default class SimpleSlider extends Component {
   
     componentDidMount() {
         const kidUserId = this.props.selectedChildId;
-        console.log(kidUserId);
-        this.getUser(kidUserId);
+        const userId = this.props.isParent ? kidUserId : sessionStorage.getItem("userId");
+        this.getUser(userId);
     }
   
     getUser = (userId) => {

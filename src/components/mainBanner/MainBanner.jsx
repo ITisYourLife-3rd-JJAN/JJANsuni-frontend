@@ -167,7 +167,7 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
         
       </div>
       <div className='slideBanner'>
-        <SimpleSlider selectedChildName={selectedChildName} selectedChildId={selectedChildId} />
+        <SimpleSlider selectedChildName={selectedChildName} selectedChildId={selectedChildId} isParent={isParent} />
       </div>
     </div>
   );
