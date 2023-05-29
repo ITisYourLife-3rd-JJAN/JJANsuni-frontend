@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import './myBigCard.css';
 import axios from 'axios';
 import Modal from 'react-modal';
+import Loading from '../../lib/Loading';
 
 const MyBigCard = ({ isParent }) => {
   const containerStyle = {
@@ -10,6 +11,11 @@ const MyBigCard = ({ isParent }) => {
 
   const [isGirl, setIsGirl] = useState(true);
   let imgSrc = '';
+  useEffect(() => {
+    if (sessionStorage.getItem('gender') === 'M') {
+      setIsGirl(false);
+    }
+  }, []);
 
   if (isParent === true && isGirl === true) {
     imgSrc = `${process.env.PUBLIC_URL}/assets/images/mammy.png`;
@@ -29,23 +35,34 @@ const MyBigCard = ({ isParent }) => {
   const [successEditMessage, setSuccessEditMessage] = useState('');
   const userId = sessionStorage.getItem("userId");
   const [userBalance, setUserBalance] = useState("");
+  
+  const [userEmail, setUserEmail] = useState("");
+  const [userAccount, setUserAccount] = useState("");
+  const [isLoading, setIsLoading] = useState(false);
 
-  useEffect(() => {
-    const getUser = () => {
-        axios
-            .get(`http://localhost:8080/api/v1/users/${userId}`)
-            .then((response) => {
-                console.log(response.data.data)
-                setUserBalance(response.data.data.balance)
-            })
-            .catch((error) => {
-                console.log(error.response.data);
-            })
-        };
+  const getUser = () => {
+    setIsLoading(true)
+    axios
+        .get(`http://localhost:8080/api/v1/users/${userId}`)
+        .then((response) => {
+            console.log(response.data.data)
+            setUserBalance(response.data.data.balance)
+            setUserEmail(response.data.data.email)
+            setUserAccount(response.data.data.account)
+            setIsLoading(false)
+        })
+        .catch((error) => {
+            console.log(error.response.data);
+        })
+    };
 
-    getUser();
-
-  }, []);
+    useEffect(() => {
+      getUser();
+    }, []);
+  
+  if (isLoading) {
+    return <Loading/>;
+  }
 
   const handleChargePay = () => {
     setIsModalOpen(true);
@@ -71,20 +88,12 @@ const MyBigCard = ({ isParent }) => {
   };
 
   const handlePaymentSubmit = (e) => {
-    const getUser = () => {
-      axios
-        .get(`http://localhost:8080/api/v1/users/${userId}`)
-        .then((response) => {
-          console.log(response.data.data);
-          setUserBalance(response.data.data.balance);
-        })
-        .catch((error) => {
-          console.log(error.response.data);
-        });
-    };
+
+    getUser();
+
     e.preventDefault(); 
 
-    if (!price || price <= 0 || price > 100000) {
+    if (!price || price <= 0 || price > 1000000) {
         alert('이체할 금액을 확인해주세요.(1~100만원까지 가능)🤨');
         setPrice("");
         return;
@@ -109,7 +118,6 @@ const MyBigCard = ({ isParent }) => {
   const handleProfileSubmit = (event) => {
     event.preventDefault();
   
-    // 프로필 업데이트 유효성 검사 수행
     if (!phoneNum || phoneNum.trim() === '') {
       alert('전화번호를 입력해주세요.🤨');
       return;
@@ -138,7 +146,7 @@ const MyBigCard = ({ isParent }) => {
     <div className="my-profile-card-container" style={containerStyle}>
       <img src={`${imgSrc}`} alt="" className="me-profile" />
       <div className="my-info-box">
-        <p id="my-name">정길연</p>
+        <p id="my-name">{sessionStorage.getItem('username')}</p>
         {!isParent ? (
           <>
             <p id="my-favorite">좋아하는 것: 게임 강아지</p>
@@ -149,8 +157,8 @@ const MyBigCard = ({ isParent }) => {
             <p id="my-balance">잔액: {userBalance}원</p>
           </>
         )}
-        <p id="my-account">계좌번호: 882-602-04182779</p>
-        <p>strongfox@gmail.com</p>
+        <p id="my-account">계좌번호: {userAccount}</p>
+        <p>{userEmail}</p>
       </div>
       <div className="my-edit-box">
         <p>탈퇴하기</p>
