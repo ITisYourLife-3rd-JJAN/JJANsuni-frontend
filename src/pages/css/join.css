@@ -125,11 +125,18 @@ label {
     border: none;
 }
 
-.joinBtn.btn-disabled {
-    background-color: gray;
-    cursor: default;
-    box-shadow: 0 10px 10px rgba(0, 0, 0, 0.2);
-    border: #000000 solid 5px;
+.joinBtn2 {
+    width: 22vw;
+    height: 75px;
+    background-color: #bbc1c7;
+    color: white;
+    border-radius: 15px;
+    font-weight: 500;
+    font-size: 2rem;
+    text-align: center;
+    cursor: pointer;
+    box-sizing: border-box;
+    border: none;
 }
 
 
