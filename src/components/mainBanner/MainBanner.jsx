@@ -91,8 +91,7 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
                 value: child.userId,
                 label: child.name
             }))}
-            placeholder={children.length > 0 ? children[0].name : "아이를 등록해주세요"}
-            value={selectedChild}
+            placeholder={children.length > 0 ? "아이를 선택해주세요💛" : "아이를 등록해주세요💛"}
             theme={(theme) => ({
                 ...theme,
                 colors: {
@@ -132,10 +131,14 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
               <p className='sendFighting' onClick={handleClick}>
                   작성하기
               </p>
-              <p className='changeChild' onClick={isParent ? handleClick : null} style={{...cursorStyle, backgroundColor}}>
-                사랑하는 {getEnding(selectedChild)} ~
-              </p>
-              <p>{cheerUpMsg}</p>
+              {selectedChild &&  
+                <div>
+                  <p className='changeChild' onClick={isParent ? handleClick : null} style={{...cursorStyle, backgroundColor}}>
+                    사랑하는 {getEnding(selectedChild)} ~
+                  </p>
+                  <p>{cheerUpMsg}</p>
+                </div>
+              }
             </div>
           ) :  ("아이를 등록해주세요")
         ) : (
