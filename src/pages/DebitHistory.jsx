@@ -7,7 +7,7 @@ const DebitHistory = () => {
     return (
         <div style={{ display: 'flex', justifyContent: 'center'}}>
             <Header/>
-            <DebitBanner idx='0'/>
+            <DebitBanner idx='2'/>
             <DebitHistoryForm/>
         </div>
     );

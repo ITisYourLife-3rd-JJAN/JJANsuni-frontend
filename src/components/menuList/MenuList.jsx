@@ -13,7 +13,7 @@ const MenuList = ({ isParent }) => {
 
     return (
         <div className='menuList'>
-            <Link to="/debit-history">
+            <Link to="/debit">
                 <div className='menu-item'>
                     <img src={`${process.env.PUBLIC_URL}/assets/images/bank.png`} alt='' />
                     <p>용돈관리</p>

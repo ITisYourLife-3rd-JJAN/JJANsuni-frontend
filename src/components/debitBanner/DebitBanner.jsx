@@ -17,14 +17,21 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
     const [kidBalance, setKidBalance] = useState([0]);
     const [nowKidBalance, setNowKidBalance] = useState(kidBalance[0])
 
-    const menuoptions = [
-        { value: '이체 내역', label: <Link to="/debit-history" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 내역</div></Link> },
+    const parentMenuOptions = [
         { value: '이체 하기', label: <Link to="/debit" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 하기</div></Link> },
         { value: '자동이체 현황', label: <Link to="/direct-debit" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/hearthand.png`} alt="" width={50}/>자동이체 현황</div></Link> },
+        { value: '이체 내역', label: <Link to="/debit-history" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 내역</div></Link> },
+        { value: '카드 내역', label: <Link to="/card" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/card.png`} alt="" width={50}/>카드 내역</div></Link> }
+    ]
+    const kidMenuOptions = [
+        { value: '이체 하기', label: <Link to="/debit" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 하기</div></Link> },
+        { value: '이체 내역', label: <Link to="/debit-history" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/wallet.png`} alt="" width={50}/>이체 내역</div></Link> },
         { value: '카드 내역', label: <Link to="/card" className='sellink'><div className='seldiv'><img src={`${process.env.PUBLIC_URL}/assets/images/card.png`} alt="" width={50}/>카드 내역</div></Link> }
     ]
 
-    const [selectedValue, setSelectedValue] = useState(menuoptions[idx].value);
+
+    const [parentSelectedValue, setParentSelectedValue] = useState(parentMenuOptions[idx].value);
+    const [kidSelectedValue, setKidSelectedValue] = useState(kidMenuOptions[idx].value);
     
     useEffect(() => {
             if(parent === "F") {
@@ -87,19 +94,68 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
         }
     }, [])
 
-    let nowBalance = <div className='kidBalance'>
+
+    if (kidOptions.length !== 0) {
+        if(parent === "T") {
+            return (
+                <div className='debitBanner' style={{backgroundColor: color}}>
+                    <div className='doSelect'>
+                        <Select              
+                        styles={{               
+                            control: (baseStyles, state) => ({
+                                ...baseStyles,
+                                borderColor: state.isFocused ? 'white' : 'white',
+                                boxShadow: "none",
+                                "&:hover": {
+                                    borderColor: "#FFF"
+                                }
+                            }),
+                            }}
+                        options={parentMenuOptions}
+                        onChange={(e) => {setParentSelectedValue(e.value)
+                        }}
+                        components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
+                        value={parentMenuOptions.filter(function (option) {
+                            return option.value === parentSelectedValue;
+                        })}    
+                        />
+                    </div>
+                    <div className='kidBalance'>
                         <div className='usespace'>아이 현재 잔액: </div>
                         <div> {nowKidBalance} 원</div>
                     </div>
-    if (parent === "F") nowBalance = <div className='kidBalance'>
-                                        <div className='usespace'>내 잔액: </div>
-                                        <div> {kidInfo} 원</div>
-                                    </div>
-
-    let options = kidOptions;
-    if (parent === "F") options = familyOptions
-
-    if (kidOptions.length !== 0) {
+                    <div className='kidSelect'>
+                        <Select
+                        styles={{                    
+                            control: (baseStyles, state) => ({
+                                ...baseStyles,
+                                borderColor: state.isFocused ? 'white' : 'white',
+                                boxShadow: "none",
+                                "&:hover": {
+                                    borderColor: "#FFF"
+                                }
+                            }),
+                            }}
+                        options={kidOptions}
+                        defaultValue={kidOptions[0]}
+                        theme={(theme) => ({
+                            ...theme,
+                            colors: {
+                                ...theme.colors,
+                                primary25: '#E5FAFC',
+                                primary: '#F4C4D2',
+                            },
+                        })} 
+                        onChange={(e) => {
+                            setKidUserId(e.value)
+                            setKidUserName(e.label)
+                            setNowKidBalance(kidBalance[kidOptions.indexOf(e)])
+                        }}
+                        />
+                    </div>
+                </div>
+            );
+        }
         
         return (
             <div className='debitBanner' style={{backgroundColor: color}}>
@@ -115,17 +171,19 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
                             }
                         }),
                         }}
-                    options={menuoptions}
-                    onChange={(e) => {setSelectedValue(e.value)
-                    console.log(e.value, selectedValue)
+                    options={kidMenuOptions}
+                    onChange={(e) => {setKidSelectedValue(e.value)
                     }}
                     components={{ DropdownIndicator:() => null, IndicatorSeparator:() => null }}
-                    value={menuoptions.filter(function (option) {
-                        return option.value === selectedValue;
+                    value={kidMenuOptions.filter(function (option) {
+                        return option.value === kidSelectedValue;
                     })}    
                     />
                 </div>
-                {nowBalance}
+                <div className='kidBalance'>
+                    <div className='usespace'>내 잔액: </div>
+                    <div> {kidInfo} 원</div>
+                </div>
                 <div className='kidSelect'>
                     <Select
                     styles={{                    
@@ -138,8 +196,8 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
                             }
                         }),
                         }}
-                    options={options}
-                    defaultValue={options[0]}
+                    options={familyOptions}
+                    defaultValue={familyOptions[0]}
                     theme={(theme) => ({
                         ...theme,
                         colors: {
@@ -151,7 +209,6 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
                     onChange={(e) => {
                         setKidUserId(e.value)
                         setKidUserName(e.label)
-                        setNowKidBalance(kidBalance[options.indexOf(e)])
                     }}
                     />
                 </div>
