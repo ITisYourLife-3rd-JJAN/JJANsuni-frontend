@@ -9,7 +9,7 @@ const Debit = () => {
     return (
         <div style={{display: 'flex', justifyContent: 'center'}}>
             <Header/>
-            <DebitBanner idx="1" color='#E5FAFC' setKidUserId={setKidUserId} setKidUserName={setKidUserName}/>
+            <DebitBanner idx="0" color='#E5FAFC' setKidUserId={setKidUserId} setKidUserName={setKidUserName}/>
             <DebitForm kidUserId={kidUserId} kidUserName={kidUserName}/>
         </div>
     );
