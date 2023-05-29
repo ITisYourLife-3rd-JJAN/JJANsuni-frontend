@@ -45,13 +45,13 @@ const EggBreak = () => {
   const handleFormSubmit = (e) => {
     e.preventDefault();
     axios
-    .patch('http://localhost:8080/api/v1/debits/game',{
+    .patch('http://localhost:8080/api/v1/users/debit',{
       userId : sessionStorage.getItem("userId"),
       price : textArray[giftNum],
     })
     .then((response)=>{
       console.log(response);
-      alert("당첨금 "+textArray[giftNum]+"원 지급 완료!🤩")
+      alert("당첨금 "+textArray[giftNum]+"원 지급 완료!🐣")
       setIsButtonDisabled(true); // 버튼을 비활성화
     })
     .catch((error)=>{
@@ -70,7 +70,7 @@ const EggBreak = () => {
   <>
     <div className="eggContent">
       <div id="information" style={{fontSize:"45px", padding:"50px"}}> 
-  {lock ? "알을 깨주세요!!" : giftNum !== null ? `축하합니다! ${textArray[giftNum]} 원 당첨!` : ""}
+  {lock ? "알을 깨주세요!!" : giftNum !== null ? `축하합니다! ${textArray[giftNum]} 원 당첨!🥳` : ""}
     </div>
 
       <br />

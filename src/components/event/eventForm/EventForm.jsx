@@ -59,7 +59,6 @@ const sociability = sociabilityInput.value;
     Never mind the previous questions that I made.
     Respond me in korean please~`;
 
-      alert(requestPrompt);
       navigate('/event-result', { state: { requestPrompt } });
     };
   
