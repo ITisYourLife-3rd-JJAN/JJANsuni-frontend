@@ -91,7 +91,10 @@ const Message = () => {
                         value: child.userId,
                         label: child.name
                     }))}
-                    // defaultValue={options[0]}
+                    defaultValue={children.length > 0 ? {
+                        value: children[0].userId,
+                        label: children[0].name
+                      } : null}
                     placeholder="아이를 선택하세요"
                     theme={(theme) => ({
                         ...theme,
