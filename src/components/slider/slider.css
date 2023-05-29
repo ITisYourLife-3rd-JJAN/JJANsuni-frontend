@@ -3,14 +3,22 @@
     align-items: center;
 }
 
+.slider-container{
+    height: 100%;
+}
+
+.slide-item{
+    display: flex;
+}
+
 .slider-img{
-    width: 8rem;
-    height: 8rem;
-    margin: 0 2rem;
+    width: 10rem;
+    height: 10rem;
 }
 
 .slide-item p{
-    margin: 0 2rem;
+    margin: 0 1rem;
+    font-size: 2rem;
 }
 
 .slick-track {
