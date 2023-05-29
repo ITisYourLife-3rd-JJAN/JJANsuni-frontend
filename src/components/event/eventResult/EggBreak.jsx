@@ -46,7 +46,7 @@ const EggBreak = () => {
     e.preventDefault();
     axios
     .patch('http://localhost:8080/api/v1/debits/game',{
-      userId : 1,
+      userId : sessionStorage.getItem("userId"),
       price : textArray[giftNum],
     })
     .then((response)=>{

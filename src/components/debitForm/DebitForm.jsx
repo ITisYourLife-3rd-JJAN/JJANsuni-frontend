@@ -1,25 +1,65 @@
-import {React, useState} from 'react';
+import {React, useState,useEffect} from 'react';
 import './debitForm.css'
 import { useNavigate } from 'react-router';
 import axios from 'axios';
+import Loading from '../../lib/Loading';
 
-const DebitForm = () => {
+const DebitForm = ({kidUserId, kidUserName}) => {
     const [price, setPrice] = useState("");
     const [dealMsg, setDealMsg] = useState("");
     const navigate = useNavigate();
-    const balance = 2000;
+    const userId = sessionStorage.getItem("userId");
+    const [userBalance, setUserBalance] = useState("");
+    const [kidAccount, setKidAccount] = useState();
+    const [kidBalance, setKidBalance] = useState();
+    const [isLoading, setIsLoading] = useState(true);
     
     const handleGoBack = () => {
         navigate(-1);
     };
+    const getUser = () => {
+        axios
+            .get(`http://localhost:8080/api/v1/users/${userId}`)
+            .then((response) => {
+                console.log(response.data.data)
+                setUserBalance(response.data.data.balance)
+                setIsLoading(false); 
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            })
+        };
+
+    useEffect(() => {
+        getUser();
+      }, []);
+
+      useEffect(()=>{
+        const getKid= () => {
+            axios
+            .get(`http://localhost:8080/api/v1/users/${kidUserId}`)
+            .then((response) => {
+                console.log(response.data.data)
+                setKidBalance(response.data.data.balance)
+                setKidAccount(response.data.data.account)
+            })
+            .catch((error) => {
+                console.log(error.response.data);
+            })
+        };
+
+        getKid();
+      },[kidUserId,kidUserName])
+
 
     const registerDebit = () => {
+        getUser();
         if (price <= 0 || price > 1000000) {
             alert('이체할 금액을 확인해주세요.(1~100만원까지 가능)🤨');
             setPrice("");
             return;
           }
-          if (price > balance) {
+          if (price > {userBalance}) {
             alert('잔액이 부족합니다🥺');
             setPrice("");
             return;
@@ -29,11 +69,15 @@ const DebitForm = () => {
             setDealMsg("");
             return;
         }
+        if(kidUserId == null){
+            alert("이체 대상을 선택해주세요😲");
+            return;
+        }
 
         axios
             .post('http://localhost:8080/api/v1/debits',{
-                sendUserId: 1,
-                receivedUserId : 2,
+                sendUserId: userId,
+                receivedUserId : kidUserId,
                 price : price,
                 dealMsg : dealMsg,
             })
@@ -42,27 +86,32 @@ const DebitForm = () => {
                 alert('이체가 완료됐어요💵');
                 setPrice("");
                 setDealMsg("");
+                getUser();
             })
             .catch((error) => {
-                console.log(error)
+                console.log(error.response.data)
             });
+
     };
 
+    if (isLoading) {
+        return <Loading/>;
+    }
     return (
         <div className='debitForm'>
             <div className='infobox'>
                 <div className='fstbox'>
                     <div>
-                        <div className='bigtext'>userId 님 계좌에서</div>
-                        <div>잔액 balance 원</div>
+                        <div className='bigtext'>{sessionStorage.getItem("username")} 님 계좌에서</div>
+                        <div>잔액 {userBalance} 원</div>
                     </div>
                     <div>
                         <img onClick={handleGoBack} className='quitbtn' src={`${process.env.PUBLIC_URL}/assets/images/quit.png`} alt="" width={20}/>
                     </div>
                 </div>
                 <div>
-                    <div className='bigtext'>찌글이 님 계좌로 송금합니다.</div>
-                    <div>찌글이계좌번호</div>
+                    <div className='bigtext'>{kidUserName} 님 계좌로 송금합니다.</div>
+                    <div>{kidAccount}</div>
                 </div>
                 <div className='pricebox'>
                     <div className='bigtext'>얼마를 보낼까요?</div>
@@ -74,7 +123,7 @@ const DebitForm = () => {
                     <div className='bigtext' style={{color:"#AAA"}}>
                     {price > 1000000 ? (
                         <span style={{ color: "#DD5475" }}>100만원 넘는 금액은 송금할 수 없습니다</span>
-                    ) : price > balance ? (
+                    ) : price - userBalance >0 ? (
                         <span style={{ color: "#DD5475" }}>잔액이 부족합니다</span>
                     ) : price < 0 ? (
                         <span style={{ color: "#DD5475" }}>금액을 확인해주세요</span>

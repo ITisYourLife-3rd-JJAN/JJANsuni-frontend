@@ -35,6 +35,7 @@ const MyBigCard = ({ isParent }) => {
   const [successEditMessage, setSuccessEditMessage] = useState('');
   const userId = sessionStorage.getItem("userId");
   const [userBalance, setUserBalance] = useState("");
+  
   const [userEmail, setUserEmail] = useState("");
   const [userAccount, setUserAccount] = useState("");
   const [isLoading, setIsLoading] = useState(false);
