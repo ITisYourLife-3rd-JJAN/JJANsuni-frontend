@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Loading from '../../lib/Loading';
+import { markThousand } from '../../lib/markThousand';
 
 const DebitHistory = ({ kidUserId, kidUserName }) => {
   const [debitData, setDebitData] = useState([]);
@@ -30,7 +31,8 @@ const DebitHistory = ({ kidUserId, kidUserName }) => {
           setDebitData(
             data.map((item) => ({
               ...item,
-              isCreated: new Date(item.isCreated).toLocaleDateString('ko-KR')
+              isCreated: new Date(item.isCreated).toLocaleDateString('ko-KR'),
+              price: markThousand(item.price)
             }))
           );
         }
@@ -102,7 +104,7 @@ if (isLoading) {
             <span style={hightlighReceive(item)}>{item.receivedUserName}</span>
           </td>
           <td>{item.dealMsg}</td>
-          <td>{item.price.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}원</td>
+          <td>{item.price}원</td>
         </tr>
       ))}
     </tbody>
