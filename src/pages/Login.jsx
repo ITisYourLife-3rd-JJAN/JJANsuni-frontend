@@ -3,6 +3,7 @@ import {React, useState} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
 import axios from "axios";
 import Loading from '../lib/Loading';
+import { clear } from '@testing-library/user-event/dist/clear';
 
 const Login = () => {
     const [isLoading, setIsLoading] = useState(false);
@@ -34,7 +35,9 @@ const Login = () => {
                 } return navigate("/kid");
             })
             .catch((error) => {
-                console.log(error.response.data);
+                alert("아이디 또는 비밀번호를 확인해주세요🛠️")
+                setIsLoading(false); 
+                return navigate("/login")
             })
             .finally((res) => {
                 console.log(res)
