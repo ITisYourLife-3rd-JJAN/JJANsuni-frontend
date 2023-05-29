@@ -1,20 +1,27 @@
-import React from 'react';
+import { React, useState } from 'react';
 import './header.css'
 import { Link, useNavigate  } from 'react-router-dom';
+import Loading from '../../lib/Loading';
 
 const Header = () => {
     const navigate = useNavigate ();
-    
+    const [isLoading, setIsLoading] = useState(false);
     const Logout = () => {
+        setIsLoading(true);
         sessionStorage.removeItem('userId');
         sessionStorage.removeItem('username');
         sessionStorage.removeItem('isParent');
         sessionStorage.removeItem('gender');
         navigate('/Login');
+        setIsLoading(false); 
     }
 
     const role = (sessionStorage.getItem('isParent')==="T") ? true : false;
     const isMale = (sessionStorage.getItem('gender')==="M") ? true : false;
+    
+    if (isLoading) {
+        return <Loading/>;
+    }
     
     return (
         <div className='header'>
