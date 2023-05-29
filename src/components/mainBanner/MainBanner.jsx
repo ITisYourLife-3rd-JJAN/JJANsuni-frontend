@@ -9,6 +9,7 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
 
   const [cheerUpMsg, setCheerUpMsg] = useState("");
   const [name, setName] = useState("");
+  const userId = sessionStorage.getItem("userId");
 
   const navigate = useNavigate();
   
@@ -26,23 +27,36 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
     else return `${lastTwoChars}아`;
   };
 
+
   useEffect(() => {
-    const getUser = () => {
+    const fetchData = () => {
+      if (isParent === "F") {
         axios
-            .get("http://localhost:8080/api/v1/users/3")
-            .then((response) => {
-                console.log(response.data.data)
-                setCheerUpMsg(response.data.data.cheerUpMsg)
-                setName(response.data.data.name)
-            })
-            .catch((error) => {
-                console.log(error.response.data);
-            })
+          .get(`http://localhost:8080/api/v1/users/${userId}`)
+          .then((response) => {
+            console.log(response.data.data);
+            setCheerUpMsg(response.data.data.cheerUpMsg);
+            setName(response.data.data.name);
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+          });
+      } else {
+        axios
+          .get(`http://localhost:8080/api/v1/users/family-list/${userId}`)
+          .then((response) => {
+            console.log(response.data.data);
+          })
+          .catch((error) => {
+            console.log(error.response.data);
+          });
+      }
     };
 
-    getUser();
+    fetchData();
 
-  }, []);
+  }, [isParent, userId]);
+
 
 
   return (
