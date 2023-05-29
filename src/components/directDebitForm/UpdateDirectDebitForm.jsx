@@ -3,8 +3,9 @@ import Select from 'react-select'
 import './directDebitForm.css'
 import axios from 'axios';
 
-const DebitForm = ({kidUserId, kidUserName}) => {
+const UpdateDirectDebitForm = ({kidUserId, kidUserName}) => {
     const userId = sessionStorage.getItem("userId")
+
     const cycleoptions = [
         { value: 1, label: '매 일' },
         { value: 2, label: '매 주' },
@@ -42,8 +43,8 @@ const DebitForm = ({kidUserId, kidUserName}) => {
     
     const [price, setPrice] = useState("");
     const [debitMsg, setDebitMsg] = useState("");
-    const [debitDate, setDebitDate] = useState(1);
-    const [debitCycle, setDebitCycle] = useState(3);
+    const [debitDate, setDebitDate] = useState();
+    const [debitCycle, setDebitCycle] = useState();
     
     if (debitCycle==2) {
         var k = weekoptions
@@ -52,9 +53,23 @@ const DebitForm = ({kidUserId, kidUserName}) => {
     } else {
         k = dayoptions
     }
-    
 
-    const directAxios = () => {
+    const deleteAxios = () => {
+        axios
+        .delete("http://localhost:8080/api/v1/directs", {
+            autoSendUserId: userId,
+            autoReceivedUserId: kidUserId
+        })
+        .then((response) => {
+            console.log(response)
+            alert('자동이체가 삭제되었습니다✔')
+        })
+        .catch((error) => {
+            console.log(error.response.data)
+        })
+    }
+
+    const updateAxios = () => {
         if (price <= 0 || price > 1000000) {
             alert('이체할 금액을 확인해주세요.(1~100만원까지 가능)🤨');
             setPrice("");
@@ -65,27 +80,25 @@ const DebitForm = ({kidUserId, kidUserName}) => {
             setDebitMsg("");
             return;
         }
-
         axios
-            .post("http://localhost:8080/api/v1/directs", {
-                autoSendUserId : userId,
-                autoReceivedUserId : kidUserId,
-                price : price,
-                debitMsg : debitMsg,
-                debitDate : debitDate,
-                debitCycle: debitCycle
-            })
-            .then((response) => {
-                console.log(response)
-                if(response.status === 200) {
-                    alert('자동이체가 등록됐어요💵');
-                }
-            })
-            .catch((error) => {
-                console.log(error.response.data);
-            })
+        .patch("http://localhost:8080/api/v1/directs", {
+            autoSendUserId : userId,
+            autoReceivedUserId : kidUserId,
+            price : price,
+            debitMsg : debitMsg,
+            debitDate : debitDate,
+            debitCycle: debitCycle
+        })
+        .then((response) => {
+            if(response.status === 200) {
+                alert('자동이체가 수정되었어요👌')
+            }
+        })
+        .catch((error) => {
+            console.log(error.response.data);
+        })
     }
-    
+
     return (
         <div className='directdebitForm'>
             <div className='ddinfobox'>
@@ -175,10 +188,11 @@ const DebitForm = ({kidUserId, kidUserName}) => {
                     onChange={(e) => setDebitMsg(e.target.value)}/>
                     <div>"</div>
                 </div>
-                <div className='ddsubmitbtn' onClick={directAxios}>등록하기</div>
+                <div className='ddsubmitbtn' onClick={deleteAxios}>삭제하기</div>
+                <div className='ddsubmitbtn' onClick={updateAxios}>수정하기</div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default DebitForm;
+export default UpdateDirectDebitForm;
