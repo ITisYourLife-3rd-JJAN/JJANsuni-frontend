@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import { checkFinalSound } from '../../lib/checkFinalSound';
 import Select from 'react-select'
+import Loading from '../../lib/Loading'
 
 const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
 
@@ -42,6 +43,7 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
             console.log(response.data.data);
             setCheerUpMsg(response.data.data.cheerUpMsg);
             setName(response.data.data.name);
+            setIsLoading(false)
           })
           .catch((error) => {
             console.log(error.response.data);
@@ -73,46 +75,53 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
     setSelectedChild(selectedOption.label);
   };
 
+  if (isLoading) {
+    return <Loading/>
+}
 
   return (
     <div className='mainBanner' style={{ backgroundColor: bgColor }}>
       {isParent ? (
-        <Select
-          className="selectkid"
-          onChange={handleChildSelect}
-          options={children.map((child) => ({
-              value: child.userId,
-              label: child.name
-          }))}
-          placeholder={children.length > 0 ? children[0].name : "아이를 등록해주세요"}
-          theme={(theme) => ({
-              ...theme,
-              colors: {
-                ...theme.colors,
-                primary25: '#E5FAFC',
-                primary: '#CDFF5C',
-              },
-            })} 
-          styles={{
-              control: (provided, state) => ({
-                ...provided,
-                borderColor: state.isFocused ? "#CDFF5C" : "#CDFF5C",
-                borderRadius: "10px", 
-                boxShadow: "none",
-                "&:hover": {
-                  borderColor: "#CDFF5C"
-                }
-              }),
-              menu: (provided) => ({
-                ...provided,
-                marginTop: 0
-              }),
-              option: (provided) => ({
-                ...provided,
-                color: "black"
-              })
-            }}
+        <div>
+          <img alt='' src={`${process.env.PUBLIC_URL}/assets/images/msg-img.png`} width={160}/>
+          <Select
+            className="selectkid"
+            onChange={handleChildSelect}
+            options={children.map((child) => ({
+                value: child.userId,
+                label: child.name
+            }))}
+            placeholder={children.length > 0 ? children[0].name : "아이를 등록해주세요"}
+            value={selectedChild}
+            theme={(theme) => ({
+                ...theme,
+                colors: {
+                  ...theme.colors,
+                  primary25: '#E5FAFC',
+                  primary: '#CDFF5C',
+                },
+              })} 
+            styles={{
+                control: (provided, state) => ({
+                  ...provided,
+                  borderColor: state.isFocused ? "#CDFF5C" : "#CDFF5C",
+                  borderRadius: "10px", 
+                  boxShadow: "none",
+                  "&:hover": {
+                    borderColor: "#CDFF5C"
+                  }
+                }),
+                menu: (provided) => ({
+                  ...provided,
+                  marginTop: 0
+                }),
+                option: (provided) => ({
+                  ...provided,
+                  color: "black"
+                })
+              }}
           />
+        </div>
         ):("")
       }
 
@@ -132,7 +141,7 @@ const MainBanner = ({ bgColor = '#CDFF5C', isParent }) => {
         ) : (
           <div>
               <p className='changeChild' onClick={isParent ? handleClick : null} style={{...cursorStyle, backgroundColor}}>
-              사랑하는 {getEnding()} ~
+              사랑하는 {getEnding(name)} ~
               </p>
               <p>{cheerUpMsg}</p>
           </div>
