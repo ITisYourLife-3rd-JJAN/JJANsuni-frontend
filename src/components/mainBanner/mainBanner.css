@@ -59,3 +59,16 @@
     margin: 0;
     cursor: pointer;
 }
+
+.selectkid{
+    width: 11rem;
+    font-size: 1.3rem;
+    font-weight: 400;
+    padding: 0.3rem;
+    border-radius: 15px;
+    outline: none;
+}
+
+.selectkid:focus{
+    border: 1px solid #DD5475;
+}
