@@ -35,9 +35,10 @@ const MyBigCard = ({ isParent }) => {
   const [successEditMessage, setSuccessEditMessage] = useState('');
   const userId = sessionStorage.getItem("userId");
   const [userBalance, setUserBalance] = useState("");
-  const [userEmail, setUserEmail] = useState("");
+  const [famCode, setFamCode] = useState("");
   const [userAccount, setUserAccount] = useState("");
   const [isLoading, setIsLoading] = useState(false);
+  const [userAchieve, setUserAcieve] = useState("");
 
   const getUser = () => {
     setIsLoading(true)
@@ -46,8 +47,9 @@ const MyBigCard = ({ isParent }) => {
         .then((response) => {
             console.log(response.data.data)
             setUserBalance(response.data.data.balance)
-            setUserEmail(response.data.data.email)
+            setFamCode(response.data.data.famCode)
             setUserAccount(response.data.data.account)
+            setUserAcieve(response.data.data.achieve)
             setIsLoading(false)
         })
         .catch((error) => {
@@ -139,6 +141,11 @@ const MyBigCard = ({ isParent }) => {
     setPhoneNum(value);
   };
 
+  const checkLevel = (userAchieve) => {
+    var mapNum = Math.ceil(userAchieve / 7);
+    var missionNum = userAchieve % 8;
+    return `${mapNum}-${missionNum}` 
+}
   return (
     <div className="my-profile-card-container" style={containerStyle}>
       <img src={`${imgSrc}`} alt="" className="me-profile" />
@@ -146,8 +153,7 @@ const MyBigCard = ({ isParent }) => {
         <p id="my-name">{sessionStorage.getItem('username')}</p>
         {!isParent ? (
           <>
-            <p id="my-favorite">좋아하는 것: 게임 강아지</p>
-            <p id="my-dream">꿈: 연예인</p>
+            <p>현재단계: {checkLevel(userAchieve)}</p>
           </>
         ) : (
           <>
@@ -155,7 +161,7 @@ const MyBigCard = ({ isParent }) => {
           </>
         )}
         <p id="my-account">계좌번호: {userAccount}</p>
-        <p>{userEmail}</p>
+        <p>가족코드: {famCode}</p>
       </div>
       <div className="my-edit-box">
         <p>탈퇴하기</p>
