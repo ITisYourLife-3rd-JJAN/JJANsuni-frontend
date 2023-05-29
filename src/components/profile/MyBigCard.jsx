@@ -38,7 +38,6 @@ const MyBigCard = ({ isParent }) => {
   const [famCode, setFamCode] = useState("");
   const [userAccount, setUserAccount] = useState("");
   const [isLoading, setIsLoading] = useState(false);
-  const [userAchieve, setUserAcieve] = useState("");
 
   const getUser = () => {
     setIsLoading(true)
@@ -49,7 +48,6 @@ const MyBigCard = ({ isParent }) => {
             setUserBalance(response.data.data.balance)
             setFamCode(response.data.data.famCode)
             setUserAccount(response.data.data.account)
-            setUserAcieve(response.data.data.achieve)
             setIsLoading(false)
         })
         .catch((error) => {
@@ -141,11 +139,6 @@ const MyBigCard = ({ isParent }) => {
     setPhoneNum(value);
   };
 
-  const checkLevel = (userAchieve) => {
-    var mapNum = Math.ceil(userAchieve / 7);
-    var missionNum = userAchieve % 8;
-    return `${mapNum}-${missionNum}` 
-}
   return (
     <div className="my-profile-card-container" style={containerStyle}>
       <img src={`${imgSrc}`} alt="" className="me-profile" />
