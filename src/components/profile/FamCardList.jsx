@@ -1,4 +1,4 @@
-import { React, useState, useCallback, useEffect } from 'react';
+import { React, useState, useEffect } from 'react';
 import FamCard from './FamCard';
 import './famCardList.css';
 import axios from 'axios';

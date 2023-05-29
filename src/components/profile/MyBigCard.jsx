@@ -153,16 +153,15 @@ const MyBigCard = ({ isParent }) => {
         <p id="my-name">{sessionStorage.getItem('username')}</p>
         {!isParent ? (
           <>
-            <p>현재단계: {checkLevel(userAchieve)}</p>
+            <p>장래희망 : 백엔드 개발자</p>
           </>
         ) : (
           <>
-            <p id="my-balance">잔액: {userBalance}원</p>
+            <p id="my-balance">잔액 : {userBalance}원</p>
           </>
         )}
-        <p id="my-account">계좌번호: {userAccount}</p>
-        {isParent && <p>가족코드: {famCode}</p>}
-        {!isParent && <p>잔액: {userBalance}원</p>}
+        <p id="my-account">계좌번호 : {userAccount}</p>
+        <p>가족코드 : {famCode}</p>
       </div>
       <div className="my-edit-box">
         <p>탈퇴하기</p>

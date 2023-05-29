@@ -74,9 +74,9 @@ const FamCard = ({famUserId}) => {
                 <img src={`${imgSrc}`} alt='' className='fam-profile' />
                 <div className='fam-info-box'>
                     <p id='fam-name'>{userName}</p>
-                    <p>계좌번호: {userAccount}</p>
+                    <p>계좌번호 : {userAccount}</p>
                     {(!isParent) && 
-                        <p>현재단계: {checkLevel(userAchieve)}</p>
+                        <p>현재단계 : {checkLevel(userAchieve)}</p>
                     }
                 </div>
                 <div className='fam-edit-box'>
