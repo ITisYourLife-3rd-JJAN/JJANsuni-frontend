@@ -20,18 +20,21 @@ h3 {
   background-position: center;
   position: relative;
 }
+
 #section2 {
   background-image: url("http://localhost:3000/assets/images/fullpage/full2_none.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
+
 #section3 {
   background-image: url("http://localhost:3000/assets/images/fullpage/full3.png");
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 }
+
 #section4 {
   background-image: url("http://localhost:3000/assets/images/fullpage/full4.png");
   background-size: cover;
@@ -57,22 +60,20 @@ h3 {
 }
 
 #pig{
-  width: auto;
+  width: 23%;
   position: absolute;
   bottom: 0em;
-  /* right: 40rem; */
   left: 40%;
   z-index: 10;
 }
+
 #hand{ 
   float: none;
   clear: both;
   position: absolute;
-  margin-top: 35rem;
-  /* right: 38rem; */
+  margin-top: 29%;
   left: 43%;
   animation: bounce 2s infinite ease-in-out;
-
 }
 
 #cardphone{
@@ -115,8 +116,8 @@ h3 {
 
 .coins{
   position: absolute;
-  left: 16em;
-  top: 13em;
+  left: 12%;
+  top: 17%;
 }
 
 .jjan{
