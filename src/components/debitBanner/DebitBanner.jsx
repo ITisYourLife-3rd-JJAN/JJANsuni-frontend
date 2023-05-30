@@ -79,7 +79,7 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
                             label: child.name+" 아이"
                         }))
                         const updateBalance = filterData.map(child => (
-                            child.balance
+                            markThousand(child.balance)
                         ))
                         setKidBalance([...kidBalance, ...updateBalance])
     
