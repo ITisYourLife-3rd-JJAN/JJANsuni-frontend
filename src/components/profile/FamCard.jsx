@@ -10,7 +10,7 @@ import Loading from '../../lib/Loading';
         const [userName, setUserName] = useState("");
         const [userAccount, setUserAccount] = useState("");
         const [userGender, setUserGender] = useState("");
-        const [userAchieve, setUserAcieve] = useState("");
+        const [userAchieve, setUserAchieve] = useState("");
         const [isParent, setIsParent] = useState("");
         const [isLoading, setIsLoading] = useState(true)
     
@@ -27,7 +27,7 @@ import Loading from '../../lib/Loading';
                 setUserName(response.data.data.name);
                 setUserAccount(response.data.data.account);
                 setUserGender(response.data.data.gender);
-                setUserAcieve(response.data.data.achieve);
+                setUserAchieve(response.data.data.achieve);
                 setIsLoading(false);
             })
             .catch((error) => {

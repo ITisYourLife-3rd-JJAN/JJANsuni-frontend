@@ -2,12 +2,13 @@ import { React, useState, useEffect } from 'react';
 import './stateCard.css';
 import Loading from '../../lib/Loading';
 import axios from 'axios';
+import { markThousand } from '../../lib/markThousand';
 
 const StateCard = () => {
     const userId = sessionStorage.getItem("userId");
     const [isLoading, setIsLoading] = useState(false);
     const [userBalance, setUserBalance] = useState("");
-    const [userAchieve, setUserAcieve] = useState("");
+    const [userAchieve, setUserAchieve] = useState("");
 
     const getUser = () => {
         setIsLoading(true)
@@ -15,8 +16,8 @@ const StateCard = () => {
             .get(`http://localhost:8080/api/v1/users/${userId}`)
             .then((response) => {
                 console.log(response.data.data)
-                setUserBalance(response.data.data.balance)
-                setUserAcieve(response.data.data.achieve)
+                setUserBalance(markThousand(response.data.data.balance));
+                setUserAchieve(response.data.data.achieve)
                 setIsLoading(false)
             })
             .catch((error) => {

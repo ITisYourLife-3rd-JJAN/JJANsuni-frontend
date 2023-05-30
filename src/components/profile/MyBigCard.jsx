@@ -3,6 +3,7 @@ import './myBigCard.css';
 import axios from 'axios';
 import Modal from 'react-modal';
 import Loading from '../../lib/Loading';
+import { markThousand } from '../../lib/markThousand';
 
 const MyBigCard = ({ isParent }) => {
   const containerStyle = {
@@ -45,7 +46,7 @@ const MyBigCard = ({ isParent }) => {
         .get(`http://localhost:8080/api/v1/users/${userId}`)
         .then((response) => {
             console.log(response.data.data)
-            setUserBalance(response.data.data.balance)
+            setUserBalance(markThousand(response.data.data.balance))
             setFamCode(response.data.data.famCode)
             setUserAccount(response.data.data.account)
             setIsLoading(false)
