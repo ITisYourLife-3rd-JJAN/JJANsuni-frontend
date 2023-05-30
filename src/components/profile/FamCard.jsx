@@ -2,6 +2,7 @@ import {React, useState, useEffect} from 'react';
 import './famCard.css';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import { markAccount } from '../../lib/markAccount';
 
 const FamCard = ({isParent}) => {
     const [isGirl, setIsGirl] = useState(true);
@@ -46,7 +47,7 @@ const FamCard = ({isParent}) => {
         <img src={`${imgSrc}`} alt='' className='fam-profile' />
         <div className='fam-info-box'>
             <p id='fam-name'>{sessionStorage.getItem("username")}</p>
-            <p>계좌번호: {userAccount}</p>
+            <p>계좌번호: {markAccount(userAccount)}</p>
         </div>
         <div className='fam-edit-box'>
             {!isParent ? (
