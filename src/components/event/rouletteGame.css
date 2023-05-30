@@ -5,15 +5,15 @@
 
 .roll-arrow{
 	position: absolute;
-	top: 6%;
+	top: 8%;
 	left: 21.6%;
-	width: 50px;
+	width: 55px;
 	z-index: 100;
 }
 
 .roll-img{
 	position: absolute;
-	top: 13%;
+	top: 16%;
 	left: 1.5%;
 	width: 44%;
 	z-index: 100;

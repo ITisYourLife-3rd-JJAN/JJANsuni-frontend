@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import "./eventForm.css";
 import { useNavigate } from 'react-router-dom';
 import Select from 'react-select'
+import Header from '../../header/Header'
 
 const EventForm = () => {
 
@@ -56,6 +57,8 @@ const sociability = sociabilityInput.value;
     };
 
   return (
+    <> 
+    <Header/>
     <div className="event-gpt-container">
       <div className='eventForm'>
         <div className='form-container'>  
@@ -251,6 +254,7 @@ const sociability = sociabilityInput.value;
         </div>
       </div>
     </div>
+    </>
   );
 };
 

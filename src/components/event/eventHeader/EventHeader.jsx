@@ -5,14 +5,14 @@ const EventHeader = ({isGpt}) => {
     const backgroundColor = isGpt ? "#DD5475" : "#E7A7F5";
 
     return (
-        <div className='eventHeader' style={{ backgroundColor: backgroundColor }}>
+        <div className='eventList-Header' style={{ backgroundColor: backgroundColor, color: "#fff"}}>
             
                 { isGpt ?
                     <div className='titleBox gpt'>
                         <img src={`${process.env.PUBLIC_URL}/assets/images/event/eventchart.png`} alt='' />
                         <div className='textBox'>
-                            <h1>금주의 이벤트 ! - “투자 성향 파악해보기</h1>
-                            <h3>이벤트를 완료하면 ... 최대 10,000원을 받을 수도.... !</h3>
+                            <p className='event-title'>금주의 이벤트 ! - “투자 성향 파악해보기</p>
+                            <p className='event-des'>이벤트를 완료하면 ... 최대 10,000원을 받을 수도.... !</p>
                         </div>
                     </div>
                         :
