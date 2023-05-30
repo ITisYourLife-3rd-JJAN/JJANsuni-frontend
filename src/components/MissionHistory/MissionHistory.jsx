@@ -31,7 +31,7 @@ export function publishedDate(publishDateValue) {
 
 const MissionHistory = ({kidUserId, kidUserName}) => {
 
-  console.log(kidUserId)
+  const kidId = 2
 
   const [info, setInfo] = useState([]);
   const [currPage, setCurrPage] = useState(1);
@@ -73,7 +73,7 @@ const MissionHistory = ({kidUserId, kidUserName}) => {
   useEffect(() => {
     const missionHistoryAxios = () => {
       axios
-        .get(`http://localhost:8080/api/v1/missions/${kidUserId}`)
+        .get(`http://localhost:8080/api/v1/missions/${kidId}`)
         .then((response) => {
           if (response.data.businessCode === 'M002') {
             // console.log(response.data)
@@ -85,7 +85,7 @@ const MissionHistory = ({kidUserId, kidUserName}) => {
         })
     }
     missionHistoryAxios()
-  }, [kidUserId])
+  }, [kidId])
 
   const getCurrData = () => {
     const sidx = (currPage -1) * page;
@@ -110,54 +110,44 @@ const MissionHistory = ({kidUserId, kidUserName}) => {
     );
   }
 
-
-    
-  if(kidUserId !== null) {
-
-    return (
-      <div className='mhistoryBox'>
-        <div className='minnerBox'>
-          <div className='mhistoryTable'>
-            <div className='mcol fst'>맵 번호</div>
-            <div className='mcol'>미션 번호</div>
-            <div className='tle'>미션 제목</div>
-            <div className='mcol lst'>수행 일시</div>
-          </div>
-          {getCurrData().map((item) => (
-            <div className={`itmbox ${item.status === 1 ? 'correctbg' : 'wrongbg'}`} key={item.userMissionId}>
-              <div className='mhistoryRow' key={item.userMissionId}>
-                <div className='mcol fst'>{item.solvedMission.mapNum}</div>
-                <div className='mcol'>{item.solvedMission.missionNum}</div>
-                <div className='tle'>{item.solvedMission.title}</div>
-                <div className='mcol lst'>{publishedDate(item.createAt)}</div>
-              </div>
-            </div>
-          ))}
+  return (
+    <div className='mhistoryBox'>
+      <div className='minnerBox'>
+        <div className='mhistoryTable'>
+          <div className='mcol fst'>맵 번호</div>
+          <div className='mcol'>미션 번호</div>
+          <div className='tle'>미션 제목</div>
+          <div className='mcol lst'>수행 일시</div>
         </div>
-        <div className='paginations'>
-          <div
-            onClick={() => handlePage(currPage-1)}
-            className={firstPage ? 'disabled' : 'abled'}
-          >
-            <div>&lt;</div>
-            <div>이전</div>
+        {getCurrData().map((item) => (
+          <div className={`itmbox ${item.status === 1 ? 'correctbg' : 'wrongbg'}`} key={item.userMissionId}>
+            <div className='mhistoryRow' key={item.userMissionId}>
+              <div className='mcol fst'>{item.solvedMission.mapNum}</div>
+              <div className='mcol'>{item.solvedMission.missionNum}</div>
+              <div className='tle'>{item.solvedMission.title}</div>
+              <div className='mcol lst'>{publishedDate(item.createAt)}</div>
+            </div>
           </div>
-          <div
-            onClick={() => handlePage(currPage+1)}
-            className={lastPage ? 'disabled' : 'abled'}
-          >
-            <div>&gt;</div>
-            <div>다음</div>
-          </div>
+        ))}
+      </div>
+      <div className='paginations'>
+        <div
+          onClick={() => handlePage(currPage-1)}
+          className={firstPage ? 'disabled' : 'abled'}
+        >
+          <div>&lt;</div>
+          <div>이전</div>
+        </div>
+        <div
+          onClick={() => handlePage(currPage+1)}
+          className={lastPage ? 'disabled' : 'abled'}
+        >
+          <div>&gt;</div>
+          <div>다음</div>
         </div>
       </div>
-    );
-  }
-  else {
-    return (
-      <div className='mhistoryBox'></div>
-    )
-  }
+    </div>
+  );
 };
 
 export default MissionHistory;

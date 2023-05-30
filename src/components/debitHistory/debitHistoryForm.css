@@ -24,10 +24,4 @@ tr:last-child td {
     border-radius: 30px;
     margin: 0 auto;
     padding: 3rem;
-    overflow: hidden;
-}
-
-.debitScroll{
-    height: 100%;
-    overflow: scroll;
 }

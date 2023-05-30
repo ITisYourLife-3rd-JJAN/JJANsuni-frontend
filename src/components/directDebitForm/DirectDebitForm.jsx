@@ -4,7 +4,7 @@ import './directDebitForm.css'
 import axios from 'axios';
 
 const DebitForm = ({kidUserId, kidUserName}) => {
-    const userId = sessionStorage.getItem("userId")
+    console.log(kidUserId, kidUserName)
     const cycleoptions = [
         { value: 1, label: '매 일' },
         { value: 2, label: '매 주' },
@@ -12,7 +12,7 @@ const DebitForm = ({kidUserId, kidUserName}) => {
     ]
 
     const everyoption = [
-        {value: 1, label: '' }
+        {value: 41, label: '' }
     ]
     
     const weekoptions = [
@@ -40,10 +40,12 @@ const DebitForm = ({kidUserId, kidUserName}) => {
         dayoptions.push(op)
     };
     
+    const [autoSendUserId, setAutoSendUserId] = useState(1);
+    const [autoReceivedUserId, setAutoReceivedUserId] = useState();
     const [price, setPrice] = useState("");
     const [debitMsg, setDebitMsg] = useState("");
-    const [debitDate, setDebitDate] = useState(1);
-    const [debitCycle, setDebitCycle] = useState(3);
+    const [debitDate, setDebitDate] = useState();
+    const [debitCycle, setDebitCycle] = useState();
     
     if (debitCycle==2) {
         var k = weekoptions
@@ -53,10 +55,16 @@ const DebitForm = ({kidUserId, kidUserName}) => {
         k = dayoptions
     }
     
+    const balance = 2000;
 
     const directAxios = () => {
         if (price <= 0 || price > 1000000) {
             alert('이체할 금액을 확인해주세요.(1~100만원까지 가능)🤨');
+            setPrice("");
+            return;
+          }
+          if (price > balance) {
+            alert('잔액이 부족합니다🥺');
             setPrice("");
             return;
           }
@@ -66,9 +74,11 @@ const DebitForm = ({kidUserId, kidUserName}) => {
             return;
         }
 
+        console.log(autoSendUserId)
+        console.log(autoReceivedUserId)
         axios
             .post("http://localhost:8080/api/v1/directs", {
-                autoSendUserId : userId,
+                autoSendUserId : 1,
                 autoReceivedUserId : kidUserId,
                 price : price,
                 debitMsg : debitMsg,
@@ -78,7 +88,9 @@ const DebitForm = ({kidUserId, kidUserName}) => {
             .then((response) => {
                 console.log(response)
                 if(response.status === 200) {
-                    alert('자동이체가 등록됐어요💵');
+                    alert('이체가 완료됐어요💵');
+                    setPrice("");
+                    setDebitMsg("");
                 }
             })
             .catch((error) => {
@@ -102,7 +114,9 @@ const DebitForm = ({kidUserId, kidUserName}) => {
                         <div className='bigtext' style={{color:"#AAA", marginLeft: "1rem"}}>
                         {price > 1000000 ? (
                             <span style={{ color: "#DD5475" }}>100만원 넘는 금액은 송금할 수 없습니다</span>
-                            ) : price < 0 ? (
+                            ) : price > balance ? (
+                                <span style={{ color: "#DD5475" }}>잔액이 부족합니다</span>
+                                ) : price < 0 ? (
                                     <span style={{ color: "#DD5475" }}>금액을 확인해주세요</span>
                                     ) : (
                                         <>

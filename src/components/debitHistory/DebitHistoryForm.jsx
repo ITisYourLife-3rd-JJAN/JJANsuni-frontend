@@ -2,14 +2,14 @@ import React from 'react';
 import './debitHistoryForm.css';
 import DebitHistory from './DebitHistory';
 
-const DebitHistoryForm = ({kidUserId, kidUserName}) => {
+const DebitHistoryForm = ({isParent}) => {
+
+    const backgroundColor = isParent? '#FCFF5C':'#FCFF5C';
     return (
-        <div className='debitHistory'>
-            <div className='debitScroll'>
-                <table className='debitTable'>
-                    <DebitHistory kidUserId={kidUserId} kidUserName={kidUserName}/>
-                </table>
-            </div>
+        <div className='debitHistory' style={{backgroundColor:backgroundColor}}>
+            <table className='debitTable'>
+                <DebitHistory/>
+            </table>
         </div>
     );
 };

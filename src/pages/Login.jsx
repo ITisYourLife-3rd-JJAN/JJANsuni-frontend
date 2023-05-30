@@ -21,11 +21,11 @@ const Login = () => {
             })
             .then((response) => {
                     const userId = response.data.data.userId;
-                    const username = response.data.data.name;
+                    const userName = response.data.data.name;
                     const isParent = response.data.data.isParent;
                     const gender = response.data.data.gender;
                     sessionStorage.setItem('userId', userId);
-                    sessionStorage.setItem('username', username);
+                    sessionStorage.setItem('username', userName);
                     sessionStorage.setItem('isParent', isParent);
                     sessionStorage.setItem('gender', gender);
                     setIsLoading(false); 

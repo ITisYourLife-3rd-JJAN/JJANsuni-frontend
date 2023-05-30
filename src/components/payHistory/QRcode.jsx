@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 
-const QRCode = () => {
+const QRCode = ({ userId }) => {
   const [qrCodeImage, setQRCodeImage] = useState('');
-  const userId = sessionStorage.getItem('userId');
+  var userId = 1; //나중에 세션으로 userId 갖고와서 넣어줘야함
 
   useEffect(() => {
     const fetchQRCodeImage = async () => {

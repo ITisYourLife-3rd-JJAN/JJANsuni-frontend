@@ -17,14 +17,13 @@ const Message = () => {
     const [children, setChildren] = useState([]); 
     const [messageText, setMessageText] = useState(""); 
     const [isLoading, setIsLoading] = useState(true);
-    const userId = sessionStorage.getItem("userId")
-
+    
     const [isButtonDisabled, setIsButtonDisabled] = useState(true);
 
     useEffect(() => {
         const getChildrens = () => {
             axios
-                .get(`http://localhost:8080/api/v1/users/family-list/${userId}`)
+                .get(`http://localhost:8080/api/v1/users/family-list/1`)
                 .then((response) => {
                     const filteredChildren = response.data.data.filter(
                         (child) => child.isParent === "F"
@@ -91,10 +90,6 @@ const Message = () => {
                         value: child.userId,
                         label: child.name
                     }))}
-                    defaultValue={children.length > 0 ? {
-                        value: children[0].userId,
-                        label: children[0].name
-                      } : null}
                     placeholder="아이를 선택하세요"
                     theme={(theme) => ({
                         ...theme,
@@ -108,7 +103,7 @@ const Message = () => {
                         control: (provided, state) => ({
                           ...provided,
                           borderColor: state.isFocused ? "#DD5475" : "#DD5475",
-                          borderRadius: "10px", 
+                          borderRadius: "10px", // border-radius 설정
                           boxShadow: "none",
                           "&:hover": {
                             borderColor: "#DD5475"

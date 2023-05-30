@@ -3,7 +3,6 @@ import { useLocation } from "react-router-dom";
 import axios from "axios";
 import EggBreak from "./../../components/event/eventResult/EggBreak"
 import './eventResult.css';
-import Header from '../../components/header/Header';
 
 const EventResult = () => {
   const location = useLocation();
@@ -26,7 +25,7 @@ const EventResult = () => {
         "https://api.openai.com/v1/engines/text-davinci-003/completions",
         {
           prompt: prompt,
-          temperature: 0.6,
+          temperature: 0.5,
           max_tokens: 3500,
         },
         {
@@ -63,7 +62,6 @@ const EventResult = () => {
   return (
     <>
       <div>
-        <Header/>
         <div className="buttonContainer">
           <button
             disabled={loading || prompt.length === 0 }

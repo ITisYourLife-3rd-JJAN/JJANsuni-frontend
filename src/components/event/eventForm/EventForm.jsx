@@ -3,14 +3,14 @@ import "./eventForm.css";
 import { useNavigate } from 'react-router-dom';
 
 const EventForm = () => {
-const subjects = ["Korean", "English", "Math", "Social Studies", "Science", "Music", "Art", "Physical Education"];
-const initialSubject = subjects[0];
-const activities = ["reading", "gaming", "swimming", "hiking"];
-const initialActivity = activities[0];
-const routines = ["I do it every day", "I do it every week", "I do it every month"];
-const initialRoutine = routines[0];
-const wheres = ["on games", "on transportation", "on buying accessories", "on exercising", "on snacks"];
-const initialWhere = wheres[0];
+  const subjects = ["국어", "영어", "수학", "사회", "과학", "음악", "미술", "체육"];
+  const initialSubject = subjects[0];
+  const activities = ["독서", "게임", "물놀이", "등산"];
+  const initialActivity = activities[0];
+  const routines = ["나는 매일", "나는 매주", "나는 매월"];
+  const initialRoutine = routines[0];
+  const wheres = [" 게임에", " 교통비에", " 악세사리구매에", " 운동에", " 간식에"];
+  const initialWhere = wheres[0];
 
   const [selectedActivity, setSelectedActivity] = useState(initialActivity);
   const [selectedSubject, setSelectedSubject] = useState(initialSubject);
@@ -50,15 +50,14 @@ const patience = patienceInput.value;
 const sociability = sociabilityInput.value;
 
     const requestPrompt = `${saving}
-    ${patience}
-    ${sociability}
-    I enjoy my ${selectedSubject} class at school.
-    I enjoy ${selectedActivity}.
-    ${selectedRoutine} ${selectedAmount} won ${selectedWhere}.
-    What would be a good way for me to invest or save money?
-    Never mind the previous questions that I made.
-    Respond me in korean please~`;
+      ${patience}
+      ${sociability}
+      학교에서 ${selectedSubject}시간을 좋아해
+      ${selectedActivity} 하는 것을 좋아해
+      ${selectedRoutine} ${selectedWhere} ${selectedAmount}원 소비하는데
+      어떤 방식으로 투자나 저축을 하면 좋을까? 참고로 난 이전 사람과 다른 사람이야`;
 
+      // alert(requestPrompt);
       navigate('/event-result', { state: { requestPrompt } });
     };
   
@@ -70,25 +69,25 @@ const sociability = sociabilityInput.value;
           <form>
             <div className="question">
               어떤 방식을 더 좋아하세요?<br/>
-              <input type="radio" id="bigSave" name="saving" value="I prefer saving money to buy expensive items I want" required /> 
+              <input type="radio" id="bigSave" name="saving" value="나는 돈을 모아서, 갖고 싶은 비싼 물품을 사는 것을 추구해" required /> 
               <label htmlFor="bigSave">돈을 모아서 갖고 싶은 비싼 물건 사기</label><br/>
-              <input type="radio" id="smallSave" name="saving" value="I prefer making small purchases frequently rather than buying something big at once" required /> 
+              <input type="radio" id="smallSave" name="saving" value="나는 한 번 큰 것을 사는 것보다, 매일매일 조금씩 구매하는게 좋아" required /> 
               <label htmlFor="smallSave">조금씩 자주 저렴한 물건 사기</label>
             </div>
 
             <div className="question">
               나는 끈기가 있는 편인가요?<br/>
-              <input type="radio" id="yesPatience" name="patience" value="Yes, I have patience" required /> 
+              <input type="radio" id="yesPatience" name="patience" value="나는 끈기가 있는 편에 속해" required /> 
               <label htmlFor="yesPatience">예</label>
-              <input type="radio" id="noPatience" name="patience" value="No, I lack patience" required /> 
+              <input type="radio" id="noPatience" name="patience" value="나는 끈기가 없는 편에 속해" required /> 
               <label htmlFor="noPatience">아니오</label>
             </div>
 
             <div className="question">
               어떻게 시간을 보내는 것을 좋아하나요?<br/>
-              <input type="radio" id="extrovert" name="sociability" value="I enjoy spending time alone" required /> 
+              <input type="radio" id="extrovert" name="sociability" value="나는 혼자서 노는게 좋아" required /> 
               <label htmlFor="extrovert">혼자 시간을 보내는 것을 좋아해요</label><br/>
-              <input type="radio" id="introvert" name="sociability" value="I enjoy spending time with friends" required /> 
+              <input type="radio" id="introvert" name="sociability" value="나는 친구들과 노는게 좋아" required /> 
               <label htmlFor="introvert">친구들과 시간을 보내는 것을 좋아해요</label>
             </div>
 
@@ -99,14 +98,14 @@ const sociability = sociabilityInput.value;
                 value={selectedSubject}
                 onChange={(e) => setSelectedSubject(e.target.value)}
               >
-                <option value="Korean" >국어</option>
-                <option value="English">영어</option>
-                <option value="Math">수학</option>
-                <option value="Social Studies">사회</option>
-                <option value="Science">과학</option>
-                <option value="Music">음악</option>
-                <option value="Art">미술</option>
-                <option value="Physical Education">체육</option>
+                <option value="국어" >국어</option>
+                <option value="영어">영어</option>
+                <option value="수학">수학</option>
+                <option value="사회">사회</option>
+                <option value="과학">과학</option>
+                <option value="음악">음악</option>
+                <option value="미술">미술</option>
+                <option value="체육">체육</option>
               </select>
             </div>
 
@@ -119,10 +118,10 @@ const sociability = sociabilityInput.value;
                 onChange={(e) => setSelectedActivity(e.target.value)}
                 required
               >
-                <option value="reading" >독서</option>
-                <option value="gaming">게임</option>
-                <option value="hiking">등산</option>
-                <option value="swimming">물놀이</option>
+                <option value="독서" >독서</option>
+                <option value="게임">게임</option>
+                <option value="산">등산</option>
+                <option value="계곡">물놀이</option>
               </select>
             </div>
 
@@ -134,9 +133,9 @@ const sociability = sociabilityInput.value;
                 onChange={(e) => setSelectedRoutine(e.target.value)}
                 required
               >
-                <option value="I spend everyday" >일</option>
-                <option value="I spend every week">주</option>
-                <option value="I spend every month">월</option>
+                <option value="나는 매일" >일</option>
+                <option value="나는 매주">주</option>
+                <option value="나는 매월">월</option>
               </select>
 
               <select
@@ -145,12 +144,12 @@ const sociability = sociabilityInput.value;
                 onChange={(e) => setSelectedWhere(e.target.value)}
                 required
               >
-                <option value="on game" >게임</option>
-                <option value="on traffic fee">교통비</option>
-                <option value="on fangirling">덕질</option>
-                <option value="on buying accesories">악세사리구매</option>
-                <option value="on work out">운동</option>
-                <option value="on snacks">간식</option>
+                <option value=" 게임에" >게임</option>
+                <option value=" 교통비에">교통비</option>
+                <option value=" 덕질에">덕질</option>
+                <option value=" 악세사리구매에">악세사리구매</option>
+                <option value=" 운동에">운동</option>
+                <option value=" 간식에">간식</option>
               </select>
               &nbsp;에<br/>
               <input type="number" id="howmuch" placeholder="숫자만 입력하세요" value={selectedAmount}
