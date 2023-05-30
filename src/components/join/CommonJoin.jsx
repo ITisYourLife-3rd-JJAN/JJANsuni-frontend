@@ -1,5 +1,5 @@
 import {React, useState, useEffect} from 'react';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import axios from "axios";
 
 const CommonJoin = ({isParent}) => {
@@ -385,6 +385,7 @@ const CommonJoin = ({isParent}) => {
         {!(emailExistCheck&&famcodeCheck) && <button className="joinBtn2" onClick = {checkPlease}>가입하기</button>}
         {/* 이메일 및 가족코드 확인 버튼 완료 시 */}
         {(emailExistCheck&&famcodeCheck) && <button className="joinBtn" onClick = {registerAxios}>가입하기</button>}
+        <Link to = {"/login"}><p id="RegisterText">이미 가입되어 있으신가요?</p></Link>
 
         </div>
     );

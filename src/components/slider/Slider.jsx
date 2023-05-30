@@ -6,6 +6,7 @@ import axios
 import React, { Component, useEffect, useState } from "react";
 import Slider from "react-slick";
 import { checkFinalSound } from '../../lib/checkFinalSound';
+import { markThousand } from '../../lib/markThousand';
 
 export default class SimpleSlider extends Component {
     constructor(props) {
@@ -104,7 +105,7 @@ export default class SimpleSlider extends Component {
                 <div className='slide-item'>
                     <div style={{display: "flex"}}> 
                         <img className='slider-img' src={`${process.env.PUBLIC_URL}/assets/images/slider-money.png`} alt="" />
-                        <p> {getEnding2(name)} 현재 잔액 : {balance}원 💰 </p>
+                        <p> {getEnding2(name)} 현재 잔액 : { markThousand(balance)}원 💰 </p>
                     </div>
                 </div>
                 <div className='slide-item'>
