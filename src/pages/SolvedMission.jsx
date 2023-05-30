@@ -76,14 +76,14 @@ const SolvedMission = () => {
   }
   const handleSubmit = async (e) => {
     e.preventDefault();
-    setIsLoading(false);
+    setIsLoading(true);
     try {
       const response = await axios.post(
         "https://api.openai.com/v1/engines/text-davinci-003/completions",
         {
           prompt: prompt,
           temperature: 0.4,
-          max_tokens: 2500,
+          max_tokens: 2900,
         },
         {
           headers: {
