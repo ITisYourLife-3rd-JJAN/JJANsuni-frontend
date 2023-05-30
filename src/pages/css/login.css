@@ -32,7 +32,7 @@
 
 .loginSlogan{
     text-align: center;
-    margin : 5rem;
+    margin : 5rem 2rem;
     color: #fff;
     font-weight: 500;
     font-size: 4rem;
@@ -52,7 +52,7 @@
 .loginInput{
     position: absolute;
     right: 12vw;
-    top: 6rem;
+    top: 5rem;
     width: 30vw;
     height: 80%;
     background: #FFFFFF;

@@ -20,7 +20,7 @@
     width: 80%;
     height: 80%;
     border-radius: 30px;
-    font-weight: 600;
+    font-weight: 300;
 }
 
 .fstbox{
@@ -41,7 +41,7 @@
     border-bottom: 2px solid #CCC;
     margin-left: 3rem;
     margin-right: 3rem;
-    font-weight: 600;
+    font-weight: 300;
     font-size: 20px;
 }
 
@@ -57,7 +57,7 @@
 }
 
 .sendbtnin{
-    border: 3px solid #2D86E0;
+    border: 3px solid rgb(229,249,251);
     background-color: #FCFF5C;
     border-radius: 30px;display: flex;
     align-items: center;
@@ -65,7 +65,7 @@
     width: 20%;
     height: 100%;
     color: #000;
-    font-weight: 600;
+    font-weight: 500;
     font-size: 24px;
     cursor: pointer;
 }
@@ -75,11 +75,11 @@
     border: none;
     border-bottom: 3px solid #000;
     font-size: 26px;
-    font-weight: 700;
+    font-weight: 300;
 }
 
 .dbtmsgbox{
     font-size: 26px;
-    font-weight: 700;
+    font-weight: 300;
     display: flex;
 }

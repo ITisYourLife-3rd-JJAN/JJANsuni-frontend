@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import axios from 'axios';
 import Loading from '../../lib/Loading';
 import { markThousand } from '../../lib/markThousand';
+import { markAccount } from '../../lib/markAccount';
 
 const DebitForm = ({kidUserId, kidUserName}) => {
     const [price, setPrice] = useState("");
@@ -11,7 +12,7 @@ const DebitForm = ({kidUserId, kidUserName}) => {
     const navigate = useNavigate();
     const userId = sessionStorage.getItem("userId");
     const [userBalance, setUserBalance] = useState("");
-    const [kidAccount, setKidAccount] = useState();
+    const [kidAccount, setKidAccount] = useState("");
     const [kidBalance, setKidBalance] = useState();
     const [isLoading, setIsLoading] = useState(true);
     
@@ -42,7 +43,7 @@ const DebitForm = ({kidUserId, kidUserName}) => {
             .then((response) => {
                 console.log(response.data.data)
                 setKidBalance(response.data.data.balance)
-                setKidAccount(response.data.data.account)
+                setKidAccount(markAccount(response.data.data.account))
             })
             .catch((error) => {
                 console.log(error.response.data);
@@ -77,7 +78,7 @@ const DebitForm = ({kidUserId, kidUserName}) => {
             .then((response) => {
                 console.log(response.data.data)
                 setKidBalance(response.data.data.balance)
-                setKidAccount(response.data.data.account)
+                setKidAccount(markAccount(response.data.data.account))
             })
             .catch((error) => {
                 console.log(error.response.data);

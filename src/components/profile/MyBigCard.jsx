@@ -157,7 +157,7 @@ const MyBigCard = ({ isParent }) => {
             <p id="my-balance">잔액 : {userBalance}원</p>
           </>
         )}
-        <p id="my-account">계좌번호 : {userAccount}</p>
+        <p id="my-account">계좌번호 : {markAccount(userAccount)}</p>
         <p>가족코드 : {famCode}</p>
       </div>
       <div className="my-edit-box">

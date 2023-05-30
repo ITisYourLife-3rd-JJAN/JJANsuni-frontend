@@ -20,7 +20,7 @@
     width: 80%;
     height: 80%;
     border-radius: 30px;
-    font-weight: 600;
+    font-weight: 300;
 }
 
 .dditbox{
@@ -31,7 +31,7 @@
 
 .ddittext, .ddtitle{
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 400;
 
 }
 
@@ -49,7 +49,7 @@
     border-bottom: 2px solid #CCC;
 
     margin-right: 3rem;
-    font-weight: 600;
+    font-weight: 300;
     font-size: 20px;
 }
 
@@ -68,7 +68,7 @@
     border: none;
     border-bottom: 2px solid #CCC;
     font-size: 24px;
-    font-weight: 600;
+    font-weight: 300;
 }
 
 .dbmsgbox{
