@@ -6,7 +6,7 @@ import EventForm from '../../components/event/eventForm/EventForm';
 
 const EventGPT = () => {
     return (
-        <div>
+        <div className='event-gpt-wrap'>
             <EventHeader isGpt={true} />
             <EventForm/>
         </div>

@@ -1,21 +1,14 @@
 import React, { useState } from "react";
 import "./eventForm.css";
 import { useNavigate } from 'react-router-dom';
+import Select from 'react-select'
 
 const EventForm = () => {
-const subjects = ["Korean", "English", "Math", "Social Studies", "Science", "Music", "Art", "Physical Education"];
-const initialSubject = subjects[0];
-const activities = ["reading", "gaming", "swimming", "hiking"];
-const initialActivity = activities[0];
-const routines = ["I do it every day", "I do it every week", "I do it every month"];
-const initialRoutine = routines[0];
-const wheres = ["on games", "on transportation", "on buying accessories", "on exercising", "on snacks"];
-const initialWhere = wheres[0];
 
-  const [selectedActivity, setSelectedActivity] = useState(initialActivity);
-  const [selectedSubject, setSelectedSubject] = useState(initialSubject);
-  const [selectedRoutine, setSelectedRoutine] = useState(initialRoutine);
-  const [selectedWhere, setSelectedWhere] = useState(initialWhere);
+  const [selectedActivity, setSelectedActivity] = useState();
+  const [selectedSubject, setSelectedSubject] = useState();
+  const [selectedRoutine, setSelectedRoutine] = useState();
+  const [selectedWhere, setSelectedWhere] = useState();
   const [selectedAmount, setSelectedAmount] = useState("");
   const [loading, setLoading] = useState(false);
   const navigate = useNavigate();
@@ -61,12 +54,12 @@ const sociability = sociabilityInput.value;
 
       navigate('/event-result', { state: { requestPrompt } });
     };
-  
 
   return (
-    <>
+    <div className="event-gpt-container">
       <div className='eventForm'>
-        <div className='formBox'>            
+        <div className='form-container'>  
+         <div className="form-box">
           <form>
             <div className="question">
               어떤 방식을 더 좋아하세요?<br/>
@@ -94,65 +87,153 @@ const sociability = sociabilityInput.value;
 
             <div className="question">
               좋아하는 과목은 무엇인가요?
-              <select
+              <Select
                 id="subject-select"
-                value={selectedSubject}
-                onChange={(e) => setSelectedSubject(e.target.value)}
-              >
-                <option value="Korean" >국어</option>
-                <option value="English">영어</option>
-                <option value="Math">수학</option>
-                <option value="Social Studies">사회</option>
-                <option value="Science">과학</option>
-                <option value="Music">음악</option>
-                <option value="Art">미술</option>
-                <option value="Physical Education">체육</option>
-              </select>
+                value={selectedSubject ? { value: selectedSubject, label: selectedSubject } : null}
+                onChange={(selectedOption) => setSelectedSubject(selectedOption.label)}
+                options={[
+                  { value: "Korean", label: "국어" },
+                  { value: "English", label: "영어" },
+                  { value: "Math", label: "수학" },
+                  { value: "Social Studies", label: "사회" },
+                  { value: "Science", label: "과학" },
+                  { value: "Music", label: "음악" },
+                  { value: "Art", label: "미술" },
+                  { value: "Physical Education", label: "체육" }
+                ]}
+                theme={(theme) => ({
+                  ...theme,
+                  colors: {
+                      ...theme.colors,
+                      primary25: '#E5FAFC',
+                      primary: '#F4C4D2',
+                  },
+                })}
+                styles={{
+                  control: (provided, state) => ({
+                    ...provided,
+                    borderColor: state.isFocused ? '#F4C4D2' : '#F4C4D2',
+                    borderRadius: "10px", 
+                    boxShadow: "none",
+                    "&:hover": {
+                      borderColor: '#F4C4D2'
+                    },
+                    width: '20rem'
+                  }),
+                  option: (provided, state) => ({
+                    ...provided,
+                    cursor: "pointer"
+                  })
+                }}
+              />
+
             </div>
 
             <div className="question">
               취미가 무엇인가요?
-              <select
+              <Select
                 id="activity-select"
-                name="activity"
-                value={selectedActivity}
-                onChange={(e) => setSelectedActivity(e.target.value)}
+                value={selectedActivity ? { value: selectedActivity, label: selectedActivity } : null}
+                onChange={(selectedOption) => setSelectedActivity(selectedOption.label)}
+                options={[
+                  { value: "reading", label: "독서" },
+                  { value: "gaming", label: "게임" },
+                  { value: "hiking", label: "등산" },
+                  { value: "swimming", label: "물놀이" }
+                ]}
+                theme={(theme) => ({
+                  ...theme,
+                  colors: {
+                      ...theme.colors,
+                      primary25: '#E5FAFC',
+                      primary: '#F4C4D2',
+                  },
+                })}
                 required
-              >
-                <option value="reading" >독서</option>
-                <option value="gaming">게임</option>
-                <option value="hiking">등산</option>
-                <option value="swimming">물놀이</option>
-              </select>
+                styles={{
+                  control: (provided, state) => ({
+                    ...provided,
+                    borderColor: state.isFocused ? '#F4C4D2' : '#F4C4D2',
+                    borderRadius: "10px", 
+                    boxShadow: "none",
+                    "&:hover": {
+                      borderColor: '#F4C4D2'
+                    },
+                    width: '20rem'
+                  }),
+                  option: (provided, state) => ({
+                    ...provided,
+                    cursor: "pointer"
+                  })
+                }}
+              />
             </div>
 
             <div className="question">
-              나는 매
-              <select
-                id="routine-select"
-                value={selectedRoutine}
-                onChange={(e) => setSelectedRoutine(e.target.value)}
-                required
-              >
-                <option value="I spend everyday" >일</option>
-                <option value="I spend every week">주</option>
-                <option value="I spend every month">월</option>
-              </select>
+              <div className="flex-q">
+                나는 매
+                <Select
+                  id="routine-select"
+                  value={selectedRoutine ? { value: selectedRoutine, label: selectedRoutine } : null}
+                  defaultValue={{ value: 'I spend everyday', label: '일' }}
+                  onChange={(selectedOption) => setSelectedRoutine(selectedOption.label)}
+                  options={[
+                    { value: "I spend everyday", label: "일" },
+                    { value: "I spend every week", label: "주" },
+                    { value: "I spend every month", label: "월" }
+                  ]}
+                  required
+                  styles={{
+                    control: (provided, state) => ({
+                      ...provided,
+                      borderColor: state.isFocused ? '#F4C4D2' : '#F4C4D2',
+                      borderRadius: "10px", 
+                      boxShadow: "none",
+                      "&:hover": {
+                        borderColor: '#F4C4D2'
+                      },
+                      width: '7rem'
+                    }),
+                    option: (provided, state) => ({
+                      ...provided,
+                      cursor: "pointer"
+                    })
+                  }}
+                />
 
-              <select
-                id="where-select"
-                value={selectedWhere}
-                onChange={(e) => setSelectedWhere(e.target.value)}
-                required
-              >
-                <option value="on game" >게임</option>
-                <option value="on traffic fee">교통비</option>
-                <option value="on fangirling">덕질</option>
-                <option value="on buying accesories">악세사리구매</option>
-                <option value="on work out">운동</option>
-                <option value="on snacks">간식</option>
-              </select>
-              &nbsp;에<br/>
+                <Select
+                  id="where-select"
+                  value={selectedWhere ? { value: selectedWhere, label: selectedWhere } : null}
+                  onChange={(selectedOption) => setSelectedWhere(selectedOption.label)}
+                  options={[
+                    { value: "on game", label: "게임" },
+                    { value: "on traffic fee", label: "교통비" },
+                    { value: "on fangirling", label: "덕질" },
+                    { value: "on buying accessories", label: "악세사리 구매" },
+                    { value: "on work out", label: "운동" },
+                    { value: "on snacks", label: "간식" }
+                  ]}
+                  required
+                  styles={{
+                    control: (provided, state) => ({
+                      ...provided,
+                      borderColor: state.isFocused ? '#F4C4D2' : '#F4C4D2',
+                      borderRadius: "10px", 
+                      boxShadow: "none",
+                      "&:hover": {
+                        borderColor: '#F4C4D2'
+                      },
+                      width: '20rem'
+                    }),
+                    option: (provided, state) => ({
+                      ...provided,
+                      cursor: "pointer"
+                    })
+                  }}
+                />
+
+                &nbsp;에<br/>
+              </div>
               <input type="number" id="howmuch" placeholder="숫자만 입력하세요" value={selectedAmount}
                 onChange={(e) => {
                   const value = parseInt(e.target.value);
@@ -166,9 +247,10 @@ const sociability = sociabilityInput.value;
               <img src={`${process.env.PUBLIC_URL}/assets/images/event/piggy.png`} alt='' className="letsgo" />
             </div>
           </form>
+          </div>          
         </div>
       </div>
-    </>
+    </div>
   );
 };
 
