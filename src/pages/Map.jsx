@@ -9,6 +9,7 @@ const Map = () => {
     const achieveStatus_full = 7; // 나중에 실제로 사용할 데이터 변수
     const achieveStatus = 0; // 나중에 실제로 사용할 데이터 변수
     const [isLoading, setIsLoading] = useState(true);
+    const [achieve, setAchieve] = useState();
 
     const [status, setStatus] = useState();
     const [preMap, setPreMap] = useState(0);
@@ -23,7 +24,7 @@ const Map = () => {
                 .then((response) => {
                     console.log(response.data.data)
                     setStatus(response.data.data.achieve)
-
+                    setAchieve(response.data.data.achieve)
                     var quotient = Math.floor(status / 7);
                     switch (quotient) {
                     case 0:
@@ -51,10 +52,8 @@ const Map = () => {
                     console.log(error.response.data);
                 })
         };
-
         getUserAchieve();
-
-    }, [status]);
+    }, [status, achieve]);
    
     if (isLoading) {
         return <Loading/>;
@@ -98,10 +97,39 @@ const Map = () => {
                     alt=''
                     className='map-background-image'/>
                 {mapBoxes}
-                
             </div> 
+            {achieve >= 1 && achieve <= 5 && (
+            <img
+                src={`${process.env.PUBLIC_URL}/assets/images/tree1.png`}
+                alt=''
+                className='tree'
+            />
+            )}
+            {achieve >= 6 && achieve <= 13 && (
+            <img
+                src={`${process.env.PUBLIC_URL}/assets/images/tree2.png`}
+                alt=''
+                className='tree'
+            />
+            )}
+            {achieve >= 14 && achieve <= 19 && (
+            <img
+                src={`${process.env.PUBLIC_URL}/assets/images/tree3.png`}
+                alt=''
+                className='tree'
+            />
+            )}
+            {achieve >= 20 && achieve <= 42 && (
+            <img
+                src={`${process.env.PUBLIC_URL}/assets/images/tree4.png`}
+                alt=''
+                className='tree'
+            />
+            )}
         </>
     );
-};
+}
+
+
 
 export default Map;

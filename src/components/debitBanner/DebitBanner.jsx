@@ -185,7 +185,7 @@ const DebitBanner = ({idx, color, setKidUserId, setKidUserName}) => {
                 </div>
                 <div className='kidBalance'>
                     <div className='usespace'>아이 현재 잔액: </div>
-                    <div> {nowKidBalance} 원</div>
+                    <div> {markThousand(nowKidBalance)} 원</div>
                 </div>
                 <div className='kidSelect'>
                     <Select

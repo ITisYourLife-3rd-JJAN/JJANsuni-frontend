@@ -40,9 +40,9 @@ const MissionList = () => {
         };
         getUserMission();
       }, []);
-      
+
       useEffect(() => {
-        const isMissionNumExist = missionData.some(mission => mission.missionNum !== undefined);
+        const isMissionNumExist = missionData.length > 0 && missionData.some(mission => mission.missionNum !== undefined);
         setIsSolved(isMissionNumExist);
       }, [missionData]);
 
@@ -79,7 +79,7 @@ const MissionList = () => {
                     <img
                         src={island_img}
                         alt=''
-                        className='map map-image-1 pointer'
+                        className={`map map-image-${mapId} pointer`}
                         onClick={() => {
                         navigate(`/kid/map/${mapId}/mission/${index + 1}`);
                         }} />

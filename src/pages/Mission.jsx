@@ -9,6 +9,7 @@ import Loading from '../lib/Loading';
 
 const Mission = () => {
     const { mapId, missionId } = useParams();
+    const [ missionPk, setMissionPk ] = useState("");
     const [isQuiz, setIsQuiz] = useState(false);
     const [explain, setExplain] = useState("");
     const [title, setTitle] = useState("");
@@ -26,6 +27,7 @@ const Mission = () => {
                     const data = response.data.data;
                     data.missionType === "Q" ? setIsQuiz(true) : setIsQuiz(false);
 
+                    setMissionPk(data.missionId);
                     setTitle(data.title);
                     setExplain(data.explain);
                     setVodUrl(data.vodUrl);
@@ -47,8 +49,8 @@ const Mission = () => {
         <div>
             <Header/>
             {isQuiz ? 
-                <Quiz missionId={missionId} mapNum={mapId}  missionNum={missionId} title={title} explain={explain} answer={answer} /> 
-                : <Vod missionId={missionId} mapNum={mapId} missionNum={missionId} title={title} vodUrl={vodUrl}/>
+                <Quiz missionPk={missionPk} mapNum={mapId}  missionNum={missionId} title={title} explain={explain} answer={answer} /> 
+                : <Vod missionPk={missionPk} mapNum={mapId} missionNum={missionId} title={title} vodUrl={vodUrl}/>
             }
             <MapBackground mapId={missionId} isMap={false} />
         </div>

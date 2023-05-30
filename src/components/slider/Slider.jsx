@@ -64,7 +64,8 @@ export default class SimpleSlider extends Component {
         
         const checkLevel = (num) => {
             var mapNum = Math.ceil(num / 7);
-            var missionNum = num % 8;
+            if(mapNum == 0 ) mapNum = 1;
+            var missionNum = num % 7 + 1;
             return `${mapNum}-${missionNum}` 
         }
 

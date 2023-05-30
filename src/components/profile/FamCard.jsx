@@ -59,9 +59,10 @@ import Loading from '../../lib/Loading';
         imgSrc = `${process.env.PUBLIC_URL}/assets/images/boy.png`;
     }
 
-    const checkLevel = (userAchieve) => {
-        var mapNum = Math.ceil(userAchieve / 7);
-        var missionNum = userAchieve % 8;
+    const checkLevel = (num) => {
+        var mapNum = Math.ceil(num / 7);
+        if(mapNum == 0 ) mapNum = 1;
+        var missionNum = num % 7 + 1;
         return `${mapNum}-${missionNum}` 
     }
 

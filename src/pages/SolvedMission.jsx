@@ -71,10 +71,11 @@ const SolvedMission = () => {
     setIsModalOpen(false);
   };
 
-  if(!(location.state.isO)){
-    setPrompt(`${title}\nwhy is this wrong? respond me in Korean`)
-  }
   const handleSubmit = async (e) => {
+    if(!(location.state.isO)){
+      setPrompt(`${title}\nwhy is this wrong? respond me in Korean`)
+    }
+
     e.preventDefault();
     setIsLoading(true);
     try {

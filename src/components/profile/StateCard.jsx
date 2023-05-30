@@ -29,9 +29,10 @@ const StateCard = () => {
           getUser();
         }, []);
 
-        const checkLevel = (userAchieve) => {
-            var mapNum = Math.ceil(userAchieve / 7);
-            var missionNum = userAchieve % 8;
+        const checkLevel = (num) => {
+            var mapNum = Math.ceil(num / 7);
+            if(mapNum == 0 ) mapNum = 1;
+            var missionNum = num % 7 + 1;
             return `${mapNum}-${missionNum}` 
         }
 
@@ -45,7 +46,7 @@ const StateCard = () => {
                 <p>현재 단계 : {checkLevel(userAchieve)}</p>
             </div>
             <div className='present-state'>
-                <p>보유 금액 : {userBalance}</p>
+                <p>보유 금액 : {userBalance}원</p>
             </div>
         </div>
     );

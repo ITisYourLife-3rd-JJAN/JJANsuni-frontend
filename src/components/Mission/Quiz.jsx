@@ -2,11 +2,11 @@ import { React } from 'react';
 import { useNavigate } from 'react-router-dom';
 import './quiz.css'
 
-const Quiz = ({missionId, mapNum, missionNum, title, explain, answer }) => {
+const Quiz = ({missionPk, mapNum, missionNum, title, explain, answer }) => {
     const navigate = useNavigate();
 
     const handleAnswerClick = (isO) => {
-        navigate(`/kid/solution/${missionId}`, { state: { isO, explain, mapNum, missionNum, answer , title} });
+        navigate(`/kid/solution/${missionPk}`, { state: { isO, explain, mapNum, missionNum, answer , title} });
     };
 
     return (

@@ -4,8 +4,9 @@ import confetti from "https://esm.run/canvas-confetti@1";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from 'axios';
 
-const Vod = ({ missionId, missionNum, title, vodUrl}) => {
+const Vod = ({ missionPk, missionNum, title, vodUrl}) => {
     const [watched, setWatched] = useState(false);
+    const userId = sessionStorage.getItem("userId");
 
     const navigate = useNavigate();
     const { mapId } = useParams();
@@ -25,10 +26,11 @@ const Vod = ({ missionId, missionNum, title, vodUrl}) => {
 
 
     const saveMissionStatus = () => {
+        console.log(missionPk)
         axios
         .post("http://localhost:8080/api/v1/missions", {
-            solvedMissionId: missionId,
-            solvedUserId: 2,
+            solvedMissionId: missionPk,
+            solvedUserId: userId,
             status : 1
         })
         .then((response) => {

@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Select from 'react-select'
 import './missionBanner.css'
 import axios from 'axios';
+import { markThousand } from '../../lib/markThousand';
 
 
 const DebitBanner = ({setKidUserId, setKidUserName}) => {
@@ -35,8 +36,6 @@ const DebitBanner = ({setKidUserId, setKidUserName}) => {
                     setKidBalance(updateBalance)
 
                     setKidOptions(updateKidOptions)
-                    // console.log(updateKidOptions)
-                    // console.log(childData)
                 })
         }
         getChildAxios()
@@ -51,7 +50,7 @@ const DebitBanner = ({setKidUserId, setKidUserName}) => {
             </div>
             <div className='kidBalance'>
                 <div>아이 현재 잔액:</div>
-                <div>{nowKidBalance} 원</div>
+                <div>{markThousand(nowKidBalance)} 원</div>
             </div>
             <div className='kidSelect'>
                 <Select
